@@ -1,0 +1,1 @@
+The submitted DataSets will run the data integrity query submitted from each site in order to validate the data counts for each data table.  
