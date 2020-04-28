@@ -19,31 +19,19 @@ Comments and discussions are welcome and appreciated. Feel free to put your thou
 
 @Ken Gursing:
 
-> In reality PCORI, ACT and TRINETX are smaller than OMOP so most of the
-> information from those models will be blank. The OMOP COVID-19 tables
-> and fields removed were one’s that the NIH had a hard time with or
-> were not part of a Limited Data Set (date and zip codes are allowed)
+> In reality PCORI, ACT and TRINETX are smaller than OMOP so most of the information from those models will be blank. The OMOP COVID-19 tablesand fields removed were one’s that the NIH had a hard time with or were not part of a Limited Data Set (date and zip codes are allowed)
 > 
 > Altered Tables
 > 
-> The Tables impacted are LOCATION, PROVIDER and PERSON all the other
-> tables I left untouched I also added a new table called VISIT_DETAILS
-> this table was added in 5.3.1 Finally I included two tables I doubt
-> will have information Specimen and Death. I would be fine if we
-> removed them
+> The Tables impacted are LOCATION, PROVIDER and PERSON all the other tables I left untouched I also added a new table called VISIT_DETAILS this table was added in 5.3.1 Finally I included two tables I doubt will have information Specimen and Death. I would be fine if we removed them
 > 
 > FYI Death was removed in OMOP 6.0
 
 @Christopher G. Chute:
 
 > 1. My immediate impressions are:
->     a.  We should preserve City and State. Zip may not always be reported, having at least City and State would be a backup
->     b.  I agree that we should delete the specimen table for this purpose. To my knowledge, N3C will have no specimen content. It is
-> true we may want to link in future to repositories that have such
-> information, but there appears to be no purpose for it in the N3C LDS.
->     c.  I would keep the death table. Clearly it is a key outcome. While it may exist in other locations, it remains the ultimate
-> outcome.
-> 2.  I agree the OMOP is more the superset relative to the others and that this will result in many missing values. We agreed we would be
-> model agnostic in our recommendation of how folks can contribute data.
-> It is overwhelmingly clear that OMOP is preferred, though it seems we
-> are choosing not to point that out. I agree with that decision.
+>     a.  We should preserve City and State. Zip may not always be reported, having at least City and State would be a backup.
+>     b.  I agree that we should delete the specimen table for this purpose. To my knowledge, N3C will have no specimen content. It is true we may want to link in future to repositories that have such information, but there appears to be no purpose for it in the N3C LDS.
+>     c.  I would keep the death table. Clearly it is a key outcome. While it may exist in other locations, it remains the ultimate outcome.
+> 2.  I agree the OMOP is more the superset relative to the others and that this will result in many missing values. We agreed we would be model agnostic in our recommendation of how folks can contribute data.
+> It is overwhelmingly clear that OMOP is preferred, though it seems we are choosing not to point that out. I agree with that decision.
