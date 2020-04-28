@@ -1,18 +1,19 @@
 
 This repository contains the initial version documentation for the target **OMOP v 5.3.1 CDM**. The documentation is designed for the N3C project but may be useful for other research projects as well.
 
-<br>
+
 # Files Included in the reposity
 
-<br>
+
 ## [OMOP CDM v5 COVID.pdf](https://github.com/National-COVID-Cohort-Collaborative/Data-Ingestion-and-Harmonization/blob/master/TargetCDM/OMOP%20CDM%20v5%20COVID.pdf "OMOP CDM v5 COVID.pdf")
 
 The pdf version of the targetOMOP v 5.3.1 document.
-<br>
+
 ## [OMOP_CDM_v5.3.1 COVID.xlsx](https://github.com/National-COVID-Cohort-Collaborative/Data-Ingestion-and-Harmonization/blob/master/TargetCDM/OMOP_CDM_v5.3.1%20COVID.xlsx "OMOP_CDM_v5.3.1 COVID.xlsx")
 
 The spreadsheets for target domains and data fields, collapsed by OMOP domains.
-<br>
+
+
 # Comments welcome
 
 Comments and discussions are welcome and appreciated. Feel free to put your thoughts into issues to this repo of thie workstream.([https://github.com/National-COVID-Cohort-Collaborative/Data-Ingestion-and-Harmonization](https://github.com/National-COVID-Cohort-Collaborative/Data-Ingestion-and-Harmonization)) This is the way we determined to keep track of such valuable information during this rush hour, and may trigger insightful discussions from the community before the final implementation.
