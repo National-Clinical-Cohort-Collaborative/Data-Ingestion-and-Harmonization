@@ -18,7 +18,7 @@ The spreadsheets for target domains and data fields, collapsed by OMOP domains.
 
 Comments and discussions are welcome and appreciated. Feel free to put your thoughts into issues to this repo of thie workstream.([https://github.com/National-COVID-Cohort-Collaborative/Data-Ingestion-and-Harmonization](https://github.com/National-COVID-Cohort-Collaborative/Data-Ingestion-and-Harmonization)) This is the way we determined to keep track of such valuable information during this rush hour, and may trigger insightful discussions from the community before the final implementation.
 <br>
-@Ken Gursing:
+@Ken Gersing:
 
 > In reality PCORI, ACT and TRINETX are smaller than OMOP so most of the information from those models will be blank. The OMOP COVID-19 tablesand fields removed were one’s that the NIH had a hard time with or were not part of a Limited Data Set (date and zip codes are allowed)
 > 
