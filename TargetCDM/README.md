@@ -1,38 +1,46 @@
+Common Data Model v5.3.1
+=================
 
-This repository contains the initial version documentation for the target **OMOP v 5.3.1 CDM**. The documentation is designed for the N3C project but may be useful for other research projects as well.
-
-
-# Files Included in the repository
-
-
-## [OMOP CDM v5 COVID.pdf](https://github.com/National-COVID-Cohort-Collaborative/Data-Ingestion-and-Harmonization/blob/master/TargetCDM/OMOP%20CDM%20v5%20COVID.pdf "OMOP CDM v5 COVID.pdf")
-
-The pdf version of the targetOMOP v 5.3.1 document.
-
-## [OMOP_CDM_v5.3.1 COVID.xlsx](https://github.com/National-COVID-Cohort-Collaborative/Data-Ingestion-and-Harmonization/blob/master/TargetCDM/OMOP_CDM_v5.3.1%20COVID.xlsx "OMOP_CDM_v5.3.1 COVID.xlsx")
-
-The spreadsheets for target domains and data fields, collapsed by OMOP domains.
+See full CDM specification file on our github [wiki](https://github.com/OHDSI/CommonDataModel/wiki) or in the [CDM V5.3.1 PDF](https://github.com/OHDSI/CommonDataModel/blob/master/OMOP_CDM_v5_3_1.pdf)
 
 
-# Comments welcome
+Release Notes for v5.3.1
+=============
 
-Comments and discussions are welcome and appreciated. Feel free to put your thoughts into issues to this repo of thie workstream.([https://github.com/National-COVID-Cohort-Collaborative/Data-Ingestion-and-Harmonization](https://github.com/National-COVID-Cohort-Collaborative/Data-Ingestion-and-Harmonization)) This is the way we determined to keep track of such valuable information during this rush hour, and may trigger insightful discussions from the community before the final implementation.
-<br>
-@Ken Gersing:
+### This version address the following issues/pull requests:
 
-> In reality PCORI, ACT and TRINETX are smaller than OMOP so most of the information from those models will be blank. The OMOP COVID-19 tablesand fields removed were one’s that the NIH had a hard time with or were not part of a Limited Data Set (date and zip codes are allowed)
-> 
-> Altered Tables
-> 
-> The Tables impacted are LOCATION, PROVIDER and PERSON all the other tables I left untouched I also added a new table called VISIT_DETAILS this table was added in 5.3.1 Finally I included two tables I doubt will have information Specimen and Death. I would be fine if we removed them
-> 
-> FYI Death was removed in OMOP 6.0
-<br>
-@Christopher G. Chute:
+* [#183](https://github.com/OHDSI/CommonDataModel/pull/183) Fixes VISIT_DETAIL documentation, 'required' and 'type' columns were switched
+* [#169](https://github.com/OHDSI/CommonDataModel/pull/183) Data type changes for BigQuery
+* [#171](https://github.com/OHDSI/CommonDataModel/issues/171) Datetime formats in Sql Server changed to Datetime2
+* [#173](https://github.com/OHDSI/CommonDataModel/issues/173) Impala reserved words
+* [#177](https://github.com/OHDSI/CommonDataModel/pull/177) Postgres readme
+* [#140](https://github.com/OHDSI/CommonDataModel/issues/140), [#144](https://github.com/OHDSI/CommonDataModel/issues/140), [#135](https://github.com/OHDSI/CommonDataModel/issues/140) 
+  * Typos in readme and documentation
+* [#158](https://github.com/OHDSI/CommonDataModel/pull/158) VOCABULARY.VOCABULARY_VERSION no longer a required field
+* [#157](https://github.com/OHDSI/CommonDataModel/pull/157) Added MEASUREMENT.MEASUREMENT_TIME back to DDL for backwards compatibility
+* [#147](https://github.com/OHDSI/CommonDataModel/issues/147) PAYER_PLAN_PERIOD.STOP_REASON_SOURCE_VALUE varchar instead of integer
+* [#120](https://github.com/OHDSI/CommonDataModel/issues/120) PAYER_PLAN_PERIOD documentation
+* [#160](https://github.com/OHDSI/CommonDataModel/issues/160) Removed errant semicolon in license header
+* **[#145](https://github.com/OHDSI/CommonDataModel/issues/145) VISIT_DETAIL naming convention** 
+  * This is the change with the most potential impact as column names were updated
+* [#67](https://github.com/OHDSI/CommonDataModel/issues/67) Removed COHORT_DEFINITION_ID foreign key constraint from COHORT table
+* [#16](https://github.com/OHDSI/CommonDataModel/issues/16) Added additional foreign key constraints that were missing
+* [#12](https://github.com/OHDSI/CommonDataModel/issues/12) .csv file is now delivered with each version
+* Additional BigQuery updates for compatibility
+* A portion of [#112](https://github.com/OHDSI/CommonDataModel/issues/112) was addressed
+  * VISIT_DETAIL and documentation typos
 
-> 1. My immediate impressions are:<br>
->     a.  We should preserve City and State. Zip may not always be reported, having at least City and State would be a backup.<br>
->     b.  I agree that we should delete the specimen table for this purpose. To my knowledge, N3C will have no specimen content. It is true we may want to link in future to repositories that have such information, but there appears to be no purpose for it in the N3C LDS.<br>
->     c.  I would keep the death table. Clearly it is a key outcome. While it may exist in other locations, it remains the ultimate outcome.<br>
-> 2.  I agree the OMOP is more the superset relative to the others and that this will result in many missing values. We agreed we would be model agnostic in our recommendation of how folks can contribute data.<br>
-> It is overwhelmingly clear that OMOP is preferred, though it seems we are choosing not to point that out. I agree with that decision.
+Additional Updates
+==================
+
+* There is a [development branch](https://github.com/OHDSI/CommonDataModel/tree/Dev) now available with the DDLs and documentation for tables and/or changes that have been accepted into a future version of the CDM. Please use these with caution as they are subject to change upon formal release
+* BigQuery, Netezza, and Parallel Data Warehouse DDLs are now available
+
+
+---------
+  
+
+This repo contains the definition of the OMOP Common Data Model. It supports the SQL technologies: BigQuery, Impala, Netezza, Oracle, Parallel Data Warehouse, Postgres, Redshift, and SQL Server. For each, the DDL, constraints and indexes (if appropriate) are defined. 
+
+
+Versions are defined using tagging and versioning. Full versions (V6, 7 etc.) are usually released each year (1-Jan) and are not backwards compatible. Minor versions (V5.1, 5.2 etc.) are not guaranteed to be backwards compatible though an effort is made to make sure that current queries will not break. Micro versions (V5.1.1, V5.1.2 etc.) are released irregularly and often, and contain small hot fixes or backward compatible changes to the last minor version.
