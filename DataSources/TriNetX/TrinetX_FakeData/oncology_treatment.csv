@@ -1,0 +1,2 @@
+"patient_id","diagnosis_date","tumor_site_code_system","tumor_site_code","morphology_code_system","morphology_code","oncology_treatment_start_date","oncology_treatment_code_system","oncology_treatment_code","derived_by_TriNetX"
+"AAAAAAAAAAAAAAAAAAAAAAAAA","20150121","ICD-O","C34.3","ICD-O","8140/3","20150522","TriNetX - Oncology Treatment","1285|1","F"

@@ -1,0 +1,2 @@
+"patient_id","encounter_id","code_system","code","start_date","route","brand","strength","derived_by_TriNetX"
+"AAAAAAAAAAAAAAAAAAAAAAAAA","AAAAAAAAAAAAAAAAAAAAAAAAA1","RxNorm","82003","20200120","Oral Product","Unknown","Unknown","F"
