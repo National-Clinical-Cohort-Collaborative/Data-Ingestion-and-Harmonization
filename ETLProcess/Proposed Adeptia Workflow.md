@@ -1,4 +1,4 @@
-## Proposed Adeptia Workflow (By May 12 2020)
+## Proposed Adeptia Workflow - last updated May 12 2020
 
 1. SFTP ---> Sites specific Directory -->Unzip --> manifest.csv & datacount.csv & datafiles sub-folder\*.csv files
 2. Queue up - dataSite data processing in order not to over write each other CDM Native data staging place
