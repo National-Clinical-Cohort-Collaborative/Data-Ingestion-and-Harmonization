@@ -16,4 +16,4 @@
     e. provide feedback loop with step 10  
 10. OMOP Approved Data Quality Checks - generate DQDDashboard_result - provide result to dataPartnerSite for site evaluation.
 11. Contribute current instance of dataSet to the N3C data store repository
-12. Create a backup of the current DataSet
+12. Create a backup of the contributed dataPartner's DataSet for troubleshooting purpose.
