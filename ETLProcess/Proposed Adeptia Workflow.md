@@ -1,6 +1,6 @@
-## Proposed Adeptia Workflow - last updated May 13 2020
+## Proposed Ingestion Workflow - last updated May 13 2020
 
-1. SFTP ---> Sites specific Directory -->Unzip --> manifest.csv & datacount.csv at the root directory & datafiles sub-folder\*.csv files
+1. SFTP ---> Sites specific N3C secured dataDirectory -->Unzip --> manifest.csv & datacount.csv at the root directory & datafiles sub-folder\*.csv files
 2. Queue up - Setup dataSet processing queue in order not to over write each other CDM Native data at the staging area
 3. Load data to the CDM Native tables - Note, data load will fail if the data does not conform to the CDM table structure or data types.
 4. Load DataCount/Manifest --- table
@@ -14,6 +14,6 @@
     c. have as many valid values as we can inform (e.g. correct LOINC codes from lab text names);
     d. contains no overtly obsolete or invalid data.
     e. provide feedback loop with step 10  
-10. OMOP Approved Data Quality Checks - generate DQOMOP_report - provide feeback loop to step 9
-11. Contribute current instance of dataSet to the N3C data store
+10. OMOP Approved Data Quality Checks - generate DQDDashboard_result - provide result to dataPartnerSite for site evaluation.
+11. Contribute current instance of dataSet to the N3C data store repository
 12. Create a backup of the current DataSet
