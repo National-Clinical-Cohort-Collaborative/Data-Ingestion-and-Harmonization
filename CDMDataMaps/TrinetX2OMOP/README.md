@@ -1,0 +1,1 @@
+Common Data Element and Permissible ValueSet mapping information from TriNetX  to OMOP version 5.3.1.
