@@ -1,13 +1,13 @@
--- N3C DI&H
--- CDM source PCORnet 
--- Condition code xwalk view - condition code to omop concept ids
--- Stephanie Hong
--- May 31, 2020
+-- VIEW: V_P2O_OBSCLIN_CODE_XWALK 
+-- CDM data source: PCORnet 
+-- PROJECT : N3C
+-- Description: OBS_CLIN code to omop concept ids
+-- Author: Stephanie Hong
+-- Edit Date: JUNE 1, 2020
 
 
-CREATE OR REPLACE FORCE EDITIONABLE VIEW "CDMH_STAGING"."V_P2O_CONDITION_CODE_XWALK" ("CDM_TBL", "SRC_CODE", "SRC_CODE_TYPE", "SOURCE_CODE", "SOURCE_CONCEPT_ID", "SOURCE_CODE_DESCRIPTION", "SOURCE_VOCABULARY_ID", "SOURCE_DOMAIN_ID", "TARGET_CONCEPT_ID", "TARGET_CONCEPT_NAME", "TARGET_VOCABULARY_ID", "TARGET_DOMAIN_ID", "TARGET_CONCEPT_CLASS_ID") AS 
-  (
-select 'CONDITION' as cdm_tbl, src_code, src_code_type,  
+CREATE OR REPLACE FORCE EDITIONABLE VIEW "CDMH_STAGING"."V_P2O_OBSCLIN_CODE_XWALK" ("CDM_TBL", "SRC_CODE", "SRC_CODE_TYPE", "SOURCE_CODE", "SOURCE_CONCEPT_ID", "SOURCE_CODE_DESCRIPTION", "SOURCE_VOCABULARY_ID", "SOURCE_DOMAIN_ID", "TARGET_CONCEPT_ID", "TARGET_CONCEPT_NAME", "TARGET_VOCABULARY_ID", "TARGET_DOMAIN_ID", "TARGET_CONCEPT_CLASS_ID") AS 
+  select 'OBS_CLIN' as cdm_tbl, src_code, src_code_type,  
         source_code, source_concept_id, source_code_description, source_vocabulary_id, source_domain_id, 
         target_concept_id, target_concept_name, target_vocabulary_id, target_domain_id, target_concept_class_id
     from
@@ -38,14 +38,13 @@ select 'CONDITION' as cdm_tbl, src_code, src_code_type,
 	                     ON c2.CONCEPT_ID = stcm.target_concept_id
 	       WHERE stcm.INVALID_REASON IS NULL
 	)
-SELECT distinct 'CONDITION' as CDM_TBL, C.CONDITION as src_code, c.condition_type src_code_type, 
+SELECT distinct 'OBS_CLIN' as CDM_TBL, o.obsclin_code as src_code, o.obsclin_type src_code_type, 
 source_code, source_concept_id, source_code_description, source_vocabulary_id, source_domain_id, 
 target_concept_id, target_concept_name, target_vocabulary_id, target_domain_id, target_concept_class_id ---target_concept_id = omop concept id , target_concept_name = concept name target_domain_id = condition
 FROM cte_vocab_map
-right outer join native_pcorNet51_cdm.condition c
-on source_code in (c.condition ) -- d.dx code -- in('U07.1')  
-where source_vocabulary_id in( 'ICD9CM', 'ICD9Proc', 'ICD10CM', 'ICD10PCS', 'OPCS4','CPT4', 'ICD11CM', 'HCPCS', 'SNOMED', 'PCORNet') ---
+right outer join native_pcorNet51_cdm.obs_clin o
+on source_code in (o.obsclin_code ) -- d.dx code -- in('U07.1')  
+where source_vocabulary_id in( 'ICD9CM', 'ICD9Proc', 'ICD10CM', 'ICD10PCS', 'OPCS4','CPT4', 'ICD11CM', 'HCPCS', 'SNOMED', 'LOINC', 'PCORNet') ---
 --MDRT, VA Class - va medication terminology
 AND target_standard_concept = 'S' 
-) x
-);
+) x;

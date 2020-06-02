@@ -1,0 +1,136 @@
+---
+---
+--- PCorNet51 to OMOP531
+--- transform Native source data tables in 
+
+-- manifest table
+CREATE TABLE MANIFEST
+(
+  MANIFEST_ID NUMBER(18, 0) NOT NULL
+, SITE_NAME VARCHAR2(200 BYTE)  -- need to support site’s full name in this table
+, SITE_ABBREV_name varchar2(50)
+, CONTACT_NAME VARCHAR2(200 BYTE)
+, CONTACT_EMAIL VARCHAR2(200 BYTE)
+, CDM_NAME VARCHAR2(100 BYTE)
+, CDM_VERSION VARCHAR2(20 BYTE) NOT NULL
+, N3C_PHENOTYPE_YN VARCHAR2(5 BYTE) NOT NULL
+, N3C_PHENOTYPE_VERSION NUMBER(18, 1) NOT NULL -- support decimal change
+, RUN_DATE timestamp NOT NULL
+, UPDATE_DATE timestamp NOT NULL
+, NEXT_SUBMISSION_DATE timestamp NOT NULL
+-------used internally
+, DATASET_STATUS NUMBER(*, 0)
+, DATA_PARTNER_ID NUMBER(*, 0) NOT NULL
+, PROCESS_timestamp timestamp NOT NULL
+) ;
+
+-- data count table
+CREATE TABLE DATACOUNT
+(
+  DATACOUNT_ID NUMBER(18, 0) NOT NULL
+, DOMAIN_NAME VARCHAR2(100 BYTE) NOT NULL
+, ROW_COUNT NUMBER(*, 0) NOT NULL
+, DATA_PARTNER_ID NUMBER(*, 0) NOT NULL
+, MANIFEST_ID NUMBER(18, 0) NOT NULL
+, RUN_DATE DATE NOT NULL
+,data_loaded NUMBER(*, 0) NOT NULL
+,data_ingested NUMBER(*, 0) NOT NULL 
+,data_loaded_delta NUMBER(*, 0) NOT NULL
+,data_ingested_delta NUMBER(*, 0) NOT NULL
+) ;
+
+--person clean
+CREATE TABLE JHU_SHONG.n3C_PERSON_CLEAN
+(
+  RECID NUMBER(18, 0) NOT NULL
+, PERSON_ID NUMBER(*, 0) NOT NULL
+, CREATE_DATE TIMESTAMP
+) ;
+
+-- domain map for n3c ids
+create table N3CDS_domain_map (
+    DOMAIN_MAP_ID	NUMBER(18,0),
+    MANIFEST_ID	NUMBER(18,0),
+    DATA_PARTNER_ID	NUMBER(38,0),
+    DOMAIN_NAME	VARCHAR2(100 BYTE),
+    SOURCE_ID	VARCHAR2(100 BYTE),
+    N3C_ID	VARCHAR2(200 BYTE),
+    CREATE_DATE	TIMESTAMP(6)
+) ;
+
+-- xwalk tables, gender, ethnicity, race, encounter/visit types
+CREATE TABLE gender_xwalk (
+    CDM_NAME 					VARCHAR(100),
+    src_gender 					VARCHAR(20),
+  	target_concept_id			INTEGER			NOT NULL ,
+  	target_concept_name			VARCHAR(255)	NOT NULL ,
+  	target_domain_id			VARCHAR(20)		NOT NULL ,
+  	target_vocabulary_id		VARCHAR(20)		NOT NULL ,
+  	target_concept_class_id		VARCHAR(20)		NOT NULL ,
+  	target_standard_concept		VARCHAR(1)		NULL ,
+  	target_concept_code			VARCHAR(50)		NOT NULL
+);
+
+insert into jhu_shong.p2o_gender_xwalk
+(src_sex, target_concept_id, target_concept_name , target_domain_id , target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
+values
+( 'M', 8507, 'MALE', 'Gender', 'Gender','Gender','S', 'M');
+insert into jhu_shong.p2o_gender_xwalk
+(src_sex, target_concept_id, target_concept_name , target_domain_id , target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
+values
+( 'F', 8532, 'FEMALE', 'Gender', 'Gender','Gender','S', 'F');
+insert into jhu_shong.p2o_gender_xwalk
+(src_sex, target_concept_id, target_concept_name , target_domain_id , target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
+values
+( 'A', 0, 'Ambiguous', 'Gender', 'Gender','Gender','S', '0');
+insert into jhu_shong.p2o_gender_xwalk
+(src_sex, target_concept_id, target_concept_name , target_domain_id , target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
+values
+( 'NI', 0, 'No Information', 'Gender', 'Gender','Gender','S', '0');
+insert into jhu_shong.p2o_gender_xwalk
+(src_sex, target_concept_id, target_concept_name , target_domain_id , target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
+values
+( 'OT', 0, 'Other', 'Gender', 'Gender','Gender','S', '0');
+insert into jhu_shong.p2o_gender_xwalk
+(src_sex, target_concept_id, target_concept_name , target_domain_id , target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
+values
+( 'UN', 0, 'Unknown', 'Gender', 'Gender','Gender','S', '0');
+---
+
+
+
+CREATE TABLE ethnicity_xwalk (
+    CDM_NAME 					VARCHAR(100),
+    src_ethnicity 				VARCHAR(100),
+  	target_concept_id			INTEGER			NOT NULL ,
+  	target_concept_name			VARCHAR(255)	NOT NULL ,
+  	target_domain_id			VARCHAR(20)		NOT NULL ,
+  	target_vocabulary_id		VARCHAR(20)		NOT NULL ,
+  	target_concept_class_id		VARCHAR(20)		NOT NULL ,
+  	target_standard_concept		VARCHAR(1)		NULL ,
+  	target_concept_code			VARCHAR(50)		NOT NULL
+);
+
+CREATE TABLE race_xwalk (
+    CDM_NAME 					VARCHAR(100),
+    src_race 				VARCHAR(100),
+  	target_concept_id			INTEGER			NOT NULL ,
+  	target_concept_name			VARCHAR(255)	NOT NULL ,
+  	target_domain_id			VARCHAR(20)		NOT NULL ,
+  	target_vocabulary_id		VARCHAR(20)		NOT NULL ,
+  	target_concept_class_id		VARCHAR(20)		NOT NULL ,
+  	target_standard_concept		VARCHAR(1)		NULL ,
+  	target_concept_code			VARCHAR(50)		NOT NULL
+);
+
+CREATE TABLE visit_xwalk (
+    CDM_NAME 					VARCHAR(100),
+    src_visit_type 				VARCHAR(100),
+  	target_concept_id			INTEGER			NOT NULL ,
+  	target_concept_name			VARCHAR(255)	NOT NULL ,
+  	target_domain_id			VARCHAR(20)		NOT NULL ,
+  	target_vocabulary_id		VARCHAR(20)		NOT NULL ,
+  	target_concept_class_id		VARCHAR(20)		NOT NULL ,
+  	target_standard_concept		VARCHAR(1)		NULL ,
+  	target_concept_code			VARCHAR(50)		NOT NULL
+);
