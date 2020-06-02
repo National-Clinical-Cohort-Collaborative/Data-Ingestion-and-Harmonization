@@ -1,5 +1,5 @@
 
-- N3C DI&H
+-- N3C DI&H
 -- CDM source PCORnet 
 -- DEATH CAUSE code xwalk view - DEATH CAUSE code to omop concept ids
 -- Stephanie Hong
