@@ -44,23 +44,25 @@ CREATE TABLE DATACOUNT
 ,data_ingested_delta NUMBER(*, 0) NOT NULL
 ) ;
 ****/
-/*
---person clean
+
+/***
+--person clean --
 CREATE TABLE cdmh_staging.N3C_PERSON_CLEAN
 (
   RECID NUMBER(18, 0) NOT NULL
 , PERSON_ID NUMBER(*, 0) NOT NULL
 , CREATE_DATE TIMESTAMP
 ) ;
+***/
 
+/***
 -- domain map for n3c ids
 create table cdmh_staging.N3CDS_domain_map (
-    DOMAIN_MAP_ID	NUMBER(18,0),
-    MANIFEST_ID	NUMBER(18,0),
+    DOMAIN_MAP_ID	NUMBER(18,0), -- n3c id / table indicies 
     DATA_PARTNER_ID	NUMBER(38,0),
     DOMAIN_NAME	VARCHAR2(100 BYTE),
     SOURCE_ID	VARCHAR2(100 BYTE),
-    N3C_ID	VARCHAR2(200 BYTE),
+    ---N3C_ID	VARCHAR2(200 BYTE), --drop this column, use domain_map_id as the n3c id
     CREATE_DATE	TIMESTAMP(6)
 ) ;
 */
@@ -218,7 +220,7 @@ Insert into cdmh_staging.race_xwalk
 values ( 'PCORnet', 'DEMOGRAPHIC', '05', '2106-3', 8527, 'White', 'Race', 'Race','Race','S', '5') ;
 
 --ACT
-nsert into cdmh_staging.race_xwalk 
+insert into cdmh_staging.race_xwalk 
 (cdm_name, cdm_tbl, src_race, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:NA', '1002-5', 8657, 'American  Indian  or  Alaska  Native', 'Race', 'Race','Race','S', '1');
 
@@ -257,6 +259,18 @@ CREATE TABLE visit_xwalk (
 );
 
 /*
+pcorNet
+AV=Ambulatory  Visit
+ED=Emergency  Department
+EI=Emergency  Department  Admit  to  Inpatient  Hospital  Stay  (permissible  substitution)
+IP=Inpatient  Hospital  Stay
+IS=Non-Acute  Institutional  Stay
+OS=Observation  Stay
+IC=Institutional  Professional  Consult  (permissible  substitution)
+OA=Other  Ambulatory  Visit
+NI=No  information
+UN=Unknown
+OT=Other
 visit:
 '9201','Inpatient Visit','IP'
 '9202','Outpatient Visit','OP'
@@ -266,4 +280,87 @@ visit type:
 '44818517','Visit derived from encounter on claim','OMOP generated'
 '44818518','Visit derived from EHR record','OMOP generated'
 '44818519','Clinical Study visit','OMOP generated'
+42898160 0 non-hospital institution visit
+--ACT
+INOUT_CD  E Emergency Department Visit
+INOUT_CD  EI  Emergency Department Visit Admit To Inpatient
+INOUT_CD  I Inpatient Hospital Stay
+INOUT_CD  N No Information
+INOUT_CD  NA  Non-Acute Hospital Stay
+INOUT_CD  O Ambulatory Visit
+INOUT_CD  X Other Ambulatory Visit
 */
+
+insert into cdmh_staging.visit_xwalk 
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values 
+( 'PCORnet', 'ENCOUNTER', 'AV', 'AMB', 581478, 'Ambulance visit', 'Visit', 'Visit','Visit Type','S', 'AV');
+
+insert into cdmh_staging.visit_xwalk 
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'PCORnet', 'ENCOUNTER', 'ED', 'EMER', 9203, 'Ambulance visit', 'Visit', 'Visit','Visit Type','S', 'ED');
+--
+insert into cdmh_staging.visit_xwalk 
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'PCORnet', 'ENCOUNTER', 'EI', 'ACUTE', 9203, 'Emergency  Department  Admit  to  Inpatient  Hospital  Stay', 'Visit', 'Visit','Visit Type','S', 'EI');
+--IC
+insert into cdmh_staging.visit_xwalk 
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'PCORnet', 'ENCOUNTER', 'IC', '', 42898160, 'Institutional  Professional  Consult', 'Visit', 'Visit','Visit Type','S', 'IC');
+--IP
+insert into cdmh_staging.visit_xwalk 
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'PCORnet', 'ENCOUNTER', 'IP', 'IMP', 8717, 'Inpatient Hospital Stay', 'Visit', 'Visit','Visit Type','S', 'IP');
+--NI
+insert into cdmh_staging.visit_xwalk 
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'PCORnet', 'ENCOUNTER', 'NI', '', 0, 'No information', 'Visit', 'Visit','Visit Type','S', 'NI');
+--IS
+insert into cdmh_staging.visit_xwalk 
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'PCORnet', 'ENCOUNTER', 'IS', 'NONAC', 42898160, 'Non-Acute Institutional Stay', 'Visit', 'Visit','Visit Type','S', 'IMP');
+--OA
+insert into cdmh_staging.visit_xwalk 
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'PCORnet', 'ENCOUNTER', 'OA', 'AMB', 581478, 'Other Ambulatory Visit', 'Visit', 'Visit','Visit Type','S', 'IMP');
+--OS
+insert into cdmh_staging.visit_xwalk 
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'PCORnet', 'ENCOUNTER', 'OS', 'X', 581385, 'Observation Stay', 'Visit', 'Visit','Visit Type','S', 'OS');
+--OT
+insert into cdmh_staging.visit_xwalk 
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'PCORnet', 'ENCOUNTER', 'OT', '', 0, 'Other', 'Visit', 'Visit','Visit Type','S', 'OT');
+--UN
+insert into cdmh_staging.visit_xwalk 
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'PCORnet', 'ENCOUNTER', 'UN', '', 0, 'Unknown', 'Visit', 'Visit','Visit Type','S', 'UN');
+
+--drop table if exists
+DROP TABLE cdmh_staging.p2o_code_xwalk_standard ;
+create table p2o_code_xwalk_standard
+(
+    CDM_TBL                 VARCHAR(100),
+    src_code                VARCHAR(18),
+    src_code_type           VARCHAR(10),
+    source_code             VARCHAR(18),
+    source_code_concept_id  VARCHAR2(24 BYTE), 
+    source_code_description  VARCHAR2(255 BYTE),
+    source_vocabulary_id    VARCHAR2(24 BYTE), 
+    source_domain_id        VARCHAR2(24 BYTE),
+    target_concept_id     INTEGER       NOT NULL ,
+    target_concept_name     VARCHAR(255)  NOT NULL ,
+    target_vocabulary_id        VARCHAR(20)   NOT NULL ,
+    target_domain_id    VARCHAR(20)   NOT NULL ,
+    target_concept_class_id   VARCHAR(20)   NOT NULL 
+) ;
