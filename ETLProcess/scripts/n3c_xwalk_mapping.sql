@@ -171,7 +171,7 @@ values
 
 --DROP TABLE IF EXISTS cdmh_staging.race_xwalk
 DROP TABLE cdmh_staging.race_xwalk ;
-CREATE TABLE race_xwalk (
+CREATE TABLE cdmh_staging.race_xwalk (
     CDM_NAME 					VARCHAR(100),
     CDM_TBL           VARCHAR(100),
     src_race 				VARCHAR(100),
@@ -200,51 +200,51 @@ CREATE TABLE race_xwalk (
 --DEM|RACE:W  White
 
 insert into cdmh_staging.race_xwalk 
-(cdm_name, cdm_tbl, src_race, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+(cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'PCORnet', 'DEMOGRAPHIC', '01', '1002-5', 8657, 'American  Indian  or  Alaska  Native', 'Race', 'Race','Race','S', '1');
 
 insert into cdmh_staging.race_xwalk 
-(cdm_name, cdm_tbl, src_race, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+(cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'PCORnet', 'DEMOGRAPHIC', '02', '2028-9', 8515, 'Asian', 'Race', 'Race','Race','S', '2') ;
 
 Insert into cdmh_staging.race_xwalk 
-(cdm_name, cdm_tbl, src_race, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+(cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'PCORnet', 'DEMOGRAPHIC', '03', '2054-5', 8516, 'Black  or  African  American', 'Race', 'Race','Race','S', '3') ;
 
 Insert into cdmh_staging.race_xwalk 
-(cdm_name, cdm_tbl, src_race, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+(cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'PCORnet', 'DEMOGRAPHIC', '04', '2076-8', 8557, 'Native  Hawaiian  or  Other  Pacific  Islander', 'Race', 'Race','Race','S', '4');
 
 Insert into cdmh_staging.race_xwalk 
-(cdm_name, cdm_tbl, src_race, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+(cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'PCORnet', 'DEMOGRAPHIC', '05', '2106-3', 8527, 'White', 'Race', 'Race','Race','S', '5') ;
 
 --ACT
 insert into cdmh_staging.race_xwalk 
-(cdm_name, cdm_tbl, src_race, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+(cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:NA', '1002-5', 8657, 'American  Indian  or  Alaska  Native', 'Race', 'Race','Race','S', '1');
 
 insert into cdmh_staging.race_xwalk 
-(cdm_name, cdm_tbl, src_race, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+(cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:AS', '2028-9', 8515, 'Asian', 'Race', 'Race','Race','S', '2') ;
 
 Insert into cdmh_staging.race_xwalk 
-(cdm_name, cdm_tbl, src_race, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+(cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:B', '2054-5', 8516, 'Black  or  African  American', 'Race', 'Race','Race','S', '3') ;
 
 Insert into cdmh_staging.race_xwalk 
-(cdm_name, cdm_tbl, src_race, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+(cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:H', '2076-8', 8557, 'Native  Hawaiian  or  Other  Pacific  Islander', 'Race', 'Race','Race','S', '4');
 
 Insert into cdmh_staging.race_xwalk 
-(cdm_name, cdm_tbl, src_race, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+(cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:W', '2106-3', 8527, 'White', 'Race', 'Race','Race', 'S', '5') ;
 
 
 
 --drop table if exists
 DROP TABLE cdmh_staging.visit_xwalk ;
-CREATE TABLE visit_xwalk (
+CREATE TABLE cdmh_staging.visit_xwalk (
     CDM_NAME 					VARCHAR(100),
     CDM_TBL           VARCHAR(100),
     src_visit_type 				VARCHAR(100),
@@ -348,7 +348,7 @@ values
 
 --drop table if exists
 DROP TABLE cdmh_staging.p2o_code_xwalk_standard ;
-create table p2o_code_xwalk_standard
+create table cdmh_staging.p2o_code_xwalk_standard
 (
     CDM_TBL                 VARCHAR(100),
     src_code                VARCHAR(18),
