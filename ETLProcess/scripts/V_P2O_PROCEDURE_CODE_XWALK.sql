@@ -1,11 +1,11 @@
--- VIEW: V_P2O_PROCEDURE_CODE_WALK 
+-- VIEW: V_P2O_PROCEDURE_CODE_XWALK 
 -- CDM data source: PCORnet 
 -- PROJECT : N3C
 -- Description: PROCEDURES code to omop concept ids
 -- Author: Stephanie Hong
 -- Edit Date: JUNE 1, 2020
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "CDMH_STAGING"."V_P2O_PROCEDURE_CODE_WALK" ("CDM_TBL", "SRC_CODE", "SRC_CODE_TYPE", "SOURCE_CODE", "SOURCE_CONCEPT_ID", "SOURCE_CODE_DESCRIPTION", "SOURCE_VOCABULARY_ID", "SOURCE_DOMAIN_ID", "TARGET_CONCEPT_ID", "TARGET_CONCEPT_NAME", "TARGET_VOCABULARY_ID", "TARGET_DOMAIN_ID", "TARGET_CONCEPT_CLASS_ID") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "CDMH_STAGING"."V_P2O_PROCEDURE_CODE_XWALK" ("CDM_TBL", "SRC_CODE", "SRC_CODE_TYPE", "SOURCE_CODE", "SOURCE_CONCEPT_ID", "SOURCE_CODE_DESCRIPTION", "SOURCE_VOCABULARY_ID", "SOURCE_DOMAIN_ID", "TARGET_CONCEPT_ID", "TARGET_CONCEPT_NAME", "TARGET_VOCABULARY_ID", "TARGET_DOMAIN_ID", "TARGET_CONCEPT_CLASS_ID") AS 
   select 'PROCEDURES' as cdm_tbl, src_code, src_code_type,  
         source_code, source_concept_id, source_code_description, source_vocabulary_id, source_domain_id, 
         target_concept_id, target_concept_name, target_vocabulary_id, target_domain_id, target_concept_class_id
