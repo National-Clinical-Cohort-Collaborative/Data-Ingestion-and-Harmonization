@@ -6,7 +6,7 @@
 -- June 1, 2020
 
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "CDMH_Staging"."V_P2O_DISPENSING_CODE_XWALK" ("CDM_TBL", "SRC_CODE", "SRC_CODE_TYPE", "SOURCE_CODE", "SOURCE_CONCEPT_ID", "SOURCE_CODE_DESCRIPTION", "SOURCE_VOCABULARY_ID", "SOURCE_DOMAIN_ID", "TARGET_CONCEPT_ID", "TARGET_CONCEPT_NAME", "TARGET_VOCABULARY_ID", "TARGET_DOMAIN_ID", "TARGET_CONCEPT_CLASS_ID") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "CDMH_STAGING"."V_P2O_DISPENSING_CODE_XWALK" ("CDM_TBL", "SRC_CODE", "SRC_CODE_TYPE", "SOURCE_CODE", "SOURCE_CONCEPT_ID", "SOURCE_CODE_DESCRIPTION", "SOURCE_VOCABULARY_ID", "SOURCE_DOMAIN_ID", "TARGET_CONCEPT_ID", "TARGET_CONCEPT_NAME", "TARGET_VOCABULARY_ID", "TARGET_DOMAIN_ID", "TARGET_CONCEPT_CLASS_ID") AS 
   select 'DISPENSING' as cdm_tbl, src_code, src_code_type,  
         source_code, source_concept_id, source_code_description, source_vocabulary_id, source_domain_id, 
         target_concept_id, target_concept_name, target_vocabulary_id, target_domain_id, target_concept_class_id
@@ -44,6 +44,6 @@ target_concept_id, target_concept_name, target_vocabulary_id, target_domain_id, 
 FROM cte_vocab_map
 right outer join native_pcorNet51_cdm.DISPENSING d
 on source_code in (d.ndc ) -- i.e. d.dx code-- in('U07.1')  
-where source_vocabulary_id in( 'ICD9CM', 'ICD9Proc', 'ICD10CM', 'ICD10PCS', 'OPCS4','CPT4', 'ICD11CM', 'HCPCS', 'SNOMED', 'LOINC', 'NDC','PCORNet') ---
+where source_vocabulary_id in( 'ICD9CM', 'ICD9Proc', 'ICD10CM', 'ICD10PCS', 'OPCS4','CPT4', 'ICD11CM', 'HCPCS', 'SNOMED', 'LOINC', 'NDC', 'RxNorm', 'RxNorm Extension', 'PCORNet') ---
 AND target_standard_concept = 'S' 
 ) x;

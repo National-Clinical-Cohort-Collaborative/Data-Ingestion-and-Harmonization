@@ -45,7 +45,6 @@ target_concept_id, target_concept_name, target_vocabulary_id, target_domain_id, 
 FROM cte_vocab_map
 right outer join native_pcorNet51_cdm.PRESCRIBING p
 on source_code in (p.rxnorm_cui ) -- i.e. P types NX and RX 
---where source_vocabulary_id in( 'ICD9CM', 'ICD9Proc', 'ICD10CM', 'ICD10PCS', 'OPCS4','CPT4', 'ICD11CM', 'HCPCS', 'SNOMED', 'LOINC', 'NDC', 'RxNorm','RxNorm Extension','PCORNet') ---
-where source_vocabulary_id in( 'ICD9CM', 'ICD9Proc', 'ICD10CM', 'ICD10PCS', 'OPCS4','CPT4', 'ICD11CM', 'HCPCS', 'SNOMED', 'LOINC', 'PCORNet') ---
+where source_vocabulary_id in( 'ICD9CM', 'ICD9Proc', 'ICD10CM', 'ICD10PCS', 'OPCS4','CPT4', 'ICD11CM', 'HCPCS', 'SNOMED', 'LOINC', 'NDC', 'RxNorm','RxNorm Extension','PCORNet') ---
 AND target_standard_concept = 'S' 
 ) x;
