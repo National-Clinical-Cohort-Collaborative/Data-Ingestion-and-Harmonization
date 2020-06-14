@@ -3,8 +3,8 @@
   --DDL and data for Table CDMH_STAGING.P2O_ADMITTING_SOURCE_XWALK
   --Date: June 6, 2020
   --Description : PCORnet Encounter Admitting Source values mapped to OMOP concept ids
-  --Reviewer: Values collectively reviewed by panel of SMEs
-  --Author: Stephanie Hong,
+  --Reviewers : Clair Blacketer, Kristin Kostka, SMEs, Samvit, DI&H team
+  --Author: Stephanie Hong
 --------------------------------------------------------
 
   CREATE TABLE "CDMH_STAGING"."P2O_ADMITTING_SOURCE_XWALK"
