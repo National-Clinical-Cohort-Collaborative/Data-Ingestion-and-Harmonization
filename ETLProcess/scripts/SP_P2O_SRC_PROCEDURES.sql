@@ -6,6 +6,9 @@ Author: Stephanie Hong
 Description : Stored Procedure to insert PCORnet PROCEDURES into staging table
 Stored Procedure: SP_P2O_SRC_PROCEDURES:
 Parameters: DATAPARTNERID IN NUMBER, MANIFESTID IN NUMBER 
+Edit History:
+6/18/2020 Stephanie Hong
+WHEN pr.px_source ='UN' THEN 0 --UN This is not a type concept and it really has no value,  so set to 0 / do not use 45877986 for UN - 6/18/20 SSH
 **/
   CREATE OR REPLACE EDITIONABLE PROCEDURE "CDMH_STAGING"."SP_P2O_SRC_PROCEDURES" 
 (
@@ -51,7 +54,9 @@ BEGIN
     CASE WHEN pr.px_source ='BI' THEN 257 
     WHEN pr.px_source ='CL' THEN 32468
     WHEN pr.px_source ='OD' THEN 38000275 --ORDER /EHR 
-    WHEN pr.px_source ='UN' THEN 45877986
+    WHEN pr.px_source ='UN' THEN 0 --UN This is not a type concept and it really has no value,  so set to 0 / do not use 45877986 for UN - 6/18/20 SSH
+    WHEN pr.px_source ='NI' THEN 46237210
+    WHEN pr.px_source ='OT' THEN 45878142
     ELSE 0 END AS PROCEDURE_TYPE_CONCEPT_ID, -- use this type concept id for ehr order list
     0 MODIFIER_CONCEPT_ID, -- need to create a cpt_concept_id table based on the source_code_concept id
     null as QUANTITY,
