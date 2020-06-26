@@ -65,7 +65,7 @@ Insert into CDMH_STAGING.P2O_DEATH_TERM_XWALK
  values ('PCORnet','DEATH','DEATH_SOURCE','OT','Other',45878142,'(other_ni_unk) Other (concept_id = 45878142)','Meas Value','LOINC','Answer','S','OMOP4822221');
 Insert into CDMH_STAGING.P2O_DEATH_TERM_XWALK
  (CDM_SOURCE,CDM_TBL,CDM_COLUMN_NAME,SRC_CODE,SRC_CD_DESCRIPTION,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE)
- values ('PCORnet','DEATH','DEATH_SOURCE','S','State  Death  files',45877986,'(death_type) Other government reported or identified death (concept_id = 32518)','Type Concept','Death Type','Death Type','S','GAP');
+ values ('PCORnet','DEATH','DEATH_SOURCE','S','State  Death  files',32518,'(death_type) Other government reported or identified death (concept_id = 32518)','Type Concept','Death Type','Death Type','S','GAP');
 Insert into CDMH_STAGING.P2O_DEATH_TERM_XWALK
  (CDM_SOURCE,CDM_TBL,CDM_COLUMN_NAME,SRC_CODE,SRC_CD_DESCRIPTION,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE)
  values ('PCORnet','DEATH','DEATH_SOURCE','T','Tumor  data',0,'GAP','GAP','GAP','GAP',null,'LA4489-6');
