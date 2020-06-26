@@ -1,22 +1,40 @@
-/**
+/********************************************************************************************************
 project : N3C DI&H
 Date: 6/16/2020
-Author: Stephanie Hong 
-Description : Stored Procedure to insert PCORnet DIAGNOSIS into staging table
+Author: Richard Zhu / Stephanie Hong / Sandeep Naredla
+Description : Stored Procedure to insert PCORnet Condition into staging table
 Stored Procedure: SP_P2O_SRC_DIAGNOSIS:
-Parameters: DATAPARTNERID IN NUMBER, MANIFESTID IN NUMBER 
-**/
-  CREATE OR REPLACE EDITIONABLE PROCEDURE "CDMH_STAGING"."SP_P2O_SRC_DIAGNOSIS" 
+Parameters: DATAPARTNERID IN NUMBER, MANIFESTID IN NUMBER, RECORDCOUNT OUT NUMBER
+
+     Name:      SP_P2O_SRC_DIAGNOSIS
+     Purpose:    Loading The NATIVE_PCORNET51_CDM.DIAGNOSIS Table into 
+                1. CDMH_STAGING.ST_OMOP53_CONDITION_OCCURRENCE
+                2. CDMH_STAGING.ST_OMOP53_PROCEDURE_OCCURRENCE
+                3. CDMH_STAGING.ST_OMOP53_OBSERVATION
+                4. CDMH_STAGING.ST_OMOP53_MEASUREMENT
+                5. CDMH_STAGING.ST_OMOP53_DRUG_EXPOSURE
+     Source:
+     Revisions:
+     Ver         Date        Author        Description
+     0.1         6/16/020    SHONG       Initial Version
+     0.2         6/25/2020   RZHU        Added logic to insert into CDMH_STAGING.ST_OMOP53_MEASUREMENT,
+                                            ST_OMOP53_PROCEDURE_OCCURRENCE,ST_OMOP53_DRUG_EXPOSURE
+
+*********************************************************************************************************/
+CREATE PROCEDURE                CDMH_STAGING.SP_P2O_SRC_DIAGNOSIS 
 (
   DATAPARTNERID IN NUMBER 
 , MANIFESTID IN NUMBER 
+, RECORDCOUNT OUT NUMBER
 ) AS 
+
+condition_recordCount number;
+observation_recordCount number;
+measurement_recordCount number;
+proc_recordCount number;
+drug_recordCount number;
+
 BEGIN
---DIAGNOSIS	Observation	1898
---DIAGNOSIS	Procedure	3
---DIAGNOSIS	Measurement	40
---DIAGNOSIS	Drug	1
---DIAGNOSIS	Condition	23670
   INSERT INTO CDMH_STAGING.ST_OMOP53_CONDITION_OCCURRENCE ( 
    data_partner_id,
    manifest_id,
@@ -54,10 +72,235 @@ LEFT JOIN CDMH_STAGING.N3cds_Domain_Map p on p.Source_Id=d.PATID AND p.Domain_Na
 LEFT JOIN CDMH_STAGING.N3cds_Domain_Map e on e.Source_Id=d.ENCOUNTERID AND e.Domain_Name='ENCOUNTER' and e.target_domain_id ='Visit' AND e.DATA_PARTNER_ID=DATAPARTNERID 
 LEFT JOIN CDMH_STAGING.visit_xwalk vx ON vx.cdm_tbl='ENCOUNTER' AND vx.CDM_NAME='PCORnet' AND vx.src_visit_type=d.ENC_TYPE
 LEFT JOIN CDMH_STAGING.p2o_code_xwalk_standard xw on d.dx = xw.src_code  and xw.CDM_TBL = 'DIAGNOSIS' AND xw.target_domain_id = 'Condition'
+                                                          and xw.target_concept_id=mp.target_concept_id
+                                                          and Xw.Src_Code_Type=d.DX_TYPE
 ;
+condition_recordCount := sql%rowcount;
+COMMIT;
 
-DBMS_OUTPUT.put_line('PCORnet DIAGNOSIS source data inserted to condition staging table, ST_OMOP53_CONDITION_OCCURRENCE, successfully.'); 
+INSERT INTO CDMH_STAGING.st_omop53_observation (
+      data_partner_id,
+      manifest_id,
+      observation_id,
+      person_id,
+      observation_concept_id,
+      observation_date,
+      observation_datetime,
+      observation_type_concept_id,
+      value_as_number,
+      value_as_string,
+      value_as_concept_id,
+      qualifier_concept_id,
+      unit_concept_id,
+      provider_id,
+      visit_occurrence_id,
+      visit_detail_id,
+      observation_source_value,
+      observation_source_concept_id,
+      unit_source_value,
+      qualifier_source_value,
+      DOMAIN_SOURCE )
+  SELECT
+      DATAPARTNERID as data_partner_id,
+      MANIFESTID as manifest_id,
+      mp.N3cds_Domain_Map_Id as observation_id,
+      p.N3cds_Domain_Map_Id as person_id,
+      mp.target_concept_id as observation_concept_id,
+      d.DX_DATE as observation_date,
+      d.DX_DATE as observation_datetime, -- same as observation_date
+      0  as observation_type_concept_id, --d.DX_SOURCE: need to find concept_id or from P2O_Term_xwalk
+      null as value_as_number,
+      null as value_as_string,
+      xw.target_concept_id as value_as_concept_id,
+      null as qualifier_concept_id,
+      null as unit_concept_id,
+      null as provider_id,
+      e.N3cds_Domain_Map_Id as visit_occurrence_id,
+      null as visit_detail_id,
+      d.DX as observation_source_value,
+      xw.source_code_concept_id as observation_source_concept_id,
+      null as unit_source_value,
+      null as qualifier_source_value,
+      'PCORNET_DIAGNOSIS' as DOMAIN_SOURCE 
+  FROM NATIVE_PCORNET51_CDM.diagnosis d
+  JOIN CDMH_STAGING.N3cds_Domain_Map mp on mp.Source_Id= d.DIAGNOSISID AND mp.Domain_Name='DIAGNOSIS' AND mp.Target_Domain_Id = 'Observation' AND mp.DATA_PARTNER_ID=DATAPARTNERID
+  LEFT JOIN CDMH_STAGING.N3cds_Domain_Map p on p.Source_Id=d.PATID AND p.Domain_Name='PERSON' AND p.DATA_PARTNER_ID=DATAPARTNERID
+  LEFT JOIN CDMH_STAGING.N3cds_Domain_Map e on e.Source_Id=d.ENCOUNTERID AND e.Domain_Name='ENCOUNTER' and e.target_domain_id ='Visit' AND e.DATA_PARTNER_ID=DATAPARTNERID 
+  LEFT JOIN CDMH_STAGING.p2o_code_xwalk_standard xw on d.dx = xw.src_code and xw.CDM_TBL = 'DIAGNOSIS' AND xw.target_domain_id = 'Observation'
+                                                          AND xw.target_concept_id = mp.target_concept_id
+                                                          and Xw.Src_Code_Type=d.DX_TYPE
+  ;
+  observation_recordCount:= sql%rowcount;
+  COMMIT;
+
+  INSERT INTO CDMH_STAGING.ST_OMOP53_MEASUREMENT (
+      DATA_PARTNER_ID,
+      MANIFEST_ID,
+      MEASUREMENT_ID,
+      PERSON_ID,
+      MEASUREMENT_CONCEPT_ID,
+      MEASUREMENT_DATE,
+      MEASUREMENT_DATETIME,
+      MEASUREMENT_TIME,
+      MEASUREMENT_TYPE_CONCEPT_ID,
+      OPERATOR_CONCEPT_ID,
+      VALUE_AS_NUMBER,
+      VALUE_AS_CONCEPT_ID,
+      UNIT_CONCEPT_ID,
+      RANGE_LOW,
+      RANGE_HIGH,
+      PROVIDER_ID,
+      VISIT_OCCURRENCE_ID,
+      VISIT_DETAIL_ID,
+      MEASUREMENT_SOURCE_VALUE,
+      MEASUREMENT_SOURCE_CONCEPT_ID,
+      UNIT_SOURCE_VALUE,
+      VALUE_SOURCE_VALUE,
+      DOMAIN_SOURCE)
+  SELECT
+      DATAPARTNERID as data_partner_id,
+      MANIFESTID as manifest_id,
+      mp.N3cds_Domain_Map_Id AS measurement_id,
+      p.N3cds_Domain_Map_Id AS person_id,  
+      mp.target_concept_id  as measurement_concept_id,
+      d.DX_DATE as MEASUREMENT_DATE,
+      d.DX_DATE as MEASUREMENT_DATETIME,
+      null as measurement_time,
+      null AS measurement_type_concept_id,  
+      NULL as OPERATOR_CONCEPT_ID,
+      null as VALUE_AS_NUMBER,
+      NULL as VALUE_AS_CONCEPT_ID,
+      null as UNIT_CONCEPT_ID,
+      null as RANGE_LOW,
+      null as RANGE_HIGH,
+      NULL as PROVIDER_ID,
+      e.N3cds_Domain_Map_Id as VISIT_OCCURRENCE_ID,
+      NULL as visit_detail_id,
+      d.DX as MEASUREMENT_SOURCE_VALUE,
+      xw.source_code_concept_id as MEASUREMENT_SOURCE_CONCEPT_ID,
+      null as UNIT_SOURCE_VALUE,
+      null  as VALUE_SOURCE_VALUE,
+      'PCORNET_DIAGNOSIS' as DOMAIN_SOURCE 
+  FROM NATIVE_PCORNET51_CDM.diagnosis d
+  JOIN CDMH_STAGING.N3cds_Domain_Map mp on mp.Source_Id= d.DIAGNOSISID AND mp.Domain_Name='DIAGNOSIS' AND mp.Target_Domain_Id = 'Measurement' AND mp.DATA_PARTNER_ID=DATAPARTNERID
+  LEFT JOIN CDMH_STAGING.N3cds_Domain_Map p on p.Source_Id=d.PATID AND p.Domain_Name='PERSON' AND p.DATA_PARTNER_ID=DATAPARTNERID
+  LEFT JOIN CDMH_STAGING.N3cds_Domain_Map e on e.Source_Id=d.ENCOUNTERID AND e.Domain_Name='ENCOUNTER' and e.target_domain_id ='Visit' AND e.DATA_PARTNER_ID=DATAPARTNERID
+  LEFT JOIN CDMH_STAGING.p2o_code_xwalk_standard xw on d.dx = xw.src_code and xw.CDM_TBL = 'DIAGNOSIS' AND xw.target_domain_id = 'Measurement' 
+                                                AND xw.target_concept_id = mp.target_concept_id
+                                                and Xw.Src_Code_Type=d.DX_TYPE
+  ;
+  measurement_recordCount := sql%rowcount;
+  COMMIT;
+
+
+  INSERT INTO CDMH_STAGING.ST_OMOP53_PROCEDURE_OCCURRENCE ( 
+    DATA_PARTNER_ID,
+    MANIFEST_ID,
+    PROCEDURE_OCCURRENCE_ID,
+    PERSON_ID,
+    PROCEDURE_CONCEPT_ID,
+    PROCEDURE_DATE,
+    PROCEDURE_DATETIME,
+    PROCEDURE_TYPE_CONCEPT_ID,
+    MODIFIER_CONCEPT_ID,
+    QUANTITY,
+    PROVIDER_ID,
+    VISIT_OCCURRENCE_ID,
+    VISIT_DETAIL_ID,
+    PROCEDURE_SOURCE_VALUE,
+    PROCEDURE_SOURCE_CONCEPT_ID,
+    MODIFIER_SOURCE_VALUE,
+    DOMAIN_SOURCE)
+  SELECT     
+    DATAPARTNERID as data_partner_id,
+    MANIFESTID as manifest_id, 
+    mp.N3cds_Domain_Map_Id AS PROCEDURE_OCCURRENCE_ID,
+    p.N3cds_Domain_Map_Id AS person_id,   
+    mp.target_concept_id as PROCEDURE_CONCEPT_ID, 
+    d.DX_DATE as PROCEDURE_DATE, 
+    null as PROCEDURE_DATETIME,
+    0 AS PROCEDURE_TYPE_CONCEPT_ID, -- use this type concept id for ehr order list
+    0 MODIFIER_CONCEPT_ID, -- need to create a cpt_concept_id table based on the source_code_concept id
+    null as QUANTITY,
+    null as PROVIDER_ID,
+    e.n3cds_domain_map_id as VISIT_OCCURRENCE_ID,
+    null as VISIT_DETAIL_ID,
+    xw.src_code as PROCEDURE_SOURCE_VALUE,
+    xw.source_code_concept_id as PROCEDURE_SOURCE_CONCEPT_ID,
+    xw.src_code_type as MODIFIER_SOURCE_VALUE,
+    'PCORNET_DIAGNOSIS' AS DOMAIN_SOURCE
+  FROM NATIVE_PCORNET51_CDM.diagnosis d 
+  JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id= d.DIAGNOSISID AND Mp.Domain_Name='DIAGNOSIS' AND mp.Target_Domain_Id = 'Procedure' AND mp.DATA_PARTNER_ID=DATAPARTNERID
+  LEFT JOIN CDMH_STAGING.N3cds_Domain_Map p on p.Source_Id=d.PATID AND p.Domain_Name='PERSON' AND p.DATA_PARTNER_ID=DATAPARTNERID
+  LEFT JOIN CDMH_STAGING.N3cds_Domain_Map e on e.Source_Id=d.ENCOUNTERID AND e.Domain_Name='ENCOUNTER' and e.target_domain_id ='Visit' AND e.DATA_PARTNER_ID=DATAPARTNERID 
+  LEFT JOIN CDMH_STAGING.p2o_code_xwalk_standard xw on d.dx = xw.src_code  and xw.CDM_TBL = 'DIAGNOSIS' AND xw.target_domain_id = 'Procedure' 
+                  and xw.target_concept_id=mp.target_concept_id and Xw.Src_Code_Type=d.DX_TYPE
+  ;
+  proc_recordCount:=Sql%Rowcount;
+  COMMIT;
+
+
+  INSERT INTO CDMH_STAGING.ST_OMOP53_DRUG_EXPOSURE ( 
+    data_partner_id,
+    manifest_id,
+    drug_exposure_id,
+    person_id,
+    drug_concept_id,
+    drug_exposure_start_date,drug_exposure_start_datetime,
+    drug_exposure_end_date,drug_exposure_end_datetime,
+    verbatim_end_date,
+    drug_type_concept_id,
+    stop_reason,refills,quantity,days_supply,sig,
+    route_concept_id,
+    lot_number,
+    provider_id,
+    visit_occurrence_id,
+    visit_detail_id,
+    drug_source_value,
+    drug_source_concept_id,
+    route_source_value,
+    dose_unit_source_value,
+    DOMAIN_SOURCE)
+  SELECT 
+    DATAPARTNERID as data_partner_id,
+    MANIFESTID as manifest_id, 
+    mp.N3cds_Domain_Map_Id AS drug_exposure_id,
+    p.N3cds_Domain_Map_Id AS person_id, 
+    mp.target_concept_id as drug_concept_id,
+    d.DX_DATE as drug_exposure_start_date, 
+    d.DX_DATE as drug_exposure_start_datetime,
+    null as drug_exposure_end_date,
+    null as drug_exposure_end_datetime, 
+    null as verbatim_end_date,
+    581373 as drug_type_concept_id, -- medication administered to patient, from DX_ORIGIN: code 'OD','BI','CL','DR','NI','UN,'OT'
+    null as stop_reason,
+    null as refills,
+    null as quantity,
+    null as days_supply,
+    null as sig, 
+    null as route_concept_id,
+    null as lot_number,
+    null as provider_id, --m.medadmin_providerid as provider_id,
+    e.n3cds_domain_map_id as visit_occurrence_id,
+    null as visit_detail_id,
+    d.DX as drug_source_value,
+    null as drug_source_concept_id, 
+    null as route_source_value, 
+    null as dose_unit_source_value, 
+    'PCORNET_DIAGNOSIS' as DOMAIN_SOURCE
+  FROM NATIVE_PCORNET51_CDM.diagnosis d 
+  JOIN CDMH_STAGING.N3cds_Domain_Map mp on mp.Source_Id= d.DIAGNOSISID AND mp.Domain_Name='DIAGNOSIS' AND mp.Target_Domain_Id = 'Drug' AND mp.DATA_PARTNER_ID=DATAPARTNERID
+  LEFT JOIN CDMH_STAGING.N3cds_Domain_Map p on p.Source_Id=d.PATID AND p.Domain_Name='PERSON' AND p.DATA_PARTNER_ID=DATAPARTNERID
+  LEFT JOIN CDMH_STAGING.N3cds_Domain_Map e on e.Source_Id=d.ENCOUNTERID AND e.Domain_Name='ENCOUNTER' and e.target_domain_id ='Visit' AND e.DATA_PARTNER_ID=DATAPARTNERID 
+  --LEFT JOIN CDMH_STAGING.p2o_code_xwalk_standard xw on m.medadmin_code = xw.src_code  and xw.CDM_TBL = 'MED_ADMIN' AND xw.target_domain_id = 'Drug'
+  ;
+  drug_recordCount:=Sql%Rowcount;
+  COMMIT;
+
+
+
+RECORDCOUNT := condition_recordCount+observation_recordCount+measurement_recordCount+proc_recordCount+drug_recordCount;
+DBMS_OUTPUT.put_line(RECORDCOUNT || ' PCORnet DIAGNOSIS source data inserted to condition staging table, ST_OMOP53_CONDITION_OCCURRENCE, and observation staging table, ST_OMOP53_OBSERVATION, 
+and measurement staging table, ST_OMOP53_MEASUREMENT and procedure_occurrence staging table, ST_OMOP53_PROCEDURE_OCCURRENCE, and drug_exposure staging table, ST_OMOP53_DRUG_EXPOSURE successfully.'); 
 
 END SP_P2O_SRC_DIAGNOSIS;
-
-/
