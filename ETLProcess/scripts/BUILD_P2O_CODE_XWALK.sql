@@ -8,22 +8,22 @@
 ---prescribing - 'RxNorm'
 ---obsclin_code - 'LOINC', 'SNOMED'
 ---obs_gen --- type = pc_covid code=3000 or 2000
----Description: stored procedure to create the code map translationg table from PCORnet terminology to OMOP concept ids
+---Description: stored procedure to create the code map translation table from PCORnet terminology to OMOP concept ids
 ---Reviewers:  Blacketer,Clair / Kostka, Kristin
 ---Stephanie Hong 6/9/2020
 ---Project: N3C
 ---
----
-  CREATE OR REPLACE EDITIONABLE PROCEDURE "JHU_SHONG"."BUILD_P2O_CODE_XWALK" (
+----- Unable to render PROCEDURE DDL for object CDMH_STAGING.BUILD_P2O_CODE_XWALK with DBMS_METADATA attempting internal generator.
+CREATE PROCEDURE                CDMH_STAGING.BUILD_P2O_CODE_XWALK (
   RECORDCOUNT OUT NUMBER
 ) AS
 BEGIN
 
 -- truncate before building - p2o_code_xwalk_standard
-execute immediate 'truncate table JHU_SHONG.p2o_code_xwalk_standard';
+execute immediate 'truncate table CDMH_STAGING.p2o_code_xwalk_standard';
 commit ;
 
- INSERT INTO JHU_SHONG.p2o_code_xwalk_standard ( CDM_TBL, src_code, src_code_type, src_vocab_code,
+ INSERT INTO CDMH_STAGING.p2o_code_xwalk_standard ( CDM_TBL, src_code, src_code_type, src_vocab_code,
     source_code, source_code_concept_id, source_code_description,
     source_vocabulary_id, source_domain_id, target_concept_id, target_concept_name, target_vocabulary_id, target_domain_id, target_concept_class_id)
     select DISTINCT 'DIAGNOSIS' as cdm_tbl, x.src_code as src_code, x.src_code_type as src_code_type, x.src_vocab_code,
@@ -38,12 +38,12 @@ commit ;
                                   c.VALID_START_DATE AS SOURCE_VALID_START_DATE, c.VALID_END_DATE AS SOURCE_VALID_END_DATE, c.INVALID_REASON AS SOURCE_INVALID_REASON,
                                   c1.concept_id AS TARGET_CONCEPT_ID, c1.concept_name AS TARGET_CONCEPT_NAME, c1.VOCABULARY_ID AS TARGET_VOCABULARY_ID, c1.domain_id AS TARGET_DOMAIN_ID, c1.concept_class_id AS TARGET_CONCEPT_CLASS_ID,
                                   c1.INVALID_REASON AS TARGET_INVALID_REASON, c1.standard_concept AS TARGET_STANDARD_CONCEPT
-                   FROM JHU_SHONG.CONCEPT C
-                         JOIN JHU_SHONG.CONCEPT_RELATIONSHIP CR
+                   FROM CDMH_STAGING.CONCEPT C
+                         JOIN CDMH_STAGING.CONCEPT_RELATIONSHIP CR
                                     ON C.CONCEPT_ID = CR.CONCEPT_ID_1
                                     AND CR.invalid_reason IS NULL
                                     AND lower(cr.relationship_id) = 'maps to'
-                          JOIN JHU_SHONG.CONCEPT C1
+                          JOIN CDMH_STAGING.CONCEPT C1
                                     ON CR.CONCEPT_ID_2 = C1.CONCEPT_ID
                                     AND C1.INVALID_REASON IS NULL
         )
@@ -76,12 +76,12 @@ commit ;
 	                      c.VALID_START_DATE AS SOURCE_VALID_START_DATE, c.VALID_END_DATE AS SOURCE_VALID_END_DATE, c.INVALID_REASON AS SOURCE_INVALID_REASON,
 	                      c1.concept_id AS TARGET_CONCEPT_ID, c1.concept_name AS TARGET_CONCEPT_NAME, c1.VOCABULARY_ID AS TARGET_VOCABULARY_ID, c1.domain_id AS TARGET_DOMAIN_ID, c1.concept_class_id AS TARGET_CONCEPT_CLASS_ID,
 	                      c1.INVALID_REASON AS TARGET_INVALID_REASON, c1.standard_concept AS TARGET_STANDARD_CONCEPT
-	       FROM JHU_SHONG.CONCEPT C
-	             JOIN JHU_SHONG.CONCEPT_RELATIONSHIP CR
+	       FROM CDMH_STAGING.CONCEPT C
+	             JOIN CDMH_STAGING.CONCEPT_RELATIONSHIP CR
 	                        ON C.CONCEPT_ID = CR.CONCEPT_ID_1
 	                        AND CR.invalid_reason IS NULL
 	                        AND lower(cr.relationship_id) = 'maps to'
-	              JOIN JHU_SHONG.CONCEPT C1
+	              JOIN CDMH_STAGING.CONCEPT C1
 	                        ON CR.CONCEPT_ID_2 = C1.CONCEPT_ID
 	                        AND C1.INVALID_REASON IS NULL
 
@@ -113,12 +113,12 @@ commit ;
 	                      c.VALID_START_DATE AS SOURCE_VALID_START_DATE, c.VALID_END_DATE AS SOURCE_VALID_END_DATE, c.INVALID_REASON AS SOURCE_INVALID_REASON,
 	                      c1.concept_id AS TARGET_CONCEPT_ID, c1.concept_name AS TARGET_CONCEPT_NAME, c1.VOCABULARY_ID AS TARGET_VOCABULARY_ID, c1.domain_id AS TARGET_DOMAIN_ID, c1.concept_class_id AS TARGET_CONCEPT_CLASS_ID,
 	                      c1.INVALID_REASON AS TARGET_INVALID_REASON, c1.standard_concept AS TARGET_STANDARD_CONCEPT
-	       FROM JHU_SHONG.CONCEPT C
-	             JOIN JHU_SHONG.CONCEPT_RELATIONSHIP CR
+	       FROM CDMH_STAGING.CONCEPT C
+	             JOIN CDMH_STAGING.CONCEPT_RELATIONSHIP CR
 	                        ON C.CONCEPT_ID = CR.CONCEPT_ID_1
 	                        AND CR.invalid_reason IS NULL
 	                        AND lower(cr.relationship_id) = 'maps to'
-	              JOIN JHU_SHONG.CONCEPT C1
+	              JOIN CDMH_STAGING.CONCEPT C1
 	                        ON CR.CONCEPT_ID_2 = C1.CONCEPT_ID
 	                        AND C1.INVALID_REASON IS NULL
 
@@ -150,12 +150,12 @@ commit ;
 	                      c.VALID_START_DATE AS SOURCE_VALID_START_DATE, c.VALID_END_DATE AS SOURCE_VALID_END_DATE, c.INVALID_REASON AS SOURCE_INVALID_REASON,
 	                      c1.concept_id AS TARGET_CONCEPT_ID, c1.concept_name AS TARGET_CONCEPT_NAME, c1.VOCABULARY_ID AS TARGET_VOCABULARY_ID, c1.domain_id AS TARGET_DOMAIN_ID, c1.concept_class_id AS TARGET_CONCEPT_CLASS_ID,
 	                      c1.INVALID_REASON AS TARGET_INVALID_REASON, c1.standard_concept AS TARGET_STANDARD_CONCEPT
-	       FROM JHU_SHONG.CONCEPT C
-	             JOIN JHU_SHONG.CONCEPT_RELATIONSHIP CR
+	       FROM CDMH_STAGING.CONCEPT C
+	             JOIN CDMH_STAGING.CONCEPT_RELATIONSHIP CR
 	                        ON C.CONCEPT_ID = CR.CONCEPT_ID_1
 	                        AND CR.invalid_reason IS NULL
 	                        AND lower(cr.relationship_id) = 'maps to'
-	              JOIN JHU_SHONG.CONCEPT C1
+	              JOIN CDMH_STAGING.CONCEPT C1
 	                        ON CR.CONCEPT_ID_2 = C1.CONCEPT_ID
 	                        AND C1.INVALID_REASON IS NULL
 
@@ -186,12 +186,12 @@ commit ;
 	                      c.VALID_START_DATE AS SOURCE_VALID_START_DATE, c.VALID_END_DATE AS SOURCE_VALID_END_DATE, c.INVALID_REASON AS SOURCE_INVALID_REASON,
 	                      c1.concept_id AS TARGET_CONCEPT_ID, c1.concept_name AS TARGET_CONCEPT_NAME, c1.VOCABULARY_ID AS TARGET_VOCABULARY_ID, c1.domain_id AS TARGET_DOMAIN_ID, c1.concept_class_id AS TARGET_CONCEPT_CLASS_ID,
 	                      c1.INVALID_REASON AS TARGET_INVALID_REASON, c1.standard_concept AS TARGET_STANDARD_CONCEPT
-	       FROM JHU_SHONG.CONCEPT C
-	             JOIN JHU_SHONG.CONCEPT_RELATIONSHIP CR
+	       FROM CDMH_STAGING.CONCEPT C
+	             JOIN CDMH_STAGING.CONCEPT_RELATIONSHIP CR
 	                        ON C.CONCEPT_ID = CR.CONCEPT_ID_1
 	                        AND CR.invalid_reason IS NULL
 	                        AND lower(cr.relationship_id) = 'maps to'
-	              JOIN JHU_SHONG.CONCEPT C1
+	              JOIN CDMH_STAGING.CONCEPT C1
 	                        ON CR.CONCEPT_ID_2 = C1.CONCEPT_ID
 	                        AND C1.INVALID_REASON IS NULL
 
@@ -226,12 +226,12 @@ commit ;
 	                      c.VALID_START_DATE AS SOURCE_VALID_START_DATE, c.VALID_END_DATE AS SOURCE_VALID_END_DATE, c.INVALID_REASON AS SOURCE_INVALID_REASON,
 	                      c1.concept_id AS TARGET_CONCEPT_ID, c1.concept_name AS TARGET_CONCEPT_NAME, c1.VOCABULARY_ID AS TARGET_VOCABULARY_ID, c1.domain_id AS TARGET_DOMAIN_ID, c1.concept_class_id AS TARGET_CONCEPT_CLASS_ID,
 	                      c1.INVALID_REASON AS TARGET_INVALID_REASON, c1.standard_concept AS TARGET_STANDARD_CONCEPT
-	       FROM JHU_SHONG.CONCEPT C
-	             JOIN JHU_SHONG.CONCEPT_RELATIONSHIP CR
+	       FROM CDMH_STAGING.CONCEPT C
+	             JOIN CDMH_STAGING.CONCEPT_RELATIONSHIP CR
 	                        ON C.CONCEPT_ID = CR.CONCEPT_ID_1
 	                        AND CR.invalid_reason IS NULL
 	                        AND lower(cr.relationship_id) = 'maps to'
-	              JOIN JHU_SHONG.CONCEPT C1
+	              JOIN CDMH_STAGING.CONCEPT C1
 	                        ON CR.CONCEPT_ID_2 = C1.CONCEPT_ID
 	                        AND C1.INVALID_REASON IS NULL
 
@@ -259,12 +259,12 @@ commit ;
 	                      c.VALID_START_DATE AS SOURCE_VALID_START_DATE, c.VALID_END_DATE AS SOURCE_VALID_END_DATE, c.INVALID_REASON AS SOURCE_INVALID_REASON,
 	                      c1.concept_id AS TARGET_CONCEPT_ID, c1.concept_name AS TARGET_CONCEPT_NAME, c1.VOCABULARY_ID AS TARGET_VOCABULARY_ID, c1.domain_id AS TARGET_DOMAIN_ID, c1.concept_class_id AS TARGET_CONCEPT_CLASS_ID,
 	                      c1.INVALID_REASON AS TARGET_INVALID_REASON, c1.standard_concept AS TARGET_STANDARD_CONCEPT
-	       FROM JHU_SHONG.CONCEPT C
-	             JOIN JHU_SHONG.CONCEPT_RELATIONSHIP CR
+	       FROM CDMH_STAGING.CONCEPT C
+	             JOIN CDMH_STAGING.CONCEPT_RELATIONSHIP CR
 	                        ON C.CONCEPT_ID = CR.CONCEPT_ID_1
 	                        AND CR.invalid_reason IS NULL
 	                        AND lower(cr.relationship_id) = 'maps to'
-	              JOIN JHU_SHONG.CONCEPT C1
+	              JOIN CDMH_STAGING.CONCEPT C1
 	                        ON CR.CONCEPT_ID_2 = C1.CONCEPT_ID
 	                        AND C1.INVALID_REASON IS NULL
 
@@ -294,12 +294,12 @@ commit ;
 	                      c.VALID_START_DATE AS SOURCE_VALID_START_DATE, c.VALID_END_DATE AS SOURCE_VALID_END_DATE, c.INVALID_REASON AS SOURCE_INVALID_REASON,
 	                      c1.concept_id AS TARGET_CONCEPT_ID, c1.concept_name AS TARGET_CONCEPT_NAME, c1.VOCABULARY_ID AS TARGET_VOCABULARY_ID, c1.domain_id AS TARGET_DOMAIN_ID, c1.concept_class_id AS TARGET_CONCEPT_CLASS_ID,
 	                      c1.INVALID_REASON AS TARGET_INVALID_REASON, c1.standard_concept AS TARGET_STANDARD_CONCEPT
-	       FROM JHU_SHONG.CONCEPT C
-	             JOIN JHU_SHONG.CONCEPT_RELATIONSHIP CR
+	       FROM CDMH_STAGING.CONCEPT C
+	             JOIN CDMH_STAGING.CONCEPT_RELATIONSHIP CR
 	                        ON C.CONCEPT_ID = CR.CONCEPT_ID_1
 	                        AND CR.invalid_reason IS NULL
 	                        AND lower(cr.relationship_id) = 'maps to'
-	              JOIN JHU_SHONG.CONCEPT C1
+	              JOIN CDMH_STAGING.CONCEPT C1
 	                        ON CR.CONCEPT_ID_2 = C1.CONCEPT_ID
 	                        AND C1.INVALID_REASON IS NULL
 
@@ -327,12 +327,12 @@ commit ;
                           c.VALID_START_DATE AS SOURCE_VALID_START_DATE, c.VALID_END_DATE AS SOURCE_VALID_END_DATE, c.INVALID_REASON AS SOURCE_INVALID_REASON,
                           c1.concept_id AS TARGET_CONCEPT_ID, c1.concept_name AS TARGET_CONCEPT_NAME, c1.VOCABULARY_ID AS TARGET_VOCABULARY_ID, c1.domain_id AS TARGET_DOMAIN_ID, c1.concept_class_id AS TARGET_CONCEPT_CLASS_ID,
                           c1.INVALID_REASON AS TARGET_INVALID_REASON, c1.standard_concept AS TARGET_STANDARD_CONCEPT
-           FROM JHU_SHONG.CONCEPT C
-                 JOIN JHU_SHONG.CONCEPT_RELATIONSHIP CR
+           FROM CDMH_STAGING.CONCEPT C
+                 JOIN CDMH_STAGING.CONCEPT_RELATIONSHIP CR
                             ON C.CONCEPT_ID = CR.CONCEPT_ID_1
                             AND CR.invalid_reason IS NULL
                             AND lower(cr.relationship_id) = 'maps to'
-                  JOIN JHU_SHONG.CONCEPT C1
+                  JOIN CDMH_STAGING.CONCEPT C1
                             ON CR.CONCEPT_ID_2 = C1.CONCEPT_ID
                             AND C1.INVALID_REASON IS NULL
 
@@ -361,5 +361,3 @@ commit ;
     commit ;
 
 END ;
-
-/
