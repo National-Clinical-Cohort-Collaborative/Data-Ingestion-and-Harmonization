@@ -3,7 +3,7 @@ project : N3C DI&H
 Date: 6/16/2020
 Author: Stephanie Hong, Tanner Zhang, Richard Zhu, Sandeep Naredla
 Description : Stored Procedure to insert PCORnet PROCEDURES into staging table
-Stored Procedure: SP_P2O_SRC_PROCEDURES:
+Stored Procedure: SP_P2O_SRC_DEATH
 Parameters: DATAPARTNERID IN NUMBER, MANIFESTID IN NUMBER, RECORDCOUNT OUT NUMBER
 Edit History:
 0.1 6/18/2020 Stephanie Hong - removed the not null requirement on the OMOP Death table in order to insert death records without DOD. 
