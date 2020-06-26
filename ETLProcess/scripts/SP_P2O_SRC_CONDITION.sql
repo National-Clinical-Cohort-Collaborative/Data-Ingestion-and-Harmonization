@@ -1,11 +1,11 @@
-/**
+/**********************************************************************************************************
 project : N3C DI&H
 Date: 6/16/2020
 Author: Stephanie Hong / Sandeep Naredla
 Description : Stored Procedure to insert PCORnet Condition into staging table
 Stored Procedure: SP_P2O_SRC_CONDITION:
 Parameters: DATAPARTNERID IN NUMBER, MANIFESTID IN NUMBER, RECORDCOUNT OUT NUMBER
-********************************************************************************************************
+
      Name:      SP_P2O_SRC_CONDITION
      Purpose:    Loading The NATIVE_PCORNET51_CDM.CONDITION Table into
                 1. CDMH_STAGING.ST_OMOP53_CONDITION_OCCURRENCE
@@ -16,7 +16,7 @@ Parameters: DATAPARTNERID IN NUMBER, MANIFESTID IN NUMBER, RECORDCOUNT OUT NUMBE
      Revisions:
      Ver          Date        Author          Description
      0.1       6/16/2020     SHONG            Initial Version
-	   0.2       6/25/2020     SHONG            Added logic to insert into CDMH_STAGING.ST_OMOP53_MEASUREMENT
+	 0.2     6/26/2020   SHONG             Added logic to insert into CDMH_STAGING.ST_OMOP53_MEASUREMENT
 
 ********************************************************************************************************/
 
