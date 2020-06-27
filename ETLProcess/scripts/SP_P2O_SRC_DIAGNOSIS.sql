@@ -1,10 +1,12 @@
-/********************************************************************************************************
+/**********************************************************************************
 project : N3C DI&H
 Date: 6/16/2020
 Author: Richard Zhu / Stephanie Hong / Sandeep Naredla
 Description : Stored Procedure to insert PCORnet Condition into staging table
 Stored Procedure: SP_P2O_SRC_DIAGNOSIS:
 Parameters: DATAPARTNERID IN NUMBER, MANIFESTID IN NUMBER, RECORDCOUNT OUT NUMBER
+Edit History::
+6/16/2020   SHONG Initial Version
 
      Name:      SP_P2O_SRC_DIAGNOSIS
      Purpose:    Loading The NATIVE_PCORNET51_CDM.DIAGNOSIS Table into 
@@ -15,12 +17,15 @@ Parameters: DATAPARTNERID IN NUMBER, MANIFESTID IN NUMBER, RECORDCOUNT OUT NUMBE
                 5. CDMH_STAGING.ST_OMOP53_DRUG_EXPOSURE
      Source:
      Revisions:
-     Ver         Date        Author        Description
-     0.1         6/16/020    SHONG       Initial Version
-     0.2         6/25/2020   RZHU        Added logic to insert into CDMH_STAGING.ST_OMOP53_MEASUREMENT,
+     Ver        Date        Author  Description
+     0.1        6/16/2020   SHONG   Initial Version
+     0.2        6/25/2020   RZHU    Added logic to insert into CDMH_STAGING.ST_OMOP53_MEASUREMENT,
                                             ST_OMOP53_PROCEDURE_OCCURRENCE,ST_OMOP53_DRUG_EXPOSURE
+     0.3        6/26/2020   RZHU    Added logic for observation_type_concept_id/drug_type_concept_id
+                                            /measurement_type_concept_id/procedure_type_concept_id
 
 *********************************************************************************************************/
+
 CREATE PROCEDURE                CDMH_STAGING.SP_P2O_SRC_DIAGNOSIS 
 (
   DATAPARTNERID IN NUMBER 
@@ -35,6 +40,7 @@ proc_recordCount number;
 drug_recordCount number;
 
 BEGIN
+
   INSERT INTO CDMH_STAGING.ST_OMOP53_CONDITION_OCCURRENCE ( 
    data_partner_id,
    manifest_id,
@@ -53,9 +59,10 @@ BEGIN
     Mp.N3cds_Domain_Map_Id AS condition_occurrence_id,
     p.N3cds_Domain_Map_Id AS person_id,   
     mp.target_concept_id as condition_concept_id, 
-    d.dx_date as condition_start_date,
-    null as condition_start_datetime,
-    null as condition_end_date, null as condition_end_datetime,
+    nvl(d.dx_date,d.admit_date) as condition_start_date,
+     nvl(d.dx_date,d.admit_date) as condition_start_datetime,
+    null as condition_end_date, 
+    null as condition_end_datetime,
     vx.target_concept_id AS condition_type_concept_id, --already collected fro the visit_occurrence_table. / visit_occurrence.visit_source_value 
     NULL as stop_reason, ---- encounter discharge type e.discharge type
     null as provider_id, ---is provider linked to patient
@@ -106,9 +113,12 @@ INSERT INTO CDMH_STAGING.st_omop53_observation (
       mp.N3cds_Domain_Map_Id as observation_id,
       p.N3cds_Domain_Map_Id as person_id,
       mp.target_concept_id as observation_concept_id,
-      d.DX_DATE as observation_date,
-      d.DX_DATE as observation_datetime, -- same as observation_date
-      0  as observation_type_concept_id, --d.DX_SOURCE: need to find concept_id or from P2O_Term_xwalk
+      NVL(d.DX_DATE,d.ADMIT_DATE) as observation_date,
+      NVL(d.DX_DATE,d.ADMIT_DATE) as observation_datetime, -- same as observation_date
+--      0  as observation_type_concept_id, --d.DX_SOURCE: need to find concept_id or from P2O_Term_xwalk
+      case when d.PDX = 'P' then 4307107
+        when d.PDX = 'S' then 4309641
+      else 38000280 end as observation_type_concept_id, --default values from draft mappings spreadsheet --added 6/26
       null as value_as_number,
       null as value_as_string,
       xw.target_concept_id as value_as_concept_id,
@@ -163,10 +173,11 @@ INSERT INTO CDMH_STAGING.st_omop53_observation (
       mp.N3cds_Domain_Map_Id AS measurement_id,
       p.N3cds_Domain_Map_Id AS person_id,  
       mp.target_concept_id  as measurement_concept_id,
-      d.DX_DATE as MEASUREMENT_DATE,
-      d.DX_DATE as MEASUREMENT_DATETIME,
+       nvl(d.dx_date,d.admit_date) as MEASUREMENT_DATE,
+       nvl(d.dx_date,d.admit_date) as MEASUREMENT_DATETIME,
       null as measurement_time,
-      null AS measurement_type_concept_id,  
+--      null AS measurement_type_concept_id, 
+      5001 AS measurement_type_concept_id, --default values from draft mappings spreadsheet --added on 6/26
       NULL as OPERATOR_CONCEPT_ID,
       null as VALUE_AS_NUMBER,
       NULL as VALUE_AS_CONCEPT_ID,
@@ -217,9 +228,10 @@ INSERT INTO CDMH_STAGING.st_omop53_observation (
     mp.N3cds_Domain_Map_Id AS PROCEDURE_OCCURRENCE_ID,
     p.N3cds_Domain_Map_Id AS person_id,   
     mp.target_concept_id as PROCEDURE_CONCEPT_ID, 
-    d.DX_DATE as PROCEDURE_DATE, 
-    null as PROCEDURE_DATETIME,
-    0 AS PROCEDURE_TYPE_CONCEPT_ID, -- use this type concept id for ehr order list
+    nvl(d.dx_date,d.admit_date) as PROCEDURE_DATE, 
+    nvl(d.dx_date,d.admit_date) as PROCEDURE_DATETIME,
+--    0 AS PROCEDURE_TYPE_CONCEPT_ID, -- use this type concept id for ehr order list
+    38000275 AS PROCEDURE_TYPE_CONCEPT_ID, --default values from draft mappings spreadsheet --added 6/26
     0 MODIFIER_CONCEPT_ID, -- need to create a cpt_concept_id table based on the source_code_concept id
     null as QUANTITY,
     null as PROVIDER_ID,
@@ -267,12 +279,16 @@ INSERT INTO CDMH_STAGING.st_omop53_observation (
     mp.N3cds_Domain_Map_Id AS drug_exposure_id,
     p.N3cds_Domain_Map_Id AS person_id, 
     mp.target_concept_id as drug_concept_id,
-    d.DX_DATE as drug_exposure_start_date, 
-    d.DX_DATE as drug_exposure_start_datetime,
-    null as drug_exposure_end_date,
-    null as drug_exposure_end_datetime, 
+     nvl(d.dx_date,d.admit_date) as drug_exposure_start_date, 
+     nvl(d.dx_date,d.admit_date) as drug_exposure_start_datetime,
+    nvl(d.dx_date,d.admit_date) as drug_exposure_end_date, --need to be revisited
+    nvl(d.dx_date,d.admit_date) as drug_exposure_end_datetime, --need to be revisited
     null as verbatim_end_date,
-    581373 as drug_type_concept_id, -- medication administered to patient, from DX_ORIGIN: code 'OD','BI','CL','DR','NI','UN,'OT'
+--    581373 as drug_type_concept_id, -- medication administered to patient, from DX_ORIGIN: code 'OD','BI','CL','DR','NI','UN,'OT'
+    case when d.DX_ORIGIN = 'OD' then 38000179
+      when d.DX_ORIGIN = 'BI' then 38000177
+      when d.DX_ORIGIN = 'CL' then 38000177
+    else 45769798 end as drug_type_concept_id, --added on 6/26
     null as stop_reason,
     null as refills,
     null as quantity,
