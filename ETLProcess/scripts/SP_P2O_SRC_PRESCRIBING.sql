@@ -1,17 +1,20 @@
-/**
+/***********************************************************************************************************
 project : N3C DI&H
-Date: 6/16/2020
-Author: Stephanie Hong / Sandeep Naredla 
-Description : Stored Procedure to insert PCORnet med_admin into staging table
-Stored Procedure: SP_P2O_SRC_PRESCRIBING:
-Parameters: DATAPARTNERID IN NUMBER, MANIFESTID IN NUMBER 
-**/
-
-
-  CREATE OR REPLACE EDITIONABLE PROCEDURE "CDMH_STAGING"."SP_P2O_SRC_PRESCRIBING" 
+Date: 5/16/2020
+Author: Stephanie Hong
+FILE:           SP_P2O_SRC_PRESCRIBING.sql
+Description :   Loading NATIVE_PCORNET51_CDM.PRESCRIBING table into stging table CDMH_STAGING.ST_OMOP53_DRUG_EXPOSURE
+Procedure:      SP_P2O_SRC_PRESCRIBING
+Edit History:
+     Ver       Date         Author          Description
+     0.1       5/16/2020    SHONG           Initial version
+ 
+*************************************************************************************************************/
+CREATE PROCEDURE                CDMH_STAGING.SP_P2O_SRC_PRESCRIBING 
 (
   DATAPARTNERID IN NUMBER 
 , MANIFESTID IN NUMBER 
+, RECORDCOUNT OUT NUMBER
 ) AS 
 BEGIN
     --insert into 
@@ -62,15 +65,14 @@ BEGIN
     LEFT JOIN CDMH_STAGING.N3cds_Domain_Map p on p.Source_Id=pr.PATID AND p.Domain_Name='PERSON' AND p.DATA_PARTNER_ID=DATAPARTNERID 
     LEFT JOIN CDMH_STAGING.N3cds_Domain_Map e on e.Source_Id=pr.ENCOUNTERID AND e.Domain_Name='ENCOUNTER' AND e.Target_Domain_Id = 'Visit' AND e.DATA_PARTNER_ID=DATAPARTNERID 
     LEFT JOIN CDMH_STAGING.N3cds_Domain_Map prv on prv.Source_Id=pr.RX_PROVIDERID AND prv.Domain_Name='PROVIDER' AND prv.DATA_PARTNER_ID=DATAPARTNERID 
-    LEFT JOIN CDMH_STAGING.p2o_code_xwalk_standard xw on rxnorm_cui= xw.src_code  and xw.CDM_TBL = 'PRESCRIBING' AND xw.target_domain_id = 'Drug'
+    LEFT JOIN CDMH_STAGING.p2o_code_xwalk_standard xw on rxnorm_cui= xw.src_code  and xw.CDM_TBL = 'PRESCRIBING' AND xw.target_domain_id = 'Drug' and xw.target_concept_id=mp.target_concept_id
     LEFT JOIN CDMH_STAGING.p2o_medadmin_term_xwalk mx on src_cdm_column='RX_ROUTE' AND mx.src_code=pr.RX_ROUTE
     LEFT JOIN CDMH_STAGING.p2o_medadmin_term_xwalk u on pr.rx_dose_ordered_unit = u.src_code and u.src_cdm_column = 'RX_DOSE_ORDERED_UNIT';
-    
-  
-    DBMS_OUTPUT.put_line('PCORnet PRESCRIBING source data inserted to DRUG_EXPOSURE staging table, ST_OMOP53_DRUG_EXPOSURE, successfully.'); 
+    RECORDCOUNT :=Sql%Rowcount;
+    COMMIT;
 
-  
+    DBMS_OUTPUT.put_line(RECORDCOUNT || ' PCORnet PRESCRIBING source data inserted to DRUG_EXPOSURE staging table, ST_OMOP53_DRUG_EXPOSURE, successfully.'); 
+
+
 
 END SP_P2O_SRC_PRESCRIBING;
-
-/
