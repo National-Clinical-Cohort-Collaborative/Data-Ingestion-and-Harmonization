@@ -1,6 +1,6 @@
 /******************************************************************************************************
 project : N3C DI&H
-Date: 6/16/2020
+Date: 6/1/2020
 Author: Stephanie Hong / Sandeep Naredla
 Description : Stored Procedure to insert PCORnet Condition into staging table
 Stored Procedure: SP_P2O_SRC_DEMOGRAPHIC:
@@ -12,7 +12,7 @@ Name:      SP_P2O_SRC_DEMOGRAPHIC
      Source:
      Revisions:
      Ver          Date        Author              Description
-     0.1          6/16/2020   SHONG               Initial version
+     0.1          6/1/2020   SHONG               Initial version
      0.2          6/26/2020   SNAREDLA            Removed UNION ALL and added commit after each block
 ********************************************************************************************************/
 CREATE PROCEDURE                CDMH_STAGING.SP_P2O_SRC_DEMOGRAPHIC 
