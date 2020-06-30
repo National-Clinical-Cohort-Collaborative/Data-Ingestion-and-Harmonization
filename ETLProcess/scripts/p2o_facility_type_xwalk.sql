@@ -10,7 +10,7 @@ Edit History:
      0.1       6/1/2020     SHONG        Initial version
      0.2       6/29/2020    SHONG       Updated with the latest ValueSet Mapping document 
                                         version WIP-2020-06-03-_KK_review_vF dated 6-23-2020 update.
-                                        Also added Subin's validation.
+                                        Also added Subin's validation corrections.
 *************************************************************************************************************/
   CREATE TABLE "CDMH_STAGING"."P2O_FACILITY_TYPE_XWALK" 
    (	"CDM_SOURCE" VARCHAR2(20 BYTE), 
