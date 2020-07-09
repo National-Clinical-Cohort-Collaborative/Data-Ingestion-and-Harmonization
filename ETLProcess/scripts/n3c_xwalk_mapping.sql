@@ -2,11 +2,11 @@
 /*******************************************************************************************************************************
 project : N3C DI&H
 Date: 6/16/2020
-Author: Stephanie Hong 
- 
+Author: Stephanie Hong
+
 --- Description: Crosswalk table CDM terminology to OMOP concept ids
 --- PCorNet51 to OMOP531
---- Used to translage valueSet mappings from Native source data tables to OMOP 5.3.1 tables 
+--- Used to translage valueSet mappings from Native source data tables to OMOP 5.3.1 tables
 --- manifest table and the datacount tables are extracted and sent via the DataPartners
 --- load the datacount and manifest table
 
@@ -14,11 +14,12 @@ Edit History:
 Dates:      Author Descriptions
 6/16/2020   SHONG  Initial Version
 6/22/2020   SHONG  Added UN/NI/OT entries
+7/09/2020   SHONG  set 06/MULTIPLE RACE to other concept id.
 
 ********************************************************************************************************************************/
 ---
 
----populated with data from the DataPartners 
+---populated with data from the DataPartners
 /*
 CREATE TABLE MANIFEST
 (
@@ -35,7 +36,7 @@ CREATE TABLE MANIFEST
 , UPDATE_DATE timestamp NOT NULL
 , NEXT_SUBMISSION_DATE timestamp NOT NULL
 -------used internally
-, DATASET_STATUS NUMBER(*, 0)           --Updated by the workflow as the data moves throught the ingestion process 
+, DATASET_STATUS NUMBER(*, 0)           --Updated by the workflow as the data moves throught the ingestion process
 , DATA_PARTNER_ID NUMBER(*, 0) NOT NULL -- used in generating N3C ids for all domain table
 , PROCESS_timestamp timestamp NOT NULL
 ) ;
@@ -51,7 +52,7 @@ CREATE TABLE DATACOUNT
 , MANIFEST_ID NUMBER(18, 0) NOT NULL
 , RUN_DATE DATE NOT NULL
 ,data_loaded NUMBER(*, 0) NOT NULL
-,data_ingested NUMBER(*, 0) NOT NULL 
+,data_ingested NUMBER(*, 0) NOT NULL
 ,data_loaded_delta NUMBER(*, 0) NOT NULL
 ,data_ingested_delta NUMBER(*, 0) NOT NULL
 ) ;
@@ -70,7 +71,7 @@ CREATE TABLE cdmh_staging.N3C_PERSON_CLEAN
 /***
 -- domain map for n3c ids
 create table cdmh_staging.N3CDS_domain_map (
-    DOMAIN_MAP_ID	NUMBER(18,0), -- n3c id / table indicies 
+    DOMAIN_MAP_ID	NUMBER(18,0), -- n3c id / table indicies
     DATA_PARTNER_ID	NUMBER(38,0),
     DOMAIN_NAME	VARCHAR2(100 BYTE),
     SOURCE_ID	VARCHAR2(100 BYTE),
@@ -88,7 +89,7 @@ CREATE TABLE gender_xwalk (
     CDM_NAME 					VARCHAR(100),
     CDM_TBL           VARCHAR(100),
     src_gender 					VARCHAR(20),
-    fhir_cd             varchar(100), 
+    fhir_cd             varchar(100),
   	target_concept_id			INTEGER			NOT NULL ,
   	target_concept_name			VARCHAR(255)	NOT NULL ,
   	target_domain_id			VARCHAR(20)		NOT NULL ,
@@ -168,7 +169,6 @@ CREATE TABLE ethnicity_xwalk (
 /*
 HISPANIC  Y Y=Yes (ethnicity) Hispanic or Latino (concept_id = 38003563)
 HISPANIC  N N=No  (ethnicity) Not Hispanic or Latino (concept_id = 38003564)
-
 HISPANIC  NI  NI=No  information  (other_ni_unk) No information (concept_id = 46237210)
 HISPANIC  OT  OT=Other  (other_ni_unk) Other (concept_id = 45878142)
 HISPANIC  R R=Refuse  to  answer  GAP
@@ -232,7 +232,7 @@ CREATE TABLE cdmh_staging.race_xwalk (
   	target_concept_code			VARCHAR(50)		NOT NULL
 );
 
---PCORNet race values: 
+--PCORNet race values:
 --8657 DEMOGRAPHIC  RACE  01  01=American  Indian  or  Alaska  Native
 --8515 DEMOGRAPHIC  RACE  02  02=Asian
 --8516 DEMOGRAPHIC  RACE  03  03=Black  or  African  American
@@ -254,39 +254,43 @@ CREATE TABLE cdmh_staging.race_xwalk (
 --DEM|RACE:W  White
 
 TRUNCATE TABLE cdmh_staging.race_xwalk;
-insert into cdmh_staging.race_xwalk 
+insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'PCORnet', 'DEMOGRAPHIC', '01', '1002-5', 8657, 'American  Indian  or  Alaska  Native', 'Race', 'Race','Race','S', '1');
 
-insert into cdmh_staging.race_xwalk 
+insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'PCORnet', 'DEMOGRAPHIC', '02', '2028-9', 8515, 'Asian', 'Race', 'Race','Race','S', '2') ;
 
-Insert into cdmh_staging.race_xwalk 
+Insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'PCORnet', 'DEMOGRAPHIC', '03', '2054-5', 8516, 'Black  or  African  American', 'Race', 'Race','Race','S', '3') ;
 
-Insert into cdmh_staging.race_xwalk 
+Insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'PCORnet', 'DEMOGRAPHIC', '04', '2076-8', 8557, 'Native  Hawaiian  or  Other  Pacific  Islander', 'Race', 'Race','Race','S', '4');
 
-Insert into cdmh_staging.race_xwalk 
+Insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'PCORnet', 'DEMOGRAPHIC', '05', '2106-3', 8527, 'White', 'Race', 'Race','Race','S', '5') ;
 
-Insert into cdmh_staging.race_xwalk 
+Insert into cdmh_staging.RACE_XWALK 
+(CDM_NAME,CDM_TBL,SRC_RACE,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values ('PCORnet','DEMOGRAPHIC','06','2131-1',45878142,'Other-multiple race','Race','Race','Race','S','6');
+
+Insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'PCORnet', 'DEMOGRAPHIC', '07', '', 0, 'Refused to Answer', 'Race', 'Race','Race','S', '7') ;
 --un/ot/ni
-Insert into cdmh_staging.race_xwalk 
+Insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'PCORnet', 'DEMOGRAPHIC', 'UN', 'Unknown', 45877986, 'Unknown', 'Race', 'Race','Race','S', 'UN') ;
 
-Insert into cdmh_staging.race_xwalk 
+Insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'PCORnet', 'DEMOGRAPHIC', 'OT', 'Other', 45878142, 'Other', 'Race', 'Race','Race','S', 'OT') ;
 
-Insert into cdmh_staging.race_xwalk 
+Insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'PCORnet', 'DEMOGRAPHIC', 'NI', 'NI', 45878142, 'NI', 'Race', 'Race','Race','S', 'NI') ;
 
@@ -294,23 +298,23 @@ values ( 'PCORnet', 'DEMOGRAPHIC', 'NI', 'NI', 45878142, 'NI', 'Race', 'Race','R
 
 
 --ACT
-insert into cdmh_staging.race_xwalk 
+insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:NA', '1002-5', 8657, 'American  Indian  or  Alaska  Native', 'Race', 'Race','Race','S', '1');
 
-insert into cdmh_staging.race_xwalk 
+insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:AS', '2028-9', 8515, 'Asian', 'Race', 'Race','Race','S', '2') ;
 
-Insert into cdmh_staging.race_xwalk 
+Insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:B', '2054-5', 8516, 'Black  or  African  American', 'Race', 'Race','Race','S', '3') ;
 
-Insert into cdmh_staging.race_xwalk 
+Insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:H', '2076-8', 8557, 'Native  Hawaiian  or  Other  Pacific  Islander', 'Race', 'Race','Race','S', '4');
 
-Insert into cdmh_staging.race_xwalk 
+Insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:W', '2106-3', 8527, 'White', 'Race', 'Race','Race', 'S', '5') ;
 
@@ -366,57 +370,57 @@ INOUT_CD  O Ambulatory Visit
 INOUT_CD  X Other Ambulatory Visit
 */
 TRUNCATE TABLE cdmh_staging.visit_xwalk;
-insert into cdmh_staging.visit_xwalk 
+insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
-values 
+values
 ( 'PCORnet', 'ENCOUNTER', 'AV', 'AMB', 581478, 'Ambulance visit', 'Visit', 'Visit','Visit Type','S', '19700101');
 
-insert into cdmh_staging.visit_xwalk 
+insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values
 ( 'PCORnet', 'ENCOUNTER', 'ED', 'EMER', 9203, 'Ambulance visit', 'Visit', 'Visit','Visit Type','S', '19700101');
 --
-insert into cdmh_staging.visit_xwalk 
+insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values
 ( 'PCORnet', 'ENCOUNTER', 'EI', 'ACUTE', 9203, 'Emergency  Department  Admit  to  Inpatient  Hospital  Stay', 'Visit', 'Visit','Visit Type','S', '19700101');
 --IC
-insert into cdmh_staging.visit_xwalk 
+insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values
 ( 'PCORnet', 'ENCOUNTER', 'IC', '', 42898160, 'Institutional  Professional  Consult', 'Visit', 'Visit','Visit Type','S', '19700101');
 --IP
-insert into cdmh_staging.visit_xwalk 
+insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values
 ( 'PCORnet', 'ENCOUNTER', 'IP', 'IMP', 8717, 'Inpatient Hospital Stay', 'Visit', 'Visit','Visit Type','S', '19700101');
 --NI
-insert into cdmh_staging.visit_xwalk 
+insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values
 ( 'PCORnet', 'ENCOUNTER', 'NI', '', 0, 'No information', 'Visit', 'Visit','Visit Type','S', '25569');
 --IS
-insert into cdmh_staging.visit_xwalk 
+insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values
 ( 'PCORnet', 'ENCOUNTER', 'IS', 'NONAC', 42898160, 'Non-Acute Institutional Stay', 'Visit', 'Visit','Visit Type','S', '19700101');
 --OA
-insert into cdmh_staging.visit_xwalk 
+insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values
 ( 'PCORnet', 'ENCOUNTER', 'OA', 'AMB', 581478, 'Other Ambulatory Visit', 'Visit', 'Visit','Visit Type','S', '19700101');
 --OS
-insert into cdmh_staging.visit_xwalk 
+insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values
 ( 'PCORnet', 'ENCOUNTER', 'OS', 'X', 581385, 'Observation Stay', 'Visit', 'Visit','Visit Type','S', '19700101');
 --OT
-insert into cdmh_staging.visit_xwalk 
+insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values
 ( 'PCORnet', 'ENCOUNTER', 'OT', '', 0, 'Other', 'Visit', 'Visit','Visit Type','S', '25569');
 --UN
-insert into cdmh_staging.visit_xwalk 
+insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values
 ( 'PCORnet', 'ENCOUNTER', 'UN', '', 0, 'Unknown', 'Visit', 'Visit','Visit Type','S', '25569');
@@ -430,14 +434,14 @@ create table cdmh_staging.p2o_code_xwalk_standard
     src_code                VARCHAR(18),
     src_code_type           VARCHAR(10),
     source_code             VARCHAR(18),
-    source_code_concept_id  VARCHAR2(24 BYTE), 
+    source_code_concept_id  VARCHAR2(24 BYTE),
     source_code_description  VARCHAR2(255 BYTE),
-    source_vocabulary_id    VARCHAR2(24 BYTE), 
+    source_vocabulary_id    VARCHAR2(24 BYTE),
     source_domain_id        VARCHAR2(24 BYTE),
     target_concept_id     INTEGER       NOT NULL ,
     target_concept_name     VARCHAR(255)  NOT NULL ,
     target_vocabulary_id        VARCHAR(20)   NOT NULL ,
     target_domain_id    VARCHAR(20)   NOT NULL ,
-    target_concept_class_id   VARCHAR(20)   NOT NULL 
+    target_concept_class_id   VARCHAR(20)   NOT NULL
 ) ;
 */
