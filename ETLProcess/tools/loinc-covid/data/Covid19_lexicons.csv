@@ -1,0 +1,227 @@
+KEY,VALUES
+NP,NASOPHARYNGEAL
+NP,SWAB-NASOPHARYNX
+NP,SWAB
+NP,NASOPHARYNGEAL MUCUS
+NP,NASOPHARYNX
+NP,NASOPHARYNGEAL WALL
+NP,NASOPHARYNGEAL MEATUS
+NP,SWABS
+NP,NASOPHARYNGEAL CYTOLOGIC MATERIAL
+NP,NASOPHARYNGEAL SWAB
+NP,NASOPHARYNGEAL CAVITY
+NP,NASOPHAR
+NP,NP
+,
+Blood,SERUM
+Blood,PLASMA
+Blood,BLOOD
+Blood,Ser
+Blood,Plas
+Blood,Plsm
+Blood,Pl
+Blood,SerP
+Blood,SerPl
+Blood,SerPlas
+,
+Respiratory,ORAL PORTION OF NASOPHARYNX
+Respiratory,NASAL SEPTUM
+Respiratory,MUCOUS MEMBRANE
+Respiratory,NASOPHARYNGEAL AND OROPHARYNGEAL
+Respiratory,NASOPHARYNX AND OROPHARYNX
+Respiratory,BRONCHIAL
+Respiratory,NASAL SMEAR
+Respiratory,NASAL CAVITY
+Respiratory,NARES
+Respiratory,RESPIRATORY SYSTEM
+Respiratory,"NOSE AND NASOPHARYNX, CS"
+Respiratory,ASPIRATE
+Respiratory,BRONCHOALVEOLAR LAVAGE
+Respiratory,NASOPHARYNGEAL SWAB AND OROPHARYNGEAL SWAB
+Respiratory,NASAL CARTILAGE
+Respiratory,NASAL
+Respiratory,BRONCH/ALV
+Respiratory,BRONCHUS
+Respiratory,NARES SWAB
+Respiratory,ORAL MUCOUS MEMBRANE
+Respiratory,NARES   
+Respiratory,ORAL CAVITY
+Respiratory,OROPHARYNX
+Respiratory,PHARYNGEAL MUCOUS MEMBRANE
+Respiratory,PHARYNX
+Respiratory,NASAL TURBINATE
+Respiratory,NASAL PORTION OF NASOPHARYNX
+Respiratory,THROAT
+Respiratory,UPPER RESPIRATORY TRACT
+Respiratory,NASAL MUCUS
+Respiratory,MUCOUS MEMBRANE OF NASOPHARYNX
+Respiratory,NASAL WASH
+Respiratory,PHARYNGEAL BURSA
+Respiratory,TRACHEA
+Respiratory,SPUTUM
+Respiratory,NOSE
+Respiratory,BRONCHIAL WASHING CYTOLOGIC MATERIAL
+Respiratory,NASOPHARYNGEAL/OROPHARYNGEAL
+Respiratory,PHARYNGEAL CAVITY
+Respiratory,NASAL FLUID
+Respiratory,BRONCHOALVEOLAR LAVAGE
+Respiratory,RESPIRATORY SPECIMEN
+Respiratory,RESP
+Respiratory,RESPIRATORY
+,
+Saliva,SALIVA
+Saliva,ORAL FLUID
+Saliva,SAL
+,
+Other,OTHER
+Other,UNSPECIFIED
+Other,UNSPECIFIED SPECIMEN
+Other,UNKNOWN SPECIMEN
+Other,MICRO SPECIMEN
+Other,NEPHRON
+Other,UNKNOWN
+Other,"BODY FLUID, NOS"
+,
+Covid19,SARS-COV-2
+Covid19,SARS COV 2
+Covid19,SARS CoV2
+Covid19,SARS CORONA
+Covid19,SARS coronavirus 2
+Covid19,SARS CORONA
+Covid19,SARSCoV2
+Covid19,Novel Coronavirus 2019
+Covid19,xxxNovel Coronavirus (COVID-19)
+Covid19,zCOVID-19
+Covid19,ZZCOVID-19
+Covid19,ZZSARSCoV2
+Covid19,Coronavirus (COVID-19)
+Covid19,COVID-19
+Covid19,COVID19
+Covid19,COVID019
+Covid19,2019-NCOV
+Covid19,2019 Novel Coronavirus
+Covid19,COVID-19 VIRUS (CORONAVIRUS)
+Covid19,COVID-19 (CORONAVIRUS)
+Covid19,COVID-19 VIRUS
+Covid19,Sars-Covid 2
+Covid19,SarsCov-2
+Covid19,Cov-2
+Covid19,Cov2
+,
+Covid19_Related,SARS-related CoV
+Covid19_Related,SARS-related coronavirus
+Covid19_Related,SARS-like CoV
+Covid19_Related,SARS-like coronavirus
+Covid19_Related,PAN-SARS
+Covid19_Related,PAN SARS
+Covid19_Related,Coronavirus
+Covid19_Related,Sars-Covid
+Covid19_Related,Sars-Cov
+Covid19_Related,SARS-CoV+SARS-CoV-2
+Covid19_Related,COVID
+,
+RNA_Comp,RNA
+RNA_Comp,N gene
+RNA_Comp,E gene
+RNA_Comp,RdRp gene
+RNA_Comp,ORF1ab region
+RNA_Comp,S gene
+RNA_Comp,CDC primer-probe set N1
+RNA_Comp,CDC primer-probe set N2
+,
+Sequence_Comp,whole genome
+Sequence_Comp,Nucleotide sequence
+Sequence_Comp,Sequence
+,
+Antigen_Comp,Ag
+Antigen_Comp,Antigen
+Antigen_Comp,Anti-gen
+,
+Growth_Comp,Organism
+,
+Antibody_Comp,Ab
+Antibody_Comp,Aby
+Antibody_Comp,Antibody
+Antibody_Comp,Antibodies
+Antibody_Comp,Anti-body
+Antibody_Comp,Anti-bodies
+Antibody_Comp,IgA
+Antibody_Comp,IgG
+Antibody_Comp,IgM
+Antibody_Comp,IgG+IgM
+Antibody_Comp,IgG IgM
+Antibody_Comp,Total Ab
+Antibody_Comp,Total Antibody
+Antibody_Comp,Plasma Product
+,
+Interpretation_Comp,Interpretation
+Interpretation_Comp,Qualitative_interpretation
+Interpretation_Comp,Pecent infection
+Interpretation_Comp,Past infection
+,
+RNA_Method,Sequencing
+RNA_Method,non-probe-based
+RNA_Method,non probe
+RNA_Method,NAA
+RNA_Method,Nucleic acid amplification
+RNA_Method,probe based
+RNA_Method,probe detection
+RNA_Method,RAPID PCR
+RNA_Method,RAPID
+RNA_Method,RT PCR
+RNA_Method,PCR
+RNA_Method,OVERALL RESULT
+RNA_Method,OVERALL RESULTS
+RNA_Method,Melt curve analysis
+,
+Sequence_Method,Sequencing
+,
+Antigen_Method,Rapid immunoassay
+Antigen_Method,Rapid IA
+Antigen_Method,Immunoassay
+Antigen_Method,IA
+Antigen_Method,Rapid
+,
+Growth_Method,Organism specific?culture
+,
+Antibody_Method,Rapid immunoassay
+Antibody_Method,Rapid IA
+Antibody_Method,Immunoassay
+Antibody_Method,IA
+Antibody_Method,Rapid
+Antibody_Method,Elisa
+,
+Panel_Method,Panel
+Panel_Method,Panl
+Panel_Method,Pnl
+Panel_Method,PANEL.MICROBIOLOGY
+Panel_Method,Screen
+Panel_Method,Screening
+,
+Quantitative,Cycle Threshold
+Quantitative,Log #/volume
+Quantitative,viral load
+Quantitative,log copies/mL
+Quantitative,Quantitative
+Quantitative,Qn
+Quantitative,Units/volume
+Quantitative,titer
+Quantitative,Index
+,
+Qualitative,Presence
+Qualitative,Ordinal 
+Qualitative,Ord
+Qualitative,Nominal
+Qualitative,Qualitative
+,
+Manufacturer,Abbott
+Manufacturer,BioFire
+Manufacturer,bioMerieux
+Manufacturer,Cepheid
+Manufacturer,DiaSorin
+Manufacturer,GenMark
+Manufacturer,Hologic
+Manufacturer,Luminex
+Manufacturer,Quidel
+Manufacturer,Roche
+Manufacturer,Thermo
