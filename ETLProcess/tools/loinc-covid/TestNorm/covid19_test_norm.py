@@ -1,12 +1,13 @@
 #from pathlib import Path
 #from tensorflow.contrib import predictor
 import os
+import re
+import copy
 #import time
 import pandas as pd
 from .utils import pre_tokenize, contains, has_valid_value
 
-import copy
-
+loinc_codes_pattern = re.compile(r'[^\d+\-\d+]')
 loinc_ner_dict = {'Component': {'Covid19': [], 'Covid19_Related': [], 'RNA': [], 'Sequence': [], 'Antigen': [], 'Growth':[], 'Antibody': [],'Interpretation': [] }, 
                   'System': {'Blood':[], 'Respiratory': [], 'NP': [], 'Saliva': [], 'Other': [], },
                   'Method': {'RNA': [], 'Sequence': [], 'Antigen': [], 'Growth':[], 'Antibody': [], 'Panel': [] },
@@ -19,8 +20,8 @@ def load_rules_data():
     cur_dir = os.path.dirname(os.path.abspath(__file__))
     data_dir = os.path.join(cur_dir, '../data')
     covid19_lexicons_fn = 'Covid19_lexicons.csv'
-    covid19_testkits_fn = 'LIVD-SARS-CoV-2-2020-06-02_LOINC-MAPPING.csv' #downloaded and extracted from https://www.cdc.gov/csels/dls/sars-cov-2-livd-codes.html and https://loinc.org/sars-coronavirus-2/
-    loinc_sarscov2_labtests_fn = 'Loinc_Sarscov2_Export_20200603.csv' # downloaded from https://loinc.org/sars-coronavirus-2
+    covid19_testkits_fn = 'Livd_sarscov2_testkits.csv' #downloaded and extracted from https://www.cdc.gov/csels/dls/sars-cov-2-livd-codes.html and https://loinc.org/sars-coronavirus-2/
+    loinc_sarscov2_labtests_fn = 'Loinc_sarscov2_fulllist.csv' # downloaded from https://loinc.org/sars-coronavirus-2
 
     rules_data = dict()
     rules_ner_dict = copy.deepcopy(loinc_ner_dict)
@@ -29,7 +30,7 @@ def load_rules_data():
     # load LOINC Sarscov2 data
     loinc_sarscov2_labtests_pfn = os.path.join(data_dir, loinc_sarscov2_labtests_fn)
     if os.path.exists(loinc_sarscov2_labtests_pfn):
-        df_loinc_sarscov2_labtests = pd.read_csv(loinc_sarscov2_labtests_pfn)
+        df_loinc_sarscov2_labtests = pd.read_csv(loinc_sarscov2_labtests_pfn, encoding='utf-8')
     else:
         raise Exception('Can not find {}'.format(loinc_sarscov2_labtests_pfn))    
     df_loinc_sarscov2_labtests = df_loinc_sarscov2_labtests[df_loinc_sarscov2_labtests.LOINC_NUM.astype(bool)]
@@ -38,7 +39,7 @@ def load_rules_data():
     # load LOINC_IVD_test_kits
     covid19_testkits_pfn = os.path.join(data_dir, covid19_testkits_fn)
     if os.path.exists(covid19_testkits_pfn):
-        df_covid19_testkits = pd.read_csv(covid19_testkits_pfn)
+        df_covid19_testkits = pd.read_csv(covid19_testkits_pfn, encoding='utf-8')
     else:
         raise Exception('Can not find {}'.format(covid19_testkits_pfn))
     df_covid19_testkits.fillna('', inplace=True)
@@ -52,7 +53,7 @@ def load_rules_data():
     # load covid19_lexicons
     covid19_lexicons_pfn = os.path.join(data_dir, covid19_lexicons_fn)
     if os.path.exists(covid19_lexicons_pfn):
-        df_covid19_lexicons = pd.read_csv(covid19_lexicons_pfn)
+        df_covid19_lexicons = pd.read_csv(covid19_lexicons_pfn, encoding='utf-8')
     else:
         raise Exception('Can not find {}'.format(covid19_lexicons_pfn))
     df_covid19_lexicons = df_covid19_lexicons[df_covid19_lexicons.KEY.astype(bool)]
@@ -181,8 +182,9 @@ def disambiguate_ners(ner_list_1, ner_list_2):
         for ner2 in ners_2:
             # if ner2 is the same as ner1, there should be typos in the lexicons file. Remove ner2 in ner_list_2 only
             if ner2 == ner1:
-                print('Ner {} are in two different sub-categories under the same root axle, keep them.'.format(ner2))
+                #print('Ner {} are in two different sub-categories under the same root axle, keep them.'.format(ner2))
                 #del_ner_2.add(ner2) # leave it and let root axle to disambiguate them
+                continue
             elif contains(ner1, ner2):
                 # ner2 is partial of ner1, delete ner2
                 del_ner_2.add(ner2)
@@ -667,21 +669,72 @@ def get_loinc_codes_by_purpose(query_text, ner_dict):
 def get_loinc_codes_by_institution(query_text, ner_dict, rules_data):
     loinc_codes = []
     #ner_all = ner_dict['All']
-
     df_covid19_testkits = rules_data['df_covid19_testkits'] #.apply(lambda x: x.str.lower().str.strip() if isinstance(x, object) else x) 
     #rules_inst_set = set(df_covid19_testkits.Manufacturer.tolist())
     inter_manufacturer = ner_dict['Institution']['Manufacturer'] #contains(query_text, rules_inst_set) # list(set(ner_inst) & rules_inst_set)
     if inter_manufacturer:
         df_inter_manuf = df_covid19_testkits[df_covid19_testkits.Manufacturer.isin(inter_manufacturer)]
-        rules_model = df_inter_manuf['Model'].tolist()
-        inter_model = contains(query_text, rules_model) #list(set(rules_testkits_pt) & set(ner_comp_syst_meth))
-        rules_analyte = df_inter_manuf['Vendor Analyte Name'].tolist()
-        inter_analyte = contains(query_text, rules_analyte) #list(set(rules_testkits_pt) & set(ner_comp_syst_meth))
-        if inter_model:
-            if inter_analyte:
-                loinc_codes = df_inter_manuf[df_inter_manuf['Model'].isin(inter_model) & df_inter_manuf['Vendor Analyte Name'].isin(inter_analyte)]['LOINC Code'].drop_duplicates().tolist()
+        # testkits model
+        testkits_model = df_inter_manuf['Model'].drop_duplicates().tolist()
+        inter_model = contains(query_text, testkits_model, whole_match=True, max_match=True) #list(set(rules_testkits_pt) & set(ner_comp_syst_meth))
+        # manufacturer and model names are both required for testkits testnames!
+        #if (not inter_model) and (inter_model not in testkits_model):
+            # not specify testkits' model, take all valid models by default
+        #    inter_model = testkits_model
+        # testkits analyte
+        testkits_analyte = df_inter_manuf['Vendor Analyte Name'].drop_duplicates().tolist()
+        inter_analyte = contains(query_text, testkits_analyte, whole_match=True, max_match=True) #list(set(rules_testkits_pt) & set(ner_comp_syst_meth))                
+        # some CDC testkits' Model name may contain Analyte name,like: Manufacturer: Hangzhou Laihe Biotech,	Model: LYHER Novel Coronavirus (2019-nCoV) IgM/IgG Antibody Combo Test Kit*,	Analyte:IgG
+        drop_analy = []
+        for model in inter_model:
+            for analy in inter_analyte:
+                if contains(model, analy):
+                    model_anal = ' '.join([model, analy])
+                    if not contains(query_text, model_anal, whole_match=True, in_order=False):
+                        drop_analy.append(analy)
+        inter_analyte[:] = [v for v in inter_analyte if v not in drop_analy]
+        if (not inter_analyte) and (inter_analyte not in testkits_analyte):
+            # not specify testkits' analyte, take all valid analytes by default
+            inter_analyte = testkits_analyte
+        # testkits specimen, check based on specimen's type in ['NP', 'Blood','Respiratory', 'Saliva', 'Other'] instead of original specimen text
+        # if query-text's specimen is the same type of tesktits's specimen, then such specimen will be appended to inter_specimen,
+        # or will not consider specimen
+        testkits_specimen = df_inter_manuf['Vendor Specimen Description'].drop_duplicates().tolist()
+        inter_specimen = []
+        tk_specimen_type = {'Saliva':[], 'NP':[], 'Respiratory':[], 'Blood': [], 'Other': []}
+        if testkits_specimen:
+            for specimen in testkits_specimen:
+                if specimen == '':
+                    inter_specimen.append(specimen)
+                    continue
+                # get specimen type
+                tk_specimen_type['Saliva'] = contains(specimen, rules_data['ner_dict']['System']['Saliva'])
+                tk_specimen_type['NP'] = contains(specimen, rules_data['ner_dict']['System']['NP'])
+                tk_specimen_type['Respiratory'] = contains(specimen, rules_data['ner_dict']['System']['Respiratory'])
+                tk_specimen_type['Blood'] = contains(specimen, rules_data['ner_dict']['System']['Blood'])
+                tk_specimen_type['Other'] = contains(specimen, rules_data['ner_dict']['System']['Other'])            
+                disambiguate_ners(tk_specimen_type['Respiratory'], tk_specimen_type['NP']) 
+                if ((ner_dict['System']['Saliva'] and tk_specimen_type['Saliva']) or
+                (ner_dict['System']['NP'] and tk_specimen_type['NP']) or 
+                (ner_dict['System']['Respiratory'] and tk_specimen_type['Respiratory']) or 
+                (ner_dict['System']['Blood'] and tk_specimen_type['Blood']) or 
+                (ner_dict['System']['Other'] and tk_specimen_type['Other'])):
+                    inter_specimen.append(specimen) 
+        if (((not inter_specimen) and (inter_specimen not in testkits_specimen)) or 
+            (('' in inter_specimen) and (len(inter_specimen) == 1))):
+            inter_specimen = testkits_specimen                    
+        if inter_analyte:
+            if inter_specimen:
+                loinc_codes = df_inter_manuf[df_inter_manuf['Model'].isin(inter_model) & df_inter_manuf['Vendor Analyte Name'].isin(inter_analyte) & df_inter_manuf['Vendor Specimen Description'].isin(inter_specimen)]['LOINC Code'].drop_duplicates().tolist()
             else:
-                loinc_codes = df_inter_manuf[df_inter_manuf['Model'].isin(inter_model)]['LOINC Code'].drop_duplicates().tolist() #[i for x in (df_covid19_testkits[df_covid19_testkits['Testkit PT'] == testkit].LOINC.tolist() for testkit in intersect) for i in x]    
+                loinc_codes = df_inter_manuf[df_inter_manuf['Model'].isin(inter_model) & df_inter_manuf['Vendor Analyte Name'].isin(inter_analyte)]['LOINC Code'].drop_duplicates().tolist()
+        else:
+            if inter_specimen:
+                loinc_codes = df_inter_manuf[df_inter_manuf['Model'].isin(inter_model) & df_inter_manuf['Vendor Specimen Description'].isin(inter_specimen)]['LOINC Code'].drop_duplicates().tolist()
+            else:
+                loinc_codes = df_inter_manuf[df_inter_manuf['Model'].isin(inter_model)]['LOINC Code'].drop_duplicates().tolist()
+        # Sometimes, cdc testkits LOINC code may contain non-ascii character
+        loinc_codes = [loinc_codes_pattern.sub(r'', code) for code in loinc_codes]
     return loinc_codes
 
 def get_loinc_codes(query_text, rules_data, query_ner=False):
@@ -695,9 +748,22 @@ def get_loinc_codes(query_text, rules_data, query_ner=False):
         loinc_codes = get_loinc_codes_by_purpose(query_text, ner_dict) # from https://loinc.org/sars-coronavirus-2/    
     loinc_output = {'loinc':{'Codes':[], 'Long Common Names': []}}
     df_loinc_sarscov2_labtests = rules_data['df_loinc_sarscov2_labtests']
+    df_covid19_testkits = rules_data['df_covid19_testkits']
     for code in loinc_codes:
         loinc_long_name = ''
-        loinc_long_name = df_loinc_sarscov2_labtests[df_loinc_sarscov2_labtests.LOINC_NUM == code]['Long Common Name'].values[0]
+        loinc_long_name = df_loinc_sarscov2_labtests[df_loinc_sarscov2_labtests.LOINC_NUM == code]['Long Common Name'].drop_duplicates() #.values[0]
+        if loinc_long_name.empty:
+            # codes not found in loinc sarscov2 labtests fulllist, maybe from new cdc codes
+            print('Warning: Loinc code {} not found in loinc sarscov2 labtests!'.format(code))
+            loinc_long_name = df_covid19_testkits[df_covid19_testkits['LOINC Code'] == code]['LOINC long Name'].drop_duplicates() #.values[0]
+            if loinc_long_name.empty:
+                print('Warning: Loinc code {} still not found in covid19 testkits!'.format(code))
+                loinc_long_name = ''
+            else:
+                loinc_long_name = loinc_long_name.values[0]
+            loinc_long_name = ''
+        else:
+            loinc_long_name = loinc_long_name.values[0]
         loinc_output['loinc']['Codes'].append(code)
         loinc_output['loinc']['Long Common Names'].append(loinc_long_name)
     loinc_output['ner_dict'] = ner_dict
