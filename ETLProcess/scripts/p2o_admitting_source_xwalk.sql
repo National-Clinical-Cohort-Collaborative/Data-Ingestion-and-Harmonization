@@ -7,9 +7,10 @@
   --Author: Stephanie Hong
   -- Edit History:
   -- Dates: Initials: Description: 
-  -- 6/25/20 ssh : updated correction - 'PCORnet','ENCOUNTER','OT','Other', 45878142,'Other (concept_id = 45878142)
-  -- 
+  -- 6/25/20 SHONG : updated correction - 'PCORnet','ENCOUNTER','OT','Other', 45878142,'Other (concept_id = 45878142)
+  -- 8/30/20 SHONG : Update for v1
 --------------------------------------------------------
+
 
 CREATE TABLE CDMH_STAGING.P2O_ADMITTING_SOURCE_XWALK 
 (
