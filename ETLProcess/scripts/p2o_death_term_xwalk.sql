@@ -4,8 +4,10 @@
 -- Description: DEATH TABLE P2O_DEATH_TERM_XWALK to omop concept ids
 -- Reviewers : Clair Blacketer, Kristin Kostka, SMEs, Samvit, DI&H team
 -- Author: Stephanie Hong
--- Edit Date: JUNE 7, 2020
--- DDL and valueSet maps for Death and Death Cause Table
+-- Edit Date: 		Initials: 	Descriptions: 
+-- JUNE 7, 2020 	SHONG		Initials version
+-- 8/30/20			SHONG		Update for v1
+-- valueSet maps for Death and Death Cause Table
 --------------------------------------------------------
 
   CREATE TABLE "CDMH_STAGING"."P2O_DEATH_TERM_XWALK"
