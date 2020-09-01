@@ -2,13 +2,14 @@
 project : N3C DI&H
 Date: 5/16/2020
 Authors: 
-Stephanie Hong
-Stored Procedure :
-Description :
+Stephanie Hong, Sandeep Naredla, Richard Zhu, Tanner Zhang
+File: t2o_term_xwalk.sql
+Description : crosswalk value set mapping table for TrinetX CDM source data 
 Edit History:
   Ver   Date         Author Edit History Description
   0.1	8/30/2020    SHONG	Update for v1
   0.2   9/01/2020    SHONG  Change NI/OT/UN mappings to 0 
+  
 *************************************************************/
 
 CREATE TABLE CDMH_STAGING.T2O_TERM_XWALK 
