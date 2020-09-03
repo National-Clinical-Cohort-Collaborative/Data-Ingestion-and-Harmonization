@@ -101,52 +101,44 @@ CREATE TABLE gender_xwalk (
 
 TRUNCATE TABLE cdmh_staging.gender_xwalk;
 --PCORnet CDM
-insert into cdmh_staging.gender_xwalk
-(cdm_name, cdm_tbl, src_gender, fhir_cd, target_concept_id, target_concept_name , target_domain_id , target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
-values
-( 'PCORnet', 'DEMOGRAPHIC', 'M', 'male', 8507, 'MALE', 'Gender', 'Gender','Gender','S', 'M');
-insert into cdmh_staging.gender_xwalk
-(cdm_name, cdm_tbl, src_gender, fhir_cd, target_concept_id, target_concept_name , target_domain_id , target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
-values
-( 'PCORnet', 'DEMOGRAPHIC', 'F', 'female', 8532, 'FEMALE', 'Gender', 'Gender','Gender','S', 'F');
-insert into cdmh_staging.gender_xwalk
-(cdm_name, cdm_tbl, src_gender, fhir_cd, target_concept_id, target_concept_name , target_domain_id , target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
-values
-( 'PCORnet', 'DEMOGRAPHIC', 'A', '', 0, 'Ambiguous', 'Gender', 'Gender','Gender','S', '0');
-insert into cdmh_staging.gender_xwalk
-(cdm_name, cdm_tbl, src_gender, fhir_cd, target_concept_id, target_concept_name , target_domain_id , target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
-values
-( 'PCORnet', 'DEMOGRAPHIC', 'NI', 'unknown', 0, 'No Information', 'Gender', 'Gender','Gender','S', '0');
-insert into cdmh_staging.gender_xwalk
-(cdm_name, cdm_tbl, src_gender, fhir_cd, target_concept_id, target_concept_name , target_domain_id , target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
-values
-( 'PCORnet', 'DEMOGRAPHIC', 'OT', 'other', 0, 'Other', 'Gender', 'Gender','Gender','S', '0');
-insert into cdmh_staging.gender_xwalk
-(cdm_name, cdm_tbl, src_gender, fhir_cd, target_concept_id, target_concept_name , target_domain_id , target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
-values
-( 'PCORnet', 'DEMOGRAPHIC', 'UN', 'unknown', 0, 'Unknown', 'Gender', 'Gender','Gender','S', '0');
-insert into cdmh_staging.gender_xwalk
-(cdm_name, cdm_tbl, src_gender, fhir_cd, target_concept_id, target_concept_name , target_domain_id , target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
-values
-( 'ACT', 'OBS_FCT_DEM', 'DEM|SEX:M', 'male', 8507, 'Male', 'Gender', 'Gender','Gender','S', 'M');
-insert into cdmh_staging.gender_xwalk
-(cdm_name, cdm_tbl, src_gender, fhir_cd, target_concept_id, target_concept_name , target_domain_id , target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
-values
-( 'ACT', 'OBS_FCT_DEM', 'DEM|SEX:F', 'female', 8532, 'FEMALE', 'Gender', 'Gender','Gender','S', 'F');
-insert into cdmh_staging.gender_xwalk
-(cdm_name, cdm_tbl, src_gender, fhir_cd, target_concept_id, target_concept_name , target_domain_id , target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
-values
-( 'ACT', 'OBS_FCT_DEM', 'DEM|SEX:NI', 'unknown', 0, 'No Information', 'Gender', 'Gender','Gender','S', '0');
-insert into cdmh_staging.gender_xwalk
-(cdm_name, cdm_tbl, src_gender, fhir_cd, target_concept_id, target_concept_name , target_domain_id , target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
-values
-( 'ACT', 'OBS_FCT_DEM', 'DEM|SEX:A', '', 0, 'Ambiguous', 'Gender', 'Gender','Gender','S', '0');
-insert into cdmh_staging.gender_xwalk
-(cdm_name, cdm_tbl, src_gender, fhir_cd, target_concept_id, target_concept_name , target_domain_id , target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
-values
-( 'ACT', 'OBS_FCT_DEM', 'DEM|SEX:O', 'other', 0, 'Other', 'Gender', 'Gender','Gender','S', '0');
+Insert into jhu_shong.GENDER_XWALK (CDM_NAME,CDM_TBL,SRC_GENDER,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values ('PCORnet','DEMOGRAPHIC','M','male',8507,'MALE','Gender','Gender','Gender','S','M');
+Insert into jhu_shong.GENDER_XWALK (CDM_NAME,CDM_TBL,SRC_GENDER,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values ('PCORnet','DEMOGRAPHIC','F','female',8532,'FEMALE','Gender','Gender','Gender','S','F');
+Insert into jhu_shong.GENDER_XWALK (CDM_NAME,CDM_TBL,SRC_GENDER,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values ('PCORnet','DEMOGRAPHIC','A',null,0,'Ambiguous','Gender','Gender','Gender','S','0');
+Insert into jhu_shong.GENDER_XWALK (CDM_NAME,CDM_TBL,SRC_GENDER,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values ('PCORnet','DEMOGRAPHIC','NI','unknown',46237210,'No Information','Gender','Gender','Gender','S','0');
+Insert into jhu_shong.GENDER_XWALK (CDM_NAME,CDM_TBL,SRC_GENDER,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values ('PCORnet','DEMOGRAPHIC','OT','other',45878142,'Other','Gender','Gender','Gender','S','0');
+Insert into jhu_shong.GENDER_XWALK (CDM_NAME,CDM_TBL,SRC_GENDER,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values ('PCORnet','DEMOGRAPHIC','UN','unknown',0,'Unknown','Gender','Gender','Gender','S','0');
+Insert into jhu_shong.GENDER_XWALK (CDM_NAME,CDM_TBL,SRC_GENDER,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values ('ACT','OBS_FCT_DEM','DEM|SEX:M','male',8507,'Male','Gender','Gender','Gender','S','M');
+Insert into jhu_shong.GENDER_XWALK (CDM_NAME,CDM_TBL,SRC_GENDER,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values ('ACT','OBS_FCT_DEM','DEM|SEX:F','female',8532,'FEMALE','Gender','Gender','Gender','S','F');
+Insert into jhu_shong.GENDER_XWALK (CDM_NAME,CDM_TBL,SRC_GENDER,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values ('ACT','OBS_FCT_DEM','DEM|SEX:NI','unknown',46237210,'No Information','Gender','Gender','Gender','S','0');
+Insert into jhu_shong.GENDER_XWALK (CDM_NAME,CDM_TBL,SRC_GENDER,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values ('ACT','OBS_FCT_DEM','DEM|SEX:A',null,0,'Ambiguous','Gender','Gender','Gender','S','0');
+Insert into jhu_shong.GENDER_XWALK (CDM_NAME,CDM_TBL,SRC_GENDER,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values ('ACT','OBS_FCT_DEM','DEM|SEX:O','other',45878142,'Other','Gender','Gender','Gender','S','0');
+--DEM|SEX:M
+--DEM|SEX:NI
+--DEM|SEX:F
+Insert into jhu_shong.GENDER_XWALK (CDM_NAME,CDM_TBL,SRC_GENDER,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values ('ACT','PATIENT_DIMENSION','DEM|SEX:M','male',8507,'Male','Gender','Gender','Gender','S','M');
+Insert into jhu_shong.GENDER_XWALK (CDM_NAME,CDM_TBL,SRC_GENDER,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values ('ACT','PATIENT_DIMENSION','DEM|SEX:F','female',8532,'FEMALE','Gender','Gender','Gender','S','F');
+Insert into jhu_shong.GENDER_XWALK (CDM_NAME,CDM_TBL,SRC_GENDER,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values ('ACT','PATIENT_DIMENSION','DEM|SEX:NI','unknown',46237210,'No Information','Gender','Gender','Gender','S','0');
+Insert into jhu_shong.GENDER_XWALK (CDM_NAME,CDM_TBL,SRC_GENDER,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values ('ACT','PATIENT_DIMENSION','DEM|SEX:O','Other',45878142,'Other','Gender','Gender','Gender','S','0');
+Insert into jhu_shong.GENDER_XWALK (CDM_NAME,CDM_TBL,SRC_GENDER,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values ('ACT','PATIENT_DIMENSION','DEM|SEX:A',null,0,'Ambiguous','Gender','Gender','Gender','S','0');
 
 
+COMMIT;
 --
 ---DROP TABLE IF EXISTS cdmh_staging.ethnicity_xwalk
 
@@ -213,6 +205,16 @@ insert into cdmh_staging.ethnicity_xwalk
 (cdm_name, cdm_tbl, src_ethnicity, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code )
 values
 ( 'ACT', 'OBS_FCT_DEM', 'DEM|HISP:N', '2186-5', 38003564, 'Not Hispanic or Latino', 'Ethnicity', 'Ethnicity','Ethnicity','S', 'Not Hispanic');
+Insert into JHU_SHONG.ETHNICITY_XWALK 
+(CDM_NAME,CDM_TBL,SRC_ETHNICITY,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values 
+('ACT','PATIENT_DIMENSION','DEM|HISP:Y','2135-2',38003563,'Hispanic or Latino','Ethnicity','Ethnicity','Ethnicity','S','Hispanic');
+Insert into JHU_SHONG.ETHNICITY_XWALK 
+(CDM_NAME,CDM_TBL,SRC_ETHNICITY,FHIR_CD,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME,TARGET_DOMAIN_ID,TARGET_VOCABULARY_ID,TARGET_CONCEPT_CLASS_ID,TARGET_STANDARD_CONCEPT,TARGET_CONCEPT_CODE) 
+values 
+('ACT','PATIENT_DIMENSION','DEM|HISP:N','2186-5',38003564,'Not Hispanic or Latino','Ethnicity','Ethnicity','Ethnicity','S','Not Hispanic');
+
+
 
 
 
@@ -300,23 +302,51 @@ values ( 'PCORnet', 'DEMOGRAPHIC', 'NI', 'NI', 45878142, 'NI', 'Race', 'Race','R
 --ACT
 insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
-values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:NA', '1002-5', 8657, 'American  Indian  or  Alaska  Native', 'Race', 'Race','Race','S', '1');
+values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:NA', '1002-5', 8657, 'American  Indian  or  Alaska  Native', 'Race', 'Race','Race','S', 'NA');
 
 insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
-values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:AS', '2028-9', 8515, 'Asian', 'Race', 'Race','Race','S', '2') ;
+values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:AS', '2028-9', 8515, 'Asian', 'Race', 'Race','Race','S', 'AS') ;
 
 Insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
-values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:B', '2054-5', 8516, 'Black  or  African  American', 'Race', 'Race','Race','S', '3') ;
+values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:B', '2054-5', 8516, 'Black  or  African  American', 'Race', 'Race','Race','S', 'B') ;
 
 Insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
-values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:H', '2076-8', 8557, 'Native  Hawaiian  or  Other  Pacific  Islander', 'Race', 'Race','Race','S', '4');
+values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:H', '2076-8', 8557, 'Native  Hawaiian  or  Other  Pacific  Islander', 'Race', 'Race','Race','S', 'H');
 
 Insert into cdmh_staging.race_xwalk
 (cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
-values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:W', '2106-3', 8527, 'White', 'Race', 'Race','Race', 'S', '5') ;
+values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:W', '2106-3', 8527, 'White', 'Race', 'Race','Race', 'S', 'W') ;
+
+Insert into cdmh_staging.race_xwalk
+(cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values ( 'ACT', 'OBS_FCT_DEM', 'DEM|RACE:NI', '0', 46237210, 'White', 'Race', 'Race','Race', 'S', 'NI') ;
+
+insert into cdmh_staging.race_xwalk
+(cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values ( 'ACT', 'PATIENT_DIMENSION', 'DEM|RACE:NA', '1002-5', 8657, 'American  Indian  or  Alaska  Native', 'Race', 'Race','Race','S', 'NA');
+
+insert into cdmh_staging.race_xwalk
+(cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values ( 'ACT', 'PATIENT_DIMENSION', 'DEM|RACE:AS', '2028-9', 8515, 'Asian', 'Race', 'Race','Race','S', 'AS') ;
+
+Insert into cdmh_staging.race_xwalk
+(cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values ( 'ACT', 'PATIENT_DIMENSION', 'DEM|RACE:B', '2054-5', 8516, 'Black  or  African  American', 'Race', 'Race','Race','S', 'B') ;
+
+Insert into cdmh_staging.race_xwalk
+(cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values ( 'ACT', 'PATIENT_DIMENSION', 'DEM|RACE:H', '2076-8', 8557, 'Native  Hawaiian  or  Other  Pacific  Islander', 'Race', 'Race','Race','S', 'H');
+
+Insert into cdmh_staging.race_xwalk
+(cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values ( 'ACT', 'PATIENT_DIMENSION', 'DEM|RACE:W', '2106-3', 8527, 'White', 'Race', 'Race','Race', 'S', 'W') ;
+
+Insert into cdmh_staging.race_xwalk
+(cdm_name, cdm_tbl, src_race, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values ( 'ACT', 'PATIENT_DIMENSION', 'DEM|RACE:NI', '0', 46237210, 'White', 'Race', 'Race','Race', 'S', 'NI') ;
 
 
 
@@ -424,6 +454,57 @@ insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values
 ( 'PCORnet', 'ENCOUNTER', 'UN', '', 0, 'Unknown', 'Visit', 'Visit','Visit Type','S', '25569');
+
+-- I2B2ACT
+--INOUT_CD  EI  Emergency Department Admit To Inpatient =262
+insert into cdmh_staging.visit_xwalk
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'I2B2ACT', 'VISIT_DIMENSION', 'EI', '', 262, 'Emergency Department Visit', 'Visit', 'Visit','Visit Type','S', 'ERIP');
+
+--INOUT_CD  E Emergency Department Visit=9203
+insert into cdmh_staging.visit_xwalk
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'I2B2ACT', 'VISIT_DIMENSION', 'E', '', 9203, 'Emergency Department Visit', 'Visit', 'Visit','Visit Type','S', 'ER');
+
+--INOUT_CD  I Inpatient Hospital Stay=8717
+insert into cdmh_staging.visit_xwalk
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'I2B2ACT', 'VISIT_DIMENSION', 'I', '', 8717, 'I Inpatient Hospital Stay', 'Visit', 'CMS Place of Service','Visit Type','S', '21');
+
+--INOUT_CD  N No Information = 46237210
+insert into cdmh_staging.visit_xwalk
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'I2B2ACT', 'VISIT_DIMENSION', 'N', '', 46237210, 'No Information', 'Visit', 'CMS Place of Service','Visit Type','S', '46237210');
+
+--INOUT_CD  NA  Non-Acute Hospital Stay =38004515
+insert into cdmh_staging.visit_xwalk
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'I2B2ACT', 'VISIT_DIMENSION', 'NA', '', 38004515, 'Non-Acute Hospital Stay', 'Visit', 'CMS Place of Service','Visit Type','S', 'A0');
+
+--INOUT_CD  X Other Ambulatory Visit = Other (concept_id = 45878142) - mapping document value is questionable 
+insert into cdmh_staging.visit_xwalk
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'I2B2ACT', 'VISIT_DIMENSION', 'X', '', 9202, 'X Other Ambulatory Visit', 'Visit', 'Visit','Visit','S', 'OP');
+
+--INOUT_CD  O Ambulatory Visit = should be mapped to outpatient visit 9202
+insert into cdmh_staging.visit_xwalk
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'I2B2ACT', 'VISIT_DIMENSION', 'O', '', 9202, 'O Ambulatory Visit', 'Visit', 'Visit','Visit','S', 'OP');
+
+--9202  OP  Outpatient Visit  Visit Standard  Valid Visit Visit
+insert into cdmh_staging.visit_xwalk
+(cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
+values
+( 'I2B2ACT', 'VISIT_DIMENSION', 'OP', '', 9202, 'OP Outpatient  Visit', 'Visit', 'Visit','Visit','S', 'OP');
+
+
 
 --drop table if exists
 /*
