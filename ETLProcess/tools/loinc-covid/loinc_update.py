@@ -50,6 +50,10 @@ try:
         _, name, count = row
         if name is None:
             continue
+        if 'SARS-CoV-2' not in name:
+            continue
+        if 'Comment' in name or 'Source' in name:
+            continue
         loinc_codes = get_loinc_codes(name, rules_data)
         if len(loinc_codes['loinc']['Codes']) > 0:
             loinc_code = loinc_codes['loinc']['Codes'][0]
