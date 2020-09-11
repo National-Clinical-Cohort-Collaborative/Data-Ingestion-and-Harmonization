@@ -22,7 +22,7 @@ truncate table CDMsrc.PERSON_CLEAN ;
 insert into CDMsrc.PERSON_CLEAN
 select PERSON_ID_SEQ.nextval,  pop.person_id, current_timestamp
 from 
-(   select distinct person_id --, gender_concept_id, race_concept_id, ethnicity_concept_id -- can a person have more than one gender, eth, race
+(   select distinct person_id, gender_concept_id, ethnicity_concept_id --,race_concept_id,  -- can a person have more than one gender, eth, race
     FROM CDMsrc.PERSON  pm
     where exists
     (
