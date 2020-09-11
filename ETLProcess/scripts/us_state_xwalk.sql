@@ -1,23 +1,13 @@
-/************************************************************
-project : N3C DI&H
-Date: 8/30/2020
-Authors: 
-Stephanie Hong, Sandeep Naredla, Richard Zhu, Tanner Zhang
-Stored Procedure :
-Description :
-Edit History:
-    Ver:   Date:       Author: Edit History:    Description
-    0.1	    8/30/20      SHONG Iniial version. - some CDM were providing full state name instead of using 2 character abbrev. 
-    OMOP field for state is two characters in length. Create this table in order to translate into abbreviated state code. 
-*************************************************************/
-
+-------------------------------------------------------------------------------------------
+-- Added the state cd xwalk to handle site  sending state name instead of state abbrev 
+-- Stephanie Hong
+--------------------------------------------------------------------------------------------
+-- 
 CREATE TABLE CDMH_STAGING.US_STATE_XWALK 
 (
   STATE_NAME VARCHAR2(100 BYTE) 
 , STATE_ABBREVIATION VARCHAR2(10 BYTE) 
-) 
-;
-
+) ;
 Insert into CDMH_STAGING.US_STATE_XWALK (STATE_NAME,STATE_ABBREVIATION) values ('Alabama','AL');
 Insert into CDMH_STAGING.US_STATE_XWALK (STATE_NAME,STATE_ABBREVIATION) values ('Alaska','AK');
 Insert into CDMH_STAGING.US_STATE_XWALK (STATE_NAME,STATE_ABBREVIATION) values ('American Samoa','AS');
