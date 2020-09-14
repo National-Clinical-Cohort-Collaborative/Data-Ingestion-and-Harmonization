@@ -8,19 +8,26 @@ begin
 execute immediate 'truncate table CDMH_STAGING.A2o_code_xwalk_standard';
 commit ;
 
-/***
-Description: BUILD CODES FOUND IN THE OBSERVATION FACT table and build the a2o_code_xwalk_standard table with OMOP target concept ids
-Author: Stephanie Hong
---RXNORM:
---CPT4:
---UMLS:
---LOINC:
---ICD10CM:
---HCPCS:
-Edit History:
-7/17/2020 SHONG Initial Version.
 
-***/
+/********************************************************************************************************
+     Name:      BUILD_A2O_CODE_XWALK
+     Purpose:   build terminology cross table for ACT data source. 
+     file:      BUILD_A2O_CODE_XWALK.sql
+     Author:    Stephanie Hong
+     Revisions:
+     Ver       Date      Author    Description
+     0.1       7/17/20   SHONG     Initial version
+     0.2       9/14/20   SHONG      Most recent update. 
+    BUILD CODES FOUND IN THE OBSERVATION FACT table and build the a2o_code_xwalk_standard table with OMOP target concept ids
+    --RXNORM:
+    --CPT4:
+    --UMLS:
+    --LOINC:
+    --ICD10CM:
+    --HCPCS:
+    Edit History:
+
+*****************************************************************************************************************************/
 
 INSERT INTO CDMH_STAGING.a2o_code_xwalk_standard ( CDM_TBL, src_code, src_code_type, src_vocab_code, 
     source_code, source_code_concept_id, source_code_description,
