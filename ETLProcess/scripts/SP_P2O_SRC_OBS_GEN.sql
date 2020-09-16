@@ -1,5 +1,5 @@
 
-CREATE PROCEDURE CDMH_STAGING.SP_P2O_SRC_OBS_GEN (
+CREATE PROCEDURE                                        CDMH_STAGING.SP_P2O_SRC_OBS_GEN (
     datapartnerid   IN    NUMBER,
     manifestid      IN    NUMBER,
     recordcount     OUT   NUMBER
@@ -14,6 +14,7 @@ CREATE PROCEDURE CDMH_STAGING.SP_P2O_SRC_OBS_GEN (
      0.1         8/30/20     SHONG               Intial Version.
                                                  Insert ventilation data to artificial respiration procedure_occurrence domain with 4230167 concept id
      0.2         8/31/20     DIH                 Generate visit occurrence record and use that value in procedure occurrence for artifical respiration procedure
+     0.3         9/9/2020    DIH                 Updated the *_type_concept_id logic
 ******************************************************************************************************************************************************/
     proc_recordcount    NUMBER;
     visit_recordcount   NUMBER;
@@ -56,7 +57,7 @@ BEGIN
             NULL AS visit_start_datetime  ---( obsgen_date, obsgent_time)
             ,
             obg.obsgen_date         AS visit_end_date,
-            obg.obsgen_time         AS visit_end_datetime,
+            to_date(to_char(obg.obsgen_date,'YYYY-MM-DD') || ' ' || obg.obsgen_time,'YYYY-MM-DD HH24:MI')     AS visit_end_datetime,
             32831 AS visit_type_concept_id,
             NULL provider_id,
             NULL care_site_id,
@@ -127,7 +128,8 @@ BEGIN
             4230167 AS procedure_concept_id,----------- artificial respiration concept id
             obg.obsgen_date          AS procedure_date,
             NULL AS procedure_datetime,
-            38000275 AS procedure_type_concept_id, -- use this type concept id for ehr order list
+--            38000275 AS procedure_type_concept_id, -- use this type concept id for ehr order list
+            32817 AS procedure_type_concept_id, 
             0 modifier_concept_id, -- need to create a cpt_concept_id table based on the source_code_concept id
             NULL AS quantity,
             NULL AS provider_id,
