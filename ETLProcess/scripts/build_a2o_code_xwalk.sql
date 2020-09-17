@@ -1,33 +1,35 @@
-
-CREATE PROCEDURE CDMH_STAGING.BUILD_A2O_CODE_XWALK 
+--------------------------------------------------------
+--  File created - Thursday-September-17-2020   
+--------------------------------------------------------
+-- Unable to render PROCEDURE DDL for object CDMH_STAGING.BUILD_A2O_CODE_XWALK with DBMS_METADATA attempting internal generator.
+CREATE PROCEDURE                           CDMH_STAGING.BUILD_A2O_CODE_XWALK 
 (
   RECORDCOUNT out number 
 ) as 
-begin
--- truncate before building - A2o_code_xwalk_standard
-execute immediate 'truncate table CDMH_STAGING.A2o_code_xwalk_standard';
-commit ;
 
-
-/********************************************************************************************************
-     Name:      BUILD_A2O_CODE_XWALK
-     Purpose:   build terminology cross table for ACT data source. 
-     file:      BUILD_A2O_CODE_XWALK.sql
-     Author:    Stephanie Hong
-     Revisions:
-     Ver       Date      Author    Description
-     0.1       7/17/20   SHONG     Initial version
-     0.2       9/14/20   SHONG      Most recent update. 
-    BUILD CODES FOUND IN THE OBSERVATION FACT table and build the a2o_code_xwalk_standard table with OMOP target concept ids
+/*************************************************************************************************************************************
+    FileName:   build_a2o_code_xwalk
+    Purpose:     BUILD CODES FOUND IN THE observation_fact table and build the a2o_code_xwalk_standard table with OMOP target concept ids
+    Author: Stephanie Hong
+    Edit History:
+     Ver        Date        Author        Description
+     0.1        7/17/20    SHONG          Initial version.
+     0.2        9/14/20     shong         Most recent update. 
+    Terminology found in the ACT: 
     --RXNORM:
     --CPT4:
     --UMLS:
     --LOINC:
     --ICD10CM:
     --HCPCS:
-    Edit History:
+    0.3         9/16/20 SHONG Filter out local concept_cd with prefixes like 'DIST|%' or like 'VISIT|%'  --54221
+************************************************************************************************************************************/
 
-*****************************************************************************************************************************/
+begin
+-- truncate before building - A2o_code_xwalk_standard
+execute immediate 'truncate table CDMH_STAGING.A2o_code_xwalk_standard';
+commit ;
+
 
 INSERT INTO CDMH_STAGING.a2o_code_xwalk_standard ( CDM_TBL, src_code, src_code_type, src_vocab_code, 
     source_code, source_code_concept_id, source_code_description,
@@ -78,7 +80,8 @@ INSERT INTO CDMH_STAGING.a2o_code_xwalk_standard ( CDM_TBL, src_code, src_code_t
         join native_i2b2act_cdm.observation_fact f
         on source_code = substr(concept_cd, instr(concept_cd, ':')+1, length(concept_cd))
         where source_vocabulary_id in( 'RXNORM', 'CPT4', 'LOINC', 'ICD10CM', 'HCPCS', 'NDC', 'SNOMED', 'NUI', 'ICD10PCS','ICD9PROC', 'ICD9CM') ---ssh 7/17/20 uk only had RXNORM/CPT4/UMLS/LOINC/ICD10CM/HCPCS in the fact table
-        AND target_standard_concept = 'S' and concept_cd not like 'DEM|%'
+        AND target_standard_concept = 'S' 
+        and concept_cd not like 'DEM|%' and concept_cd not like 'VISIT|%' and concept_cd not like 'DIST|%' 
 
     )x
 ; ---22,916
