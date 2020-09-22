@@ -1,23 +1,24 @@
-/*******************************************************************************************************************************
-project : N3C DI&H
-Date: 6/16/2020
-Author: Stephanie Hong, Tanner Zhang, Richard Zhu, Sandeep Naredla
-Description : Stored Procedure to insert PCORnet PROCEDURES into staging table
-Stored Procedure: SP_P2O_SRC_DEATH
-Parameters: DATAPARTNERID IN NUMBER, MANIFESTID IN NUMBER, RECORDCOUNT OUT NUMBER
-Edit History:
-0.1 6/18/2020 Stephanie Hong - removed the not null requirement on the OMOP Death table in order to insert death records without DOD. 
 
-*********************************************************************************************************************************/
-CREATE PROCEDURE              CDMH_STAGING.SP_P2O_SRC_DEATH 
+CREATE PROCEDURE                           CDMH_STAGING.SP_P2O_SRC_DEATH 
 
 (
 DATAPARTNERID IN NUMBER
 , MANIFESTID IN NUMBER 
 , RECORDCOUNT OUT NUMBER
 ) AS
+/********************************************************************************************************
+project : N3C DI&H
+     Name:      SP_P2O_SRC_DEATH
+     Purpose:    Loading The NATIVE_PCORNET51_CDM.DEATH  Table into ST_OMOP53_DEATH
+     Source:
+     Revisions:
+     Ver          Date        Author               Description
+     0.1         5/16/2020 SHONG Initial Version
+******************************************************************************************************/
 death_recordCount number;
 BEGIN
+   DELETE FROM CDMH_STAGING.ST_OMOP53_DEATH WHERE data_partner_id=DATAPARTNERID AND DOMAIN_SOURCE='PCORNET_DEATH';
+   COMMIT;
    --execute immediate 'truncate table CDMH_STAGING.ST_OMOP53_DEATH';
    INSERT INTO CDMH_STAGING.ST_OMOP53_DEATH ( DATA_PARTNER_ID,
   MANIFEST_ID,
@@ -45,7 +46,7 @@ BEGIN
    ,'PCORNET_DEATH' AS DOMAIN_SOURCE
 
 FROM NATIVE_PCORNET51_CDM.Death d
-
+JOIN CDMH_STAGING.PERSON_CLEAN pc on d.PATID=pc.PERSON_ID and pc.DATA_PARTNER_ID=DATAPARTNERID
 JOIN CDMH_STAGING.N3cds_Domain_Map p on p.Source_Id=d.PATID AND p.Domain_Name='PERSON' AND p.DATA_PARTNER_ID=DATAPARTNERID 
 LEFT JOIN NATIVE_PCORNET51_CDM.DEATH_CAUSE dc on dc.PATID=d.PATID
 LEFT JOIN CDMH_STAGING.p2o_death_term_xwalk dt on dt.cdm_tbl='DEATH' AND dt.cdm_column_name='DEATH_SOURCE' AND dt.src_code=d.DEATH_SOURCE
