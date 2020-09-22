@@ -1,33 +1,34 @@
-/******************************************************************************************************
-project : N3C DI&H
-Date: 6/1/2020
-Author: Stephanie Hong / Sandeep Naredla
-Description : Stored Procedure to insert PCORnet Condition into staging table
-Stored Procedure: SP_P2O_SRC_DEMOGRAPHIC:
-Parameters: DATAPARTNERID IN NUMBER, MANIFESTID IN NUMBER, RECORDCOUNT OUT NUMBER
-Name:      SP_P2O_SRC_DEMOGRAPHIC
-     Purpose:    Loading The NATIVE_PCORNET51_CDM.SP_P2O_SRC_DEMOGRAPHIC Table into 
-                1. CDMH_STAGING.ST_OMOP53_PERSON
-                2. CDMH_STAGING.ST_OMOP53_OBSERVATION
-     Source:
-     Revisions:
-     Ver          Date        Author              Description
-     0.1          6/1/2020   SHONG               Initial version
-     0.2          6/26/2020   SNAREDLA            Removed UNION ALL and added commit after each block
-********************************************************************************************************/
-CREATE PROCEDURE                CDMH_STAGING.SP_P2O_SRC_DEMOGRAPHIC 
+
+CREATE PROCEDURE                             CDMH_STAGING.SP_P2O_SRC_DEMOGRAPHIC 
 (
   DATAPARTNERID IN NUMBER 
 , MANIFESTID IN NUMBER 
 , RECORDCOUNT OUT NUMBER 
 ) AS 
+/********************************************************************************************************
+     Name:      SP_P2O_SRC_CONDITION
+     Purpose:    Loading The NATIVE_PCORNET51_CDM.SP_P2O_SRC_DEMOGRAPHIC Table into 
+                1. CDMH_STAGING.ST_OMOP53_PERSON
+                2. CDMH_STAGING.ST_OMOP53_OBSERVATION
+                3. CDMH_STAGING.ST_OMOP53_OBSERVATION_PERIOD
+     Source:
+     Revisions:
+     Ver          Date        Author               Description
+     0.1       5/16/2020    SHONG Initial Version
+     0.2       6/26/2020     SNAREDLA           Removed UNION ALL and added commit after each block
+     0.3       7/8/2020     SNAREDLA           Updated race_concept_id logic when race=06
+     0.4       7/24/2020     DI&H               Added logic to create OBSERVATION_PERIOD records
 
+*********************************************************************************************************/
     personCnt number;
     observationCnt1 number;
     observationCnt2 number;
     observationCnt3 number;
+    observationPdCnt4 number;
 
 BEGIN
+   DELETE FROM CDMH_STAGING.ST_OMOP53_PERSON WHERE data_partner_id=DATAPARTNERID AND DOMAIN_SOURCE='PCORNET_DEMOGRAPHIC';
+   COMMIT;
     Insert into CDMH_STAGING.ST_OMOP53_PERSON (
         DATA_PARTNER_ID
         ,MANIFEST_ID
@@ -59,7 +60,10 @@ BEGIN
             EXTRACT(MONTH FROM BIRTH_DATE) AS MONTH_OF_BIRTH,
             1 AS DAY_OF_BIRTH,
             null as BIRTH_DATETIME,
-            rx.TARGET_CONCEPT_ID AS race_concept_id, 
+--            rx.TARGET_CONCEPT_ID AS race_concept_id, 
+            CASE WHEN demo.RACE != '06' OR (demo.RACE='06' AND demo.raw_race is null) then rx.TARGET_CONCEPT_ID
+                ELSE null
+                END AS race_concept_id,
             ex.TARGET_CONCEPT_ID AS ethnicity_concept_id, 
             lds.N3cds_Domain_Map_Id AS LOCATIONID,
             NULL AS PROVIDER_ID, 
@@ -73,7 +77,8 @@ BEGIN
             0 AS ethnicity_source_concept_id, 
             'PCORNET_DEMOGRAPHIC' AS DOMAIN_SOURCE
             FROM NATIVE_PCORNET51_CDM.DEMOGRAPHIC demo
-            JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id=demo.PATID AND Mp.Domain_Name='PERSON' AND mp.DATA_PARTNER_ID=DATAPARTNERID  
+            JOIN CDMH_STAGING.PERSON_CLEAN pc on demo.PATID=pc.PERSON_ID and pc.DATA_PARTNER_ID=DATAPARTNERID
+            JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id=demo.PATID AND Mp.Domain_Name='PERSON' AND mp.DATA_PARTNER_ID=DATAPARTNERID 
             LEFT JOIN CDMH_STAGING.N3cds_Domain_Map lds on lds.Source_Id=demo.PATID AND lds.Domain_Name='LDS_ADDRESS_HISTORY' AND lds.DATA_PARTNER_ID=DATAPARTNERID  
             LEFT JOIN CDMH_STAGING.Gender_Xwalk gx on gx.CDM_TBL='DEMOGRAPHIC'AND Gx.Src_Gender=demo.Sex 
             LEFT JOIN CDMH_STAGING.ETHNICITY_XWALK ex on ex.CDM_TBL='DEMOGRAPHIC' AND demo.HISPANIC=Ex.Src_Ethnicity 
@@ -82,7 +87,8 @@ BEGIN
             
         personCnt  := sql%rowcount;
         commit;
-        
+   DELETE FROM CDMH_STAGING.ST_OMOP53_OBSERVATION WHERE data_partner_id=DATAPARTNERID AND DOMAIN_SOURCE='PCORNET_DEMOGRAPHIC';
+   COMMIT;        
     -- demographic -> observation 
     -- PAT_PREF_LANGUAGE_SPOKEN
     insert into CDMH_STAGING.ST_OMOP53_OBSERVATION (
@@ -132,7 +138,8 @@ BEGIN
             null as QUALIFIER_SOURCE_VALUE,
             'PCORNET_DEMOGRAPHIC' DOMAIN_SOURCE
             FROM NATIVE_PCORNET51_CDM.DEMOGRAPHIC demo
-            JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id=demo.PATID AND Mp.Domain_Name='PERSON' AND mp.DATA_PARTNER_ID=DATAPARTNERID  
+            JOIN CDMH_STAGING.PERSON_CLEAN pc on demo.PATID=pc.PERSON_ID and pc.DATA_PARTNER_ID=DATAPARTNERID
+            JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id=demo.PATID AND Mp.Domain_Name='PERSON' AND mp.DATA_PARTNER_ID=DATAPARTNERID 
             JOIN CDMH_STAGING.N3cds_Domain_Map obs on obs.Source_Id=demo.PATID AND obs.domain_name='DEMOGRAPHIC' and obs.Target_Domain_Id='Observation' 
                             AND obs.Target_Concept_Id=4152283 AND obs.DATA_PARTNER_ID=DATAPARTNERID    
             LEFT JOIN CDMH_STAGING.P2O_DEMO_TERM_XWALK lang on lang.src_cdm_column='PAT_PREF_LANGUAGE_SPOKEN' AND lang.SRC_CDM='PCORnet' 
@@ -141,6 +148,7 @@ BEGIN
         ;
         observationCnt1  := sql%rowcount;
         commit;
+
     -- TF/ OT/ NI/ M/ DC/ TM/ F --GENDER_IDENTITY
     insert into CDMH_STAGING.ST_OMOP53_OBSERVATION (
         DATA_PARTNER_ID
@@ -188,6 +196,7 @@ BEGIN
             ,null as QUALIFIER_SOURCE_VALUE
             ,'PCORNET_DEMOGRAPHIC' as DOMAIN_SOURCE
             FROM NATIVE_PCORNET51_CDM.DEMOGRAPHIC demo
+            JOIN CDMH_STAGING.PERSON_CLEAN pc on demo.PATID=pc.PERSON_ID and pc.DATA_PARTNER_ID=DATAPARTNERID
             JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id=demo.PATID AND Mp.Domain_Name='PERSON' AND mp.DATA_PARTNER_ID=DATAPARTNERID  
             JOIN CDMH_STAGING.N3cds_Domain_Map ob on ob.Source_Id=demo.PATID AND ob.domain_name='DEMOGRAPHIC' and ob.Target_Domain_Id='Observation' 
                     AND Ob.Target_Concept_Id=4110772 AND ob.DATA_PARTNER_ID=DATAPARTNERID       
@@ -244,6 +253,7 @@ BEGIN
             ,null as QUALIFIER_SOURCE_VALUE
             ,'PCORNET_DEMOGRAPHIC' as DOMAIN_SOURCE 
             FROM NATIVE_PCORNET51_CDM.DEMOGRAPHIC demo
+            JOIN CDMH_STAGING.PERSON_CLEAN pc on demo.PATID=pc.PERSON_ID and pc.DATA_PARTNER_ID=DATAPARTNERID
             JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id=demo.PATID AND Mp.Domain_Name='PERSON' AND mp.DATA_PARTNER_ID=DATAPARTNERID  
             JOIN CDMH_STAGING.N3cds_Domain_Map ob on ob.Source_Id=demo.PATID AND ob.domain_name='DEMOGRAPHIC' and ob.Target_Domain_Id='Observation'   
                     AND Ob.Target_Concept_Id=4283657 AND ob.DATA_PARTNER_ID=DATAPARTNERID     
@@ -254,8 +264,39 @@ BEGIN
             
         observationCnt3  := sql%rowcount;
         commit;
-    
-    RECORDCOUNT  := personCnt + observationCnt1+observationCnt2+observationCnt3;
-    DBMS_OUTPUT.put_line(RECORDCOUNT || '  PCORnet DEMOGRAPHIC source data inserted to PERSON and OBSERVATION staging table, ST_OMOP53_PERSON, ST_OMOP53_OBSERVATION, successfully.');
+        
+      DELETE FROM CDMH_STAGING.st_omop53_observation_period WHERE data_partner_id=DATAPARTNERID AND DOMAIN_SOURCE='PCORNET_DEMOGRAPHIC';
+      COMMIT;     
+        INSERT INTO CDMH_STAGING.st_omop53_observation_period
+        (
+            data_partner_id,
+            manifest_id,
+            observation_period_id,
+            person_id,
+            observation_period_start_date,
+            observation_period_end_date,
+            period_type_concept_id,
+            domain_source
+        )
+        SELECT
+          DATAPARTNERID AS  data_partner_id,
+          MANIFESTID AS  manifest_id,
+          ob.N3CDS_DOMAIN_MAP_ID AS  observation_period_id,
+          mp.N3CDS_DOMAIN_MAP_ID  person_id,
+          ee.observation_period_start_date as  observation_period_start_date,
+          ee.observation_period_end_date as  observation_period_end_date,
+          ob.TARGET_CONCEPT_ID AS period_type_concept_id,
+          'PCORNET_DEMOGRAPHIC'  domain_source
+        FROM NATIVE_PCORNET51_CDM.DEMOGRAPHIC demo
+            JOIN CDMH_STAGING.PERSON_CLEAN pc on demo.PATID=pc.PERSON_ID and pc.DATA_PARTNER_ID=DATAPARTNERID
+            JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id=demo.PATID AND Mp.Domain_Name='PERSON' AND mp.DATA_PARTNER_ID=DATAPARTNERID  
+            JOIN CDMH_STAGING.N3cds_Domain_Map ob on ob.Source_Id=demo.PATID AND ob.domain_name='DEMOGRAPHIC' and ob.Target_Domain_Id='OBSERVATION_PERIOD'  AND ob.TARGET_CONCEPT_ID=44814724 
+                    AND ob.DATA_PARTNER_ID=DATAPARTNERID  
+            JOIN ( SELECT PATID,MIN(ADMIT_DATE) AS observation_period_start_date,MAX(NVL(DISCHARGE_DATE,ADMIT_DATE)) AS observation_period_end_date FROM Native_PCORNET51_CDM.ENCOUNTER GROUP BY PATID ) ee on ee.patid=demo.patid 
+    ;
+      observationPdCnt4  := sql%rowcount;
+        commit;
+    RECORDCOUNT  := personCnt + observationCnt1+observationCnt2+observationCnt3+observationPdCnt4;
+    DBMS_OUTPUT.put_line(RECORDCOUNT || '  PCORnet DEMOGRAPHIC source data inserted to PERSON and OBSERVATION staging table, ST_OMOP53_PERSON, ST_OMOP53_OBSERVATION, ST_OMOP53_OBSERVATION_PERIOD, successfully.');
     
 END SP_P2O_SRC_DEMOGRAPHIC;
