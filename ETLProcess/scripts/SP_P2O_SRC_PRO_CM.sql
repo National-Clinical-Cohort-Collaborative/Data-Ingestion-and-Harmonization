@@ -1,15 +1,6 @@
-/***********************************************************************************************************
-project : N3C DI&H
-Date: 5/16/2020
-Author: Stephanie Hong
-FILE:           SP_P2O_SRC_PRO_CM.sql
-Description :   Loading NATIVE_PCORNET51_CDM.pro_cm table into stging table 
-Procedure:      SP_P2O_SRC_PRO_CM
-Edit History:
-     Ver       Date         Author          Description
-     0.1       5/16/2020    SHONG           Initial version
- 
-*************************************************************************************************************/
+--------------------------------------------------------
+--  File SP_P2O_SRC_PRO_CM - Tuesday-September-22-2020   
+--------------------------------------------------------
 
 CREATE PROCEDURE CDMH_STAGING.SP_P2O_SRC_PRO_CM 
 
