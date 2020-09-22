@@ -1,25 +1,29 @@
+--------------------------------------------------------
+--  File SP_P2O_SRC_ENCOUNTER - Tuesday-September-22-2020   
+--------------------------------------------------------
 
-/*******************************************************************************************************************************
-project : N3C DI&H
-Date: 6/16/2020
-Author: Stephanie Hong / Sandeep Naredla
-Description : Stored Procedure to insert PCORnet Encounter into staging table ST_OMOP53_VISIT_OCCURRENCE, and ST_OMOP53_CARE_SITE 
-Stored Procedure: SP_P2O_SRC_ENCOUNTER:
-Parameters: DATAPARTNERID IN NUMBER, MANIFESTID IN NUMBER, RECORDCOUNT OUT NUMBER
-Edit History::
-6/16/2020   SHONG Initial Version
-
-********************************************************************************************************************************/
-CREATE PROCEDURE                CDMH_STAGING.SP_P2O_SRC_ENCOUNTER 
+CREATE PROCEDURE               CDMH_STAGING.SP_P2O_SRC_ENCOUNTER 
 (
   DATAPARTNERID IN NUMBER 
 , MANIFESTID IN NUMBER 
 , RECORDCOUNT OUT NUMBER
 ) AS 
+/********************************************************************************************************
+     Name:      SP_P2O_SRC_ENCOUNTER
+     Purpose:    Loading The NATIVE_PCORNET51_CDM.ENCOUNTER Table into 
+                1. CDMH_STAGING.ST_OMOP53_VISIT_OCCURRENCE
+                2. CDMH_STAGING.ST_OMOP53_CARE_SITE
+
+     Edit History :
+     Ver          Date        Author               Description
+    0.1       5/16/2020     SHONG Initial Version
+    0.2. DI&S remove care_sit duplicate entries.
+*********************************************************************************************************/
 encCnt number ;
 careSiteCnt number;
 BEGIN
-
+      DELETE FROM CDMH_STAGING.ST_OMOP53_VISIT_OCCURRENCE WHERE data_partner_id=DATAPARTNERID AND DOMAIN_SOURCE='PCORNET_ENCOUNTER';
+      COMMIT;
 INSERT INTO ST_OMOP53_VISIT_OCCURRENCE (
     DATA_PARTNER_ID
     ,MANIFEST_ID
@@ -69,22 +73,31 @@ INSERT INTO ST_OMOP53_VISIT_OCCURRENCE (
         null as PRECEDING_VISIT_OCCURRENCE_ID, ---
         'PCORNET_ENCOUNTER' as DOMAIN_SOURCE
         FROM NATIVE_PCORNET51_CDM.ENCOUNTER enc
+        JOIN CDMH_STAGING.PERSON_CLEAN pc on enc.PATID=pc.PERSON_ID and pc.DATA_PARTNER_ID=DATAPARTNERID
         JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id= enc.encounterid AND Mp.Domain_Name='ENCOUNTER' AND mp.Target_Domain_Id = 'Visit' AND mp.DATA_PARTNER_ID=DATAPARTNERID
         LEFT JOIN CDMH_STAGING.N3cds_Domain_Map p on p.Source_Id=enc.PATID AND p.Domain_Name='PERSON' AND p.DATA_PARTNER_ID=DATAPARTNERID
         LEFT JOIN CDMH_STAGING.N3cds_Domain_Map prv ON prv.source_id=enc.providerid and prv.domain_name='PROVIDER' AND prv.DATA_PARTNER_ID=DATAPARTNERID
-        LEFT JOIN CDMH_STAGING.N3cds_Domain_Map cs on cs.Source_Id=enc.encounterid AND cs.Domain_Name='ENCOUNTER' AND cs.Target_Domain_Id = 'Care_Site' 
-        LEFT JOIN CDMH_STAGING.visit_xwalk vx ON vx.cdm_tbl='ENCOUNTER' AND vx.CDM_NAME='PCORnet' AND vx.src_visit_type=enc.ENC_TYPE
+        LEFT JOIN CDMH_STAGING.P2O_FACILITY_TYPE_XWALK ftx on ftx.CDM_SOURCE='PCORnet' 
+                                AND ftx.CDM_TBL='ENCOUNTER'                                                
+                                AND Ftx.Src_Facility_Type=enc.Facility_Type 
+        LEFT JOIN CDMH_STAGING.N3cds_Domain_Map cs on cs.Source_Id=enc.encounterid AND cs.Domain_Name='ENCOUNTER' AND cs.Target_Domain_Id = 'Care_Site' and ftx.target_concept_id=cs.target_concept_id
+        LEFT JOIN CDMH_STAGING.visit_xwalk vx ON vx.cdm_tbl='ENCOUNTER' AND vx.CDM_NAME='PCORnet' AND vx.src_visit_type=nvl(trim(enc.ENC_TYPE),'UN')
         LEFT JOIN CDMH_STAGING.p2o_admitting_source_xwalk vsrc ON vx.cdm_tbl='ENCOUNTER' AND vx.CDM_NAME='PCORnet' AND vsrc.src_admitting_source_type=enc.admitting_source 
         LEFT JOIN CDMH_STAGING.p2o_discharge_status_xwalk disp on disp.cdm_tbl='ENCOUNTER' AND disp.CDM_SOURCE='PCORnet' AND disp.src_discharge_status =enc.discharge_status 
         ;
+        
 
     encCnt := sql%rowcount;
-
+    COMMIT;
+    
+    DELETE FROM CDMH_STAGING.ST_OMOP53_CARE_SITE WHERE data_partner_id=DATAPARTNERID AND DOMAIN_SOURCE='PCORNET_ENCOUNTER';
+    COMMIT;
     ---encounter to care_site
     INSERT INTO CDMH_STAGING.ST_OMOP53_CARE_SITE 
         (
           DATA_PARTNER_ID
         , MANIFEST_ID 
+        , care_site_id
         , CARE_SITE_NAME 
         , PLACE_OF_SERVICE_CONCEPT_ID  
         , LOCATION_ID 
@@ -95,22 +108,28 @@ INSERT INTO ST_OMOP53_VISIT_OCCURRENCE (
         SELECT 
         DATAPARTNERID AS DATA_PARTNER_ID, 
         MANIFESTID AS MANIFEST_ID,  
+        mp.n3cds_domain_map_id AS CARE_SITE_ID,
         NULL AS care_site_name, 
         mp.target_concept_id AS place_of_service_concept_id,
         NULL as location_id, 
-        enc.FACILITY_TYPE AS care_site_source_value,   
-        enc.enc_type AS PLACE_OF_SERVICE_SOURCE_VALUE,  -- ehr/encounter
+        substr(enc.FACILITY_TYPE,1,50) AS care_site_source_value,   
+        substr(enc.FACILITY_TYPE,1,50) AS PLACE_OF_SERVICE_SOURCE_VALUE,  -- ehr/encounter
         'PCORNET_ENCOUNTER' AS DOMAIN_SOURCE
-        from NATIVE_PCORNET51_CDM.ENCOUNTER enc
-        JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id=enc.ENCOUNTERID AND Mp.Domain_Name='ENCOUNTER' AND Mp.Target_Domain_Id='Care_Site' AND mp.DATA_PARTNER_ID=1000
-        LEFT JOIN CDMH_STAGING.p2o_faciity_type_xwalk fx ON fx.cdm_tbl='ENCOUNTER' AND fx.CDM_SOURCE='PCORnet' AND fx.src_facility_type=enc.facility_type 
+        from (SELECT DISTINCT Facility_Type FROM "NATIVE_PCORNET51_CDM"."ENCOUNTER" WHERE 
+                 ENCOUNTER.Facility_Type is not null )  enc
+        JOIN CDMH_STAGING.p2o_facility_type_xwalk fx ON fx.cdm_tbl='ENCOUNTER' AND fx.CDM_SOURCE='PCORnet' AND fx.src_facility_type=enc.facility_type 
+        JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id=enc.Facility_Type 
+                                        AND Mp.Domain_Name='ENCOUNTER' AND Mp.Target_Domain_Id='Care_Site' 
+                                        and Fx.Target_Concept_Id=mp.target_concept_id 
+                                        AND mp.DATA_PARTNER_ID=DATAPARTNERID
         ;
 
 
     careSiteCnt  := sql%rowcount;
+    COMMIT;
     RECORDCOUNT  := encCnt + careSiteCnt;
     DBMS_OUTPUT.put_line(RECORDCOUNT || '  PCORnet ENCOUNTER source data inserted to ENCOUNTER staging table, ST_OMOP53_VISIT_OCCURRENCE, and ST_OMOP53_CARE_SITE if facility type is not null,  successfully.');
 
- COMMIT;
+
 
 END SP_P2O_SRC_ENCOUNTER;
