@@ -1,22 +1,24 @@
-/*********************************************************************************************************
-project : N3C DI&H
-Date: 5/16/2020
-Author: Stephanie Hong
-FILE: SP_P2O_SRC_LDS_ADDRESS_HISTORY.sql
-Description : Loading from the NATIVE_PCORNET51_CDM.LDS_ADDRESS_HISTORY Table into CDMH_STAGING.ST_OMOP53_LOCATION
-PROCEDURE NAME: SP_P2O_SRC_LDS_ADDRESS_HISTORY
 
+CREATE PROCEDURE              CDMH_STAGING.SP_P2O_SRC_LDS_ADDRESS_HISTORY 
+(
+  DATAPARTNERID IN NUMBER 
+, MANIFESTID IN NUMBER 
+, RECORDCOUNT OUT NUMBER
+) AS 
+/********************************************************************************************************
+     Name:      SP_P2O_SRC_LDS_ADDRESS_HISTORY
+     Purpose:    Loading from the NATIVE_PCORNET51_CDM.LDS_ADDRESS_HISTORY Table into CDMH_STAGING.ST_OMOP53_LOCATION
+               
      Source:
      Revisions:
-     Ver          Date        Author        Description
-     0.1       5/16/2020      SHONG          Initial version 
-                                            latest address -- pick an address where the end date is null
-	   0.2       6/25/2020     SNAREDLA       Added logic to pick latest address record for PATID
-                                            -- there cases where the end data is not null
-                                            -- change to rank based on the latest end date
+     Ver          Date        Author               Description
+     0.1       5/16/2020     SHONG                Initial Version
+     0.2       6/25/2020     SNAREDLA             Added logic to pick latest address record for PATID
 
 *********************************************************************************************************/
 BEGIN
+      DELETE FROM CDMH_STAGING.ST_OMOP53_LOCATION WHERE data_partner_id=DATAPARTNERID AND DOMAIN_SOURCE='PCORNET_LDS_ADDRESS_HISTORY';
+      COMMIT;
 
     INSERT INTO CDMH_STAGING.ST_OMOP53_LOCATION (
     DATA_PARTNER_ID
@@ -54,6 +56,7 @@ BEGIN
                  ,Row_Number() Over (Partition By PATID Order By ADDRESS_PERIOD_END Desc) as addr_rank
                   FROM NATIVE_PCORNET51_CDM.LDS_ADDRESS_HISTORY) 
                     SELECT * FROM cte_addr where addr_rank=1 )addr
+    JOIN CDMH_STAGING.PERSON_CLEAN pc on addr.PATID=pc.PERSON_ID and pc.DATA_PARTNER_ID=DATAPARTNERID
     JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id = addr.PATID 
                                         AND Mp.Domain_Name='LDS_ADDRESS_HISTORY' 
                                         AND mp.DATA_PARTNER_ID=DATAPARTNERID ;
