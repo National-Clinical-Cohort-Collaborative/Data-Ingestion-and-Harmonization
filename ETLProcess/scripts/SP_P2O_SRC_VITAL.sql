@@ -1,465 +1,542 @@
-/***********************************************************************************************************
-project : N3C DI&H
-Date: 5/16/2020
-Author: Tanner Zhang/ Stephanie Hong / Sandeep Naredla 
-FILE:           SP_P2O_SRC_PROVIDER.sql
-Description :   Loading NATIVE_PCORNET51_CDM.PROVIDER table into stging table SP_P2O_SRC_PROVIDER
-Procedure:      SP_P2O_SRC_PROVIDER
-Edit History:
-     Ver       Date         Author          Description
-     0.1       6/1/2020    TZhang          Initial version
- 
-*************************************************************************************************************/
 
-CREATE PROCEDURE                CDMH_STAGING.SP_P2O_SRC_VITAL 
-(
-    DATAPARTNERID IN NUMBER
-    , MANIFESTID IN NUMBER 
-    , RECORDCOUNT OUT NUMBER
+CREATE PROCEDURE                                                     CDMH_STAGING.SP_P2O_SRC_VITAL (
+    datapartnerid   IN    NUMBER,
+    manifestid      IN    NUMBER,
+    recordcount     OUT   NUMBER
 ) AS
+/*******************************************************************************************************
+     Name:      SP_P2O_SRC_VITAL
+     Purpose:    Loading The NATIVE_PCORNET51_CDM.vital    Table into 
+                1. CDMH_STAGING.st_omop53_measurement
 
-ht_recordCount number;
-wt_recordCount number;
-bmi_recordCount number;
-diastolic_recordCount number;
-systolic_recordCount number;
-smoking_recordCount number;
-tobacco_recordCount number;
+     Edit History:
+     Ver          Date        Author               Description
+       0.1         8/30/20     SHONG               Intial Version.
+       
+*********************************************************************************************************/
 
+    ht_recordcount          NUMBER;
+    wt_recordcount          NUMBER;
+    bmi_recordcount         NUMBER;
+    diastolic_recordcount   NUMBER;
+    systolic_recordcount    NUMBER;
+    smoking_recordcount     NUMBER;
+    tobacco_recordcount     NUMBER;
 BEGIN
-   --execute immediate 'truncate table CDMH_STAGING.ST_OMOP53_MEASUREMENT';
-   --commit ;
+    DELETE FROM cdmh_staging.st_omop53_measurement
+    WHERE
+        data_partner_id = datapartnerid
+        AND domain_source = 'PCORNET_VITAL';
 
-   INSERT INTO CDMH_STAGING.ST_OMOP53_MEASUREMENT (--for Height
-   DATA_PARTNER_ID,
-   MANIFEST_ID,
-   MEASUREMENT_ID,
-   PERSON_ID,
-   MEASUREMENT_CONCEPT_ID,
-   MEASUREMENT_DATE,
-   MEASUREMENT_DATETIME,
-   MEASUREMENT_TIME,
-   MEASUREMENT_TYPE_CONCEPT_ID,
-   OPERATOR_CONCEPT_ID,
-   VALUE_AS_NUMBER,
-   VALUE_AS_CONCEPT_ID,
-   UNIT_CONCEPT_ID,
-   RANGE_LOW,
-   RANGE_HIGH,
-   PROVIDER_ID,
-   VISIT_OCCURRENCE_ID,
-   VISIT_DETAIL_ID,
-   MEASUREMENT_SOURCE_VALUE,
-   MEASUREMENT_SOURCE_CONCEPT_ID,
-   UNIT_SOURCE_VALUE,
-   VALUE_SOURCE_VALUE,
-   DOMAIN_SOURCE
-)--22 items
+    COMMIT;
+    INSERT INTO cdmh_staging.st_omop53_measurement (--for Height
+        data_partner_id,
+        manifest_id,
+        measurement_id,
+        person_id,
+        measurement_concept_id,
+        measurement_date,
+        measurement_datetime,
+        measurement_time,
+        measurement_type_concept_id,
+        operator_concept_id,
+        value_as_number,
+        value_as_concept_id,
+        unit_concept_id,
+        range_low,
+        range_high,
+        provider_id,
+        visit_occurrence_id,
+        visit_detail_id,
+        measurement_source_value,
+        measurement_source_concept_id,
+        unit_source_value,
+        value_source_value,
+        domain_source
+    )--22 items
+        SELECT
+            datapartnerid            AS data_partner_id,
+            manifestid               AS manifest_id,
+            mp.n3cds_domain_map_id   AS measurement_id,
+            p.n3cds_domain_map_id    AS person_id,
+            mp.target_concept_id     AS measurement_concept_id, --concept id for Height, from notes
+            v.measure_date           AS measurement_date,
+            v.measure_date           AS measurement_datetime,
+            v.measure_time           AS measurement_time,
+            vt.target_concept_id     AS measurement_type_concept_id,
+            NULL AS operator_concept_id,
+            v.ht                     AS value_as_number, --Height (in inches) Weight (in pounds) Diastolic blood pressure (in mmHg)
+            NULL AS value_as_concept_id,
+            9327 AS unit_concept_id,
+            NULL AS range_low,
+            NULL AS range_high,
+            NULL AS provider_id,
+            e.n3cds_domain_map_id    AS visit_occurrence_id,
+            NULL AS visit_detail_id,
+            'Height in inches' AS measurement_source_value,
+            NULL AS measurement_source_concept_id,
+            'Inches' AS unit_source_value,
+            v.ht                     AS value_source_value,
+            'PCORNET_VITAL' AS domain_source
+        FROM
+            native_pcornet51_cdm.vital          v
+            JOIN cdmh_staging.person_clean           pc ON v.patid = pc.person_id
+                                                 AND pc.data_partner_id = datapartnerid
+            JOIN cdmh_staging.n3cds_domain_map       mp ON mp.source_id = v.vitalid
+                                                     AND mp.domain_name = 'VITAL'
+                                                     AND mp.target_domain_id = 'Measurement'
+                                                     AND mp.data_partner_id = datapartnerid
+                                                     AND mp.target_concept_id = 4177340 --ht
+            LEFT JOIN cdmh_staging.n3cds_domain_map       p ON p.source_id = v.patid
+                                                         AND p.domain_name = 'PERSON'
+                                                         AND p.data_partner_id = datapartnerid
+            LEFT JOIN cdmh_staging.n3cds_domain_map       e ON e.source_id = v.encounterid
+                                                         AND e.domain_name = 'ENCOUNTER'
+                                                         AND e.target_domain_id = 'Vital'
+                                                         AND e.data_partner_id = datapartnerid
+            LEFT JOIN cdmh_staging.p2o_vital_term_xwalk   vt ON vt.src_cdm_tbl = 'VITAL'
+                                                              AND vt.src_cdm_column = 'VITAL_SOURCE'
+                                                              AND vt.src_code = v.vital_source;
 
-    SELECT
-    DATAPARTNERID as data_partner_id,
-    MANIFESTID as manifest_id,
-    mp.N3cds_Domain_Map_Id AS measurement_id,
-    p.N3cds_Domain_Map_Id AS person_id,  
-    mp.target_concept_id  as measurement_concept_id, --concept id for Height, from notes
-    v.measure_date as measurement_date, 
-    v.measure_date as measurement_datetime,
-    v.measure_time as measurement_time, 
-    vt.TARGET_CONCEPT_ID AS measurement_type_concept_id,  
-    NULL as OPERATOR_CONCEPT_ID,
-    v.HT as VALUE_AS_NUMBER, --Height (in inches) Weight (in pounds) Diastolic blood pressure (in mmHg)
-    NULL as VALUE_AS_CONCEPT_ID,
-    9327 as UNIT_CONCEPT_ID,
-    NULL as RANGE_LOW,
-    NULL as RANGE_HIGH,
-    NULL as PROVIDER_ID,
-    e.N3cds_Domain_Map_Id as VISIT_OCCURRENCE_ID,
-    NULL as visit_detail_id,
-    'Height in inches' as MEASUREMENT_SOURCE_VALUE,
-    NULL as MEASUREMENT_SOURCE_CONCEPT_ID,
-    'Inches' as UNIT_SOURCE_VALUE,
-    v.HT as VALUE_SOURCE_VALUE,
-    'PCORNET_VITAL' as DOMAIN_SOURCE
-FROM NATIVE_PCORNET51_CDM.Vital v
-JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id= v.VITALID AND Mp.Domain_Name='VITAL' AND mp.Target_Domain_Id = 'Measurement' 
-            AND mp.DATA_PARTNER_ID=DATAPARTNERID AND mp.target_concept_id = 4177340 --ht
-LEFT JOIN CDMH_STAGING.N3cds_Domain_Map p on p.Source_Id=v.PATID AND p.Domain_Name='PERSON' AND p.DATA_PARTNER_ID=DATAPARTNERID 
-LEFT JOIN CDMH_STAGING.N3cds_Domain_Map e on e.Source_Id=v.ENCOUNTERID AND e.Domain_Name='ENCOUNTER' and e.target_domain_id ='Vital' AND e.DATA_PARTNER_ID=DATAPARTNERID 
-LEFT JOIN CDMH_STAGING.p2o_vital_term_xwalk vt on vt.src_cdm_tbl='VITAL' AND vt.src_cdm_column='VITAL_SOURCE' AND vt.src_code=v.VITAL_SOURCE
-;
-ht_recordCount := sql%rowcount;
-COMMIT;
+    ht_recordcount := SQL%rowcount;
+    COMMIT;
+    INSERT INTO cdmh_staging.st_omop53_measurement (-- For weight
+        data_partner_id,
+        manifest_id,
+        measurement_id,
+        person_id,
+        measurement_concept_id,
+        measurement_date,
+        measurement_datetime,
+        measurement_time,
+        measurement_type_concept_id,
+        operator_concept_id,
+        value_as_number,
+        value_as_concept_id,
+        unit_concept_id,
+        range_low,
+        range_high,
+        provider_id,
+        visit_occurrence_id,
+        visit_detail_id,
+        measurement_source_value,
+        measurement_source_concept_id,
+        unit_source_value,
+        value_source_value,
+        domain_source
+    )--22 items
+        SELECT
+            datapartnerid            AS data_partner_id,
+            manifestid               AS manifest_id,
+            mp.n3cds_domain_map_id   AS measurement_id,
+            p.n3cds_domain_map_id    AS person_id,
+            mp.target_concept_id     AS measurement_concept_id, --concept id for Weight, from notes
+            v.measure_date           AS measurement_date,
+            v.measure_date           AS measurement_datetime,
+            v.measure_time           AS measurement_time,
+            vt.target_concept_id     AS measurement_type_concept_id,
+            NULL AS operator_concept_id,
+            v.wt                     AS value_as_number, --Height (in inches) Weight (in pounds) Diastolic blood pressure (in mmHg)
+            NULL AS value_as_concept_id,
+            8739 AS unit_concept_id,
+            NULL AS range_low,
+            NULL AS range_high,
+            NULL AS provider_id,
+            e.n3cds_domain_map_id    AS visit_occurrence_id,
+            NULL AS visit_detail_id,
+            'Weight in pounds' AS measurement_source_value,
+            NULL AS measurement_source_concept_id,
+            'Pounds' AS unit_source_value,
+            v.wt                     AS value_source_value,
+            'PCORNET_VITAL' AS domain_source
+        FROM
+            native_pcornet51_cdm.vital          v
+            JOIN cdmh_staging.person_clean           pc ON v.patid = pc.person_id
+                                                 AND pc.data_partner_id = datapartnerid
+            JOIN cdmh_staging.n3cds_domain_map       mp ON mp.source_id = v.vitalid
+                                                     AND mp.domain_name = 'VITAL'
+                                                     AND mp.target_domain_id = 'Measurement'
+                                                     AND mp.data_partner_id = datapartnerid
+                                                     AND mp.target_concept_id = 4099154 --htv.WT!=0
+            LEFT JOIN cdmh_staging.n3cds_domain_map       p ON p.source_id = v.patid
+                                                         AND p.domain_name = 'PERSON'
+                                                         AND p.data_partner_id = datapartnerid
+            LEFT JOIN cdmh_staging.n3cds_domain_map       e ON e.source_id = v.encounterid
+                                                         AND e.domain_name = 'ENCOUNTER'
+                                                         AND e.target_domain_id = 'Vital'
+                                                         AND e.data_partner_id = datapartnerid
+            LEFT JOIN cdmh_staging.p2o_vital_term_xwalk   vt ON vt.src_cdm_tbl = 'VITAL'
+                                                              AND vt.src_cdm_column = 'VITAL_SOURCE'
+                                                              AND vt.src_code = v.vital_source;
 
-   INSERT INTO CDMH_STAGING.ST_OMOP53_MEASUREMENT (-- For weight
-   DATA_PARTNER_ID,
-   MANIFEST_ID,
-   MEASUREMENT_ID,
-   PERSON_ID,
-   MEASUREMENT_CONCEPT_ID,
-   MEASUREMENT_DATE,
-   MEASUREMENT_DATETIME,
-   MEASUREMENT_TIME,
-   MEASUREMENT_TYPE_CONCEPT_ID,
-   OPERATOR_CONCEPT_ID,
-   VALUE_AS_NUMBER,
-   VALUE_AS_CONCEPT_ID,
-   UNIT_CONCEPT_ID,
-   RANGE_LOW,
-   RANGE_HIGH,
-   PROVIDER_ID,
-   VISIT_OCCURRENCE_ID,
-   VISIT_DETAIL_ID,
-   MEASUREMENT_SOURCE_VALUE,
-   MEASUREMENT_SOURCE_CONCEPT_ID,
-   UNIT_SOURCE_VALUE,
-   VALUE_SOURCE_VALUE,
-   DOMAIN_SOURCE
-)--22 items
-    SELECT
-    DATAPARTNERID as data_partner_id,
-    MANIFESTID as manifest_id,
-    mp.N3cds_Domain_Map_Id AS measurement_id,
-    p.N3cds_Domain_Map_Id AS person_id,  
-    mp.target_concept_id as measurement_concept_id, --concept id for Weight, from notes
-    v.measure_date as measurement_date, 
-    v.measure_date as measurement_datetime,
-    v.measure_time as measurement_time, 
-    vt.TARGET_CONCEPT_ID AS measurement_type_concept_id,  
-    NULL as OPERATOR_CONCEPT_ID,
-    v.WT as VALUE_AS_NUMBER, --Height (in inches) Weight (in pounds) Diastolic blood pressure (in mmHg)
-    NULL as VALUE_AS_CONCEPT_ID,
-    8739 as UNIT_CONCEPT_ID,
-    NULL as RANGE_LOW,
-    NULL as RANGE_HIGH,
-    NULL as PROVIDER_ID,
-    e.N3cds_Domain_Map_Id as VISIT_OCCURRENCE_ID,
-    NULL as visit_detail_id,
-    'Weight in pounds' as MEASUREMENT_SOURCE_VALUE,
-    NULL as MEASUREMENT_SOURCE_CONCEPT_ID,
-    'Pounds' as UNIT_SOURCE_VALUE,
-    v.WT as VALUE_SOURCE_VALUE,
-    'PCORNET_VITAL' as DOMAIN_SOURCE
-FROM NATIVE_PCORNET51_CDM.Vital v
-JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id= v.VITALID AND Mp.Domain_Name='VITAL' AND mp.Target_Domain_Id = 'Measurement' AND mp.DATA_PARTNER_ID=DATAPARTNERID
-                    AND mp.target_concept_id = 4099154 --htv.WT!=0
-LEFT JOIN CDMH_STAGING.N3cds_Domain_Map p on p.Source_Id=v.PATID AND p.Domain_Name='PERSON' AND p.DATA_PARTNER_ID=DATAPARTNERID 
-LEFT JOIN CDMH_STAGING.N3cds_Domain_Map e on e.Source_Id=v.ENCOUNTERID AND e.Domain_Name='ENCOUNTER' AND e.target_domain_id ='Vital' and e.DATA_PARTNER_ID=DATAPARTNERID 
-LEFT JOIN CDMH_STAGING.p2o_vital_term_xwalk vt on vt.src_cdm_tbl='VITAL' AND vt.src_cdm_column='VITAL_SOURCE' AND vt.src_code=v.VITAL_SOURCE
-;
-wt_recordCount := sql%rowcount;
-COMMIT;
+    wt_recordcount := SQL%rowcount;
+    COMMIT;
+    INSERT INTO cdmh_staging.st_omop53_measurement (-- For Diastolic BP
+        data_partner_id,
+        manifest_id,
+        measurement_id,
+        person_id,
+        measurement_concept_id,
+        measurement_date,
+        measurement_datetime,
+        measurement_time,
+        measurement_type_concept_id,
+        operator_concept_id,
+        value_as_number,
+        value_as_concept_id,
+        unit_concept_id,
+        range_low,
+        range_high,
+        provider_id,
+        visit_occurrence_id,
+        visit_detail_id,
+        measurement_source_value,
+        measurement_source_concept_id,
+        unit_source_value,
+        value_source_value,
+        domain_source
+    )--22 items
+        SELECT
+            datapartnerid            AS data_partner_id,
+            manifestid               AS manifest_id,
+            mp.n3cds_domain_map_id   AS measurement_id,
+            p.n3cds_domain_map_id    AS person_id,
+            bp.target_concept_id     AS measurement_concept_id, --concept id for DBPs, from notes
+            v.measure_date           AS measurement_date,
+            v.measure_date           AS measurement_datetime,
+            v.measure_time           AS measurement_time,
+            vt.target_concept_id     AS measurement_type_concept_id,
+            NULL AS operator_concept_id,
+            v.diastolic              AS value_as_number, --Height (in inches) Weight (in pounds) Diastolic blood pressure (in mmHg)
+            NULL AS value_as_concept_id,
+            8876 AS unit_concept_id,
+            NULL AS range_low,
+            NULL AS range_high,
+            NULL AS provider_id,
+            e.n3cds_domain_map_id    AS visit_occurrence_id,
+            NULL AS visit_detail_id,
+            bp.target_concept_name   AS measurement_source_value,
+            NULL AS measurement_source_concept_id,
+            'millimeter mercury column' AS unit_source_value,
+            v.diastolic              AS value_source_value,
+            'PCORNET_VITAL' AS domain_source
+        FROM
+            native_pcornet51_cdm.vital          v
+            JOIN cdmh_staging.person_clean           pc ON v.patid = pc.person_id
+                                                 AND pc.data_partner_id = datapartnerid
+            JOIN cdmh_staging.p2o_vital_term_xwalk   bp ON bp.src_cdm_tbl = 'VITAL'
+                                                         AND bp.src_cdm_column = 'DIASTOLIC_BP_POSITION'
+                                                         AND bp.src_code = v.bp_position
+            JOIN cdmh_staging.n3cds_domain_map       mp ON mp.source_id = v.vitalid
+                                                     AND mp.domain_name = 'VITAL'
+                                                     AND mp.target_domain_id = 'Measurement'
+                                                     AND mp.data_partner_id = datapartnerid
+                                                     AND bp.target_concept_id = mp.target_concept_id --v.DIASTOLIC!=0
+            LEFT JOIN cdmh_staging.n3cds_domain_map       p ON p.source_id = v.patid
+                                                         AND p.domain_name = 'PERSON'
+                                                         AND p.data_partner_id = datapartnerid
+            LEFT JOIN cdmh_staging.n3cds_domain_map       e ON e.source_id = v.encounterid
+                                                         AND e.domain_name = 'ENCOUNTER'
+                                                         AND e.target_domain_id = 'Vital'
+                                                         AND e.data_partner_id = datapartnerid
+            LEFT JOIN cdmh_staging.p2o_vital_term_xwalk   vt ON vt.src_cdm_tbl = 'VITAL'
+                                                              AND vt.src_cdm_column = 'VITAL_SOURCE'
+                                                              AND vt.src_code = v.vital_source;
 
-   INSERT INTO CDMH_STAGING.ST_OMOP53_MEASUREMENT (-- For Diastolic BP
-   DATA_PARTNER_ID,
-   MANIFEST_ID,
-   MEASUREMENT_ID,
-   PERSON_ID,
-   MEASUREMENT_CONCEPT_ID,
-   MEASUREMENT_DATE,
-   MEASUREMENT_DATETIME,
-   MEASUREMENT_TIME,
-   MEASUREMENT_TYPE_CONCEPT_ID,
-   OPERATOR_CONCEPT_ID,
-   VALUE_AS_NUMBER,
-   VALUE_AS_CONCEPT_ID,
-   UNIT_CONCEPT_ID,
-   RANGE_LOW,
-   RANGE_HIGH,
-   PROVIDER_ID,
-   VISIT_OCCURRENCE_ID,
-   VISIT_DETAIL_ID,
-   MEASUREMENT_SOURCE_VALUE,
-   MEASUREMENT_SOURCE_CONCEPT_ID,
-   UNIT_SOURCE_VALUE,
-   VALUE_SOURCE_VALUE,
-   DOMAIN_SOURCE
-)--22 items
+    diastolic_recordcount := SQL%rowcount;
+    COMMIT;
+    INSERT INTO cdmh_staging.st_omop53_measurement (-- For Systolic BP
+        data_partner_id,
+        manifest_id,
+        measurement_id,
+        person_id,
+        measurement_concept_id,
+        measurement_date,
+        measurement_datetime,
+        measurement_time,
+        measurement_type_concept_id,
+        operator_concept_id,
+        value_as_number,
+        value_as_concept_id,
+        unit_concept_id,
+        range_low,
+        range_high,
+        provider_id,
+        visit_occurrence_id,
+        visit_detail_id,
+        measurement_source_value,
+        measurement_source_concept_id,
+        unit_source_value,
+        value_source_value,
+        domain_source
+    )
+        SELECT
+            datapartnerid            AS data_partner_id,
+            manifestid               AS manifest_id,
+            mp.n3cds_domain_map_id   AS measurement_id,
+            p.n3cds_domain_map_id    AS person_id,
+            bp.target_concept_id     AS measurement_concept_id, --concept id for SBPs, from notes
+            v.measure_date           AS measurement_date,
+            NULL AS measurement_datetime,
+            v.measure_time           AS measurement_time,
+            vt.target_concept_id     AS measurement_type_concept_id,
+            NULL AS operator_concept_id,
+            v.systolic               AS value_as_number, --Height (in inches) Weight (in pounds) Diastolic blood pressure (in mmHg)
+            NULL AS value_as_concept_id,
+            8876 AS unit_concept_id,
+            NULL AS range_low,
+            NULL AS range_high,
+            NULL AS provider_id,
+            e.n3cds_domain_map_id    AS visit_occurrence_id,
+            NULL AS visit_detail_id,
+            bp.target_concept_name   AS measurement_source_value,
+            NULL AS measurement_source_concept_id,
+            'millimeter mercury column' AS unit_source_value,
+            v.systolic               AS value_source_value,
+            'PCORNET_VITAL' AS domain_source
+        FROM
+            native_pcornet51_cdm.vital          v
+            JOIN cdmh_staging.person_clean           pc ON v.patid = pc.person_id
+                                                 AND pc.data_partner_id = datapartnerid
+            JOIN cdmh_staging.p2o_vital_term_xwalk   bp ON bp.src_cdm_tbl = 'VITAL'
+                                                         AND bp.src_cdm_column = 'SYSTOLIC_BP_POSITION'
+                                                         AND bp.src_code = v.bp_position
+            JOIN cdmh_staging.n3cds_domain_map       mp ON mp.source_id = v.vitalid
+                                                     AND mp.domain_name = 'VITAL'
+                                                     AND mp.target_domain_id = 'Measurement'
+                                                     AND mp.data_partner_id = datapartnerid
+                                                     AND mp.target_concept_id = bp.target_concept_id -- v.SYSTOLIC!=0
+            LEFT JOIN cdmh_staging.n3cds_domain_map       p ON p.source_id = v.patid
+                                                         AND p.domain_name = 'PERSON'
+                                                         AND p.data_partner_id = datapartnerid
+            LEFT JOIN cdmh_staging.n3cds_domain_map       e ON e.source_id = v.encounterid
+                                                         AND e.domain_name = 'ENCOUNTER'
+                                                         AND e.target_domain_id = 'Vital'
+                                                         AND e.data_partner_id = datapartnerid
+            LEFT JOIN cdmh_staging.p2o_vital_term_xwalk   vt ON vt.src_cdm_tbl = 'VITAL'
+                                                              AND vt.src_cdm_column = 'VITAL_SOURCE'
+                                                              AND vt.src_code = v.vital_source;
 
-    SELECT
-    DATAPARTNERID as data_partner_id,
-    MANIFESTID as manifest_id,
-    mp.N3cds_Domain_Map_Id AS measurement_id,
-    p.N3cds_Domain_Map_Id AS person_id,  
-    bp.TARGET_CONCEPT_ID as measurement_concept_id, --concept id for DBPs, from notes
-    v.measure_date as measurement_date, 
-    v.measure_date as measurement_datetime,
-    v.measure_time as measurement_time, 
-    vt.TARGET_CONCEPT_ID AS measurement_type_concept_id,  
-    NULL as OPERATOR_CONCEPT_ID,
-    v.DIASTOLIC as VALUE_AS_NUMBER, --Height (in inches) Weight (in pounds) Diastolic blood pressure (in mmHg)
-    NULL as VALUE_AS_CONCEPT_ID,
-    8876 as UNIT_CONCEPT_ID,
-    NULL as RANGE_LOW,
-    NULL as RANGE_HIGH,
-    NULL as PROVIDER_ID,
-    e.N3cds_Domain_Map_Id as VISIT_OCCURRENCE_ID,
-    NULL as visit_detail_id,
-    bp.TARGET_CONCEPT_NAME as MEASUREMENT_SOURCE_VALUE,
-    null as MEASUREMENT_SOURCE_CONCEPT_ID,
-    'millimeter mercury column' as UNIT_SOURCE_VALUE,
-    v.DIASTOLIC as VALUE_SOURCE_VALUE,
-    'PCORNET_VITAL' as DOMAIN_SOURCE
-FROM NATIVE_PCORNET51_CDM.Vital v
-JOIN CDMH_STAGING.p2o_vital_term_xwalk bp on bp.src_cdm_tbl='VITAL' AND bp.src_cdm_column='DIASTOLIC_BP_POSITION' AND bp.src_code=v.bp_position 
-JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id= v.VITALID 
-                    AND Mp.Domain_Name='VITAL' AND mp.Target_Domain_Id = 'Measurement' AND mp.DATA_PARTNER_ID=DATAPARTNERID
-                    AND bp.target_concept_id = mp.target_concept_id --v.DIASTOLIC!=0
+    systolic_recordcount := SQL%rowcount;
+    COMMIT;
+    INSERT INTO cdmh_staging.st_omop53_measurement (-- For Original BMI
+        data_partner_id,
+        manifest_id,
+        measurement_id,
+        person_id,
+        measurement_concept_id,
+        measurement_date,
+        measurement_datetime,
+        measurement_time,
+        measurement_type_concept_id,
+        operator_concept_id,
+        value_as_number,
+        value_as_concept_id,
+        unit_concept_id,
+        range_low,
+        range_high,
+        provider_id,
+        visit_occurrence_id,
+        visit_detail_id,
+        measurement_source_value,
+        measurement_source_concept_id,
+        unit_source_value,
+        value_source_value,
+        domain_source
+    )--22 items
+        SELECT
+            datapartnerid            AS data_partner_id,
+            manifestid               AS manifest_id,
+            mp.n3cds_domain_map_id   AS measurement_id,
+            p.n3cds_domain_map_id    AS person_id,
+            mp.target_concept_id     AS measurement_concept_id, --concept id for BMI, from notes
+            v.measure_date           AS measurement_date,
+            NULL AS measurement_datetime,
+            v.measure_time           AS measurement_time,
+            vt.target_concept_id     AS measurement_type_concept_id,
+            NULL AS operator_concept_id,
+            v.original_bmi           AS value_as_number, --Height (in inches) Weight (in pounds) Diastolic blood pressure (in mmHg)
+            NULL AS value_as_concept_id,
+            NULL AS unit_concept_id,
+            NULL AS range_low,
+            NULL AS range_high,
+            NULL AS provider_id,
+            e.n3cds_domain_map_id    AS visit_occurrence_id,
+            NULL AS visit_detail_id,
+            'Original BMI' AS measurement_source_value,
+            NULL AS measurement_source_concept_id,
+            NULL AS unit_source_value,
+            v.original_bmi           AS value_source_value,
+            'PCORNET_VITAL' AS domain_source
+        FROM
+            native_pcornet51_cdm.vital          v
+            JOIN cdmh_staging.person_clean           pc ON v.patid = pc.person_id
+                                                 AND pc.data_partner_id = datapartnerid
+            JOIN cdmh_staging.n3cds_domain_map       mp ON mp.source_id = v.vitalid
+                                                     AND mp.domain_name = 'VITAL'
+                                                     AND mp.target_domain_id = 'Measurement'
+                                                     AND mp.data_partner_id = datapartnerid
+                                                     AND mp.target_concept_id = 4245997 --v.ORIGINAL_BMI!=0
+            LEFT JOIN cdmh_staging.n3cds_domain_map       p ON p.source_id = v.patid
+                                                         AND p.domain_name = 'PERSON'
+                                                         AND p.data_partner_id = datapartnerid
+            LEFT JOIN cdmh_staging.n3cds_domain_map       e ON e.source_id = v.encounterid
+                                                         AND e.domain_name = 'ENCOUNTER'
+                                                         AND e.target_domain_id = 'Vital'
+                                                         AND e.data_partner_id = datapartnerid
+            LEFT JOIN cdmh_staging.p2o_vital_term_xwalk   vt ON vt.src_cdm_tbl = 'VITAL'
+                                                              AND vt.src_cdm_column = 'VITAL_SOURCE'
+                                                              AND vt.src_code = v.vital_source;
 
-LEFT JOIN CDMH_STAGING.N3cds_Domain_Map p on p.Source_Id=v.PATID AND p.Domain_Name='PERSON' AND p.DATA_PARTNER_ID=DATAPARTNERID 
-LEFT JOIN CDMH_STAGING.N3cds_Domain_Map e on e.Source_Id=v.ENCOUNTERID AND e.Domain_Name='ENCOUNTER' and e.target_domain_id ='Vital' AND e.DATA_PARTNER_ID=DATAPARTNERID 
-LEFT JOIN CDMH_STAGING.p2o_vital_term_xwalk vt on vt.src_cdm_tbl='VITAL' AND vt.src_cdm_column='VITAL_SOURCE' AND vt.src_code=v.VITAL_SOURCE
-;
-Diastolic_Recordcount := sql%rowcount;
-commit ;
+    bmi_recordcount := SQL%rowcount;
+    COMMIT;
+    DELETE FROM cdmh_staging.st_omop53_observation
+    WHERE
+        data_partner_id = datapartnerid
+        AND domain_source = 'PCORNET_VITAL';
 
-   INSERT INTO CDMH_STAGING.ST_OMOP53_MEASUREMENT (-- For Systolic BP
-   DATA_PARTNER_ID,
-   MANIFEST_ID,
-   MEASUREMENT_ID,
-   PERSON_ID,
-   MEASUREMENT_CONCEPT_ID,
-   MEASUREMENT_DATE,
-   MEASUREMENT_DATETIME,
-   MEASUREMENT_TIME,
-   MEASUREMENT_TYPE_CONCEPT_ID,
-   OPERATOR_CONCEPT_ID,
-   VALUE_AS_NUMBER,
-   VALUE_AS_CONCEPT_ID,
-   UNIT_CONCEPT_ID,
-   RANGE_LOW,
-   RANGE_HIGH,
-   PROVIDER_ID,
-   VISIT_OCCURRENCE_ID,
-   VISIT_DETAIL_ID,
-   MEASUREMENT_SOURCE_VALUE,
-   MEASUREMENT_SOURCE_CONCEPT_ID,
-   UNIT_SOURCE_VALUE,
-   VALUE_SOURCE_VALUE,
-   DOMAIN_SOURCE
-)
+    COMMIT;
+    INSERT INTO cdmh_staging.st_omop53_observation (
+        data_partner_id,
+        manifest_id,
+        observation_id,
+        person_id,
+        observation_concept_id,
+        observation_date,
+        observation_datetime,
+        observation_type_concept_id,
+        value_as_number,
+        value_as_string,
+        value_as_concept_id,
+        qualifier_concept_id,
+        unit_concept_id,
+        provider_id,
+        visit_occurrence_id,
+        visit_detail_id,
+        observation_source_value,
+        observation_source_concept_id,
+        unit_source_value,
+        qualifier_source_value,
+        domain_source
+    )
+        SELECT
+            datapartnerid            AS data_partner_id,
+            manifestid               AS manifest_id,
+            mp.n3cds_domain_map_id   AS observation_id,
+            p.n3cds_domain_map_id    AS person_id,
+            mp.target_concept_id     AS observation_concept_id, --concept id for Smoking, from notes
+            v.measure_date           AS observation_date,
+            v.measure_date           AS observation_datetime,
+            vt.target_concept_id     AS observation_type_concept_id,
+            NULL AS value_as_number,
+            s.target_concept_name    AS value_as_string,
+            s.target_concept_id      AS value_as_concept_id,
+            NULL AS qualifier_concept_id,
+            NULL AS unit_concept_id,
+            NULL AS provider_id,
+            e.n3cds_domain_map_id    AS visit_occurrence_id,
+            NULL AS visit_detail_id,
+            concat('VITAL.SMOKING= ', v.smoking) AS observation_source_value,
+            v.smoking                AS observation_source_concept_id,
+            NULL AS unit_source_value,
+            NULL AS qualifier_source_value,
+            'PCORNET_VITAL' AS domain_source
+        FROM
+            native_pcornet51_cdm.vital          v
+            JOIN cdmh_staging.person_clean           pc ON v.patid = pc.person_id
+                                                 AND pc.data_partner_id = datapartnerid
+            JOIN cdmh_staging.p2o_vital_term_xwalk   s ON s.src_cdm_tbl = 'VITAL'
+                                                        AND s.src_cdm_column = 'SMOKING'
+                                                        AND s.src_code = v.smoking
+            JOIN cdmh_staging.n3cds_domain_map       mp ON mp.source_id = v.vitalid
+                                                     AND mp.domain_name = 'VITAL'
+                                                     AND mp.target_domain_id = 'Observation'
+                                                     AND mp.data_partner_id = datapartnerid
+                                                     AND s.target_concept_id = mp.target_concept_id
+            LEFT JOIN cdmh_staging.n3cds_domain_map       p ON p.source_id = v.patid
+                                                         AND p.domain_name = 'PERSON'
+                                                         AND p.data_partner_id = datapartnerid
+            LEFT JOIN cdmh_staging.n3cds_domain_map       e ON e.source_id = v.encounterid
+                                                         AND e.domain_name = 'ENCOUNTER'
+                                                         AND e.data_partner_id = datapartnerid
+            LEFT JOIN cdmh_staging.p2o_vital_term_xwalk   vt ON vt.src_cdm_tbl = 'VITAL'
+                                                              AND vt.src_cdm_column = 'VITAL_SOURCE'
+                                                              AND vt.src_code = v.vital_source;
 
-    SELECT
-    DATAPARTNERID as data_partner_id,
-    MANIFESTID as manifest_id,
-    mp.N3cds_Domain_Map_Id AS measurement_id,
-    p.N3cds_Domain_Map_Id AS person_id,  
-    bp.TARGET_CONCEPT_ID as measurement_concept_id, --concept id for SBPs, from notes
-    v.measure_date as measurement_date, 
-    null as measurement_datetime,
-    v.measure_time as measurement_time, 
-    vt.TARGET_CONCEPT_ID AS measurement_type_concept_id,  
-    NULL as OPERATOR_CONCEPT_ID,
-    v.SYSTOLIC as VALUE_AS_NUMBER, --Height (in inches) Weight (in pounds) Diastolic blood pressure (in mmHg)
-    NULL as VALUE_AS_CONCEPT_ID,
-    8876 as UNIT_CONCEPT_ID,
-    NULL as RANGE_LOW,
-    NULL as RANGE_HIGH,
-    NULL as PROVIDER_ID,
-    e.N3cds_Domain_Map_Id as VISIT_OCCURRENCE_ID,
-    NULL as visit_detail_id,
-    bp.TARGET_CONCEPT_NAME as MEASUREMENT_SOURCE_VALUE,
-    null as MEASUREMENT_SOURCE_CONCEPT_ID,
-    'millimeter mercury column' as UNIT_SOURCE_VALUE,
-    v.SYSTOLIC as VALUE_SOURCE_VALUE,
-    'PCORNET_VITAL' as DOMAIN_SOURCE
-FROM NATIVE_PCORNET51_CDM.Vital v
-JOIN CDMH_STAGING.p2o_vital_term_xwalk bp on bp.src_cdm_tbl='VITAL' AND bp.src_cdm_column='SYSTOLIC_BP_POSITION' AND bp.src_code=v.bp_position 
-JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id= v.VITALID 
-                    AND Mp.Domain_Name='VITAL' AND mp.Target_Domain_Id = 'Measurement' AND mp.DATA_PARTNER_ID=DATAPARTNERID
-                    AND mp.target_concept_id = bp.target_concept_id -- v.SYSTOLIC!=0
-
-LEFT JOIN CDMH_STAGING.N3cds_Domain_Map p on p.Source_Id=v.PATID AND p.Domain_Name='PERSON' AND p.DATA_PARTNER_ID=DATAPARTNERID 
-LEFT JOIN CDMH_STAGING.N3cds_Domain_Map e on e.Source_Id=v.ENCOUNTERID AND e.Domain_Name='ENCOUNTER' and e.target_domain_id= 'Vital' AND e.DATA_PARTNER_ID=DATAPARTNERID 
-LEFT JOIN CDMH_STAGING.p2o_vital_term_xwalk vt on vt.src_cdm_tbl='VITAL' AND vt.src_cdm_column='VITAL_SOURCE' AND vt.src_code=v.VITAL_SOURCE
-;
-Systolic_Recordcount := sql%rowcount;
-commit ;
-
-   INSERT INTO CDMH_STAGING.ST_OMOP53_MEASUREMENT (-- For Original BMI
-   DATA_PARTNER_ID,
-   MANIFEST_ID,
-   MEASUREMENT_ID,
-   PERSON_ID,
-   MEASUREMENT_CONCEPT_ID,
-   MEASUREMENT_DATE,
-   MEASUREMENT_DATETIME,
-   MEASUREMENT_TIME,
-   MEASUREMENT_TYPE_CONCEPT_ID,
-   OPERATOR_CONCEPT_ID,
-   VALUE_AS_NUMBER,
-   VALUE_AS_CONCEPT_ID,
-   UNIT_CONCEPT_ID,
-   RANGE_LOW,
-   RANGE_HIGH,
-   PROVIDER_ID,
-   VISIT_OCCURRENCE_ID,
-   VISIT_DETAIL_ID,
-   MEASUREMENT_SOURCE_VALUE,
-   MEASUREMENT_SOURCE_CONCEPT_ID,
-   UNIT_SOURCE_VALUE,
-   VALUE_SOURCE_VALUE,
-   DOMAIN_SOURCE
-)--22 items
-
-    SELECT
-    DATAPARTNERID as data_partner_id,
-    MANIFESTID as manifest_id,
-    mp.N3cds_Domain_Map_Id AS measurement_id,
-    p.N3cds_Domain_Map_Id AS person_id,  
-    mp.target_concept_id as measurement_concept_id, --concept id for BMI, from notes
-    v.measure_date as measurement_date, 
-    null as measurement_datetime,
-    v.measure_time as measurement_time, 
-    vt.TARGET_CONCEPT_ID AS measurement_type_concept_id,  
-    NULL as OPERATOR_CONCEPT_ID,
-    v.ORIGINAL_BMI as VALUE_AS_NUMBER, --Height (in inches) Weight (in pounds) Diastolic blood pressure (in mmHg)
-    NULL as VALUE_AS_CONCEPT_ID,
-    NULL as UNIT_CONCEPT_ID,
-    NULL as RANGE_LOW,
-    NULL as RANGE_HIGH,
-    NULL as PROVIDER_ID,
-    e.N3cds_Domain_Map_Id as VISIT_OCCURRENCE_ID,
-    NULL as visit_detail_id,
-    'Original BMI' as MEASUREMENT_SOURCE_VALUE,
-    NULL as MEASUREMENT_SOURCE_CONCEPT_ID,
-    null as UNIT_SOURCE_VALUE,
-    v.ORIGINAL_BMI as VALUE_SOURCE_VALUE,
-    'PCORNET_VITAL' as DOMAIN_SOURCE
-FROM NATIVE_PCORNET51_CDM.Vital v
-JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id= v.VITALID 
-                    AND Mp.Domain_Name='VITAL' AND mp.Target_Domain_Id = 'Measurement' AND mp.DATA_PARTNER_ID=DATAPARTNERID
-                    AND mp.target_concept_id = 4245997 --v.ORIGINAL_BMI!=0
-LEFT JOIN CDMH_STAGING.N3cds_Domain_Map p on p.Source_Id=v.PATID AND p.Domain_Name='PERSON' AND p.DATA_PARTNER_ID=DATAPARTNERID 
-LEFT JOIN CDMH_STAGING.N3cds_Domain_Map e on e.Source_Id=v.ENCOUNTERID AND e.Domain_Name='ENCOUNTER' and e.target_domain_id = 'Vital' AND e.DATA_PARTNER_ID=DATAPARTNERID 
-LEFT JOIN CDMH_STAGING.p2o_vital_term_xwalk vt on vt.src_cdm_tbl='VITAL' AND vt.src_cdm_column='VITAL_SOURCE' AND vt.src_code=v.VITAL_SOURCE
-;
-Bmi_Recordcount := sql%rowcount;
-COMMIT;
-
-INSERT INTO CDMH_STAGING.ST_OMOP53_OBSERVATION
-   (
-  DATA_PARTNER_ID 
-,  MANIFEST_ID 
-, OBSERVATION_ID 
-, PERSON_ID  
-, OBSERVATION_CONCEPT_ID  
-, OBSERVATION_DATE  
-, OBSERVATION_DATETIME  
-, OBSERVATION_TYPE_CONCEPT_ID 
-, VALUE_AS_NUMBER
-, VALUE_AS_STRING
-, VALUE_AS_CONCEPT_ID
-, QUALIFIER_CONCEPT_ID
-, UNIT_CONCEPT_ID 
-, PROVIDER_ID 
-, VISIT_OCCURRENCE_ID 
-, VISIT_DETAIL_ID 
-, OBSERVATION_SOURCE_VALUE 
-, OBSERVATION_SOURCE_CONCEPT_ID 
-, UNIT_SOURCE_VALUE 
-, QUALIFIER_SOURCE_VALUE 
-, DOMAIN_SOURCE
-)
-
-    SELECT
-    DATAPARTNERID as data_partner_id,
-    MANIFESTID as manifest_id,
-    mp.N3cds_Domain_Map_Id AS OBSERVATION_ID,
-    p.N3cds_Domain_Map_Id AS person_id,  
-    mp.target_concept_id as OBSERVATION_CONCEPT_ID, --concept id for Smoking, from notes
-    v.measure_date as OBSERVATION_DATE, 
-    v.measure_date as OBSERVATION_DATETIME, 
-    vt.TARGET_CONCEPT_ID AS OBSERVATION_TYPE_CONCEPT_ID,  
-    NULL as VALUE_AS_NUMBER,
-    s.TARGET_CONCEPT_NAME as VALUE_AS_STRING,
-    s.TARGET_CONCEPT_ID as VALUE_AS_CONCEPT_ID,
-    NULL as QUALIFIER_CONCEPT_ID,
-    NULL as UNIT_CONCEPT_ID,
-    NULL as PROVIDER_ID,
-    e.N3cds_Domain_Map_Id as VISIT_OCCURRENCE_ID,
-    NULL as visit_detail_id,
-    CONCAT('VITAL.SMOKING= ',v.SMOKING) as OBSERVATION_SOURCE_VALUE,
-    v.SMOKING as OBSERVATION_SOURCE_CONCEPT_ID,
-    NULL as UNIT_SOURCE_VALUE,
-    NULL as QUALIFIER_SOURCE_VALUE,
-    'PCORNET_VITAL' as DOMAIN_SOURCE
-
-FROM NATIVE_PCORNET51_CDM.Vital v
-JOIN CDMH_STAGING.p2o_vital_term_xwalk s on s.src_cdm_tbl='VITAL' AND s.src_cdm_column='SMOKING' AND s.src_code = v.SMOKING
-JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id= v.VITALID 
-                    AND Mp.Domain_Name='VITAL' AND mp.Target_Domain_Id = 'Observation' AND mp.DATA_PARTNER_ID=DATAPARTNERID
-                    AND s.target_concept_id = mp.target_concept_id
-LEFT JOIN CDMH_STAGING.N3cds_Domain_Map p on p.Source_Id=v.PATID AND p.Domain_Name='PERSON' AND p.DATA_PARTNER_ID=DATAPARTNERID 
-LEFT JOIN CDMH_STAGING.N3cds_Domain_Map e on e.Source_Id=v.ENCOUNTERID AND e.Domain_Name='ENCOUNTER' AND e.DATA_PARTNER_ID=DATAPARTNERID 
-LEFT JOIN CDMH_STAGING.p2o_vital_term_xwalk vt on vt.src_cdm_tbl='VITAL' AND vt.src_cdm_column='VITAL_SOURCE' AND vt.src_code=v.VITAL_SOURCE
-;
-smoking_recordCount:=SQL%ROWCOUNT;
-commit;
-
-   INSERT INTO CDMH_STAGING.ST_OMOP53_OBSERVATION
-   (
-  DATA_PARTNER_ID 
-,  MANIFEST_ID 
-, OBSERVATION_ID 
-, PERSON_ID  
-, OBSERVATION_CONCEPT_ID  
-, OBSERVATION_DATE  
-, OBSERVATION_DATETIME  
-, OBSERVATION_TYPE_CONCEPT_ID 
-, VALUE_AS_NUMBER
-, VALUE_AS_STRING
-, VALUE_AS_CONCEPT_ID
-, QUALIFIER_CONCEPT_ID
-, UNIT_CONCEPT_ID 
-, PROVIDER_ID 
-, VISIT_OCCURRENCE_ID 
-, VISIT_DETAIL_ID 
-, OBSERVATION_SOURCE_VALUE 
-, OBSERVATION_SOURCE_CONCEPT_ID 
-, UNIT_SOURCE_VALUE 
-, QUALIFIER_SOURCE_VALUE 
-, DOMAIN_SOURCE
-
-)
-
-    SELECT
-    DATAPARTNERID as data_partner_id,
-    MANIFESTID as manifest_id,
-    mp.N3cds_Domain_Map_Id AS OBSERVATION_ID,
-    p.N3cds_Domain_Map_Id AS person_id,  
-    mp.target_concept_id as OBSERVATION_CONCEPT_ID, --concept id for TOBACCO, from notes
-    v.measure_date as OBSERVATION_DATE, 
-    v.measure_date as OBSERVATION_DATETIME, 
-    vt.TARGET_CONCEPT_ID AS OBSERVATION_TYPE_CONCEPT_ID,  
-    NULL as VALUE_AS_NUMBER,
-    s.TARGET_CONCEPT_NAME as VALUE_AS_STRING,
-    s.TARGET_CONCEPT_ID as VALUE_AS_CONCEPT_ID,
-    NULL as QUALIFIER_CONCEPT_ID,
-    NULL as UNIT_CONCEPT_ID,
-    NULL as PROVIDER_ID,
-    e.N3cds_Domain_Map_Id as VISIT_OCCURRENCE_ID,
-    NULL as visit_detail_id,
-    CONCAT('VITAL.TOBACCO= ',v.TOBACCO) as OBSERVATION_SOURCE_VALUE,
+    smoking_recordcount := SQL%rowcount;
+    COMMIT;
+    INSERT INTO cdmh_staging.st_omop53_observation (
+        data_partner_id,
+        manifest_id,
+        observation_id,
+        person_id,
+        observation_concept_id,
+        observation_date,
+        observation_datetime,
+        observation_type_concept_id,
+        value_as_number,
+        value_as_string,
+        value_as_concept_id,
+        qualifier_concept_id,
+        unit_concept_id,
+        provider_id,
+        visit_occurrence_id,
+        visit_detail_id,
+        observation_source_value,
+        observation_source_concept_id,
+        unit_source_value,
+        qualifier_source_value,
+        domain_source
+    )
+        SELECT
+            datapartnerid            AS data_partner_id,
+            manifestid               AS manifest_id,
+            mp.n3cds_domain_map_id   AS observation_id,
+            p.n3cds_domain_map_id    AS person_id,
+            mp.target_concept_id     AS observation_concept_id, --concept id for TOBACCO, from notes
+            v.measure_date           AS observation_date,
+            v.measure_date           AS observation_datetime,
+            vt.target_concept_id     AS observation_type_concept_id,
+            NULL AS value_as_number,
+            s.target_concept_name    AS value_as_string,
+            s.target_concept_id      AS value_as_concept_id,
+            NULL AS qualifier_concept_id,
+            NULL AS unit_concept_id,
+            NULL AS provider_id,
+            e.n3cds_domain_map_id    AS visit_occurrence_id,
+            NULL AS visit_detail_id,
+            concat('VITAL.TOBACCO= ', v.tobacco) AS observation_source_value,
     --NULL as OBSERVATION_SOURCE_VALUE,
-    v.TOBACCO as OBSERVATION_SOURCE_CONCEPT_ID,
-    NULL as UNIT_SOURCE_VALUE,
-    NULL as QUALIFIER_SOURCE_VALUE,
-    'PCORNET_VITAL' as DOMAIN_SOURCE
+            v.tobacco                AS observation_source_concept_id,
+            NULL AS unit_source_value,
+            NULL AS qualifier_source_value,
+            'PCORNET_VITAL' AS domain_source
+        FROM
+            native_pcornet51_cdm.vital          v
+            JOIN cdmh_staging.person_clean           pc ON v.patid = pc.person_id
+                                                 AND pc.data_partner_id = datapartnerid
+            JOIN cdmh_staging.p2o_vital_term_xwalk   s ON s.src_cdm_tbl = 'VITAL'
+                                                        AND s.src_cdm_column = 'TOBACCO'
+                                                        AND s.src_code = v.tobacco
+            JOIN cdmh_staging.n3cds_domain_map       mp ON mp.source_id = v.vitalid
+                                                     AND mp.domain_name = 'VITAL'
+                                                     AND mp.target_domain_id = 'Observation'
+                                                     AND mp.data_partner_id = datapartnerid
+                                                     AND s.target_concept_id = mp.target_concept_id
+            LEFT JOIN cdmh_staging.n3cds_domain_map       p ON p.source_id = v.patid
+                                                         AND p.domain_name = 'PERSON'
+                                                         AND p.data_partner_id = datapartnerid
+            LEFT JOIN cdmh_staging.n3cds_domain_map       e ON e.source_id = v.encounterid
+                                                         AND e.domain_name = 'ENCOUNTER'
+                                                         AND e.data_partner_id = datapartnerid
+            LEFT JOIN cdmh_staging.p2o_vital_term_xwalk      vt ON vt.src_cdm_tbl = 'VITAL'
+                                                           AND vt.src_cdm_column = 'VITAL_SOURCE'
+                                                           AND vt.src_code = v.vital_source;
 
-FROM NATIVE_PCORNET51_CDM.Vital v
-JOIN CDMH_STAGING.p2o_vital_term_xwalk s on s.src_cdm_tbl='VITAL' AND s.src_cdm_column='TOBACCO' AND s.src_code = v.TOBACCO
-JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id= v.VITALID 
-                    AND Mp.Domain_Name='VITAL' AND mp.Target_Domain_Id = 'Observation' AND mp.DATA_PARTNER_ID=DATAPARTNERID
-                    AND s.target_concept_id = mp.target_concept_id
-LEFT JOIN CDMH_STAGING.N3cds_Domain_Map p on p.Source_Id=v.PATID AND p.Domain_Name='PERSON' AND p.DATA_PARTNER_ID=DATAPARTNERID 
-LEFT JOIN CDMH_STAGING.N3cds_Domain_Map e on e.Source_Id=v.ENCOUNTERID AND e.Domain_Name='ENCOUNTER' AND e.DATA_PARTNER_ID=DATAPARTNERID 
-LEFT JOIN JHU_SHONG.p2o_vital_term_xwalk vt on vt.src_cdm_tbl='VITAL' AND vt.src_cdm_column='VITAL_SOURCE' AND vt.src_code=v.VITAL_SOURCE
-;
-tobacco_recordCount:=SQL%ROWCOUNT;
-commit;
-
-
-RECORDCOUNT  := Bmi_Recordcount+ht_recordCount+wt_recordCount+Systolic_Recordcount+diastolic_recordcount+smoking_recordCount+tobacco_recordCount;
-DBMS_OUTPUT.put_line(RECORDCOUNT ||' PCORnet VITAL source data inserted to following staging tables, ST_OMOP53_MEASUREMENT/ST_OMOP53_OBSERVATION, successfully.'); 
-
-END SP_P2O_SRC_VITAL;
+    tobacco_recordcount := SQL%rowcount;
+    COMMIT;
+    recordcount := bmi_recordcount + ht_recordcount + wt_recordcount + systolic_recordcount + diastolic_recordcount + smoking_recordcount
+    + tobacco_recordcount;
+    dbms_output.put_line(recordcount || ' PCORnet VITAL source data inserted to following staging tables, ST_OMOP53_MEASUREMENT/ST_OMOP53_OBSERVATION, successfully.'
+    );
+END sp_p2o_src_vital;
