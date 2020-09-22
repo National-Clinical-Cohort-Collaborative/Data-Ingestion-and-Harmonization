@@ -1,13 +1,5 @@
-/*******************************************************************************************************
-project : N3C DI&H
-Date: 6/16/2020
-Author: Stephanie Hong / Sandeep Naredla / Richard Zhu / Tanner Zhang
-Description : Stored Procedure to insert PCORnet Condition into staging table
-Stored Procedure: SP_P2O_SRC_DEATH_CAUSE:
-Parameters: DATAPARTNERID IN NUMBER, MANIFESTID IN NUMBER, RECORDCOUNT OUT NUMBER
-********************************************************************************************************/
 
-CREATE PROCEDURE CDMH_STAGING.SP_P2O_SRC_DEATH_CAUSE 
+CREATE PROCEDURE              CDMH_STAGING.SP_P2O_SRC_DEATH_CAUSE 
 
 (
 
@@ -18,7 +10,15 @@ CREATE PROCEDURE CDMH_STAGING.SP_P2O_SRC_DEATH_CAUSE
   RECORDCOUNT OUT NUMBER
 
 ) AS
-
+/********************************************************************************************************
+project : N3C DI&H
+     Name:      SP_P2O_SRC_DEATH_CAUSE
+     Purpose:    
+     Source:
+     Revisions:
+     Ver          Date        Author               Description
+     0.1         5/16/2020 SHONG Initial Version
+********************************************************************************************************/
 BEGIN
 
  
