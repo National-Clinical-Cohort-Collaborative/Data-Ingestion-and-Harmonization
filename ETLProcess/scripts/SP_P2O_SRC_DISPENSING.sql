@@ -1,15 +1,7 @@
+---------------------------------------------------------------------------
+--  File : CDMH_STAGING.SP_P2O_SRC_DISPENSING  - Tuesday-September-22-2020   
+---------------------------------------------------------------------------
 
-/**********************************************************************************
-project : N3C DI&H
-Date: 6/16/2020
-Author: Richard Zhu / Tanner Zhang/ Stephanie Hong / Sandeep Naredla
-Description : Stored Procedure to insert PCORnet Condition into staging table
-Stored Procedure: SP_P2O_SRC_DISPENSING:
-Parameters: DATAPARTNERID IN NUMBER, MANIFESTID IN NUMBER, RECORDCOUNT OUT NUMBER
-Edit History::
-6/16/2020 	SHONG Initial Version
-
-***********************************************************************************/
 CREATE PROCEDURE CDMH_STAGING.SP_P2O_SRC_DISPENSING 
 
 (
