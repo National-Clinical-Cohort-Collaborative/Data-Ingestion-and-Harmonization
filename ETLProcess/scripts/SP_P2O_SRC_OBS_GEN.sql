@@ -9,12 +9,14 @@ CREATE PROCEDURE                                        CDMH_STAGING.SP_P2O_SRC_
      Purpose:    Loading The NATIVE_PCORNET51_CDM.OBS_GEN Table into 
                 1. CDMH_STAGING.ST_OMOP53_PROCEDURE_OCCURRENCE - ventilation data
      Source:
-     Revisions:
+     Edit History :
      Ver         Date        Author              Description
      0.1         8/30/20     SHONG               Intial Version.
                                                  Insert ventilation data to artificial respiration procedure_occurrence domain with 4230167 concept id
      0.2         8/31/20     DIH                 Generate visit occurrence record and use that value in procedure occurrence for artifical respiration procedure
      0.3         9/9/2020    DIH                 Updated the *_type_concept_id logic
+     
+     
 ******************************************************************************************************************************************************/
     proc_recordcount    NUMBER;
     visit_recordcount   NUMBER;
