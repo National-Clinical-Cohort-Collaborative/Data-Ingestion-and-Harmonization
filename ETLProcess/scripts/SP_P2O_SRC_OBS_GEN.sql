@@ -1,5 +1,5 @@
 
-CREATE PROCEDURE                                        CDMH_STAGING.SP_P2O_SRC_OBS_GEN (
+CREATE PROCEDURE                                                                  CDMH_STAGING.SP_P2O_SRC_OBS_GEN (
     datapartnerid   IN    NUMBER,
     manifestid      IN    NUMBER,
     recordcount     OUT   NUMBER
@@ -8,15 +8,14 @@ CREATE PROCEDURE                                        CDMH_STAGING.SP_P2O_SRC_
      Name:      SP_P2O_SRC_OBS_GEN
      Purpose:    Loading The NATIVE_PCORNET51_CDM.OBS_GEN Table into 
                 1. CDMH_STAGING.ST_OMOP53_PROCEDURE_OCCURRENCE - ventilation data
-     Source:
-     Edit History :
+     Source Revisions:
+     Edit History : Revisions:
      Ver         Date        Author              Description
      0.1         8/30/20     SHONG               Intial Version.
                                                  Insert ventilation data to artificial respiration procedure_occurrence domain with 4230167 concept id
      0.2         8/31/20     DIH                 Generate visit occurrence record and use that value in procedure occurrence for artifical respiration procedure
-     0.3         9/9/2020    DIH                 Updated the *_type_concept_id logic
-     
-     
+     0.3         9/09/2020    DIH                 Updated the *_type_concept_id logic
+     0.4         9/28/2020  SHONG                For the ICUVISIT inserts from OBS_GEN src should check for OBSGEN_CODE=2000
 ******************************************************************************************************************************************************/
     proc_recordcount    NUMBER;
     visit_recordcount   NUMBER;
@@ -91,7 +90,7 @@ BEGIN
                                                          AND e.data_partner_id = datapartnerid
         WHERE
             obg.obsgen_type = 'PC_COVID'
-            AND obg.obsgen_code = 3000
+            AND obg.obsgen_code = 2000
             AND obg.obsgen_source = 'DR'
             AND obg.obsgen_result_text = 'Y';
 
