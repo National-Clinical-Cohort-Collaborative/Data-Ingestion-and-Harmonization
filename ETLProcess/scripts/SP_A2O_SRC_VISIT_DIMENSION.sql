@@ -1,18 +1,19 @@
 
-CREATE PROCEDURE CDMH_STAGING.SP_A2O_SRC_VISIT_DIMENSION  
+CREATE PROCEDURE                           CDMH_STAGING.SP_A2O_SRC_VISIT_DIMENSION  
 (
   DATAPARTNERID IN NUMBER 
 , MANIFESTID IN NUMBER 
 , RECORDCOUNT OUT NUMBER
 ) AS 
-/********************************************************************************************************
-     Name:      SP_A2O_SRC_VISIT_DIMENSION
-     Purpose:    Loading NATIVE_I2B2ACT_CDM.patient_dimension to staging table ST_OMOP53_VISIT_OCCURRENCE
-     Source:    NATIVE_I2B2ACT_CDM.visit_dimension
-     Revisions:
-     Ver        Date        Author           Description
-     0.1         7/20/20     SHONG           Initial version.
-********************************************************************************************************/ 
+/*************************************************************************************************************************************
+    FileName:   SP_A2O_SRC_VISIT_DIMENSION
+    Purpose:     BUILD CODES FOUND IN THE observation_fact table and build the a2o_code_xwalk_standard table with OMOP target concept ids
+    Author: Stephanie Hong
+    Edit History:
+     Ver      Date      Author    Description
+     0.1      7/17/20   SHONG       Initial version
+     0.2      9/22/20   SNAREDLA    USE visit_dimension_id AS SOURCE ID which is a concatenation of encounter_num and patient_num
+**************************************************************************************************************************************/
 encCnt number ;
 
 BEGIN
@@ -68,12 +69,9 @@ INSERT INTO CDMH_STAGING.ST_OMOP53_VISIT_OCCURRENCE (
         'I2B2ACT_VISIT_DIMENSION' as DOMAIN_SOURCE
         FROM NATIVE_I2B2ACT_CDM.visit_dimension enc
         JOIN CDMH_STAGING.PERSON_CLEAN pc on enc.patient_num=pc.PERSON_ID and pc.DATA_PARTNER_ID=DATAPARTNERID
-        JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id= enc.encounter_NUM AND Mp.Domain_Name='VISIT_DIMENSION' AND mp.Target_Domain_Id = 'Visit' AND mp.DATA_PARTNER_ID=DATAPARTNERID
+        JOIN CDMH_STAGING.N3cds_Domain_Map mp on Mp.Source_Id= enc.visit_dimension_id AND Mp.Domain_Name='VISIT_DIMENSION' AND mp.Target_Domain_Id = 'Visit' AND mp.DATA_PARTNER_ID=DATAPARTNERID
         LEFT JOIN CDMH_STAGING.N3cds_Domain_Map p on p.Source_Id=enc.PATIENT_NUM AND p.Domain_Name='PERSON' AND p.DATA_PARTNER_ID=DATAPARTNERID
         LEFT JOIN CDMH_STAGING.visit_xwalk vx ON vx.cdm_tbl='VISIT_DIMENSION' AND vx.CDM_NAME='I2B2ACT' AND vx.src_visit_type = enc.inout_cd
-        -- no such type in i2b2ACT
---        LEFT JOIN CDMH_STAGING.p2o_admitting_source_xwalk vsrc ON vx.cdm_tbl='VISIT_DIMENSION' AND vx.CDM_NAME='I2B2ACT' AND vsrc.src_admitting_source_type=enc.admitting_source 
---        LEFT JOIN CDMH_STAGING.p2o_discharge_status_xwalk disp on disp.cdm_tbl='VISIT_DIMENSION' AND disp.CDM_SOURCE='I2B2ACT' AND disp.src_discharge_status =enc.discharge_status 
         ;
 
     encCnt := sql%rowcount;
