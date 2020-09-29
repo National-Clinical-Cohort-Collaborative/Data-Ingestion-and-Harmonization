@@ -3,12 +3,12 @@ project : N3C DI&H
 Date: 5/16/2020
 Authors: 
 Stephanie Hong, Sandeep Naredla, Richard Zhu, Tanner Zhang
-Stored Procedure : SP_DM_OMOP_DRUG_ERA
+Stored Procedure : SP_DM_OMOP_DOSE_ERA
 
 Description : insert to N3CDS_DOMAIN_MAP
 
 *************************************************************/
-CREATE PROCEDURE CDMH_STAGING.SP_DM_OMOP_DRUG_ERA 
+CREATE PROCEDURE              CDMH_STAGING.SP_DM_OMOP_DRUG_ERA 
 (
   DATAPARTNERID IN NUMBER 
 , MANIFESTID IN NUMBER 
@@ -25,12 +25,15 @@ insert_rec_count NUMBER;
 *  Cursor for selecting table
 **************************************************************/
 CURSOR Drug_Cursor IS
-SELECT distinct DRUG_ERA_ID 
+SELECT   /*+ index(mp,IDX_DOMAIN_MAP_DATAPARTNERID) */ distinct DRUG_ERA_ID 
 FROM "NATIVE_OMOP531_CDM"."DRUG_ERA" 
 JOIN CDMH_STAGING.PERSON_CLEAN ON DRUG_ERA.PERSON_ID=PERSON_CLEAN.PERSON_ID 
                                 AND PERSON_CLEAN.DATA_PARTNER_ID=DATAPARTNERID  
 LEFT JOIN CDMH_STAGING.N3CDS_DOMAIN_MAP mp on DRUG_ERA.DRUG_ERA_ID=Mp.Source_Id 
-                                AND mp.DOMAIN_NAME='DRUG_ERA' AND mp.DATA_PARTNER_ID=DATAPARTNERID;
+                                AND mp.DOMAIN_NAME='DRUG_ERA' AND mp.DATA_PARTNER_ID=DATAPARTNERID
+                                WHERE mp.N3CDS_DOMAIN_MAP_ID IS NULL
+                                ;
+                                
 TYPE l_val_cur IS TABLE OF NATIVE_OMOP531_CDM.DRUG_ERA.DRUG_ERA_ID%TYPE;
 values_rec l_val_cur;
 
