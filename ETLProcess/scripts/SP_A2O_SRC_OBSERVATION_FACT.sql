@@ -1,5 +1,5 @@
 
-CREATE PROCEDURE                             CDMH_STAGING.SP_A2O_SRC_OBSERVATION_FACT (
+CREATE PROCEDURE                                                                    CDMH_STAGING.SP_A2O_SRC_OBSERVATION_FACT (
     datapartnerid   IN    NUMBER,
     manifestid      IN    NUMBER,
     recordcount     OUT   NUMBER
@@ -24,7 +24,8 @@ CREATE PROCEDURE                             CDMH_STAGING.SP_A2O_SRC_OBSERVATION
      0.5       8/21/20   DIH       Update Measurement unit_concept_id, range_high and range_low to null
      0.6       8/24/20   DIH       Added drug_exposure query when concept_cd='ACT|LOCAL:REMDESIVIR'
      0.7       8/29/20   SHONG Updated to include the following tests:  UMLS:C1335447%' 'UMLS:C1611271%' 'UMLS:C4303880%' 'UMLS:C1334932%'
-
+     0.8       9/21/20   DIH       Updated logic (join condition) for Visit_encounter_id
+     0.9       9/24/20   SHONG     Insert covid lab test results to measurement domain 
 *********************************************************************************************************/
     conditioncnt     NUMBER;
     procedurecnt     NUMBER;
@@ -33,6 +34,7 @@ CREATE PROCEDURE                             CDMH_STAGING.SP_A2O_SRC_OBSERVATION
     drugcnt          NUMBER;
     drugcnt1         NUMBER;
     measurementcnt1  NUMBER ;
+    measurementcnt2  NUMBER ;
 BEGIN
     DELETE FROM cdmh_staging.st_omop53_condition_occurrence
     WHERE
@@ -97,7 +99,7 @@ BEGIN
             LEFT JOIN cdmh_staging.n3cds_domain_map          p ON p.source_id = pc.person_id
                                                          AND p.domain_name = 'PERSON'
                                                          AND p.data_partner_id = datapartnerid
-            JOIN cdmh_staging.n3cds_domain_map          e ON e.source_id = o.encounter_num
+            JOIN cdmh_staging.n3cds_domain_map          e ON e.source_id = o.encounter_num||'|'||o.patient_num
                                                     AND e.domain_name = 'VISIT_DIMENSION'
                                                     AND e.target_domain_id = 'Visit'
                                                     AND e.data_partner_id = datapartnerid 
@@ -166,7 +168,7 @@ BEGIN
             LEFT JOIN cdmh_staging.n3cds_domain_map          p ON p.source_id = pc.person_id
                                                          AND p.domain_name = 'PERSON'
                                                          AND p.data_partner_id = datapartnerid
-            JOIN cdmh_staging.n3cds_domain_map          e ON e.source_id = o.encounter_num
+            JOIN cdmh_staging.n3cds_domain_map          e ON e.source_id = o.encounter_num||'|'||o.patient_num
                                                     AND e.domain_name = 'VISIT_DIMENSION'
                                                     AND e.target_domain_id = 'Visit'
                                                     AND e.data_partner_id = datapartnerid
@@ -220,7 +222,7 @@ BEGIN
             o.start_date                AS measurement_date,
             o.start_date                AS measurement_datetime,
             NULL AS measurement_time,
-            5001 AS measurement_type_concept_id,  -----3017575 Reference lab test results------------
+            32833 AS measurement_type_concept_id,  -----3017575 Reference lab test results------------
             ---- operator_concept is only relevant for numeric value 
             CASE
                 WHEN valtype_cd = 'N' THEN
@@ -291,7 +293,7 @@ BEGIN
             LEFT JOIN cdmh_staging.n3cds_domain_map          p ON p.source_id = o.patient_num
                                                          AND p.domain_name = 'PERSON'
                                                          AND p.data_partner_id = datapartnerid
-            JOIN cdmh_staging.n3cds_domain_map          e ON e.source_id = o.encounter_num
+            JOIN cdmh_staging.n3cds_domain_map          e ON e.source_id = o.encounter_num||'|'||o.patient_num
                                                     AND e.domain_name = 'VISIT_DIMENSION'
                                                     AND e.target_domain_id = 'Visit'
                                                     AND e.data_partner_id = datapartnerid
@@ -413,7 +415,7 @@ BEGIN
             LEFT JOIN cdmh_staging.n3cds_domain_map          p ON p.source_id = ob.patient_num
                                                          AND p.domain_name = 'PERSON'
                                                          AND p.data_partner_id = datapartnerid
-            JOIN cdmh_staging.n3cds_domain_map          e ON e.source_id = ob.encounter_num
+            JOIN cdmh_staging.n3cds_domain_map          e ON e.source_id = ob.encounter_num||'|'||ob.patient_num
                                                     AND e.domain_name = 'VISIT_DIMENSION'
                                                     AND e.target_domain_id = 'Visit'
                                                     AND e.data_partner_id = datapartnerid
@@ -509,7 +511,7 @@ BEGIN
             LEFT JOIN cdmh_staging.n3cds_domain_map          p ON p.source_id = ob.patient_num
                                                          AND p.domain_name = 'PERSON'
                                                          AND p.data_partner_id = datapartnerid
-            LEFT JOIN cdmh_staging.n3cds_domain_map          e ON e.source_id = ob.encounter_num
+            LEFT JOIN cdmh_staging.n3cds_domain_map          e ON e.source_id = ob.encounter_num||'|'||ob.patient_num
                                                          AND e.domain_name = 'VISIT_DIMENSION'
                                                          AND e.target_domain_id = 'Visit'
                                                          AND e.data_partner_id = datapartnerid
@@ -601,7 +603,7 @@ BEGIN
             LEFT JOIN cdmh_staging.n3cds_domain_map          p ON p.source_id = ob.patient_num
                                                          AND p.domain_name = 'PERSON'
                                                          AND p.data_partner_id = datapartnerid
-            LEFT JOIN cdmh_staging.n3cds_domain_map          e ON e.source_id = ob.encounter_num
+            LEFT JOIN cdmh_staging.n3cds_domain_map          e ON e.source_id = ob.encounter_num||'|'||ob.patient_num
                                                          AND e.domain_name = 'VISIT_DIMENSION'
                                                          AND e.target_domain_id = 'Visit'
                                                          AND e.data_partner_id = datapartnerid
@@ -653,7 +655,7 @@ BEGIN
             o.start_date                AS measurement_date,
             o.start_date                AS measurement_datetime,
             NULL AS measurement_time,
-            5001 AS measurement_type_concept_id,  -----3017575 Reference lab test results------------
+            32833 AS measurement_type_concept_id,  -----3017575 Reference lab test results------------
             ---- operator_concept is only relevant for numeric value 
             CASE
                 WHEN valtype_cd = 'N' THEN
@@ -725,7 +727,7 @@ BEGIN
             LEFT JOIN cdmh_staging.n3cds_domain_map          p ON p.source_id = o.patient_num
                                                          AND p.domain_name = 'PERSON'
                                                          AND p.data_partner_id = datapartnerid
-            JOIN cdmh_staging.n3cds_domain_map          e ON e.source_id = o.encounter_num
+            JOIN cdmh_staging.n3cds_domain_map          e ON e.source_id = o.encounter_num||'|'||o.patient_num
                                                     AND e.domain_name = 'VISIT_DIMENSION'
                                                     AND e.target_domain_id = 'Visit'
                                                     AND e.data_partner_id = datapartnerid
@@ -741,10 +743,119 @@ BEGIN
         WHERE o.concept_cd like '%UMLS:C1335447%' or o.concept_cd like '%UMLS:C1611271%' 
         or o.concept_cd like '%UMLS:C4303880%' or o.concept_cd like '%UMLS:C1334932%';
 
+
     measurementcnt1 := SQL%rowcount;
     COMMIT;
+    
+    INSERT
+    INTO CDMH_STAGING.st_omop53_measurement (--for observation_fact target_domain_id = measurement
+        data_partner_id,
+        manifest_id,
+        measurement_id,
+        person_id,
+        measurement_concept_id,
+        measurement_date,
+        measurement_datetime,
+        measurement_time,
+        measurement_type_concept_id,
+        operator_concept_id,
+        value_as_number,
+        value_as_concept_id,
+        unit_concept_id,
+        range_low,
+        range_high,
+        provider_id,
+        visit_occurrence_id,
+        visit_detail_id,
+        measurement_source_value,
+        measurement_source_concept_id,
+        unit_source_value,
+        value_source_value,
+        domain_source
+    )
+SELECT /*+
+use_hash
+*/
+    DATAPARTNERID AS data_partner_id,
+    MANIFESTID AS manifest_id,
+    mp.n3cds_domain_map_id      AS measurement_id,
+    p.n3cds_domain_map_id       AS person_id,
+    xw.target_concept_id        AS measurement_concept_id, --concept id for covid 19 generic lab test result
+    o.start_date                AS measurement_date,
+    o.start_date                AS measurement_datetime,
+    NULL AS measurement_time,
+    32833 AS measurement_type_concept_id,  -----32833 ehr  Reference lab test results------------
 
-    recordcount := conditioncnt + procedurecnt + measurementcnt + observationcnt + drugcnt + drugcnt1 +measurementcnt1;
+            ---- operator_concept is only relevant for numeric value
+    NULL AS operator_concept_id, -- operator is stored in tval_char / sometimes
+
+            -- ssh/ 7/28/20 - if the value is numerical then store the result in the value_as_number
+
+            -- value as num is not relevant for qualitative result
+    NULL AS value_as_number, --result_num
+
+           ----concept_cd will contain the overloaded result text
+    tvqual.target_concept_id    AS value_as_concept_id,
+    NULL AS unit_concept_id,
+    NULL range_low,   --ssh 8/5/20 set to 0
+    NULL AS range_high, --ssh 8/5/20 set to 0
+    NULL AS provider_id,
+    e.n3cds_domain_map_id       AS visit_occurrence_id,
+    NULL AS visit_detail_id,
+    o.concept_cd                AS measurement_source_value,
+
+            --cast(xw.source_code_concept_id as int ) as MEASUREMENT_SOURCE_CONCEPT_ID,
+    xw.source_code_concept_id   AS measurement_source_concept_id,
+    o.units_cd                  AS unit_source_value,
+
+            ---if numerical value then Concat( tval_char(operator code text like E/NE/LE/L/G/GE) + nval_num + valueflag_cd)
+
+            ---if categorical value then tval_char contains text and valueflag_cd contains qual result values
+    'concept_cd:'
+    || concept_cd
+    || '|tval_char: '
+    || tval_char
+    || '|nval_num:'
+    || o.nval_num
+    || '|valueflag_cd:'
+    || valueflag_cd AS value_source_value,
+    'I2B2ACT_OBSERVATION_FACT' AS domain_source
+FROM
+    native_i2b2act_cdm.observation_fact    o
+    JOIN cdmh_staging.person_clean              pc ON o.patient_num = pc.person_id
+                                         AND pc.data_partner_id = DATAPARTNERID
+    JOIN cdmh_staging.n3cds_domain_map          mp ON mp.source_id = o.observation_fact_id
+                                             AND mp.domain_name = 'OBSERVATION_FACT'
+                                             AND mp.target_domain_id = 'Measurement'
+                                             AND mp.data_partner_id = DATAPARTNERID
+    LEFT JOIN cdmh_staging.n3cds_domain_map          p ON p.source_id = o.patient_num
+                                                 AND p.domain_name = 'PERSON'
+                                                 AND p.data_partner_id = DATAPARTNERID
+    JOIN cdmh_staging.n3cds_domain_map          e ON e.source_id = o.encounter_num
+                                                          || '|'
+                                                          || o.patient_num
+                                            AND e.domain_name = 'VISIT_DIMENSION'
+                                            AND e.target_domain_id = 'Visit'
+                                            AND e.data_partner_id = DATAPARTNERID
+    LEFT JOIN cdmh_staging.a2o_code_xwalk_standard   xw ON xw.src_code = TRIM(substr(TRIM(concept_cd), instr(concept_cd, ':') + 1, instr
+    (concept_cd, ' ') - instr(concept_cd, ':') - 1))
+                                                         AND xw.cdm_tbl = 'OBSERVATION_FACT'
+                                                         AND xw.target_domain_id = 'Measurement'
+                                                         AND xw.target_concept_id = mp.target_concept_id
+    LEFT JOIN cdmh_staging.a2o_term_xwalk            tvqual ON lower(TRIM(substr(TRIM(concept_cd), instr(concept_cd, ' ') + 1, length(TRIM(concept_cd
+    ))))) = lower(TRIM(tvqual.src_code))
+                                                    AND tvqual.cdm_tbl = 'OBSERVATION_FACT'
+                                                    AND tvqual.cdm_tbl_column_name = 'TVAL_CHAR'
+WHERE
+    o.concept_cd LIKE '%NEGATIVE'
+    OR o.concept_cd LIKE '%POSITIVE'
+    OR o.concept_cd LIKE '%EQUIVOCAL'
+    OR o.concept_cd LIKE '%PENDING';
+    measurementcnt2:=sql%rowcount;
+    Commit;
+    
+
+    recordcount := conditioncnt + procedurecnt + measurementcnt + observationcnt + drugcnt + drugcnt1 +measurementcnt1+measurementcnt2;
     dbms_output.put_line('I2B2ACT observation_fact source data inserted to condition, procedure, measurement, observation, drug staging table, ST_OMOP53_CONDITION_OCCURRENCE, ST_OMOP53_PROCEDURE_OCCURRENCE, and ST_OMOP53_MEASUREMENT, st_omop53_observation, st_omop53_drug_exposure successfully.'
     );
 END sp_a2o_src_observation_fact;
