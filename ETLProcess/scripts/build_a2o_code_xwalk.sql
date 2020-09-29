@@ -1,8 +1,5 @@
---------------------------------------------------------
---  File created - Thursday-September-17-2020   
---------------------------------------------------------
--- Unable to render PROCEDURE DDL for object CDMH_STAGING.BUILD_A2O_CODE_XWALK with DBMS_METADATA attempting internal generator.
-CREATE PROCEDURE                           CDMH_STAGING.BUILD_A2O_CODE_XWALK 
+
+CREATE PROCEDURE                                                                  CDMH_STAGING.BUILD_A2O_CODE_XWALK 
 (
   RECORDCOUNT out number 
 ) as 
@@ -22,7 +19,8 @@ CREATE PROCEDURE                           CDMH_STAGING.BUILD_A2O_CODE_XWALK
     --LOINC:
     --ICD10CM:
     --HCPCS:
-    0.3         9/16/20 SHONG Filter out local concept_cd with prefixes like 'DIST|%' or like 'VISIT|%'  --54221
+     0.3        9/16/20     SHONG        Added code to filter out the concept_cd like 'DIST|%' and 'VISIT|%'
+     0.4        9/24/20     SHONG        Added to code to add covid test loinc codes with overloaded result text in the concept_cd field
 ************************************************************************************************************************************/
 
 begin
@@ -80,15 +78,87 @@ INSERT INTO CDMH_STAGING.a2o_code_xwalk_standard ( CDM_TBL, src_code, src_code_t
         join native_i2b2act_cdm.observation_fact f
         on source_code = substr(concept_cd, instr(concept_cd, ':')+1, length(concept_cd))
         where source_vocabulary_id in( 'RXNORM', 'CPT4', 'LOINC', 'ICD10CM', 'HCPCS', 'NDC', 'SNOMED', 'NUI', 'ICD10PCS','ICD9PROC', 'ICD9CM') ---ssh 7/17/20 uk only had RXNORM/CPT4/UMLS/LOINC/ICD10CM/HCPCS in the fact table
-        AND target_standard_concept = 'S' 
-        and concept_cd not like 'DEM|%' and concept_cd not like 'VISIT|%' and concept_cd not like 'DIST|%' 
-
+        AND target_standard_concept = 'S' and concept_cd not like 'DEM|%'
+        and concept_cd not like 'VISIT|%' and concept_cd not like 'DIST|%'
     )x
-; ---22,916
+
+union
+
+SELECT DISTINCT
+    'OBSERVATION_FACT' AS cdm_tbl,
+    x.src_code        AS src_code,
+    x.src_code_type   AS src_code_type,
+    x.src_vocab_code,
+    source_code,
+    source_concept_id,
+    source_code_description,
+    source_vocabulary_id,
+    source_domain_id,
+    target_concept_id,
+    target_concept_name,
+    target_vocabulary_id,
+    target_domain_id,
+    target_concept_class_id
+FROM
+    (
+        WITH cte_vocab_map AS (
+            SELECT
+                c.concept_code        AS source_code,
+                c.concept_id          AS source_concept_id,
+                c.concept_name        AS source_code_description,
+                c.vocabulary_id       AS source_vocabulary_id,
+                c.domain_id           AS source_domain_id,
+                c.concept_class_id    AS source_concept_class_id,
+                c.valid_start_date    AS source_valid_start_date,
+                c.valid_end_date      AS source_valid_end_date,
+                c.invalid_reason      AS source_invalid_reason,
+                c1.concept_id         AS target_concept_id,
+                c1.concept_name       AS target_concept_name,
+                c1.vocabulary_id      AS target_vocabulary_id,
+                c1.domain_id          AS target_domain_id,
+                c1.concept_class_id   AS target_concept_class_id,
+                c1.invalid_reason     AS target_invalid_reason,
+                c1.standard_concept   AS target_standard_concept
+            FROM
+                cdmh_staging.concept                c
+                JOIN cdmh_staging.concept_relationship   cr ON c.concept_id = cr.concept_id_1
+                                                             AND cr.invalid_reason IS NULL
+                                                                 AND lower(cr.relationship_id) = 'maps to'
+                JOIN cdmh_staging.concept                c1 ON cr.concept_id_2 = c1.concept_id
+                                                AND c1.invalid_reason IS NULL
+        )
+        SELECT DISTINCT
+            'OBSERVATION_FACT' AS cdm_tbl,
+            TRIM(substr(TRIM(concept_cd), instr(concept_cd, ':') + 1, instr(concept_cd, ' ') - instr(concept_cd, ':') - 1))
+             AS src_code
+            ,
+            substr(concept_cd, 0, instr(concept_cd, ':') - 1) src_code_type,
+            substr(concept_cd, 0, instr(concept_cd, ':') - 1) AS src_vocab_code,
+            source_code,
+            source_concept_id,
+            source_code_description,
+            source_vocabulary_id,
+            source_domain_id,
+            target_concept_id,
+            target_concept_name,
+            target_vocabulary_id,
+            target_domain_id,
+            target_concept_class_id ---target_concept_id = omop concept id , target_concept_name = concept name target_domain_id = condition
+        FROM
+            cte_vocab_map
+            JOIN native_i2b2act_cdm.observation_fact f ON source_code = TRIM(substr(TRIM(concept_cd), instr(concept_cd, ':') + 1,
+            instr(concept_cd, ' ') - instr(concept_cd, ':') - 1))
+        WHERE
+            source_vocabulary_id IN (
+                'LOINC'
+            ) 
+            AND target_standard_concept = 'S'
+                AND (concept_cd LIKE '%NEGATIVE' OR concept_cd LIKE '%POSITIVE' OR concept_cd LIKE '%EQUIVOCAL' OR concept_cd LIKE '%PENDING')
+    ) x;    
 RECORDCOUNT  := sql%rowcount;
+
+    commit ;
 
   DBMS_OUTPUT.put_line(RECORDCOUNT || ' i2b2ACT a2o_code_xwalk_standard table built successfully.'); 
 --
-    commit ;
-
 end build_a2o_code_xwalk;
