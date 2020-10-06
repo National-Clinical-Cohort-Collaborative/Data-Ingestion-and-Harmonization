@@ -1,5 +1,5 @@
 
-CREATE PROCEDURE                           CDMH_STAGING.SP_P2O_SRC_ENCOUNTER (
+CREATE PROCEDURE                                                                  CDMH_STAGING.SP_P2O_SRC_ENCOUNTER (
     datapartnerid   IN    NUMBER,
     manifestid      IN    NUMBER,
     recordcount     OUT   NUMBER
@@ -16,12 +16,16 @@ CREATE PROCEDURE                           CDMH_STAGING.SP_P2O_SRC_ENCOUNTER (
     0.2.     >9/24/2020     DIH                 remove care_sit duplicate entries.
     0.3.      9/24/2020     SHONG, SNAREDLA     Added logic for adding death records based on discharge_status='EX' 
                                                 and Observation records based on discharge_status=AW/HO/IP
+    0.4       10/02/2020    SHONG               Insert payer plan info to payer_plan_period domain   
+    0.5       10/06/2020    SHONG               Remove Condition join/related fields from Death records
+
 *********************************************************************************************************/
     enccnt        NUMBER;
     caresitecnt   NUMBER;
     deathcnt      NUMBER;
     amobscnt      NUMBER;
     obscnt        NUMBER;
+    payerPlancnt  NUMBER;  
 BEGIN
     DELETE FROM cdmh_staging.st_omop53_visit_occurrence
     WHERE
@@ -196,14 +200,17 @@ BEGIN
                     nvl(d.discharge_date, d.admit_date) AS death_date,
                     nvl(d.discharge_date, d.admit_date) AS death_datetime,
                     32823 AS death_type_concept_id,
-                    cs.target_concept_id    AS cause_concept_id,
-                    c.condition_source      AS cause_source_value,
-                    nvl(cs.source_code_concept_id, 0) AS cause_source_concept_id,
+--                    cs.target_concept_id    AS cause_concept_id,
+--                    c.condition_source      AS cause_source_value,
+--                    nvl(cs.source_code_concept_id, 0) AS cause_source_concept_id,
+                    null       AS cause_concept_id,
+                    null       AS cause_source_value,
+                    null       AS cause_source_concept_id,
                     'PCORNET_ENCOUNTER' AS domain_source,
                     ROW_NUMBER() OVER(
                         PARTITION BY d.patid
                         ORDER BY
-                            d.discharge_date, c.report_date DESC
+                            d.discharge_date DESC
                     ) rn
                 FROM
                     native_pcornet51_cdm.encounter         d
@@ -213,11 +220,11 @@ BEGIN
                                                             AND p.domain_name = 'PERSON'
                                                             AND p.data_partner_id = datapartnerid
                     LEFT JOIN native_pcornet51_cdm.death             dc ON dc.patid = d.patid
-                    LEFT JOIN native_pcornet51_cdm.condition         c ON c.encounterid = d.encounterid
-                                                                  AND c.patid = d.patid
-                    LEFT JOIN cdmh_staging.p2o_code_xwalk_standard   cs ON cs.cdm_tbl = 'CONDITION'
-                                                                         AND c.condition_type = cs.src_code_type
-                                                                         AND c.condition = cs.source_code
+--                    LEFT JOIN native_pcornet51_cdm.condition         c ON c.encounterid = d.encounterid
+--                                                                  AND c.patid = d.patid
+--                    LEFT JOIN cdmh_staging.p2o_code_xwalk_standard   cs ON cs.cdm_tbl = 'CONDITION'
+--                                                                         AND c.condition_type = cs.src_code_type
+--                                                                         AND c.condition = cs.source_code
                 WHERE
                     discharge_status = 'EX'
                     AND dc.patid IS NULL
@@ -383,7 +390,121 @@ BEGIN
 
     obscnt := SQL%rowcount;
     COMMIT;
-    recordcount := enccnt + caresitecnt + deathcnt + amobscnt + obscnt;
-    dbms_output.put_line(recordcount || '  PCORnet ENCOUNTER source data inserted to ENCOUNTER staging table, ST_OMOP53_VISIT_OCCURRENCE, and ST_OMOP53_CARE_SITE if facility type is not null, and ST_OMOP53_DEATH, and ST_OMOP53_OBSERVATION  successfully.'
+    
+     DELETE FROM cdmh_staging.ST_OMOP53_PAYER_PLAN_PERIOD
+    WHERE
+        data_partner_id = datapartnerid
+        AND domain_source = 'PCORNET_ENCOUNTER';
+
+    COMMIT;   
+    
+    INSERT INTO CDMH_STAGING.ST_OMOP53_PAYER_PLAN_PERIOD
+(
+DATA_PARTNER_ID,
+MANIFEST_ID,
+PAYER_PLAN_PERIOD_ID,
+PERSON_ID,
+PAYER_PLAN_PERIOD_START_DATE,
+PAYER_PLAN_PERIOD_END_DATE,
+PAYER_CONCEPT_ID,
+PAYER_SOURCE_VALUE,
+PAYER_SOURCE_CONCEPT_ID,
+PLAN_CONCEPT_ID,
+PLAN_SOURCE_VALUE,
+PLAN_SOURCE_CONCEPT_ID,
+SPONSOR_CONCEPT_ID,
+SPONSOR_SOURCE_VALUE,
+SPONSOR_SOURCE_CONCEPT_ID,
+FAMILY_SOURCE_VALUE,
+STOP_REASON_CONCEPT_ID,
+STOP_REASON_SOURCE_VALUE,
+STOP_REASON_SOURCE_CONCEPT_ID,
+DOMAIN_SOURCE
+)
+SELECT /*+ use_hash */
+    DATAPARTNERID AS DATA_PARTNER_ID,
+    MANIFESTID AS MANIFEST_ID,
+    mp.N3CDS_DOMAIN_MAP_ID as payer_plan_period_id,
+    p.N3CDS_DOMAIN_MAP_ID as person_id,
+    e.ADMIT_DATE as payer_plan_period_start_date,
+    case when e.DISCHARGE_DATE is not null then e.DISCHARGE_DATE
+        else e.ADMIT_DATE
+        end as payer_plan_period_end_date,
+    xw.target_concept_id as payer_concept_id, --get the list of OMOP concept_ids
+    'PAYER_TYPE_PRIMARY ' || e.PAYER_TYPE_PRIMARY as payer_source_value, --this one can stay as the PCORnet source value
+    null as payer_source_concept_id,
+    null as plan_concept_id,
+    null as plan_source_value,
+    null as plan_source_concept_id,
+    null as sponsor_concept_id,
+    null as sponsor_source_value,
+    null as sponsor_source_concept_id,
+    null as family_source_value,
+    null as stop_reason_concept_id,
+    null as stop_reason_source_value,
+    null as stop_reason_source_concept_id,
+    'PCORNET_ENCOUNTER' AS DOMAIN_SOURCE
+FROM
+    NATIVE_PCORNET51_CDM.ENCOUNTER e
+    JOIN CDMH_STAGING.PERSON_CLEAN pc ON e.PATID=pc.PERSON_ID 
+                                AND pc.DATA_PARTNER_ID=DATAPARTNERID 
+    JOIN CDMH_STAGING.P2O_TERM_XWALK xw on xw.SRC_CODE=e.payer_type_primary 
+                                AND xw.cdm_tbl_column_name= 'PAYER_TYPE_PRIMARY'  
+    JOIN CDMH_STAGING.N3CDS_DOMAIN_MAP p ON p.SOURCE_ID=e.PATID AND p.DATA_PARTNER_ID=DATAPARTNERID AND p.domain_name='PERSON'                            
+    JOIN CDMH_STAGING.N3CDS_DOMAIN_MAP mp on e.ENCOUNTERID=Mp.Source_Id
+                                AND mp.DOMAIN_NAME='ENCOUNTER' 
+                                AND Mp.Target_Domain_Id = 'PAYER_TYPE_PRIMARY' 
+                                AND mp.DATA_PARTNER_ID=DATAPARTNERID   
+                                AND mp.TARGET_CONCEPT_ID=xw.TARGET_CONCEPT_ID
+                                
+WHERE
+    payer_type_primary is not null 
+    
+
+UNION ALL
+ 
+--secondary payors
+SELECT /*+ use_hash */
+    DATAPARTNERID AS DATA_PARTNER_ID,
+    MANIFESTID AS MANIFEST_ID,
+    mp.N3CDS_DOMAIN_MAP_ID as payer_plan_period_id,
+    p.N3CDS_DOMAIN_MAP_ID as person_id,
+    e.ADMIT_DATE as payer_plan_period_start_date,
+    case when e.DISCHARGE_DATE is not null then e.DISCHARGE_DATE
+        else e.ADMIT_DATE
+        end as payer_plan_period_end_date,
+    xw.target_concept_id as payer_concept_id, --get the list of the OMOP concept_ids
+    'PAYER_TYPE_SECONDARY ' || e.PAYER_TYPE_SECONDARY as payer_source_value, --this one can stay as the PCORnet source value
+    null as payer_source_concept_id,
+    null as plan_concept_id,
+    null as plan_source_value,
+    null as plan_source_concept_id,
+    null as sponsor_concept_id,
+    null as sponsor_source_value,
+    null as sponsor_source_concept_id,
+    null as family_source_value,
+    null as stop_reason_concept_id,
+    null as stop_reason_source_value,
+    null as stop_reason_source_concept_id,
+    'PCORNET_ENCOUNTER' AS DOMAIN_SOURCE
+FROM
+    NATIVE_PCORNET51_CDM.ENCOUNTER e
+    JOIN CDMH_STAGING.PERSON_CLEAN pc ON e.PATID=pc.PERSON_ID 
+                                AND pc.DATA_PARTNER_ID=DATAPARTNERID 
+    JOIN CDMH_STAGING.P2O_TERM_XWALK xw on xw.SRC_CODE=e.payer_type_secondary 
+                                AND xw.cdm_tbl_column_name= 'PAYER_TYPE_SECONDARY'  
+    JOIN CDMH_STAGING.N3CDS_DOMAIN_MAP p ON p.SOURCE_ID=e.PATID AND p.DATA_PARTNER_ID=DATAPARTNERID AND p.domain_name='PERSON'                            
+    JOIN CDMH_STAGING.N3CDS_DOMAIN_MAP mp on e.ENCOUNTERID=Mp.Source_Id 
+                                AND mp.DOMAIN_NAME='ENCOUNTER' 
+                                AND Mp.Target_Domain_Id = 'PAYER_TYPE_SECONDARY' 
+                                AND mp.DATA_PARTNER_ID=DATAPARTNERID   
+                                AND mp.TARGET_CONCEPT_ID=xw.TARGET_CONCEPT_ID
+WHERE
+    payer_type_secondary is not null 
+    ;
+    payerPlancnt :=sql%rowcount;
+    COMMIT;
+    recordcount := enccnt + caresitecnt + deathcnt + amobscnt + obscnt+payerPlancnt;
+    dbms_output.put_line(recordcount || '  PCORnet ENCOUNTER source data inserted to ENCOUNTER staging table, ST_OMOP53_VISIT_OCCURRENCE, and ST_OMOP53_CARE_SITE if facility type is not null, and ST_OMOP53_DEATH, and ST_OMOP53_OBSERVATION, and ST_OMOP53_PAYER_PLAN_PERIOD  successfully.'
     );
 END sp_p2o_src_encounter;
