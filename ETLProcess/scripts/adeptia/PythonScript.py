@@ -1,3 +1,10 @@
+# Python Pre-Processing Script
+# 1. Converts comma-delimited to pipe delimited csv files
+# 2. When null values are found, it replaces null values with empty values (within double quotes)
+# 3. Adds double quotes for a field if not present 
+# 4. Checks and skips if empty files are found during processing
+# 5. Removes special chars and line terminators (except \n) other than UTF-8 encoding
+
 import csv
 import os
 import sys
@@ -17,24 +24,25 @@ def get_all_files(directory):
             new_dir = directory + filename +"/"
             get_all_files(new_dir)
         else:
-            delimiter = is_comma_separated(directory, filename)
-            containsQuotes = contains_quotes(directory, filename)
-            #pre_processing(directory, filename)
-            if delimiter == ',':
-                #remove_temp_files(directory, filename)
-                add_quotes(directory, filename, "temp_"+filename, containsQuotes, delimiter)
-                remove_temp_files(directory, filename)
-            elif (containsQuotes):
-                #remove_temp_files(directory, filename)
-                shutil.copy(directory + filename, directory + "temp_"+filename)
-                remove_temp_files(directory, filename)
-            else:
-                #remove_temp_files(directory, filename)
-                add_quotes(directory, filename, "temp_"+filename, containsQuotes, delimiter)
-                remove_temp_files(directory, filename)
-            replace_null(directory, filename)
-            remove_temp_files(directory, "temp_"+filename)
-            print(f"Successfully pre-processed the file {filename}")
+            if os.path.getsize(directory + filename) > 0:
+                delimiter = is_comma_separated(directory, filename)
+                containsQuotes = contains_quotes(directory, filename)
+                #pre_processing(directory, filename)
+                if delimiter == ',':
+                    #remove_temp_files(directory, filename)
+                    add_quotes(directory, filename, "temp_"+filename, containsQuotes, delimiter)
+                    remove_temp_files(directory, filename)
+                elif (containsQuotes):
+                    #remove_temp_files(directory, filename)
+                    shutil.copy(directory + filename, directory + "temp_"+filename)
+                    remove_temp_files(directory, filename)
+                else:
+                    #remove_temp_files(directory, filename)
+                    add_quotes(directory, filename, "temp_"+filename, containsQuotes, delimiter)
+                    remove_temp_files(directory, filename)
+                replace_null(directory, filename)
+                remove_temp_files(directory, "temp_"+filename)
+                print(f"Successfully pre-processed the file {filename}")
     print(f"Successfully pre-processed all the files in the specified directory {directory}")
     return;
 
