@@ -24,7 +24,7 @@ def get_all_files(directory):
             new_dir = directory + filename +"/"
             get_all_files(new_dir)
         else:
-            if os.path.getsize(directory + filename) > 0:
+            if os.path.getsize(directory + filename) > 0 and filename.lower().endswith('.csv'):
                 delimiter = is_comma_separated(directory, filename)
                 containsQuotes = contains_quotes(directory, filename)
                 #pre_processing(directory, filename)
