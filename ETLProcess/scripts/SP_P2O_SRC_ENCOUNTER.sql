@@ -1,3 +1,7 @@
+--------------------------------------------------------
+--  File created - Tuesday-October-27-2020   
+--------------------------------------------------------
+-- Unable to render PROCEDURE DDL for object CDMH_STAGING.SP_P2O_SRC_ENCOUNTER with DBMS_METADATA attempting internal generator.
 CREATE PROCEDURE                                                                                            CDMH_STAGING.SP_P2O_SRC_ENCOUNTER (
     datapartnerid   IN    NUMBER,
     manifestid      IN    NUMBER,
