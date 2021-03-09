@@ -2,6 +2,6 @@ New version of N3C Data Ingestion and Harmonization pipeline has been developed 
 
 Along with Chris Chute, Harold Lehmann, Davera Gabriel, Stephanie Hong, Tanner Zhang, and Richard Zhu, who are members of JHU team, Mark Bissell, Ben Amor, Andrew Girvin, Katie Bradwell and Amin Manna from Palantir team contributed to this work. SMEs Matvey Palchuk, Emily Pfaff, Kristin Kostka, and Michele Morris reviewed TriNetX, PCORnet, OMOP, i2b2ACT Common Data Model logic respectively. 
 
-More information on ***Johns Hopkins University*** is [here](https://ictr.johnshopkins.edu/covid-research-center/).
+More information on ***Johns Hopkins University, SOM *** is [here](https://ictr.johnshopkins.edu/covid-research-center/).
 More information on ***Palantir*** is [here](https://www.palantir.com/solutions/health/).
 
