@@ -1,0 +1,31 @@
+Concept Name,Concept Code,Concept Id,Domain Id,Vocabulary Id,Concept Class Id,Standard Concept,Invalid Reason,Valid End Date,Valid Start Date
+"SARS-CoV-2 (COVID-19) IgG Ab [Presence] in Serum, Plasma or Blood by Rapid immunoassay",94507-1,706181,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-09
+SARS-CoV-2 (COVID-19) IgA Ab [Units/volume] in Serum or Plasma by Immunoassay,94720-0,723459,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-15
+"SARS-CoV-2 (COVID-19) IgM Ab [Presence] in Serum, Plasma or Blood by Rapid immunoassay",94508-9,706180,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-09
+SARS-CoV-2 (COVID-19) IgM Ab [Presence] in DBS by Immunoassay,95416-4,36659631,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-06-17
+SARS-CoV-2 (COVID-19) IgM Ab [Titer] in Serum or Plasma by Immunofluorescence,95428-9,36661373,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-07-13
+SARS-CoV-2 (COVID-19) neutralizing antibody [Presence] in Serum by pVNT,95411-5,757680,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-06-04
+SARS-CoV-2 (COVID-19) IgG+IgM Ab [Presence] in Serum or Plasma by Immunoassay,94547-7,723479,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-12
+"SARS-CoV-2 (COVID-19) Ab panel - Serum, Plasma or Blood by Rapid immunoassay",94503-0,706176,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-09
+SARS-CoV-2 (COVID-19) IgG Ab [Titer] in Serum or Plasma by Immunofluorescence,95429-7,36661374,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-07-13
+SARS-CoV-2 (COVID-19) IgM Ab [Units/volume] in Serum or Plasma by Immunoassay,94506-3,706178,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-09
+SARS-CoV-2 (COVID-19) IgA Ab [Presence] in Serum or Plasma by Immunoassay,94562-6,723473,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-27
+SARS-CoV-2 (COVID-19) neutralizing antibody [Titer] in Serum by pVNT,95410-7,757679,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-06-04
+SARS-CoV-2 (COVID-19) Ab [Presence] in Serum or Plasma by Immunoassay,94762-2,586515,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-05-01
+SARS-CoV-2 (COVID-19) IgG Ab [Units/volume] in Serum or Plasma by Immunoassay,94505-5,706177,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-09
+SARS-CoV-2 (COVID-19) S protein RBD neutralizing antibody [Presence] in Serum or Plasma by sVNT,96603-6,36031734,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-12-15
+SARS-CoV-2 (COVID-19) IgA Ab [Titer] in Serum or Plasma by Immunofluorescence,95427-1,36661372,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-07-13
+SARS-CoV-2 (COVID-19) Ab [Units/volume] in Serum or Plasma by Immunoassay,94769-7,586522,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-05-01
+SARS-CoV-2 (COVID-19) IgA+IgM [Presence] in Serum or Plasma by Immunoassay,95125-1,757686,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-05-14
+Measurement of Severe acute respiratory syndrome coronavirus 2 antibody,1240461000000109,37310258,Measurement,SNOMED,Observable Entity,S,,2099-12-31,2020-02-04
+SARS-CoV-2 (COVID-19) IgG Ab [Presence] in Serum or Plasma by Immunoassay,94563-4,723474,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-27
+SARS-CoV-2 (COVID-19) Ab panel - Serum or Plasma by Immunoassay,94504-8,706179,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-09
+SARS-CoV-2 stimulated gamma interferon [Presence] in Blood,95971-8,36031969,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-12-15
+SARS-CoV-2 stimulated gamma interferon release by T-cells [Units/volume] in Blood,95973-4,36032309,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-12-15
+"SARS-CoV-2 (COVID-19) IgA Ab [Presence] in Serum, Plasma or Blood by Rapid immunoassay",94768-9,586521,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-05-01
+SARS-CoV-2 (COVID-19) Ab [Presence] in DBS by Immunoassay,95825-6,36031197,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-12-15
+"SARS-CoV-2 (COVID-19) Ab [Presence] in Serum, Plasma or Blood by Rapid immunoassay",95542-7,36661369,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-08-07
+SARS-CoV-2 (COVID-19) IgM Ab [Presence] in Serum or Plasma by Immunoassay,94564-2,723475,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-27
+SARS-CoV-2 (COVID-19) Ab [Interpretation] in Serum or Plasma,94661-6,723480,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-04
+SARS-CoV-2 (COVID-19) IgG Ab [Presence] in DBS by Immunoassay,94761-4,586527,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-30
+SARS-CoV-2 stimulated gamma interferon release by T-cells [Units/volume] corrected for background in Blood,95972-6,36031956,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-12-15

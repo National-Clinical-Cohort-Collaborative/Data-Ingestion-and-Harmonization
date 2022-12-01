@@ -1,0 +1,66 @@
+Concept Name,Concept Code,Concept Id,Domain Id,Vocabulary Id,Concept Class Id,Standard Concept,Invalid Reason,Valid End Date,Valid Start Date
+SARS-CoV-2 (COVID-19) N gene [Presence] in Respiratory specimen by Nucleic acid amplification using CDC primer-probe set N2,94757-2,586525,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-30
+SARS-CoV-2 (COVID-19) RdRp gene [Presence] in Saliva (oral fluid) by NAA with probe detection,96091-4,36032174,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-12-15
+SARS-related coronavirus RNA [Presence] in Specimen by NAA with probe detection,94647-5,723472,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-02
+SARS-CoV-2 (COVID-19) N gene [Cycle Threshold #] in Specimen by Nucleic acid amplification using CDC primer-probe set N2,94312-6,706155,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-01-31
+SARS-CoV-2 (COVID-19) S gene [Cycle Threshold #] in Specimen by NAA with probe detection,94643-4,723468,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-02
+SARS-CoV-2 (COVID-19) N gene [#/volume] (viral load) in Respiratory specimen by NAA with probe detection,95521-1,36661370,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-07-26
+SARS-CoV-2 (COVID-19) S gene [Cycle Threshold #] in Respiratory specimen by NAA with probe detection,94642-6,723467,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-02
+SARS-CoV-2 (COVID-19) N gene [Presence] in Serum or Plasma by NAA with probe detection,94766-3,586520,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-05-01
+SARS-CoV-2 (COVID-19) S gene [Presence] in Respiratory specimen by NAA with probe detection,94640-0,723465,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-02
+SARS-CoV-2 (COVID-19) [Presence] in Specimen by Organism specific culture,94763-0,586516,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-05-01
+SARS-CoV-2 (COVID-19) N gene [Cycle Threshold #] in Specimen by NAA with probe detection,94510-5,706167,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-09
+SARS-CoV-2 (COVID-19) Ag [Presence] in Respiratory specimen by Rapid immunoassay,94558-4,723477,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-24
+SARS-CoV-2 (COVID-19) RNA [Log #/volume] (viral load) in Specimen by NAA with probe detection,94819-0,715262,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-05-04
+SARS-related coronavirus N gene [Cycle Threshold #] in Specimen by Nucleic acid amplification using CDC primer-probe set N3,94313-4,706172,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-01-31
+SARS-CoV-2 (COVID-19) RNA [Presence] in Saliva (oral fluid) by NAA with probe detection,94845-5,715260,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-05-07
+SARS-CoV-2 (COVID-19) S gene [Presence] in Serum or Plasma by NAA with probe detection,94767-1,586519,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-05-01
+SARS-CoV-2 (COVID-19) ORF1ab region [Cycle Threshold #] in Respiratory specimen by NAA with probe detection,94644-2,723469,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-02
+SARS-CoV-2 (COVID-19) RNA [Cycle Threshold #] in Specimen by NAA with probe detection,94746-5,586529,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-29
+SARS-related coronavirus E gene [Presence] in Respiratory specimen by NAA with probe detection,94758-0,586523,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-30
+SARS-CoV-2 (COVID-19) ORF1ab region [Presence] in Saliva (oral fluid) by NAA with probe detection,95824-9,36031506,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-12-15
+SARS-CoV-2 (COVID-19) S gene [Presence] in Specimen by NAA with probe detection,94641-8,723466,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-02
+SARS-CoV-2 (COVID-19) RNA [Presence] in Nasopharynx by NAA with non-probe detection,94565-9,723476,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-27
+SARS-CoV-2 (COVID-19) N gene [Presence] in Saliva (oral fluid) by Nucleic acid amplification using CDC primer-probe set N1,96448-6,36032258,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-12-15
+SARS-CoV-2 (COVID-19) RNA [Presence] in Nasopharynx by NAA with probe detection,94759-8,586526,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-30
+SARS-related coronavirus E gene [Presence] in Serum or Plasma by NAA with probe detection,94765-5,586518,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-05-01
+SARS-CoV-2 (COVID-19) S gene [Presence] in Respiratory specimen by Sequencing,95609-4,36031213,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-12-15
+SARS-CoV-2 (COVID-19) RNA [Presence] in Nose by NAA with probe detection,95406-5,757677,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-06-04
+SARS-CoV-2 (COVID-19) N gene [Presence] in Specimen by Nucleic acid amplification using CDC primer-probe set N2,94308-4,706154,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-01-31
+SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection,94531-1,706158,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-10
+SARS-CoV-2 (COVID-19) N gene [Presence] in Respiratory specimen by NAA with probe detection,94533-7,706161,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-10
+SARS-CoV-2 (COVID-19) RdRp gene [Cycle Threshold #] in Specimen by NAA with probe detection,94645-9,723470,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-02
+SARS-CoV-2 (COVID-19) RdRp gene [Presence] in Lower respiratory specimen by NAA with probe detection,96120-1,36031652,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-12-15
+SARS-CoV-2 (COVID-19) N gene [Presence] in Saliva (oral fluid) by NAA with probe detection,95425-5,36661378,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-06-26
+SARS-related coronavirus+MERS coronavirus RNA [Presence] in Respiratory specimen by NAA with probe detection,94532-9,706159,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-10
+SARS-related coronavirus E gene [Presence] in Specimen by NAA with probe detection,94315-9,706174,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-01-31
+SARS-CoV-2 (COVID-19) N gene [Presence] in Specimen by Nucleic acid amplification using CDC primer-probe set N1,94307-6,706156,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-01-31
+SARS-CoV-2 (COVID-19) RNA [Cycle Threshold #] in Respiratory specimen by NAA with probe detection,94745-7,586528,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-29
+Measurement of Severe acute respiratory syndrome coronavirus 2 antigen,1240471000000102,37310257,Measurement,SNOMED,Observable Entity,S,,2099-12-31,2020-02-04
+SARS-related coronavirus E gene [Cycle Threshold #] in Specimen by NAA with probe detection,94509-7,706166,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-09
+SARS-CoV-2 (COVID-19) Ag [Presence] in Upper respiratory specimen by Immunoassay,96119-3,36032419,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-12-15
+SARS-CoV-2 (COVID-19) RNA panel - Specimen by NAA with probe detection,94306-8,706169,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-01-31
+SARS-CoV-2 (COVID-19) RNA [Presence] in Respiratory specimen by NAA with non-probe detection,95608-6,36031238,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-12-15
+SARS-CoV-2 (COVID-19) RdRp gene [Presence] in Respiratory specimen by NAA with probe detection,94534-5,706160,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-10
+SARS-CoV-2 (COVID-19) N gene [Presence] in Nasopharynx by NAA with probe detection,94760-6,715272,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-30
+SARS-CoV-2 (COVID-19) N gene [Presence] in Nose by NAA with probe detection,95409-9,757678,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-06-04
+SARS-CoV-2 (COVID-19) RNA [Presence] in Saliva (oral fluid) by Sequencing,94822-4,715261,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-05-06
+SARS-CoV-2 (COVID-19) RNA [Presence] in Specimen by NAA with probe detection,94309-2,706170,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-01-31
+SARS-CoV-2 (COVID-19) N gene [Cycle Threshold #] in Specimen by Nucleic acid amplification using CDC primer-probe set N1,94311-8,706157,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-01-31
+SARS-CoV-2 (COVID-19) ORF1ab region [Presence] in Respiratory specimen by NAA with probe detection,94559-2,723478,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-24
+SARS-related coronavirus N gene [Presence] in Specimen by Nucleic acid amplification using CDC primer-probe set N3,94310-0,706171,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-01-31
+SARS-CoV+SARS-CoV-2 (COVID-19) Ag [Presence] in Respiratory specimen by Rapid immunoassay,95209-3,757685,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-05-20
+SARS-CoV-2 (COVID-19) RNA [Presence] in Respiratory specimen by Sequencing,95424-8,36661377,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-06-26
+SARS-CoV-2 (COVID-19) N gene [Log #/volume] (viral load) in Respiratory specimen by NAA with probe detection,95522-9,36661371,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-07-26
+SARS-CoV-2 (COVID-19) RdRp gene [Cycle Threshold #] in Respiratory specimen by NAA with probe detection,94646-7,723471,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-02
+SARS-CoV-2 (COVID-19) RdRp gene [Presence] in Upper respiratory specimen by NAA with probe detection,96123-5,36031453,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-12-15
+SARS-CoV-2 (COVID-19) RdRp gene [Presence] in Specimen by NAA with probe detection,94314-2,706173,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-01-31
+SARS-CoV-2 (COVID-19) N gene [Presence] in Specimen by NAA with probe detection,94316-7,706175,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-01-31
+SARS-CoV-2 (COVID-19) ORF1ab region [Cycle Threshold #] in Specimen by NAA with probe detection,94511-3,706168,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-09
+SARS-CoV-2 (COVID-19) N gene [Presence] in Respiratory specimen by Nucleic acid amplification using CDC primer-probe set N1,94756-4,586524,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-30
+SARS-CoV-2 (COVID-19) ORF1ab region [Presence] in Specimen by NAA with probe detection,94639-2,723464,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-02
+SARS-related coronavirus RNA [Presence] in Respiratory specimen by NAA with probe detection,94502-2,706165,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-09
+SARS-CoV-2 (COVID-19) RNA panel - Saliva (oral fluid) by NAA with probe detection,95826-4,36032061,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-12-15
+SARS-CoV-2 (COVID-19) RNA [Presence] in Respiratory specimen by NAA with probe detection,94500-6,706163,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-03-09
+SARS-CoV-2 (COVID-19) specific TCRB gene rearrangements [Presence] in Blood by Sequencing,95970-0,36031944,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-12-15
+SARS-CoV-2 (COVID-19) RNA [Presence] in Serum or Plasma by NAA with probe detection,94660-8,723463,Measurement,LOINC,Lab Test,S,,2099-12-31,2020-04-04

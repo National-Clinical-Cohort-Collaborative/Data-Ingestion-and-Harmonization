@@ -1,0 +1,6 @@
+Concept Name,Concept Code,Concept Id,Domain Id,Vocabulary Id,Concept Class Id,Standard Concept,Invalid Reason,Valid End Date,Valid Start Date
+Measurement of Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2),OMOP4873969,756055,Measurement,OMOP Extension,Lab Test,S,,2099-12-31,2020-03-18
+Measurement of Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) Genetic material using Molecular method,OMOP4912985,586310,Measurement,OMOP Extension,Lab Test,S,,2099-12-31,2020-05-18
+Measurement of Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) in Unspecified specimen,OMOP4873966,756065,Measurement,OMOP Extension,Lab Test,S,,2099-12-31,2020-03-18
+Measurement of Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) in Specified specimen,OMOP4912986,586309,Measurement,OMOP Extension,Lab Test,S,,2099-12-31,2020-05-18
+Measurement of Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) using Culture method,OMOP4912974,704992,Measurement,OMOP Extension,Lab Test,S,,2099-12-31,2020-05-13
