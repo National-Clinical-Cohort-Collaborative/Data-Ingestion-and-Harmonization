@@ -1,0 +1,7 @@
+Concept Name,Concept Code,Concept Id,Domain Id,Vocabulary Id,Concept Class Id,Standard Concept,Invalid Reason,Valid End Date,Valid Start Date
+Inpatient Cardiac Care Facility,OMOP4822038,581383,Visit,CMS Place of Service,Visit,S,,2099-12-31,1970-01-01
+Inpatient Hospital,21,8717,Visit,CMS Place of Service,Visit,S,,2099-12-31,1970-01-01
+Inpatient Visit,IP,9201,Visit,Visit,Visit,S,,2099-12-31,1970-01-01
+Intensive Care,OMOP4822460,32037,Visit,Visit,Visit,S,,2099-12-31,1970-01-01
+Emergency Room and Inpatient Visit,ERIP,262,Visit,Visit,Visit,S,,2099-12-31,1970-01-01
+Inpatient Critical Care Facility,OMOP4822042,581379,Visit,CMS Place of Service,Visit,S,,2099-12-31,1970-01-01
