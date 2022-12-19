@@ -1,0 +1,7 @@
+﻿data_partner_id,cdm_domain,source_vocab_code,mapped_vocab_code,mapped_code_in_concept_table,notes
+688,OBSERVATION_FACT,ICD10,ICD10CM,,shong: updated mapped vocab code based on the the source vocab code  6/22/22
+688,OBSERVATION_FACT,ICD9,ICD9CM,,shong: updated mapped vocab code based on the the source vocab code  6/22/22
+688,OBSERVATION_FACT,CPT,CPT4,,shong: updated mapped vocab code based on the the source vocab code  6/22/22
+224,OBSERVATION_FACT,ICD9C,ICD9CM,Y,
+224,OBSERVATION_FACT,MSDRG,DRG,,
+41,OBSERVATION_FACT,CPT,CPT4,,

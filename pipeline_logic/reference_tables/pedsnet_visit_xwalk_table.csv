@@ -1,0 +1,12 @@
+﻿SOURCE_ID,SOURCE_CONCEPT_NAME,TARGET_CONCEPT_ID,TARGET_CONCEPT_NAME
+42898160,Long Term Care Visit,0,No matching concept
+4481470,Non-Acute Institutional,0,No matching concept
+2000000048,Emergency Department Admit to Inpatient Hospital Stay,262,Emergency Room and Inpatient Visit
+2000000088,Observation Visit,581385,Observation Room
+2000000104,Administrative Visit,0,No matching concept
+44814649,Generic-OT // Other,0,No matching concept
+9201,Inpatient Visit (IP),9201,Inpatient Visit
+9202,Ambulatory Visit (AP)/Outpatient,9202,Outpatient Visit
+2000000469,Outpatient Non-Physician (OP-Non Physician),9202,Outpatient Visit
+9203,Emergency Department Visit (ED),9203,Emergency Room Visit
+44814711,Other ambulatory visit (OA),9202,Outpatient Visit
