@@ -1,5 +1,5 @@
 # Measurement Unit Harmonization and Inference Tool for Sites
-Measurement unit harmonization and inference pipeline scripts, developed for the National COVID Cohort Collaborative (N3C) and adapted for site-level implementation.
+Measurement unit harmonization and inference pipeline scripts, developed for the National COVID Cohort Collaborative (N3C) and adapted for site-level implementation. Our aim in offering this code is to help improve measurement data quality, data completeness, and unit harmonization at the site-level, which in turn faciliates research and gives value back to our current and prospective data partner sites.
 
 ## Software versions
 Versions of software used for validation and pipeline steps are found in the file pipeline-code/transforms-python/conda-versions.run.linux-64.lock
@@ -13,3 +13,5 @@ Bradwell KR, Wooldridge JT, Amor B, Bennett TD, Anand A, Bremer C, Yoo YJ, Qian 
 ## Unit inference and unit harmonization
 Any rows of patient data that are missing units, as well as rows of data that contain invalid units of measure for a lab, undergo unit inference.
 Unit harmonization is then performed on the inferred and known units, in order to ensure a common measurement unit for analysis per lab.
+
+Please reach out to kbradwell@palantir.com for help adapting this code at your site.
