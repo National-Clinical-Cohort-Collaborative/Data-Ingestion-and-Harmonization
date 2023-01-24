@@ -83,5 +83,3 @@ xz=5.2.8=h5eee18b_0 @ linux-64
 zlib=1.2.13=h166bdaf_4 @ linux-64
 zstd=1.5.2=h6239696_4 @ linux-64
 
-[Conda lock version]
-v1 - da98b005408564f967a15217e939e652b1d132e344e1c090c9c86f98a75c6390
