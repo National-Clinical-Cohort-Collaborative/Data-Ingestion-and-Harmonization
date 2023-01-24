@@ -20,10 +20,10 @@ def my_compute_function(output):
     ]
 
     df = pd.DataFrame(data={
-        'measured_variable': list(map(lambda p: p["measured_variable"], canonical_units)),
-        'codeset_id': list(map(lambda p: p["codeset_id"], canonical_units)),
-        'omop_unit_concept_id': list(map(lambda p: p["omop_unit_concept_id"], canonical_units)),
-        'omop_unit_concept_name': list(map(lambda p: p["omop_unit_concept_name"], canonical_units))
+        'measured_variable': list(map(lambda p: p["measured_variable"], invalid_units)),
+        'codeset_id': list(map(lambda p: p["codeset_id"], invalid_units)),
+        'omop_unit_concept_id': list(map(lambda p: p["omop_unit_concept_id"], invalid_units)),
+        'omop_unit_concept_name': list(map(lambda p: p["omop_unit_concept_name"], invalid_units))
     })
 
     return output.write_pandas(df)
