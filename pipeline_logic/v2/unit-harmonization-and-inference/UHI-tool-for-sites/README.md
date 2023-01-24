@@ -23,8 +23,8 @@ Reference distributions ([filtered_percentiles_table](https://github.com/kbradwe
 )) is treated as Null. Unit inference is achieved by first obtaining p-values from a KS test comparing the reference and test distributions using the script [get_unit_inference_calculation_file_site_tool](https://github.com/kbradwell/Data-Ingestion-and-Harmonization/blob/master/pipeline_logic/v2/unit-harmonization-and-inference/UHI-tool-for-sites/pipeline-code/transforms-python/src/get_unit_inference_calculation_file_site_tool.py). The p-values are then filtered using the script [get_unit_inference_file_site_tool](https://github.com/kbradwell/Data-Ingestion-and-Harmonization/blob/master/pipeline_logic/v2/unit-harmonization-and-inference/UHI-tool-for-sites/pipeline-code/transforms-python/src/get_unit_inference_file_site_tool.py). Finally, an intermediate mapping table of required conversions ([get_unit_mapping_file](https://github.com/kbradwell/Data-Ingestion-and-Harmonization/blob/master/pipeline_logic/v2/unit-harmonization-and-inference/UHI-tool-for-sites/pipeline-code/transforms-python/src/get_unit_mapping_file.py
 )), and a final augmented measurement table are produced ([harmonization_pipeline](https://github.com/kbradwell/Data-Ingestion-and-Harmonization/blob/master/pipeline_logic/v2/unit-harmonization-and-inference/UHI-tool-for-sites/pipeline-code/transforms-python/src/harmonization_pipeline.py
 )), that contains the following new columns:  
-unit_concept_id_or_inferred_unit_concept_id  
-harmonized_unit_concept_id  
-harmonized_value_as_number  
+unit_concept_id_or_inferred_unit_concept_id - the known measurement unit from the sites or the inferred unit in cases where the unit needed to be inferred  
+harmonized_unit_concept_id  - canonical measurement unit ID
+harmonized_value_as_number - harmonized value in the canonical units
 
 Please reach out to kbradwell@palantir.com for help adapting this code at your site.
