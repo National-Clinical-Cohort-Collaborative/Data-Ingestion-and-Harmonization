@@ -7,8 +7,6 @@ Author: Stephanie Hong
 --- Description: Crosswalk table CDM terminology to OMOP concept ids
 --- PCorNet51 to OMOP531
 --- Used to translage valueSet mappings from Native source data tables to OMOP 5.3.1 tables
---- manifest table and the datacount tables are extracted and sent via the DataPartners
---- load the datacount and manifest table
 
 Edit History:
 Dates:      Author Descriptions
@@ -460,19 +458,19 @@ values
 insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values
-( 'I2B2ACT', 'VISIT_DIMENSION', 'EI', '', 262, 'Emergency Department Visit', 'Visit', 'Visit','Visit Type','S', 'ERIP');
+( 'I2B2ACT', 'VISIT_DIMENSION', 'EI', 'ACUTE', 262, 'Emergency Department Visit', 'Visit', 'Visit','Visit Type','S', 'ERIP');
 
 --INOUT_CD  E Emergency Department Visit=9203
 insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values
-( 'I2B2ACT', 'VISIT_DIMENSION', 'E', '', 9203, 'Emergency Department Visit', 'Visit', 'Visit','Visit Type','S', 'ER');
+( 'I2B2ACT', 'VISIT_DIMENSION', 'E', 'EMER', 9203, 'Emergency Department Visit', 'Visit', 'Visit','Visit Type','S', 'ER');
 
 --INOUT_CD  I Inpatient Hospital Stay=8717
 insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values
-( 'I2B2ACT', 'VISIT_DIMENSION', 'I', '', 8717, 'I Inpatient Hospital Stay', 'Visit', 'CMS Place of Service','Visit Type','S', '21');
+( 'I2B2ACT', 'VISIT_DIMENSION', 'I', 'ACUTE', 8717, 'I Inpatient Hospital Stay', 'Visit', 'CMS Place of Service','Visit Type','S', '21');
 
 --INOUT_CD  N No Information = 46237210
 insert into cdmh_staging.visit_xwalk
@@ -484,7 +482,7 @@ values
 insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values
-( 'I2B2ACT', 'VISIT_DIMENSION', 'NA', '', 38004515, 'Non-Acute Hospital Stay', 'Visit', 'CMS Place of Service','Visit Type','S', 'A0');
+( 'I2B2ACT', 'VISIT_DIMENSION', 'NA', 'NONAC', 38004515, 'Non-Acute Hospital Stay', 'Visit', 'CMS Place of Service','Visit Type','S', 'A0');
 
 --INOUT_CD  X Other Ambulatory Visit = Other (concept_id = 45878142) - mapping document value is questionable 
 insert into cdmh_staging.visit_xwalk
@@ -496,13 +494,13 @@ values
 insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values
-( 'I2B2ACT', 'VISIT_DIMENSION', 'O', '', 9202, 'O Ambulatory Visit', 'Visit', 'Visit','Visit','S', 'OP');
+( 'I2B2ACT', 'VISIT_DIMENSION', 'O', 'AMB', 9202, 'O Ambulatory Visit', 'Visit', 'Visit','Visit','S', 'OP');
 
 --9202  OP  Outpatient Visit  Visit Standard  Valid Visit Visit
 insert into cdmh_staging.visit_xwalk
 (cdm_name, cdm_tbl, src_visit_type, fhir_cd, target_concept_id, target_concept_name, target_domain_id, target_vocabulary_id, target_concept_class_id, target_standard_concept, target_concept_code  )
 values
-( 'I2B2ACT', 'VISIT_DIMENSION', 'OP', '', 9202, 'OP Outpatient  Visit', 'Visit', 'Visit','Visit','S', 'OP');
+( 'I2B2ACT', 'VISIT_DIMENSION', 'OP', 'IC', 9202, 'OP Outpatient  Visit', 'Visit', 'Visit','Visit','S', 'OP');
 
 
 

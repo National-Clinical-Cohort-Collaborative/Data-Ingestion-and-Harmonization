@@ -10,7 +10,7 @@
 ---obsclin_code - 'LOINC', 'SNOMED'
 ---obs_gen --- type = pc_covid code=3000 or 2000
 ---Description: stored procedure to create the code map translation table from PCORnet terminology to OMOP concept ids
----Reviewers:  Blacketer,Clair / Kostka, Kristin
+---Reviewers:  Blacketer,Clair / Kostka, Kristin / 
 ---Author: Stephanie Hong / Blacketer,Clair
 ---Project: N3C
 ---
