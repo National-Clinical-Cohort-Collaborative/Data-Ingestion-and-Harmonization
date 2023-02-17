@@ -20,6 +20,15 @@ Unit harmonization is then performed on the inferred and known units, in order t
 
 #### Details
 
+##### Unit Inference
+
+Unit inference utilizes the Kolmogorov–Smirnov (KS) test to compare i) distributions of values that are missing units to ii) reference distributions from a set of pooled values for the lab across all the sites of N3C. The results are then filtered to ensure we are confident in only one inferred unit being present, with very little overlap to value distributions from other units. These inferred units per measurement concept for a data partner site are then added to a new column in the N3C measurement dataset rows, to enter as input for the unit harmonization process.
+##### Unit Harmonization
+
+The unit harmonization process involves using a dictionary of conversions for each measurement concept and unit to a target (canonical) unit. These conversions are applied using the following input: i) known or inferred units of the measurement, ii) measurement concept for the measurement and iii) the value as number for the measurement. This results in a new column in the measurement table, harmonized_value_as_number, and the canonical units used as a target for harmonization are recorded in another new column harmonized_unit_concept_id.
+
+##### Workflow
+
 Reference distributions ([filtered_percentiles_table](https://github.com/kbradwell/Data-Ingestion-and-Harmonization/blob/master/pipeline_logic/v2/unit-harmonization-and-inference/UHI-tool-for-sites/pipeline-input/filtered_percentiles_table.xlsx
 )) for each measured variable, in a single canonical unit ([canonical_units_of_measure](https://github.com/kbradwell/Data-Ingestion-and-Harmonization/blob/master/pipeline_logic/v2/unit-harmonization-and-inference/UHI-tool-for-sites/pipeline-input/canonical_units_of_measure.xlsx
 )), are used along with a dictionary of conversions ([conversionsDictionary](https://github.com/kbradwell/Data-Ingestion-and-Harmonization/blob/master/pipeline_logic/v2/unit-harmonization-and-inference/UHI-tool-for-sites/pipeline-input/code-to-update-input/conversionsDictionary.py
