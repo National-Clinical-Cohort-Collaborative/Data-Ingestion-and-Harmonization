@@ -4,6 +4,4 @@ Welcome to the National COVID/Clinical Cohort Collaborative (N3C) Data Ingest an
 A parellel body of work to create the generic maps between three of the CDMs and OMOP 5.3.1. These maps will be published and validated as spreadsheets format.
 
 Licensing Requirements:
-This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/). By using, copying, modifying, or distributing this project, you agree to comply with the terms and conditions of the license. Please review the full license details in the LICENSE file.
-You may not use this project for commercial purposes without permission. You must attribute the original authors when distributing the code.
-Derivatives must be licensed under the same terms.
+
