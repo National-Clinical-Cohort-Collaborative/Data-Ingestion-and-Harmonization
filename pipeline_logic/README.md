@@ -6,3 +6,4 @@ Contributing to the pipeline development work are members of a multidisciplinary
 More information on ***Johns Hopkins University, SOM BIDS*** is [here](https://www.hopkinsmedicine.org/gim/research/content/biomedical_informatics_data_science.html).
 More information on ***Palantir*** is [here](https://www.palantir.com/solutions/health/).
 
+For help adapting this code to your site, please contact [Stephanie Hong at JHU, email:shong59@jh.edu](mailto:email@example.com)
