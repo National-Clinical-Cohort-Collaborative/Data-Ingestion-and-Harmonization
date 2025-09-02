@@ -3,7 +3,7 @@ Welcome to the National COVID/Clinical Cohort Collaborative (N3C) Data Ingest an
 
 A parellel body of work to create the generic maps between three of the CDMs and OMOP 5.3.1. These maps will be published and validated as spreadsheets format.
 
-Licensing Requirements:
+# Licensing Requirements:
 Apache 2.0 NOTICE 
 
 This software and its associated mapping files were developed initially by the National COVID Cohort Collaborative (N3C) academic development team under NIH grant U24TR002306) A National Center for Digital Health Informatics Innovation (CD2H). Enhancements and refinements were made by the same team under a variety of federally funded programs.   Members of this team included:
