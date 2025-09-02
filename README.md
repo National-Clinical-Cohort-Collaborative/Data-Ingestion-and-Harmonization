@@ -8,22 +8,9 @@ Apache 2.0 NOTICE
 
 This software and its associated mapping files were developed initially by the National COVID Cohort Collaborative (N3C) academic development team under NIH grant U24TR002306) A National Center for Digital Health Informatics Innovation (CD2H). Enhancements and refinements were made by the same team under a variety of federally funded programs.   Members of this team included:
 
-University of North Carolina at Chapel Hill:
-Melissa Haendel
-Emily Pfaff
-Anita Walden
-….
-
-Emory University:
-Richard Moffitt
-Jason Yoo
-Margaret Hall
+- **University of North Carolina at Chapel Hill:** Melissa Haendel, Emily Pfaff, Anita Walden, …
+- **Emory University:** Richard Moffitt, Jason Yoo, Margaret Hall
+- **Johns Hopkins University:** Christopher Chute, Stephanie Hong, Tanner Zhang, Davera Gabriel, Tricia Francis
 
 
-Johns Hopkins University:
-Christopher Chute
-Stephanie Hong
-Tanner Zhang
-Davera Gabriel
-Tricia Francis
 
