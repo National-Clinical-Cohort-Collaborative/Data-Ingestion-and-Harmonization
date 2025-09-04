@@ -1,0 +1,960 @@
+﻿measured_variable,codeset_id,unit,harmonized_unit,measurement_concept_name,conversion_formula
+Albumin (g/dL),104464584,nanogram per liter,gram per deciliter,Albumin [Mass/volume] in Serum or Plasma,x*0.0000000001
+Albumin (g/dL),104464584,milligram per deciliter,gram per deciliter,Albumin [Mass/volume] in Serum or Plasma,x*0.001
+"ALT (SGPT), IU/L",538737057,unit per liter,international unit per liter,Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma,x
+"ALT (SGPT), IU/L",538737057,unit per liter,international unit per liter,Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma by With P-5'-P,x
+"ALT (SGPT), IU/L",538737057,unit per liter,international unit per liter,Alanine aminotransferase [Enzymatic activity/volume] in Blood,x
+"ALT (SGPT), IU/L",538737057,unit per liter,international unit per liter,Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma by No addition of P-5'-P,x
+"AST (SGOT), IU/L",248480621,unit per liter,international unit per liter,Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma,x
+"AST (SGOT), IU/L",248480621,unit per liter,international unit per liter,Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma by With P-5'-P,x
+"Bilirubin (Conjugated/Direct), mg/dL",50252641,gram per deciliter,milligram per deciliter,Bilirubin.direct [Mass/volume] in Serum or Plasma,x*1000
+"Bilirubin (total), mg/dL",586434833,nanogram per deciliter,milligram per deciliter,Bilirubin.total [Mass/volume] in Serum or Plasma,x*0.000001
+"Bilirubin (total), mg/dL",586434833,milligram per milliliter,milligram per deciliter,Bilirubin.total [Mass/volume] in Serum or Plasma,x*100
+"Bilirubin (total), mg/dL",586434833,milliequivalent per liter,milligram per deciliter,Bilirubin.total [Mass/volume] in Serum or Plasma,x*58.467
+"Bilirubin (total), mg/dL",586434833,gram per deciliter,milligram per deciliter,Bilirubin.total [Mass/volume] in Serum or Plasma,x*1000
+"Bilirubin - (Unconjugated/Indirect), mg/dL",59108731,nanogram per milliliter,milligram per deciliter,Bilirubin.indirect [Mass/volume] in Serum or Plasma,x*0.0001
+"Bilirubin - (Unconjugated/Indirect), mg/dL",59108731,milligram per deciliter calculated,milligram per deciliter,Bilirubin.indirect [Mass/volume] in Serum or Plasma,x
+BMI,65622096,square meter,kilogram per square meter,Body mass index (BMI) [Ratio],x
+BMI,65622096,kilogram,kilogram per square meter,Body mass index (BMI) [Ratio],x
+"BNP, pg/mL",703853936,picogram per deciliter,picogram per milliliter,Plasma B natriuretic peptide measurement,x*0.01
+"BNP, pg/mL",703853936,nanogram per milliliter,picogram per milliliter,Plasma B natriuretic peptide measurement,x*1000
+"BNP, pg/mL",703853936,nanogram per liter,picogram per milliliter,Plasma B natriuretic peptide measurement,x
+"BNP, pg/mL",703853936,milligram per deciliter,picogram per milliliter,Plasma B natriuretic peptide measurement,x*10000000
+"BNP, pg/mL",703853936,gram per deciliter,picogram per milliliter,Plasma B natriuretic peptide measurement,x*10000000000
+"BNP, pg/mL",703853936,picogram per deciliter,picogram per milliliter,Serum B-type natriuretic peptide concentration measurement,x*0.01
+"BNP, pg/mL",703853936,nanogram per milliliter,picogram per milliliter,Serum B-type natriuretic peptide concentration measurement,x*1000
+"BNP, pg/mL",703853936,nanogram per liter,picogram per milliliter,Serum B-type natriuretic peptide concentration measurement,x
+"BNP, pg/mL",703853936,milligram per deciliter,picogram per milliliter,Serum B-type natriuretic peptide concentration measurement,x*10000000
+"BNP, pg/mL",703853936,gram per deciliter,picogram per milliliter,Serum B-type natriuretic peptide concentration measurement,x*10000000000
+"BNP, pg/mL",703853936,picogram per deciliter,picogram per milliliter,Natriuretic peptide,x*0.01
+"BNP, pg/mL",703853936,nanogram per milliliter,picogram per milliliter,Natriuretic peptide,x*1000
+"BNP, pg/mL",703853936,nanogram per liter,picogram per milliliter,Natriuretic peptide,x
+"BNP, pg/mL",703853936,milligram per deciliter,picogram per milliliter,Natriuretic peptide,x*10000000
+"BNP, pg/mL",703853936,gram per deciliter,picogram per milliliter,Natriuretic peptide,x*10000000000
+"BNP, pg/mL",703853936,picogram per deciliter,picogram per milliliter,Natriuretic peptide B | Blood | Chemistry - non-challenge,x*0.01
+"BNP, pg/mL",703853936,nanogram per milliliter,picogram per milliliter,Natriuretic peptide B | Blood | Chemistry - non-challenge,x*1000
+"BNP, pg/mL",703853936,nanogram per liter,picogram per milliliter,Natriuretic peptide B | Blood | Chemistry - non-challenge,x
+"BNP, pg/mL",703853936,milligram per deciliter,picogram per milliliter,Natriuretic peptide B | Blood | Chemistry - non-challenge,x*10000000
+"BNP, pg/mL",703853936,gram per deciliter,picogram per milliliter,Natriuretic peptide B | Blood | Chemistry - non-challenge,x*10000000000
+"BNP, pg/mL",703853936,picogram per deciliter,picogram per milliliter,Natriuretic peptide B | Serum or Plasma | Chemistry - non-challenge,x*0.01
+"BNP, pg/mL",703853936,nanogram per milliliter,picogram per milliliter,Natriuretic peptide B | Serum or Plasma | Chemistry - non-challenge,x*1000
+"BNP, pg/mL",703853936,nanogram per liter,picogram per milliliter,Natriuretic peptide B | Serum or Plasma | Chemistry - non-challenge,x
+"BNP, pg/mL",703853936,milligram per deciliter,picogram per milliliter,Natriuretic peptide B | Serum or Plasma | Chemistry - non-challenge,x*10000000
+"BNP, pg/mL",703853936,gram per deciliter,picogram per milliliter,Natriuretic peptide B | Serum or Plasma | Chemistry - non-challenge,x*10000000000
+"BNP, pg/mL",703853936,picogram per deciliter,picogram per milliliter,Natriuretic peptide B [Mass/volume] in Blood,x*0.01
+"BNP, pg/mL",703853936,nanogram per milliliter,picogram per milliliter,Natriuretic peptide B [Mass/volume] in Blood,x*1000
+"BNP, pg/mL",703853936,nanogram per liter,picogram per milliliter,Natriuretic peptide B [Mass/volume] in Blood,x
+"BNP, pg/mL",703853936,milligram per deciliter,picogram per milliliter,Natriuretic peptide B [Mass/volume] in Blood,x*10000000
+"BNP, pg/mL",703853936,gram per deciliter,picogram per milliliter,Natriuretic peptide B [Mass/volume] in Blood,x*10000000000
+"BNP, pg/mL",703853936,picogram per deciliter,picogram per milliliter,Natriuretic peptide B [Moles/volume] in Serum or Plasma,x*0.01
+"BNP, pg/mL",703853936,nanogram per milliliter,picogram per milliliter,Natriuretic peptide B [Moles/volume] in Serum or Plasma,x*1000
+"BNP, pg/mL",703853936,nanogram per liter,picogram per milliliter,Natriuretic peptide B [Moles/volume] in Serum or Plasma,x
+"BNP, pg/mL",703853936,milligram per deciliter,picogram per milliliter,Natriuretic peptide B [Moles/volume] in Serum or Plasma,x*10000000
+"BNP, pg/mL",703853936,gram per deciliter,picogram per milliliter,Natriuretic peptide B [Moles/volume] in Serum or Plasma,x*10000000000
+"BNP, pg/mL",703853936,picogram per deciliter,picogram per milliliter,Natriuretic peptide B [Mass/volume] in Serum or Plasma,x*0.01
+"BNP, pg/mL",703853936,nanogram per milliliter,picogram per milliliter,Natriuretic peptide B [Mass/volume] in Serum or Plasma,x*1000
+"BNP, pg/mL",703853936,nanogram per liter,picogram per milliliter,Natriuretic peptide B [Mass/volume] in Serum or Plasma,x
+"BNP, pg/mL",703853936,milligram per deciliter,picogram per milliliter,Natriuretic peptide B [Mass/volume] in Serum or Plasma,x*10000000
+"BNP, pg/mL",703853936,gram per deciliter,picogram per milliliter,Natriuretic peptide B [Mass/volume] in Serum or Plasma,x*10000000000
+"BNP, pg/mL",703853936,picogram per deciliter,picogram per milliliter,Brain natriuretic peptide measurement,x*0.01
+"BNP, pg/mL",703853936,nanogram per milliliter,picogram per milliliter,Brain natriuretic peptide measurement,x*1000
+"BNP, pg/mL",703853936,nanogram per liter,picogram per milliliter,Brain natriuretic peptide measurement,x
+"BNP, pg/mL",703853936,milligram per deciliter,picogram per milliliter,Brain natriuretic peptide measurement,x*10000000
+"BNP, pg/mL",703853936,gram per deciliter,picogram per milliliter,Brain natriuretic peptide measurement,x*10000000000
+Body weight,776390058,pound (US),kilogram,Body weight Measured,x*0.453592
+Body weight,776390058,oz,kilogram,Body weight Measured,x*0.02835
+Body weight,776390058,ounce (avoirdupois),kilogram,Body weight Measured,x*0.02835
+Body weight,776390058,gram,kilogram,Body weight Measured,x*0.001
+Body weight,776390058,oz,kilogram,Body weight --used for drug calculation,x*0.02835
+Body weight,776390058,gram,kilogram,Body weight --used for drug calculation,x*0.001
+Body weight,776390058,pound (US),kilogram,Body weight Stated,x*0.453592
+Body weight,776390058,oz,kilogram,Body weight Stated,x*0.02835
+Body weight,776390058,pound (US),kilogram,Body weight,x*0.453592
+Body weight,776390058,oz,kilogram,Body weight,x*0.02835
+Body weight,776390058,ounce (avoirdupois),kilogram,Body weight,x*0.02835
+Body weight,776390058,milligram,kilogram,Body weight,x*0.000001
+Body weight,776390058,gram,kilogram,Body weight,x*0.001
+Body weight,776390058,oz,kilogram,Body weight - Reported --usual,x*0.02835
+Body weight,776390058,gram,kilogram,Body weight - Reported --usual,x*0.001
+"BUN, mg/dL",139231433,millimole per liter,milligram per deciliter,Urea nitrogen [Mass/volume] in Blood,x*2.8
+"BUN, mg/dL",139231433,nanogram per deciliter,milligram per deciliter,Urea nitrogen [Mass/volume] in Serum or Plasma,x*0.000001
+"BUN, mg/dL",139231433,millimole per liter,milligram per deciliter,Urea nitrogen [Mass/volume] in Serum or Plasma,x*2.8
+"BUN, mg/dL",139231433,gram per deciliter,milligram per deciliter,Urea nitrogen [Mass/volume] in Serum or Plasma,x*1000
+"c-reactive protein CRP, mg/L",371622342,nanogram per milliliter,milligram per liter,C reactive protein,x*0.001
+"c-reactive protein CRP, mg/L",371622342,nanogram per deciliter,milligram per liter,C reactive protein,x*0.00001
+"c-reactive protein CRP, mg/L",371622342,microgram per liter,milligram per liter,C reactive protein,x*0.001
+"c-reactive protein CRP, mg/L",371622342,mg/L,milligram per liter,C reactive protein,x
+"c-reactive protein CRP, mg/L",371622342,gram per deciliter,milligram per liter,C reactive protein,x*10000
+"c-reactive protein CRP, mg/L",371622342,nanogram per milliliter,milligram per liter,C reactive protein [Mass/volume] in Blood by High sensitivity method,x*0.001
+"c-reactive protein CRP, mg/L",371622342,nanogram per deciliter,milligram per liter,C reactive protein [Mass/volume] in Blood by High sensitivity method,x*0.00001
+"c-reactive protein CRP, mg/L",371622342,milligram per deciliter,milligram per liter,C reactive protein [Mass/volume] in Blood by High sensitivity method,x*10
+"c-reactive protein CRP, mg/L",371622342,microgram per liter,milligram per liter,C reactive protein [Mass/volume] in Blood by High sensitivity method,x*0.001
+"c-reactive protein CRP, mg/L",371622342,mg/L,milligram per liter,C reactive protein [Mass/volume] in Blood by High sensitivity method,x
+"c-reactive protein CRP, mg/L",371622342,gram per deciliter,milligram per liter,C reactive protein [Mass/volume] in Blood by High sensitivity method,x*10000
+"c-reactive protein CRP, mg/L",371622342,nanogram per milliliter,milligram per liter,CRP (C reactive protein) mass concentration in plasma,x*0.001
+"c-reactive protein CRP, mg/L",371622342,nanogram per deciliter,milligram per liter,CRP (C reactive protein) mass concentration in plasma,x*0.00001
+"c-reactive protein CRP, mg/L",371622342,microgram per liter,milligram per liter,CRP (C reactive protein) mass concentration in plasma,x*0.001
+"c-reactive protein CRP, mg/L",371622342,mg/L,milligram per liter,CRP (C reactive protein) mass concentration in plasma,x
+"c-reactive protein CRP, mg/L",371622342,gram per deciliter,milligram per liter,CRP (C reactive protein) mass concentration in plasma,x*10000
+"c-reactive protein CRP, mg/L",371622342,nanogram per milliliter,milligram per liter,C reactive protein [Mass/volume] in Body fluid,x*0.001
+"c-reactive protein CRP, mg/L",371622342,nanogram per deciliter,milligram per liter,C reactive protein [Mass/volume] in Body fluid,x*0.00001
+"c-reactive protein CRP, mg/L",371622342,microgram per liter,milligram per liter,C reactive protein [Mass/volume] in Body fluid,x*0.001
+"c-reactive protein CRP, mg/L",371622342,mg/L,milligram per liter,C reactive protein [Mass/volume] in Body fluid,x
+"c-reactive protein CRP, mg/L",371622342,gram per deciliter,milligram per liter,C reactive protein [Mass/volume] in Body fluid,x*10000
+"c-reactive protein CRP, mg/L",371622342,nanogram per milliliter,milligram per liter,C reactive protein [Titer] in Serum or Plasma,x*0.001
+"c-reactive protein CRP, mg/L",371622342,nanogram per deciliter,milligram per liter,C reactive protein [Titer] in Serum or Plasma,x*0.00001
+"c-reactive protein CRP, mg/L",371622342,microgram per liter,milligram per liter,C reactive protein [Titer] in Serum or Plasma,x*0.001
+"c-reactive protein CRP, mg/L",371622342,mg/L,milligram per liter,C reactive protein [Titer] in Serum or Plasma,x
+"c-reactive protein CRP, mg/L",371622342,gram per deciliter,milligram per liter,C reactive protein [Titer] in Serum or Plasma,x*10000
+"c-reactive protein CRP, mg/L",371622342,nanogram per milliliter,milligram per liter,Serum CRP (C reactive protein) level,x*0.001
+"c-reactive protein CRP, mg/L",371622342,nanogram per deciliter,milligram per liter,Serum CRP (C reactive protein) level,x*0.00001
+"c-reactive protein CRP, mg/L",371622342,microgram per liter,milligram per liter,Serum CRP (C reactive protein) level,x*0.001
+"c-reactive protein CRP, mg/L",371622342,mg/L,milligram per liter,Serum CRP (C reactive protein) level,x
+"c-reactive protein CRP, mg/L",371622342,gram per deciliter,milligram per liter,Serum CRP (C reactive protein) level,x*10000
+"c-reactive protein CRP, mg/L",371622342,nanogram per milliliter,milligram per liter,C reactive protein [Mass/volume] in Serum or Plasma by High sensitivity method,x*0.001
+"c-reactive protein CRP, mg/L",371622342,nanogram per deciliter,milligram per liter,C reactive protein [Mass/volume] in Serum or Plasma by High sensitivity method,x*0.00001
+"c-reactive protein CRP, mg/L",371622342,milligram per deciliter,milligram per liter,C reactive protein [Mass/volume] in Serum or Plasma by High sensitivity method,x*10
+"c-reactive protein CRP, mg/L",371622342,microgram per liter,milligram per liter,C reactive protein [Mass/volume] in Serum or Plasma by High sensitivity method,x*0.001
+"c-reactive protein CRP, mg/L",371622342,mg/L,milligram per liter,C reactive protein [Mass/volume] in Serum or Plasma by High sensitivity method,x
+"c-reactive protein CRP, mg/L",371622342,gram per deciliter,milligram per liter,C reactive protein [Mass/volume] in Serum or Plasma by High sensitivity method,x*10000
+"c-reactive protein CRP, mg/L",371622342,nanogram per milliliter,milligram per liter,C reactive protein [Quintile] in Serum or Plasma by High sensitivity method,x*0.001
+"c-reactive protein CRP, mg/L",371622342,nanogram per deciliter,milligram per liter,C reactive protein [Quintile] in Serum or Plasma by High sensitivity method,x*0.00001
+"c-reactive protein CRP, mg/L",371622342,microgram per liter,milligram per liter,C reactive protein [Quintile] in Serum or Plasma by High sensitivity method,x*0.001
+"c-reactive protein CRP, mg/L",371622342,mg/L,milligram per liter,C reactive protein [Quintile] in Serum or Plasma by High sensitivity method,x
+"c-reactive protein CRP, mg/L",371622342,gram per deciliter,milligram per liter,C reactive protein [Quintile] in Serum or Plasma by High sensitivity method,x*10000
+"c-reactive protein CRP, mg/L",371622342,nanogram per milliliter,milligram per liter,CRP (C reactive protein) mass concentration in serum,x*0.001
+"c-reactive protein CRP, mg/L",371622342,nanogram per deciliter,milligram per liter,CRP (C reactive protein) mass concentration in serum,x*0.00001
+"c-reactive protein CRP, mg/L",371622342,microgram per liter,milligram per liter,CRP (C reactive protein) mass concentration in serum,x*0.001
+"c-reactive protein CRP, mg/L",371622342,mg/L,milligram per liter,CRP (C reactive protein) mass concentration in serum,x
+"c-reactive protein CRP, mg/L",371622342,gram per deciliter,milligram per liter,CRP (C reactive protein) mass concentration in serum,x*10000
+"c-reactive protein CRP, mg/L",371622342,nanogram per milliliter,milligram per liter,Serum C reactive protein level,x*0.001
+"c-reactive protein CRP, mg/L",371622342,nanogram per deciliter,milligram per liter,Serum C reactive protein level,x*0.00001
+"c-reactive protein CRP, mg/L",371622342,microgram per liter,milligram per liter,Serum C reactive protein level,x*0.001
+"c-reactive protein CRP, mg/L",371622342,mg/L,milligram per liter,Serum C reactive protein level,x
+"c-reactive protein CRP, mg/L",371622342,gram per deciliter,milligram per liter,Serum C reactive protein level,x*10000
+"c-reactive protein CRP, mg/L",371622342,nanogram per milliliter,milligram per liter,C reactive protein [Moles/volume] in Serum or Plasma by High sensitivity method,x*0.001
+"c-reactive protein CRP, mg/L",371622342,nanogram per deciliter,milligram per liter,C reactive protein [Moles/volume] in Serum or Plasma by High sensitivity method,x*0.00001
+"c-reactive protein CRP, mg/L",371622342,microgram per liter,milligram per liter,C reactive protein [Moles/volume] in Serum or Plasma by High sensitivity method,x*0.001
+"c-reactive protein CRP, mg/L",371622342,mg/L,milligram per liter,C reactive protein [Moles/volume] in Serum or Plasma by High sensitivity method,x
+"c-reactive protein CRP, mg/L",371622342,gram per deciliter,milligram per liter,C reactive protein [Moles/volume] in Serum or Plasma by High sensitivity method,x*10000
+"c-reactive protein CRP, mg/L",371622342,nanogram per milliliter,milligram per liter,C reactive protein [Mass/volume] in Capillary blood,x*0.001
+"c-reactive protein CRP, mg/L",371622342,nanogram per deciliter,milligram per liter,C reactive protein [Mass/volume] in Capillary blood,x*0.00001
+"c-reactive protein CRP, mg/L",371622342,microgram per liter,milligram per liter,C reactive protein [Mass/volume] in Capillary blood,x*0.001
+"c-reactive protein CRP, mg/L",371622342,mg/L,milligram per liter,C reactive protein [Mass/volume] in Capillary blood,x
+"c-reactive protein CRP, mg/L",371622342,gram per deciliter,milligram per liter,C reactive protein [Mass/volume] in Capillary blood,x*10000
+"c-reactive protein CRP, mg/L",371622342,nanogram per milliliter,milligram per liter,Plasma C reactive protein,x*0.001
+"c-reactive protein CRP, mg/L",371622342,nanogram per deciliter,milligram per liter,Plasma C reactive protein,x*0.00001
+"c-reactive protein CRP, mg/L",371622342,microgram per liter,milligram per liter,Plasma C reactive protein,x*0.001
+"c-reactive protein CRP, mg/L",371622342,mg/L,milligram per liter,Plasma C reactive protein,x
+"c-reactive protein CRP, mg/L",371622342,gram per deciliter,milligram per liter,Plasma C reactive protein,x*10000
+"c-reactive protein CRP, mg/L",371622342,nanogram per milliliter,milligram per liter,C reactive protein [Mass/volume] in Serum or Plasma,x*0.001
+"c-reactive protein CRP, mg/L",371622342,nanogram per liter,milligram per liter,C reactive protein [Mass/volume] in Serum or Plasma,x*0.000001
+"c-reactive protein CRP, mg/L",371622342,nanogram per deciliter,milligram per liter,C reactive protein [Mass/volume] in Serum or Plasma,x*0.00001
+"c-reactive protein CRP, mg/L",371622342,milligram per deciliter,milligram per liter,C reactive protein [Mass/volume] in Serum or Plasma,x*10
+"c-reactive protein CRP, mg/L",371622342,microgram per liter,milligram per liter,C reactive protein [Mass/volume] in Serum or Plasma,x*0.001
+"c-reactive protein CRP, mg/L",371622342,mg/L,milligram per liter,C reactive protein [Mass/volume] in Serum or Plasma,x
+"c-reactive protein CRP, mg/L",371622342,gram per deciliter,milligram per liter,C reactive protein [Mass/volume] in Serum or Plasma,x*10000
+"c-reactive protein CRP, mg/L",371622342,nanogram per milliliter,milligram per liter,C reactive protein [Presence] in Serum or Plasma,x*0.001
+"c-reactive protein CRP, mg/L",371622342,nanogram per deciliter,milligram per liter,C reactive protein [Presence] in Serum or Plasma,x*0.00001
+"c-reactive protein CRP, mg/L",371622342,milligram per deciliter,milligram per liter,C reactive protein [Presence] in Serum or Plasma,x*10
+"c-reactive protein CRP, mg/L",371622342,microgram per liter,milligram per liter,C reactive protein [Presence] in Serum or Plasma,x*0.001
+"c-reactive protein CRP, mg/L",371622342,mg/L,milligram per liter,C reactive protein [Presence] in Serum or Plasma,x
+"c-reactive protein CRP, mg/L",371622342,gram per deciliter,milligram per liter,C reactive protein [Presence] in Serum or Plasma,x*10000
+"c-reactive protein CRP, mg/L",371622342,nanogram per milliliter,milligram per liter,C reactive protein [Moles/volume] in Serum or Plasma,x*0.001
+"c-reactive protein CRP, mg/L",371622342,nanogram per deciliter,milligram per liter,C reactive protein [Moles/volume] in Serum or Plasma,x*0.00001
+"c-reactive protein CRP, mg/L",371622342,microgram per liter,milligram per liter,C reactive protein [Moles/volume] in Serum or Plasma,x*0.001
+"c-reactive protein CRP, mg/L",371622342,mg/L,milligram per liter,C reactive protein [Moles/volume] in Serum or Plasma,x
+"c-reactive protein CRP, mg/L",371622342,gram per deciliter,milligram per liter,C reactive protein [Moles/volume] in Serum or Plasma,x*10000
+CD4 Cell Count (absolute),24299640,unit per liter,cells per microliter,CD3+CD4+ (T4 helper) cells [#/volume] in Blood,x*0.000001
+CD4 Cell Count (absolute),24299640,thousand per microliter,cells per microliter,CD3+CD4+ (T4 helper) cells [#/volume] in Blood,x*1000
+CD4 Cell Count (absolute),24299640,per microliter,cells per microliter,CD3+CD4+ (T4 helper) cells [#/volume] in Blood,x
+CD4 Cell Count (absolute),24299640,million per liter,cells per microliter,CD3+CD4+ (T4 helper) cells [#/volume] in Blood,x
+CD4 Cell Count (absolute),24299640,microliter,cells per microliter,CD3+CD4+ (T4 helper) cells [#/volume] in Blood,x
+CD4 Cell Count (absolute),24299640,cubic millimeter,cells per microliter,CD3+CD4+ (T4 helper) cells [#/volume] in Blood,x
+CD4 Cell Count (absolute),24299640,cells per liter,cells per microliter,CD3+CD4+ (T4 helper) cells [#/volume] in Blood,x*0.000001
+CD4 Cell Count (absolute),24299640,unit per liter,cells per microliter,T cells; absolute CD4 count,x*0.000001
+CD4 Cell Count (absolute),24299640,million per liter,cells per microliter,T cells; absolute CD4 count,x
+CD4 Cell Count (absolute),24299640,cells per liter,cells per microliter,T cells; absolute CD4 count,x*0.000001
+CD4 Cell Count (absolute),24299640,unit per liter,cells per microliter,T-cell helper (CD4) subset panel - Blood,x*0.000001
+CD4 Cell Count (absolute),24299640,per microliter,cells per microliter,T-cell helper (CD4) subset panel - Blood,x
+CD4 Cell Count (absolute),24299640,million per liter,cells per microliter,T-cell helper (CD4) subset panel - Blood,x
+CD4 Cell Count (absolute),24299640,cells per liter,cells per microliter,T-cell helper (CD4) subset panel - Blood,x*0.000001
+CD4/CD8 Ratio,410508887,percent,ratio,CD3+CD4+ (T4 helper) cells/CD3+CD8+ (T8 suppressor cells) cells [# Ratio] in Blood,x
+"Chloride, mmol/L",733538531,milliequivalent per liter,millimole per liter,Chloride [Moles/volume] in Serum or Plasma,x
+"Chloride, mmol/L",733538531,milliequivalent per liter,millimole per liter,Chloride [Moles/volume] in Capillary blood,x
+"Chloride, mmol/L",733538531,milliequivalent per liter,millimole per liter,Chloride [Moles/volume] in Arterial blood,x
+"Chloride, mmol/L",733538531,milliequivalent per liter,millimole per liter,"Chloride [Moles/volume] in Serum, Plasma or Blood",x
+"Chloride, mmol/L",733538531,milliequivalent per deciliter,millimole per liter,"Chloride [Moles/volume] in Serum, Plasma or Blood",x*10
+"Chloride, mmol/L",733538531,milliequivalent per liter,millimole per liter,Chloride [Moles/volume] in Venous blood,x
+"Chloride, mmol/L",733538531,milliequivalent per liter,millimole per liter,Chloride [Moles/volume] in Blood,x
+"Creatinine, mg/dL",615348047,nanogram per deciliter,milligram per deciliter,Creatinine substance concentration in serum by colorimetric method,x*0.000001
+"Creatinine, mg/dL",615348047,millimole per liter,milligram per deciliter,Creatinine substance concentration in serum by colorimetric method,x*11.312217194570135
+"Creatinine, mg/dL",615348047,gram per deciliter,milligram per deciliter,Creatinine substance concentration in serum by colorimetric method,x*1000
+"Creatinine, mg/dL",615348047,nanogram per milliliter,milligram per deciliter,Creatinine [Mass/volume] in Serum or Plasma,x*0.0001
+"Creatinine, mg/dL",615348047,nanogram per deciliter,milligram per deciliter,Creatinine [Mass/volume] in Serum or Plasma,x*0.000001
+"Creatinine, mg/dL",615348047,millimole per liter,milligram per deciliter,Creatinine [Mass/volume] in Serum or Plasma,x*11.312217194570135
+"Creatinine, mg/dL",615348047,gram per deciliter,milligram per deciliter,Creatinine [Mass/volume] in Serum or Plasma,x*1000
+"Creatinine, mg/dL",615348047,nanogram per deciliter,milligram per deciliter,Creatinine substance concentration in serum by enzymatic method,x*0.000001
+"Creatinine, mg/dL",615348047,millimole per liter,milligram per deciliter,Creatinine substance concentration in serum by enzymatic method,x*11.312217194570135
+"Creatinine, mg/dL",615348047,gram per deciliter,milligram per deciliter,Creatinine substance concentration in serum by enzymatic method,x*1000
+"Creatinine, mg/dL",615348047,nanogram per deciliter,milligram per deciliter,"Creatinine measurement, serum",x*0.000001
+"Creatinine, mg/dL",615348047,millimole per liter,milligram per deciliter,"Creatinine measurement, serum",x*11.312217194570135
+"Creatinine, mg/dL",615348047,gram per deciliter,milligram per deciliter,"Creatinine measurement, serum",x*1000
+"Creatinine, mg/dL",615348047,nanogram per deciliter,milligram per deciliter,Creatinine [Mass/volume] in Arterial blood,x*0.000001
+"Creatinine, mg/dL",615348047,millimole per liter,milligram per deciliter,Creatinine [Mass/volume] in Arterial blood,x*11.312217194570135
+"Creatinine, mg/dL",615348047,gram per deciliter,milligram per deciliter,Creatinine [Mass/volume] in Arterial blood,x*1000
+"Creatinine, mg/dL",615348047,nanogram per deciliter,milligram per deciliter,Creatinine substance concentration in serum,x*0.000001
+"Creatinine, mg/dL",615348047,millimole per liter,milligram per deciliter,Creatinine substance concentration in serum,x*11.312217194570135
+"Creatinine, mg/dL",615348047,gram per deciliter,milligram per deciliter,Creatinine substance concentration in serum,x*1000
+"Creatinine, mg/dL",615348047,nanogram per deciliter,milligram per deciliter,Corrected plasma creatinine measurement,x*0.000001
+"Creatinine, mg/dL",615348047,millimole per liter,milligram per deciliter,Corrected plasma creatinine measurement,x*11.312217194570135
+"Creatinine, mg/dL",615348047,gram per deciliter,milligram per deciliter,Corrected plasma creatinine measurement,x*1000
+"Creatinine, mg/dL",615348047,nanogram per deciliter,milligram per deciliter,Creatinine [Mass/volume] in Blood,x*0.000001
+"Creatinine, mg/dL",615348047,millimole per liter,milligram per deciliter,Creatinine [Mass/volume] in Blood,x*11.312217194570135
+"Creatinine, mg/dL",615348047,gram per deciliter,milligram per deciliter,Creatinine [Mass/volume] in Blood,x*1000
+"Creatinine, mg/dL",615348047,nanogram per deciliter,milligram per deciliter,Creatinine; blood,x*0.000001
+"Creatinine, mg/dL",615348047,millimole per liter,milligram per deciliter,Creatinine; blood,x*11.312217194570135
+"Creatinine, mg/dL",615348047,gram per deciliter,milligram per deciliter,Creatinine; blood,x*1000
+"Creatinine, mg/dL",615348047,nanogram per deciliter,milligram per deciliter,Corrected serum creatinine measurement,x*0.000001
+"Creatinine, mg/dL",615348047,millimole per liter,milligram per deciliter,Corrected serum creatinine measurement,x*11.312217194570135
+"Creatinine, mg/dL",615348047,gram per deciliter,milligram per deciliter,Corrected serum creatinine measurement,x*1000
+"Creatinine, mg/dL",615348047,nanogram per deciliter,milligram per deciliter,Corrected serum creatinine level,x*0.000001
+"Creatinine, mg/dL",615348047,millimole per liter,milligram per deciliter,Corrected serum creatinine level,x*11.312217194570135
+"Creatinine, mg/dL",615348047,gram per deciliter,milligram per deciliter,Corrected serum creatinine level,x*1000
+"Creatinine, mg/dL",615348047,nanogram per deciliter,milligram per deciliter,Serum creatinine level,x*0.000001
+"Creatinine, mg/dL",615348047,millimole per liter,milligram per deciliter,Serum creatinine level,x*11.312217194570135
+"Creatinine, mg/dL",615348047,gram per deciliter,milligram per deciliter,Serum creatinine level,x*1000
+"Creatinine, mg/dL",615348047,nanogram per deciliter,milligram per deciliter,Plasma creatinine measurement,x*0.000001
+"Creatinine, mg/dL",615348047,millimole per liter,milligram per deciliter,Plasma creatinine measurement,x*11.312217194570135
+"Creatinine, mg/dL",615348047,gram per deciliter,milligram per deciliter,Plasma creatinine measurement,x*1000
+"D-Dimer, mg/L FEU",475972797,nanogram per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma by Immunoassay,x*0.001
+"D-Dimer, mg/L FEU",475972797,nanogram of fibrinogen equivalent unit per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma by Immunoassay,x*0.001
+"D-Dimer, mg/L FEU",475972797,milligram of fibrinogen equivalent unit per liter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma by Immunoassay,x*1.74
+"D-Dimer, mg/L FEU",475972797,microgram of fibrinogen equivalent unit per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma by Immunoassay,x
+"D-Dimer, mg/L FEU",475972797,picogram per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma,x*0.000001
+"D-Dimer, mg/L FEU",475972797,nanogram per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma,x*0.001
+"D-Dimer, mg/L FEU",475972797,nanogram of fibrinogen equivalent unit per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma,x*0.001
+"D-Dimer, mg/L FEU",475972797,milligram per liter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma,x
+"D-Dimer, mg/L FEU",475972797,milligram per deciliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma,x*10
+"D-Dimer, mg/L FEU",475972797,milligram of fibrinogen equivalent unit per liter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma,x
+"D-Dimer, mg/L FEU",475972797,microgram per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma,x
+"D-Dimer, mg/L FEU",475972797,Microgram per milliliter of FEU,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma,x
+"D-Dimer, mg/L FEU",475972797,microgram per liter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma,x*0.00174
+"D-Dimer, mg/L FEU",475972797,microgram of fibrinogen equivalent unit per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma,x
+"D-Dimer, mg/L FEU",475972797,nanogram per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer FEU [Mass/volume] in Blood by Immunoassay,x*0.001
+"D-Dimer, mg/L FEU",475972797,nanogram of fibrinogen equivalent unit per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer FEU [Mass/volume] in Blood by Immunoassay,x*0.001
+"D-Dimer, mg/L FEU",475972797,microgram of fibrinogen equivalent unit per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer FEU [Mass/volume] in Blood by Immunoassay,x
+"D-Dimer, mg/L FEU",475972797,nanogram per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer DDU [Mass/volume] in Blood by Immunoassay,x*0.00174
+"D-Dimer, mg/L FEU",475972797,microgram per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer DDU [Mass/volume] in Blood by Immunoassay,x*1.74
+"D-Dimer, mg/L FEU",475972797,microgram of fibrinogen equivalent unit per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer DDU [Mass/volume] in Blood by Immunoassay,x
+"D-Dimer, mg/L FEU",475972797,nanogram per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer DDU [Mass/volume] in Platelet poor plasma by Immunoassay,x*0.00174
+"D-Dimer, mg/L FEU",475972797,microgram per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer DDU [Mass/volume] in Platelet poor plasma by Immunoassay,x*1.74
+"D-Dimer, mg/L FEU",475972797,nanogram per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer DDU [Mass/volume] in Platelet poor plasma,x*0.00174
+"D-Dimer, mg/L FEU",475972797,milligram per liter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer DDU [Mass/volume] in Platelet poor plasma,x*1.74
+"D-Dimer, mg/L FEU",475972797,milligram of fibrinogen equivalent unit per liter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer DDU [Mass/volume] in Platelet poor plasma,x
+"D-Dimer, mg/L FEU",475972797,microgram per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer DDU [Mass/volume] in Platelet poor plasma,x*1.74
+"D-Dimer, mg/L FEU",475972797,microgram of fibrinogen equivalent unit per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer DDU [Mass/volume] in Platelet poor plasma,x
+"D-Dimer, mg/L FEU",475972797,nanogram per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer [Presence] in Platelet poor plasma,None
+"D-Dimer, mg/L FEU",475972797,nanogram of fibrinogen equivalent unit per milliliter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer [Presence] in Platelet poor plasma,None
+"D-Dimer, mg/L FEU",475972797,milligram per liter,Milligram per liter fibrinogen equivalent unit,Fibrin D-dimer [Presence] in Platelet poor plasma,None
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Sitting diastolic blood pressure,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Sitting diastolic blood pressure,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Diastolic blood pressure,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Diastolic blood pressure,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Diastolic blood pressure--lying in L-lateral position,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Diastolic blood pressure--lying in L-lateral position,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Invasive Diastolic blood pressure,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Invasive Diastolic blood pressure,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Diastolic blood pressure by Noninvasive,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Diastolic blood pressure by Noninvasive,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Diastolic arterial pressure,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Diastolic arterial pressure,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,24 hour diastolic blood pressure,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,24 hour diastolic blood pressure,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Diastolic blood pressure--sitting,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Diastolic blood pressure--sitting,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Baseline diastolic blood pressure,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Baseline diastolic blood pressure,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Diastolic blood pressure on admission,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Diastolic blood pressure on admission,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Ambulatory diastolic blood pressure,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Ambulatory diastolic blood pressure,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Diastolic blood pressure centile,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Diastolic blood pressure centile,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Diastolic blood pressure--supine,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Diastolic blood pressure--supine,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Brachial artery Diastolic blood pressure,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Brachial artery Diastolic blood pressure,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Diastolic blood pressure by Continuous non-invasive monitoring,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Diastolic blood pressure by Continuous non-invasive monitoring,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Lying diastolic blood pressure,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Lying diastolic blood pressure,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Diastolic blood pressure of neonate at birth,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Diastolic blood pressure of neonate at birth,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Diastolic blood pressure--standing,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Diastolic blood pressure--standing,x
+Diastolic blood pressure,658772723,mmHg,millimeter mercury column,Standing diastolic blood pressure,x
+Diastolic blood pressure,658772723,millimeter,millimeter mercury column,Standing diastolic blood pressure,x
+Eosinophils (absolute),296867571,thousand per milliliter,thousand per microliter,Eosinophils [#/volume] in Blood by Manual count,x*0.001
+Eosinophils (absolute),296867571,thousand per liter,thousand per microliter,Eosinophils [#/volume] in Blood by Manual count,x*0.000001
+Eosinophils (absolute),296867571,thousand per cubic millimeter,thousand per microliter,Eosinophils [#/volume] in Blood by Manual count,x
+Eosinophils (absolute),296867571,per microliter,thousand per microliter,Eosinophils [#/volume] in Blood by Manual count,x*0.001
+Eosinophils (absolute),296867571,million per microliter,thousand per microliter,Eosinophils [#/volume] in Blood by Manual count,x*1000
+Eosinophils (absolute),296867571,cells per microliter,thousand per microliter,Eosinophils [#/volume] in Blood by Manual count,x*0.001
+Eosinophils (absolute),296867571,billion per liter,thousand per microliter,Eosinophils [#/volume] in Blood by Manual count,x
+Eosinophils (absolute),296867571,billion cells per liter,thousand per microliter,Eosinophils [#/volume] in Blood by Manual count,x
+Eosinophils (absolute),296867571,10*9/L,thousand per microliter,Eosinophils [#/volume] in Blood by Manual count,x
+Eosinophils (absolute),296867571,10*9 Platelets/L,thousand per microliter,Eosinophils [#/volume] in Blood by Manual count,x
+Eosinophils (absolute),296867571,thousand per milliliter,thousand per microliter,Eosinophils [#/volume] in Blood by Automated count,x*0.001
+Eosinophils (absolute),296867571,thousand per liter,thousand per microliter,Eosinophils [#/volume] in Blood by Automated count,x*0.000001
+Eosinophils (absolute),296867571,thousand per cubic millimeter,thousand per microliter,Eosinophils [#/volume] in Blood by Automated count,x
+Eosinophils (absolute),296867571,per microliter,thousand per microliter,Eosinophils [#/volume] in Blood by Automated count,x*0.001
+Eosinophils (absolute),296867571,million per microliter,thousand per microliter,Eosinophils [#/volume] in Blood by Automated count,x*1000
+Eosinophils (absolute),296867571,kilounit per liter,thousand per microliter,Eosinophils [#/volume] in Blood by Automated count,None
+Eosinophils (absolute),296867571,cells per microliter,thousand per microliter,Eosinophils [#/volume] in Blood by Automated count,x*0.001
+Eosinophils (absolute),296867571,billion per liter,thousand per microliter,Eosinophils [#/volume] in Blood by Automated count,x
+Eosinophils (absolute),296867571,billion cells per liter,thousand per microliter,Eosinophils [#/volume] in Blood by Automated count,x
+Eosinophils (absolute),296867571,10*9/L,thousand per microliter,Eosinophils [#/volume] in Blood by Automated count,x
+Eosinophils (absolute),296867571,10*9 Platelets/L,thousand per microliter,Eosinophils [#/volume] in Blood by Automated count,x
+Eosinophils (absolute),296867571,thousand per milliliter,thousand per microliter,Eosinophils [#/volume] in Blood,x*0.001
+Eosinophils (absolute),296867571,thousand per liter,thousand per microliter,Eosinophils [#/volume] in Blood,x*0.000001
+Eosinophils (absolute),296867571,thousand per cubic millimeter,thousand per microliter,Eosinophils [#/volume] in Blood,x
+Eosinophils (absolute),296867571,per microliter,thousand per microliter,Eosinophils [#/volume] in Blood,x*0.001
+Eosinophils (absolute),296867571,million per microliter,thousand per microliter,Eosinophils [#/volume] in Blood,x*1000
+Eosinophils (absolute),296867571,cells per microliter,thousand per microliter,Eosinophils [#/volume] in Blood,x*0.001
+Eosinophils (absolute),296867571,billion per liter,thousand per microliter,Eosinophils [#/volume] in Blood,x
+Eosinophils (absolute),296867571,billion cells per liter,thousand per microliter,Eosinophils [#/volume] in Blood,x
+Eosinophils (absolute),296867571,10*9/L,thousand per microliter,Eosinophils [#/volume] in Blood,x
+Eosinophils (absolute),296867571,10*9 Platelets/L,thousand per microliter,Eosinophils [#/volume] in Blood,x
+Eosinophils (relative),309381426,percent total,percent,Eosinophils/100 leukocytes in Blood by Manual count,x
+Eosinophils (relative),309381426,percent total,percent,Eosinophils/100 leukocytes in Blood,x
+Eosinophils (relative),309381426,percent total,percent,Eosinophils/100 leukocytes in Blood by Automated count,x
+"Erythrocyte Sed. Rate, mm/hr",905545362,millimeter,millimeter per hour,Erythrocyte sedimentation rate,x
+"Erythrocyte Sed. Rate, mm/hr",905545362,millimeter,millimeter per hour,Erythrocyte sedimentation rate by Westergren method,x
+"Erythrocyte Sed. Rate, mm/hr",905545362,millimeter,millimeter per hour,Erythrocyte sedimentation rate by Wintrobe method,x
+"Ferritin, ng/mL",317388455,picogram per milliliter,nanogram per milliliter,Ferritin [Mass/volume] in Blood,x*0.001
+"Ferritin, ng/mL",317388455,nanogram per deciliter,nanogram per milliliter,Ferritin [Mass/volume] in Blood,x*0.01
+"Ferritin, ng/mL",317388455,milligram per milliliter,nanogram per milliliter,Ferritin [Mass/volume] in Blood,x*1000000
+"Ferritin, ng/mL",317388455,milligram per deciliter,nanogram per milliliter,Ferritin [Mass/volume] in Blood,x*10000
+"Ferritin, ng/mL",317388455,microgram per milliliter,nanogram per milliliter,Ferritin [Mass/volume] in Blood,x*1000
+"Ferritin, ng/mL",317388455,microgram per liter,nanogram per milliliter,Ferritin [Mass/volume] in Blood,x
+"Ferritin, ng/mL",317388455,microgram per deciliter,nanogram per milliliter,Ferritin [Mass/volume] in Blood,x*10
+"Ferritin, ng/mL",317388455,picogram per milliliter,nanogram per milliliter,Ferritin [Mass/volume] in Serum or Plasma by Immunoassay,x*0.001
+"Ferritin, ng/mL",317388455,nanogram per deciliter,nanogram per milliliter,Ferritin [Mass/volume] in Serum or Plasma by Immunoassay,x*0.01
+"Ferritin, ng/mL",317388455,milligram per milliliter,nanogram per milliliter,Ferritin [Mass/volume] in Serum or Plasma by Immunoassay,x*1000000
+"Ferritin, ng/mL",317388455,milligram per deciliter,nanogram per milliliter,Ferritin [Mass/volume] in Serum or Plasma by Immunoassay,x*10000
+"Ferritin, ng/mL",317388455,microgram per milliliter,nanogram per milliliter,Ferritin [Mass/volume] in Serum or Plasma by Immunoassay,x*1000
+"Ferritin, ng/mL",317388455,microgram per liter,nanogram per milliliter,Ferritin [Mass/volume] in Serum or Plasma by Immunoassay,x
+"Ferritin, ng/mL",317388455,microgram per deciliter,nanogram per milliliter,Ferritin [Mass/volume] in Serum or Plasma by Immunoassay,x*10
+"Ferritin, ng/mL",317388455,picogram per milliliter,nanogram per milliliter,Ferritin [Mass/volume] in Serum or Plasma,x*0.001
+"Ferritin, ng/mL",317388455,nanogram per deciliter,nanogram per milliliter,Ferritin [Mass/volume] in Serum or Plasma,x*0.01
+"Ferritin, ng/mL",317388455,milligram per milliliter,nanogram per milliliter,Ferritin [Mass/volume] in Serum or Plasma,x*1000000
+"Ferritin, ng/mL",317388455,milligram per liter,nanogram per milliliter,Ferritin [Mass/volume] in Serum or Plasma,x*1000
+"Ferritin, ng/mL",317388455,milligram per deciliter,nanogram per milliliter,Ferritin [Mass/volume] in Serum or Plasma,x*10000
+"Ferritin, ng/mL",317388455,microgram per milliliter,nanogram per milliliter,Ferritin [Mass/volume] in Serum or Plasma,x*1000
+"Ferritin, ng/mL",317388455,microgram per liter,nanogram per milliliter,Ferritin [Mass/volume] in Serum or Plasma,x
+"Ferritin, ng/mL",317388455,microgram per deciliter,nanogram per milliliter,Ferritin [Mass/volume] in Serum or Plasma,x*10
+"Ferritin, ng/mL",317388455,picogram per milliliter,nanogram per milliliter,Ferritin [Moles/volume] in Serum or Plasma,x*0.001
+"Ferritin, ng/mL",317388455,nanogram per deciliter,nanogram per milliliter,Ferritin [Moles/volume] in Serum or Plasma,x*0.01
+"Ferritin, ng/mL",317388455,milligram per milliliter,nanogram per milliliter,Ferritin [Moles/volume] in Serum or Plasma,x*1000000
+"Ferritin, ng/mL",317388455,milligram per deciliter,nanogram per milliliter,Ferritin [Moles/volume] in Serum or Plasma,x*10000
+"Ferritin, ng/mL",317388455,microgram per milliliter,nanogram per milliliter,Ferritin [Moles/volume] in Serum or Plasma,x*1000
+"Ferritin, ng/mL",317388455,microgram per liter,nanogram per milliliter,Ferritin [Moles/volume] in Serum or Plasma,x
+"Ferritin, ng/mL",317388455,microgram per deciliter,nanogram per milliliter,Ferritin [Moles/volume] in Serum or Plasma,x*10
+"Ferritin, ng/mL",317388455,picogram per milliliter,nanogram per milliliter,Ferritin [Interpretation] in Blood,x*0.001
+"Ferritin, ng/mL",317388455,nanogram per deciliter,nanogram per milliliter,Ferritin [Interpretation] in Blood,x*0.01
+"Ferritin, ng/mL",317388455,milligram per milliliter,nanogram per milliliter,Ferritin [Interpretation] in Blood,x*1000000
+"Ferritin, ng/mL",317388455,milligram per deciliter,nanogram per milliliter,Ferritin [Interpretation] in Blood,x*10000
+"Ferritin, ng/mL",317388455,microgram per milliliter,nanogram per milliliter,Ferritin [Interpretation] in Blood,x*1000
+"Ferritin, ng/mL",317388455,microgram per liter,nanogram per milliliter,Ferritin [Interpretation] in Blood,x
+"Ferritin, ng/mL",317388455,microgram per deciliter,nanogram per milliliter,Ferritin [Interpretation] in Blood,x*10
+"Fibrinogen, pg/mL",27035875,picogram per milliliter,milligram per deciliter,Fibrinogen [Mass/volume] in Platelet poor plasma by Coagulation assay,x*0.0000001
+"Fibrinogen, pg/mL",27035875,picogram per milliliter,milligram per deciliter,Fibrinogen [Mass/volume] in Platelet poor plasma by Coagulation.derived,x*0.0000001
+"Fibrinogen, pg/mL",27035875,picogram per milliliter,milligram per deciliter,Fibrinogen; activity,x*0.0000001
+"Fibrinogen, pg/mL",27035875,picogram per milliliter,milligram per deciliter,Fibrinogen measurement,x*0.0000001
+"Glucose, mg/dL",59698832,millimole per liter,milligram per deciliter,Glucose [Mass/volume] in Blood,x*18.02
+"Glucose, mg/dL",59698832,milligram per milliliter,milligram per deciliter,Glucose [Mass/volume] in Blood,x*100
+Heart rate,596956209,per minute,counts per minute,Heart rate,x
+Heart rate,596956209,minute,counts per minute,Heart rate,x
+Heart rate,596956209,heartbeat,counts per minute,Heart rate,x
+Heart rate,596956209,per minute,counts per minute,Pulse rate,x
+Height,754731201,inch (international),meter,Body height Stated,x*0.0254
+Height,754731201,inch (international),meter,Body height measure,x*0.0254
+Height,754731201,centimeter,meter,Body height measure,x*0.01
+Height,754731201,Inches,meter,Body height --standing,x*0.0254
+Height,754731201,Inches,meter,Body height,x*0.0254
+Height,754731201,inch (US),meter,Body height,x*0.0254
+Height,754731201,inch (international),meter,Body height,x*0.0254
+Height,754731201,centimeter,meter,Body height,x*0.01
+Height,754731201,Inches,meter,Body height Measured,x*0.0254
+Height,754731201,inch (US),meter,Body height Measured,x*0.0254
+Height,754731201,inch (international),meter,Body height Measured,x*0.0254
+Height,754731201,centimeter,meter,Body height Measured,x*0.01
+"Hemoglobin A1c, %",381434987,percent hemoglobin,percent,Hemoglobin A1c/Hemoglobin.total in Blood by HPLC,x
+"Hemoglobin A1c, %",381434987,percent total,percent,Hemoglobin A1c/Hemoglobin.total in Blood,x
+"Hemoglobin A1c, %",381434987,percent hemoglobin,percent,Hemoglobin A1c/Hemoglobin.total in Blood,x
+"Hemoglobin, g/dL",28177118,picogram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Arterial blood,x*0.0000000001
+"Hemoglobin, g/dL",28177118,picogram per deciliter,gram per deciliter,Hemoglobin [Mass/volume] in Arterial blood,x*0.000000000001
+"Hemoglobin, g/dL",28177118,nanogram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Arterial blood,x*0.0000001
+"Hemoglobin, g/dL",28177118,milligram per deciliter,gram per deciliter,Hemoglobin [Mass/volume] in Arterial blood,x*0.001
+"Hemoglobin, g/dL",28177118,microgram per deciliter,gram per deciliter,Hemoglobin [Mass/volume] in Arterial blood,x*0.000001
+"Hemoglobin, g/dL",28177118,gram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Arterial blood,x*100
+"Hemoglobin, g/dL",28177118,gram per liter,gram per deciliter,Hemoglobin [Mass/volume] in Arterial blood,x*0.1
+"Hemoglobin, g/dL",28177118,picogram per milliliter,gram per deciliter,Hemoglobin [Moles/volume] in Blood,x*0.0000000001
+"Hemoglobin, g/dL",28177118,picogram per deciliter,gram per deciliter,Hemoglobin [Moles/volume] in Blood,x*0.000000000001
+"Hemoglobin, g/dL",28177118,nanogram per milliliter,gram per deciliter,Hemoglobin [Moles/volume] in Blood,x*0.0000001
+"Hemoglobin, g/dL",28177118,microgram per deciliter,gram per deciliter,Hemoglobin [Moles/volume] in Blood,x*0.000001
+"Hemoglobin, g/dL",28177118,gram per milliliter,gram per deciliter,Hemoglobin [Moles/volume] in Blood,x*100
+"Hemoglobin, g/dL",28177118,gram per liter,gram per deciliter,Hemoglobin [Moles/volume] in Blood,x*0.1
+"Hemoglobin, g/dL",28177118,picogram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Blood,x*0.0000000001
+"Hemoglobin, g/dL",28177118,picogram per deciliter,gram per deciliter,Hemoglobin [Mass/volume] in Blood,x*0.000000000001
+"Hemoglobin, g/dL",28177118,nanogram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Blood,x*0.0000001
+"Hemoglobin, g/dL",28177118,milligram per deciliter,gram per deciliter,Hemoglobin [Mass/volume] in Blood,x*0.001
+"Hemoglobin, g/dL",28177118,microgram per deciliter,gram per deciliter,Hemoglobin [Mass/volume] in Blood,x*0.000001
+"Hemoglobin, g/dL",28177118,gram percent,gram per deciliter,Hemoglobin [Mass/volume] in Blood,x
+"Hemoglobin, g/dL",28177118,gram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Blood,x*100
+"Hemoglobin, g/dL",28177118,gram per liter,gram per deciliter,Hemoglobin [Mass/volume] in Blood,x*0.1
+"Hemoglobin, g/dL",28177118,picogram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Venous blood,x*0.0000000001
+"Hemoglobin, g/dL",28177118,picogram per deciliter,gram per deciliter,Hemoglobin [Mass/volume] in Venous blood,x*0.000000000001
+"Hemoglobin, g/dL",28177118,nanogram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Venous blood,x*0.0000001
+"Hemoglobin, g/dL",28177118,milligram per deciliter,gram per deciliter,Hemoglobin [Mass/volume] in Venous blood,x*0.001
+"Hemoglobin, g/dL",28177118,microgram per deciliter,gram per deciliter,Hemoglobin [Mass/volume] in Venous blood,x*0.000001
+"Hemoglobin, g/dL",28177118,gram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Venous blood,x*100
+"Hemoglobin, g/dL",28177118,gram per liter,gram per deciliter,Hemoglobin [Mass/volume] in Venous blood,x*0.1
+"Hemoglobin, g/dL",28177118,picogram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Capillary blood,x*0.0000000001
+"Hemoglobin, g/dL",28177118,picogram per deciliter,gram per deciliter,Hemoglobin [Mass/volume] in Capillary blood,x*0.000000000001
+"Hemoglobin, g/dL",28177118,nanogram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Capillary blood,x*0.0000001
+"Hemoglobin, g/dL",28177118,milligram per deciliter,gram per deciliter,Hemoglobin [Mass/volume] in Capillary blood,x*0.001
+"Hemoglobin, g/dL",28177118,microgram per deciliter,gram per deciliter,Hemoglobin [Mass/volume] in Capillary blood,x*0.000001
+"Hemoglobin, g/dL",28177118,gram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Capillary blood,x*100
+"Hemoglobin, g/dL",28177118,gram per liter,gram per deciliter,Hemoglobin [Mass/volume] in Capillary blood,x*0.1
+"Hemoglobin, g/dL",28177118,picogram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Blood by Oximetry,x*0.0000000001
+"Hemoglobin, g/dL",28177118,picogram per deciliter,gram per deciliter,Hemoglobin [Mass/volume] in Blood by Oximetry,x*0.000000000001
+"Hemoglobin, g/dL",28177118,nanogram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Blood by Oximetry,x*0.0000001
+"Hemoglobin, g/dL",28177118,milligram per deciliter,gram per deciliter,Hemoglobin [Mass/volume] in Blood by Oximetry,x*0.001
+"Hemoglobin, g/dL",28177118,microgram per deciliter,gram per deciliter,Hemoglobin [Mass/volume] in Blood by Oximetry,x*0.000001
+"Hemoglobin, g/dL",28177118,gram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Blood by Oximetry,x*100
+"Hemoglobin, g/dL",28177118,gram per liter,gram per deciliter,Hemoglobin [Mass/volume] in Blood by Oximetry,x*0.1
+"Hemoglobin, g/dL",28177118,picogram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Mixed venous blood,x*0.0000000001
+"Hemoglobin, g/dL",28177118,picogram per deciliter,gram per deciliter,Hemoglobin [Mass/volume] in Mixed venous blood,x*0.000000000001
+"Hemoglobin, g/dL",28177118,nanogram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Mixed venous blood,x*0.0000001
+"Hemoglobin, g/dL",28177118,microgram per deciliter,gram per deciliter,Hemoglobin [Mass/volume] in Mixed venous blood,x*0.000001
+"Hemoglobin, g/dL",28177118,gram per milliliter,gram per deciliter,Hemoglobin [Mass/volume] in Mixed venous blood,x*100
+"Hemoglobin, g/dL",28177118,gram per liter,gram per deciliter,Hemoglobin [Mass/volume] in Mixed venous blood,x*0.1
+HIV Viral Load,776696816,international unit per milliliter,copies per milliliter,HIV 1 RNA [Units/volume] (viral load) in Serum or Plasma by NAA with probe detection,x*1.74
+HIV Viral Load,776696816,international unit per liter,copies per milliliter,HIV 1 RNA [Units/volume] (viral load) in Serum or Plasma by NAA with probe detection,x*0.00174
+HIV Viral Load,776696816,international unit per milliliter,copies per milliliter,HIV 1 RNA [Units/volume] (viral load) in Serum or Plasma by Probe with amplification,x*1.74
+HIV Viral Load,776696816,copies per liter,copies per milliliter,HIV 1 RNA [#/volume] (viral load) in Plasma by Probe and target amplification method detection limit = 20 copies/mL,x*0.001
+HIV Viral Load,776696816,log copies per milliliter,copies per milliliter,HIV 1 RNA [Log #/volume] (viral load) in Serum or Plasma by Probe and target amplification method detection limit = 1.7 log copies/mL,10**x
+HIV Viral Load,776696816,log copies per milliliter,copies per milliliter,HIV 1 RNA [#/volume] (viral load) in Serum or Plasma by NAA with probe detection,10**x
+HIV Viral Load,776696816,international unit per milliliter,copies per milliliter,HIV 1 RNA [#/volume] (viral load) in Serum or Plasma by NAA with probe detection,x*1.74
+HIV Viral Load,776696816,copies per liter,copies per milliliter,HIV 1 RNA [#/volume] (viral load) in Serum or Plasma by NAA with probe detection,x*0.001
+HIV Viral Load,776696816,log copies per milliliter,copies per milliliter,HIV 1 RNA [Log #/volume] (viral load) in Plasma by Probe with signal amplification,10**x
+HIV Viral Load,776696816,log copies per milliliter,copies per milliliter,HIV 1 RNA [Log #/volume] (viral load) in Serum or Plasma by Probe with amplification detection limit = 2.6 log copies/mL,10**x
+HIV Viral Load,776696816,log copies per milliliter,copies per milliliter,HIV 1 RNA [Log #/volume] (viral load) in Serum or Plasma by NAA with probe detection,10**x
+HIV Viral Load,776696816,log copies per milliliter,copies per milliliter,HIV 1 RNA [Log #/volume] (viral load) in Serum or Plasma by Probe and target amplification method detection limit = 0.5 log copies/mL,10**x
+"Lactate Dehydrogenase (LDH), units/L",10450810,international unit per liter,unit per liter,Lactate dehydrogenase 2 enzyme activity in plasma,x
+"Lactate Dehydrogenase (LDH), units/L",10450810,international unit per liter,unit per liter,Lactate dehydrogenase 5 [Enzymatic activity/volume] in Serum or Plasma,x
+"Lactate Dehydrogenase (LDH), units/L",10450810,international unit per liter,unit per liter,Lactate dehydrogenase 3 enzyme activity in plasma,x
+"Lactate Dehydrogenase (LDH), units/L",10450810,international unit per liter,unit per liter,Lactate dehydrogenase 5 enzyme activity in plasma,x
+"Lactate Dehydrogenase (LDH), units/L",10450810,international unit per liter,unit per liter,Lactate dehydrogenase 4 enzyme activity in plasma,x
+"Lactate Dehydrogenase (LDH), units/L",10450810,international unit per liter,unit per liter,Lactate dehydrogenase 4 [Enzymatic activity/volume] in Serum or Plasma,x
+"Lactate Dehydrogenase (LDH), units/L",10450810,international unit per liter,unit per liter,Lactate dehydrogenase enzyme activity in plasma,x
+"Lactate Dehydrogenase (LDH), units/L",10450810,international unit per liter,unit per liter,Lactate dehydrogenase 3 [Enzymatic activity/volume] in Serum or Plasma,x
+"Lactate Dehydrogenase (LDH), units/L",10450810,international unit per liter,unit per liter,Lactate dehydrogenase 1 [Enzymatic activity/volume] in Serum or Plasma,x
+"Lactate Dehydrogenase (LDH), units/L",10450810,international unit per liter,unit per liter,Lactate dehydrogenase [Enzymatic activity/volume] in Serum or Plasma by Lactate to pyruvate reaction,x
+"Lactate Dehydrogenase (LDH), units/L",10450810,international unit per liter,unit per liter,Lactate dehydrogenase 1 enzyme activity in plasma,x
+"Lactate Dehydrogenase (LDH), units/L",10450810,international unit per liter,unit per liter,Lactate dehydrogenase 2 [Enzymatic activity/volume] in Serum or Plasma,x
+"Lactate, U/L",400660753,milliequivalent per liter,millimole per liter,Lactate [Moles/volume] in Plasma venous,x
+"Lactate, U/L",400660753,milliequivalent per liter,millimole per liter,Lactate [Moles/volume] in Capillary blood,x
+"Lactate, U/L",400660753,milligram per deciliter,millimole per liter,Lactate [Moles/volume] in Venous blood,x*0.111
+"Lactate, U/L",400660753,milliequivalent per liter,millimole per liter,Lactate [Moles/volume] in Venous blood,x
+"Lactate, U/L",400660753,milligram per deciliter,millimole per liter,Lactate [Mass/volume] in Serum or Plasma,x*0.111
+"Lactate, U/L",400660753,milliequivalent per liter,millimole per liter,Lactate [Mass/volume] in Serum or Plasma,x
+"Lactate, U/L",400660753,nanomole per milliliter,millimole per liter,Lactate [Moles/volume] in Serum or Plasma,x*0.001
+"Lactate, U/L",400660753,milligram per deciliter,millimole per liter,Lactate [Moles/volume] in Serum or Plasma,x*0.111
+"Lactate, U/L",400660753,milliequivalent per liter,millimole per liter,Lactate [Moles/volume] in Serum or Plasma,x
+"Lactate, U/L",400660753,micromole per liter,millimole per liter,Lactate [Moles/volume] in Serum or Plasma,x*0.001
+"Lactate, U/L",400660753,milliequivalent per liter,millimole per liter,Lactate [Moles/volume] in Blood,x
+"Lactate, U/L",400660753,milligram per deciliter,millimole per liter,Lactate [Mass/volume] in Blood,x*0.111
+"Lactate, U/L",400660753,milliequivalent per liter,millimole per liter,Lactate [Moles/volume] in Arterial blood,x
+"Lactate, U/L",400660753,milligram per deciliter,millimole per liter,Lactate [Mass/volume] in Venous blood,x*0.111
+"Lactate, U/L",400660753,milliequivalent per liter,millimole per liter,Lactate [Mass/volume] in Venous blood,x
+"Lactate, U/L",400660753,milliequivalent per liter,millimole per liter,Lactate [Moles/volume] in Mixed venous blood,x
+"Lymphocytes (absolute), x10E3/uL",627523060,per microliter,thousand per microliter,Lymphocytes [#/volume] in Blood by Flow cytometry (FC),x*0.001
+"Lymphocytes (absolute), x10E3/uL",627523060,billion per liter,thousand per microliter,Lymphocytes [#/volume] in Blood by Flow cytometry (FC),x
+"Lymphocytes (absolute), x10E3/uL",627523060,per microliter,thousand per microliter,Lymphocytes [#/volume] in Blood by Automated count,x*0.001
+"Lymphocytes (absolute), x10E3/uL",627523060,kilounit per liter,thousand per microliter,Lymphocytes [#/volume] in Blood by Automated count,None
+"Lymphocytes (absolute), x10E3/uL",627523060,cells per microliter,thousand per microliter,Lymphocytes [#/volume] in Blood by Automated count,x*0.001
+"Lymphocytes (absolute), x10E3/uL",627523060,billion per liter,thousand per microliter,Lymphocytes [#/volume] in Blood by Automated count,x
+"Lymphocytes (absolute), x10E3/uL",627523060,10*9/L,thousand per microliter,Lymphocytes [#/volume] in Blood by Automated count,x
+"Lymphocytes (absolute), x10E3/uL",627523060,10*9 Platelets/L,thousand per microliter,Lymphocytes [#/volume] in Blood by Automated count,x
+"Lymphocytes (absolute), x10E3/uL",627523060,thousand per cubic millimeter,thousand per microliter,Lymphocytes [#/volume] in Blood,x
+"Lymphocytes (absolute), x10E3/uL",627523060,per microliter,thousand per microliter,Lymphocytes [#/volume] in Blood,x*0.001
+"Lymphocytes (absolute), x10E3/uL",627523060,cells per microliter,thousand per microliter,Lymphocytes [#/volume] in Blood,x*0.001
+"Lymphocytes (absolute), x10E3/uL",627523060,billion per liter,thousand per microliter,Lymphocytes [#/volume] in Blood,x
+"Lymphocytes (absolute), x10E3/uL",627523060,per microliter,thousand per microliter,Lymphocytes [#/volume] in Blood by Manual count,x*0.001
+"Lymphocytes (absolute), x10E3/uL",627523060,cells per microliter,thousand per microliter,Lymphocytes [#/volume] in Blood by Manual count,x*0.001
+"Lymphocytes (absolute), x10E3/uL",627523060,billion per liter,thousand per microliter,Lymphocytes [#/volume] in Blood by Manual count,x
+"Lymphocytes (absolute), x10E3/uL",627523060,10*9/L,thousand per microliter,Lymphocytes [#/volume] in Blood by Manual count,x
+"Lymphocytes (relative), %",45416701,percent of white blood cells,percent,Lymphocytes/100 leukocytes in Blood by Automated count,x
+"Neutrophils (absolute), x10E3/uL",881397271,thousand per liter,thousand per microliter,Neutrophils [#/volume] in Blood,x*0.000001
+"Neutrophils (absolute), x10E3/uL",881397271,per microliter,thousand per microliter,Neutrophils [#/volume] in Blood,x*0.001
+"Neutrophils (absolute), x10E3/uL",881397271,cells per microliter,thousand per microliter,Neutrophils [#/volume] in Blood,x*0.001
+"Neutrophils (absolute), x10E3/uL",881397271,billion per liter,thousand per microliter,Neutrophils [#/volume] in Blood,x
+"Neutrophils (absolute), x10E3/uL",881397271,thousand per liter,thousand per microliter,Neutrophils [#/volume] in Blood by Manual count,x*0.000001
+"Neutrophils (absolute), x10E3/uL",881397271,per microliter,thousand per microliter,Neutrophils [#/volume] in Blood by Manual count,x*0.001
+"Neutrophils (absolute), x10E3/uL",881397271,cells per microliter,thousand per microliter,Neutrophils [#/volume] in Blood by Manual count,x*0.001
+"Neutrophils (absolute), x10E3/uL",881397271,billion per liter,thousand per microliter,Neutrophils [#/volume] in Blood by Manual count,x
+"Neutrophils (absolute), x10E3/uL",881397271,10*9/L,thousand per microliter,Neutrophils [#/volume] in Blood by Manual count,x
+"Neutrophils (absolute), x10E3/uL",881397271,thousand per liter,thousand per microliter,Neutrophils [#/volume] in Blood by Automated count,x*0.000001
+"Neutrophils (absolute), x10E3/uL",881397271,thousand per cubic millimeter,thousand per microliter,Neutrophils [#/volume] in Blood by Automated count,x
+"Neutrophils (absolute), x10E3/uL",881397271,per microliter,thousand per microliter,Neutrophils [#/volume] in Blood by Automated count,x*0.001
+"Neutrophils (absolute), x10E3/uL",881397271,kilounit per liter,thousand per microliter,Neutrophils [#/volume] in Blood by Automated count,None
+"Neutrophils (absolute), x10E3/uL",881397271,cells per microliter,thousand per microliter,Neutrophils [#/volume] in Blood by Automated count,x*0.001
+"Neutrophils (absolute), x10E3/uL",881397271,billion per liter,thousand per microliter,Neutrophils [#/volume] in Blood by Automated count,x
+"Neutrophils (absolute), x10E3/uL",881397271,10*9/L,thousand per microliter,Neutrophils [#/volume] in Blood by Automated count,x
+"Neutrophils (absolute), x10E3/uL",881397271,10*9 Platelets/L,thousand per microliter,Neutrophils [#/volume] in Blood by Automated count,x
+"NT pro BNP, pg/mL",561166072,nanogram per liter,picogram per milliliter,N terminal pro-brain natriuretic peptide level,x
+"NT pro BNP, pg/mL",561166072,nanogram per liter,picogram per milliliter,Natriuretic peptide.B prohormone N-Terminal [Moles/volume] in Serum or Plasma,x
+"NT pro BNP, pg/mL",561166072,nanogram per liter,picogram per milliliter,Serum N-terminal pro B-type natriuretic peptide concentration measurement,x
+"NT pro BNP, pg/mL",561166072,nanogram per liter,picogram per milliliter,Natriuretic peptide.B prohormone N-Terminal [Moles/volume] in Serum or Plasma by Immunoassay,x
+"NT pro BNP, pg/mL",561166072,nanogram per liter,picogram per milliliter,Natriuretic peptide.B prohormone N-Terminal | Blood | Chemistry - non-challenge,x
+"NT pro BNP, pg/mL",561166072,nanogram per liter,picogram per milliliter,Natriuretic peptide.B prohormone N-Terminal [Mass/volume] in Blood by Immunoassay,x
+"NT pro BNP, pg/mL",561166072,nanogram per liter,picogram per milliliter,Natriuretic peptide.B prohormone N-Terminal [Mass/volume] in Serum or Plasma,x
+"NT pro BNP, pg/mL",561166072,nanogram per liter,picogram per milliliter,Natriuretic peptide.B prohormone N-Terminal | Serum or Plasma | Chemistry - non-challenge,x
+"NT pro BNP, pg/mL",561166072,nanogram per liter,picogram per milliliter,Natriuretic peptide.B prohormone N-Terminal [Mass/volume] in Serum or Plasma by Immunoassay,x
+"NT pro BNP, pg/mL",561166072,nanogram per liter,picogram per milliliter,Plasma N-terminal pro B-type natriuretic peptide concentration measurement,x
+"Platelet count, x10E3/uL",167697906,thousand per milliliter,thousand per microliter,Platelets [#/volume] in Blood by Automated count,x*0.001
+"Platelet count, x10E3/uL",167697906,thousand per liter,thousand per microliter,Platelets [#/volume] in Blood by Automated count,x*0.000001
+"Platelet count, x10E3/uL",167697906,thousand per cubic millimeter,thousand per microliter,Platelets [#/volume] in Blood by Automated count,x
+"Platelet count, x10E3/uL",167697906,million per microliter,thousand per microliter,Platelets [#/volume] in Blood by Automated count,x*1000
+"Platelet count, x10E3/uL",167697906,kilounit per liter,thousand per microliter,Platelets [#/volume] in Blood by Automated count,None
+"Platelet count, x10E3/uL",167697906,billion per liter,thousand per microliter,Platelets [#/volume] in Blood by Automated count,x
+"Platelet count, x10E3/uL",167697906,billion cells per liter,thousand per microliter,Platelets [#/volume] in Blood by Automated count,x
+"Platelet count, x10E3/uL",167697906,10*9/L,thousand per microliter,Platelets [#/volume] in Blood by Automated count,x
+"Platelet count, x10E3/uL",167697906,10*9 Platelets/L,thousand per microliter,Platelets [#/volume] in Blood by Automated count,x
+"Platelet count, x10E3/uL",167697906,thousand per milliliter,thousand per microliter,Platelets [#/volume] in Plasma,x*0.001
+"Platelet count, x10E3/uL",167697906,thousand per liter,thousand per microliter,Platelets [#/volume] in Plasma,x*0.000001
+"Platelet count, x10E3/uL",167697906,million per microliter,thousand per microliter,Platelets [#/volume] in Plasma,x*1000
+"Platelet count, x10E3/uL",167697906,billion cells per liter,thousand per microliter,Platelets [#/volume] in Plasma,x
+"Platelet count, x10E3/uL",167697906,thousand per milliliter,thousand per microliter,Platelets [#/volume] in Blood by Estimate,x*0.001
+"Platelet count, x10E3/uL",167697906,thousand per liter,thousand per microliter,Platelets [#/volume] in Blood by Estimate,x*0.000001
+"Platelet count, x10E3/uL",167697906,million per microliter,thousand per microliter,Platelets [#/volume] in Blood by Estimate,x*1000
+"Platelet count, x10E3/uL",167697906,billion cells per liter,thousand per microliter,Platelets [#/volume] in Blood by Estimate,x
+"Platelet count, x10E3/uL",167697906,thousand per milliliter,thousand per microliter,Platelets [#/volume] in Plasma by Automated count,x*0.001
+"Platelet count, x10E3/uL",167697906,thousand per liter,thousand per microliter,Platelets [#/volume] in Plasma by Automated count,x*0.000001
+"Platelet count, x10E3/uL",167697906,million per microliter,thousand per microliter,Platelets [#/volume] in Plasma by Automated count,x*1000
+"Platelet count, x10E3/uL",167697906,billion cells per liter,thousand per microliter,Platelets [#/volume] in Plasma by Automated count,x
+"Platelet count, x10E3/uL",167697906,thousand per milliliter,thousand per microliter,Platelets [#/volume] in Blood by Manual count,x*0.001
+"Platelet count, x10E3/uL",167697906,thousand per liter,thousand per microliter,Platelets [#/volume] in Blood by Manual count,x*0.000001
+"Platelet count, x10E3/uL",167697906,million per microliter,thousand per microliter,Platelets [#/volume] in Blood by Manual count,x*1000
+"Platelet count, x10E3/uL",167697906,billion per liter,thousand per microliter,Platelets [#/volume] in Blood by Manual count,x
+"Platelet count, x10E3/uL",167697906,billion cells per liter,thousand per microliter,Platelets [#/volume] in Blood by Manual count,x
+"Platelet count, x10E3/uL",167697906,thousand per milliliter,thousand per microliter,Platelets [#/volume] in Blood,x*0.001
+"Platelet count, x10E3/uL",167697906,thousand per liter,thousand per microliter,Platelets [#/volume] in Blood,x*0.000001
+"Platelet count, x10E3/uL",167697906,thousand per cubic millimeter,thousand per microliter,Platelets [#/volume] in Blood,x
+"Platelet count, x10E3/uL",167697906,million per microliter,thousand per microliter,Platelets [#/volume] in Blood,x*1000
+"Platelet count, x10E3/uL",167697906,billion per liter,thousand per microliter,Platelets [#/volume] in Blood,x
+"Platelet count, x10E3/uL",167697906,billion cells per liter,thousand per microliter,Platelets [#/volume] in Blood,x
+"Platelet count, x10E3/uL",167697906,thousand per milliliter,thousand per microliter,Platelets [#/volume] in Capillary blood by Manual count,x*0.001
+"Platelet count, x10E3/uL",167697906,thousand per liter,thousand per microliter,Platelets [#/volume] in Capillary blood by Manual count,x*0.000001
+"Platelet count, x10E3/uL",167697906,million per microliter,thousand per microliter,Platelets [#/volume] in Capillary blood by Manual count,x*1000
+"Platelet count, x10E3/uL",167697906,billion cells per liter,thousand per microliter,Platelets [#/volume] in Capillary blood by Manual count,x
+"Potassium, mmol/L",622316047,milliequivalent per liter,millimole per liter,Potassium [Moles/volume] in Blood,x
+"Potassium, mmol/L",622316047,milliequivalent per liter,millimole per liter,Potassium [Moles/volume] in Capillary blood,x
+"Potassium, mmol/L",622316047,milliequivalent per liter,millimole per liter,Potassium [Moles/volume] in Venous blood,x
+"Potassium, mmol/L",622316047,milliequivalent per liter,millimole per liter,Potassium [Moles/volume] in Serum or Plasma,x
+"Potassium, mmol/L",622316047,milliequivalent per liter,millimole per liter,Potassium [Moles/volume] in Arterial blood,x
+"Potassium, mmol/L",622316047,milliequivalent per liter,millimole per liter,Potassium [Moles/volume] in Mixed venous blood,x
+Respiratory rate,286601963,per minute,counts per minute,Respiratory rate,x
+Respiratory rate,286601963,minute,counts per minute,Respiratory rate,x
+"Sodium, mmol/L",887473517,milliequivalent per liter,millimole per liter,Sodium [Moles/volume] in Serum or Plasma,x
+"Sodium, mmol/L",887473517,milliequivalent per liter,millimole per liter,Sodium [Moles/volume] in Capillary blood,x
+"Sodium, mmol/L",887473517,milliequivalent per liter,millimole per liter,"Sodium [Moles/volume] in Serum, Plasma or Blood",x
+"Sodium, mmol/L",887473517,milliequivalent per deciliter,millimole per liter,"Sodium [Moles/volume] in Serum, Plasma or Blood",x*10
+"Sodium, mmol/L",887473517,milliequivalent per liter,millimole per liter,Sodium [Moles/volume] in Venous blood,x
+"Sodium, mmol/L",887473517,milliequivalent per liter,millimole per liter,Sodium [Moles/volume] in Arterial blood,x
+"Sodium, mmol/L",887473517,milliequivalent per liter,millimole per liter,Sodium [Moles/volume] in Blood,x
+SpO2,780678652,percent saturation,percent,Oxygen saturation in Arterial blood by Pulse oximetry,x
+SpO2,780678652,percent saturation,percent,Oxygen saturation in Blood,x
+SpO2,780678652,percent saturation,percent,Oxygen saturation Calculated from oxygen partial pressure in Blood,x
+SpO2,780678652,percent saturation,percent,Oxygen saturation in Capillary blood,x
+SpO2,780678652,percent saturation,percent,Oxygen saturation Calculated from oxygen partial pressure in Arterial blood,x
+SpO2,780678652,percent saturation,percent,Oxygen saturation in Arterial blood,x
+SpO2,780678652,percent saturation,percent,Measurement of oxygen saturation at periphery,x
+Systolic blood pressure,186465804,mmHg,millimeter mercury column,Systolic blood pressure by palpation,x
+Systolic blood pressure,186465804,mmHg,millimeter mercury column,Standing systolic blood pressure,x
+Systolic blood pressure,186465804,mmHg,millimeter mercury column,Target systolic blood pressure,x
+Systolic blood pressure,186465804,mmHg,millimeter mercury column,Systolic blood pressure on admission,x
+Systolic blood pressure,186465804,mmHg,millimeter mercury column,Sitting systolic blood pressure,x
+Systolic blood pressure,186465804,mmHg,millimeter mercury column,Systolic blood pressure of neonate at birth,x
+Systolic blood pressure,186465804,mmHg,millimeter mercury column,Invasive Systolic blood pressure,x
+Systolic blood pressure,186465804,mmHg,millimeter mercury column,Lying systolic blood pressure,x
+Systolic blood pressure,186465804,mmHg,millimeter mercury column,Baseline systolic blood pressure,x
+Systolic blood pressure,186465804,mmHg,millimeter mercury column,Systolic arterial pressure,x
+Systolic blood pressure,186465804,mmHg,millimeter mercury column,Brachial artery Systolic blood pressure,x
+Systolic blood pressure,186465804,mmHg,millimeter mercury column,24 hour systolic blood pressure,x
+Systolic blood pressure,186465804,mmHg,millimeter mercury column,Systolic blood pressure,x
+Systolic blood pressure,186465804,millimeter,millimeter mercury column,Systolic blood pressure,x
+Systolic blood pressure,186465804,mmHg,millimeter mercury column,Systolic blood pressure centile,x
+Systolic blood pressure,186465804,mmHg,millimeter mercury column,Systolic blood pressure by Noninvasive,x
+Systolic blood pressure,186465804,mmHg,millimeter mercury column,Ambulatory systolic blood pressure,x
+Systolic blood pressure,186465804,mmHg,millimeter mercury column,Systolic blood pressure by Continuous non-invasive monitoring,x
+Temperature,656562966,Fahrenheit,degree Celsius,Tympanic temperature,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Tympanic temperature,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Body temperature - Intravascular,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Body temperature - Intravascular,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Temperature,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Temperature,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,O/E - tympanic temperature,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,O/E - tympanic temperature,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Core body temperature,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Core body temperature,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Bladder temperature via Foley,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Bladder temperature via Foley,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Body temperature taken with digital thermometer,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Body temperature taken with digital thermometer,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Forehead temperature,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Forehead temperature,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Oral temperature taking,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Oral temperature taking,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Nasopharyngeal temperature,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Nasopharyngeal temperature,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Esophageal temperature,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Esophageal temperature,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Rectal temperature,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Rectal temperature,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Body temperature finding,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Body temperature finding,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Nasal temperature,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Nasal temperature,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Tympanic membrane temperature,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Tympanic membrane temperature,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Axillary temperature,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Axillary temperature,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Oral temperature,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Oral temperature,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Measurement of temperature using tympanic thermometer,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Measurement of temperature using tympanic thermometer,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Body temperature,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Body temperature,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Measurement of temperature using skin strip thermometer,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Measurement of temperature using skin strip thermometer,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Body temperature - Core,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Body temperature - Core,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Ear temperature,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Ear temperature,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Body temperature - Temporal artery,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Body temperature - Temporal artery,(x-32)*(5/9)
+Temperature,656562966,Fahrenheit,degree Celsius,Basal body temperature,(x-32)*(5/9)
+Temperature,656562966,degree Fahrenheit,degree Celsius,Basal body temperature,(x-32)*(5/9)
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Plasma troponin I measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Plasma troponin I measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Plasma troponin I measurement,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Plasma troponin I measurement,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Plasma troponin I measurement,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Plasma troponin I measurement,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,"Troponin I.cardiac | Serum, Plasma or Blood | Chemistry - non-challenge",x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,"Troponin I.cardiac | Serum, Plasma or Blood | Chemistry - non-challenge",x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,"Troponin I.cardiac | Serum, Plasma or Blood | Chemistry - non-challenge",x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,"Troponin I.cardiac | Serum, Plasma or Blood | Chemistry - non-challenge",x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,"Troponin I.cardiac | Serum, Plasma or Blood | Chemistry - non-challenge",x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,"Troponin I.cardiac | Serum, Plasma or Blood | Chemistry - non-challenge",x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin I.cardiac | Bld-Ser-Plas,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin I.cardiac | Bld-Ser-Plas,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin I.cardiac | Bld-Ser-Plas,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin I.cardiac | Bld-Ser-Plas,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin I.cardiac | Bld-Ser-Plas,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin I.cardiac | Bld-Ser-Plas,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,"Troponin, quantitative",x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,"Troponin, quantitative",x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,"Troponin, quantitative",x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,"Troponin, quantitative",x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,"Troponin, quantitative",x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,"Troponin, quantitative",x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Serum troponin I measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Serum troponin I measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Serum troponin I measurement,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Serum troponin I measurement,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Serum troponin I measurement,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Serum troponin I measurement,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma by High sensitivity method,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma by High sensitivity method,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma by High sensitivity method,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma by High sensitivity method,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma by High sensitivity method,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma by High sensitivity method,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Serum or Plasma,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Serum or Plasma,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Serum or Plasma,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Serum or Plasma,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Serum or Plasma,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Serum or Plasma,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin I.cardiac [Units/volume] in Serum or Plasma,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin I.cardiac [Units/volume] in Serum or Plasma,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin I.cardiac [Units/volume] in Serum or Plasma,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin I.cardiac [Units/volume] in Serum or Plasma,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin I.cardiac [Units/volume] in Serum or Plasma,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin I.cardiac [Units/volume] in Serum or Plasma,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin I.cardiac panel | Serum or Plasma | Chemistry Panels,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin I.cardiac panel | Serum or Plasma | Chemistry Panels,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin I.cardiac panel | Serum or Plasma | Chemistry Panels,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin I.cardiac panel | Serum or Plasma | Chemistry Panels,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin I.cardiac panel | Serum or Plasma | Chemistry Panels,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin I.cardiac panel | Serum or Plasma | Chemistry Panels,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin T.cardiac | Bld-Ser-Plas,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin T.cardiac | Bld-Ser-Plas,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin T.cardiac | Bld-Ser-Plas,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin T.cardiac | Bld-Ser-Plas,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin T.cardiac | Bld-Ser-Plas,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin T.cardiac | Bld-Ser-Plas,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin T.cardiac | Blood venous | Chemistry - non-challenge,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin T.cardiac | Blood venous | Chemistry - non-challenge,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin T.cardiac | Blood venous | Chemistry - non-challenge,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin T.cardiac | Blood venous | Chemistry - non-challenge,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin T.cardiac | Blood venous | Chemistry - non-challenge,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin T.cardiac | Blood venous | Chemistry - non-challenge,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin T.cardiac panel | Serum or Plasma | Chemistry Panels,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin T.cardiac panel | Serum or Plasma | Chemistry Panels,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin T.cardiac panel | Serum or Plasma | Chemistry Panels,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin T.cardiac panel | Serum or Plasma | Chemistry Panels,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin T.cardiac panel | Serum or Plasma | Chemistry Panels,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin T.cardiac panel | Serum or Plasma | Chemistry Panels,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin T cardiac measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin T cardiac measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin T cardiac measurement,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin T cardiac measurement,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin T cardiac measurement,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin T cardiac measurement,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin T.cardiac panel - Serum or Plasma by High sensitivity method,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin T.cardiac panel - Serum or Plasma by High sensitivity method,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin T.cardiac panel - Serum or Plasma by High sensitivity method,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin T.cardiac panel - Serum or Plasma by High sensitivity method,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin T.cardiac panel - Serum or Plasma by High sensitivity method,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin T.cardiac panel - Serum or Plasma by High sensitivity method,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,"Troponin I.cardiac [Presence] in Serum, Plasma or Blood by Rapid immunoassay",x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,"Troponin I.cardiac [Presence] in Serum, Plasma or Blood by Rapid immunoassay",x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,"Troponin I.cardiac [Presence] in Serum, Plasma or Blood by Rapid immunoassay",x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,"Troponin I.cardiac [Presence] in Serum, Plasma or Blood by Rapid immunoassay",x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,"Troponin I.cardiac [Presence] in Serum, Plasma or Blood by Rapid immunoassay",x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,"Troponin I.cardiac [Presence] in Serum, Plasma or Blood by Rapid immunoassay",x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin T.cardiac [Presence] in Blood,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin T.cardiac [Presence] in Blood,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin T.cardiac [Presence] in Blood,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin T.cardiac [Presence] in Blood,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin T.cardiac [Presence] in Blood,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin T.cardiac [Presence] in Blood,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin I.cardiac | Blood | Chemistry - non-challenge,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin I.cardiac | Blood | Chemistry - non-challenge,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin I.cardiac | Blood | Chemistry - non-challenge,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin I.cardiac | Blood | Chemistry - non-challenge,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin I.cardiac | Blood | Chemistry - non-challenge,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin I.cardiac | Blood | Chemistry - non-challenge,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Blood,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Blood,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Blood,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Blood,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Blood,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Blood,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin T.cardiac | Serum or Plasma | Chemistry - non-challenge,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin T.cardiac | Serum or Plasma | Chemistry - non-challenge,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin T.cardiac | Serum or Plasma | Chemistry - non-challenge,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin T.cardiac | Serum or Plasma | Chemistry - non-challenge,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin T.cardiac | Serum or Plasma | Chemistry - non-challenge,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin T.cardiac | Serum or Plasma | Chemistry - non-challenge,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Blood,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Blood,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Blood,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Blood,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Blood,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Blood,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Venous blood,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Venous blood,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Venous blood,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Venous blood,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Venous blood,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Venous blood,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Serum troponin T measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Serum troponin T measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Serum troponin T measurement,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Serum troponin T measurement,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Serum troponin T measurement,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Serum troponin T measurement,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin T.cardiac [Interpretation] in Serum or Plasma Qualitative by High sensitivity method,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin T.cardiac [Interpretation] in Serum or Plasma Qualitative by High sensitivity method,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin T.cardiac [Interpretation] in Serum or Plasma Qualitative by High sensitivity method,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin T.cardiac [Interpretation] in Serum or Plasma Qualitative by High sensitivity method,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin T.cardiac [Interpretation] in Serum or Plasma Qualitative by High sensitivity method,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin T.cardiac [Interpretation] in Serum or Plasma Qualitative by High sensitivity method,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Serum or Plasma by High sensitivity method,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Serum or Plasma by High sensitivity method,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Serum or Plasma by High sensitivity method,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Serum or Plasma by High sensitivity method,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Serum or Plasma by High sensitivity method,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin T.cardiac [Mass/volume] in Serum or Plasma by High sensitivity method,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin I.cardiac [Interpretation] in Serum or Plasma Qualitative by High sensitivity method,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin I.cardiac [Interpretation] in Serum or Plasma Qualitative by High sensitivity method,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin I.cardiac [Interpretation] in Serum or Plasma Qualitative by High sensitivity method,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin I.cardiac [Interpretation] in Serum or Plasma Qualitative by High sensitivity method,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin I.cardiac [Interpretation] in Serum or Plasma Qualitative by High sensitivity method,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin I.cardiac [Interpretation] in Serum or Plasma Qualitative by High sensitivity method,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin I measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin I measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin I measurement,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin I measurement,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin I measurement,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin I measurement,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Plasma troponin T measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Plasma troponin T measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Plasma troponin T measurement,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Plasma troponin T measurement,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Plasma troponin T measurement,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Plasma troponin T measurement,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin I.cardiac panel - Serum or Plasma by High sensitivity method,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin I.cardiac panel - Serum or Plasma by High sensitivity method,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin I.cardiac panel - Serum or Plasma by High sensitivity method,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin I.cardiac panel - Serum or Plasma by High sensitivity method,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin I.cardiac panel - Serum or Plasma by High sensitivity method,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin I.cardiac panel - Serum or Plasma by High sensitivity method,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin measurement,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin measurement,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin measurement,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin measurement,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,"Troponin, qualitative",x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,"Troponin, qualitative",x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,"Troponin, qualitative",x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,"Troponin, qualitative",x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,"Troponin, qualitative",x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,"Troponin, qualitative",x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin T.cardiac | Blood | Chemistry - non-challenge,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin T.cardiac | Blood | Chemistry - non-challenge,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin T.cardiac | Blood | Chemistry - non-challenge,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin T.cardiac | Blood | Chemistry - non-challenge,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin T.cardiac | Blood | Chemistry - non-challenge,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin T.cardiac | Blood | Chemistry - non-challenge,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin I.cardiac | Serum or Plasma | Chemistry - non-challenge,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin I.cardiac | Serum or Plasma | Chemistry - non-challenge,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin I.cardiac | Serum or Plasma | Chemistry - non-challenge,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin I.cardiac | Serum or Plasma | Chemistry - non-challenge,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin I.cardiac | Serum or Plasma | Chemistry - non-challenge,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin I.cardiac | Serum or Plasma | Chemistry - non-challenge,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,High sensitivity cardiac troponin T measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,High sensitivity cardiac troponin T measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,High sensitivity cardiac troponin T measurement,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,High sensitivity cardiac troponin T measurement,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,High sensitivity cardiac troponin T measurement,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,High sensitivity cardiac troponin T measurement,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin T measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin T measurement,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin T measurement,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin T measurement,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin T measurement,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin T measurement,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma by Detection limit <= 0.01 ng/mL,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma by Detection limit <= 0.01 ng/mL,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma by Detection limit <= 0.01 ng/mL,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma by Detection limit <= 0.01 ng/mL,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma by Detection limit <= 0.01 ng/mL,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin I.cardiac [Mass/volume] in Serum or Plasma by Detection limit <= 0.01 ng/mL,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin T.cardiac | Blood venous,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin T.cardiac | Blood venous,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin T.cardiac | Blood venous,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin T.cardiac | Blood venous,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin T.cardiac | Blood venous,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin T.cardiac | Blood venous,x
+"Troponin all types, ng/mL",623367088,picogram per milliliter,nanogram per milliliter,Troponin T.cardiac [Presence] in Serum or Plasma,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per liter,nanogram per milliliter,Troponin T.cardiac [Presence] in Serum or Plasma,x*0.001
+"Troponin all types, ng/mL",623367088,nanogram per deciliter,nanogram per milliliter,Troponin T.cardiac [Presence] in Serum or Plasma,x*0.01
+"Troponin all types, ng/mL",623367088,milligram per liter,nanogram per milliliter,Troponin T.cardiac [Presence] in Serum or Plasma,x*1000
+"Troponin all types, ng/mL",623367088,milligram per deciliter,nanogram per milliliter,Troponin T.cardiac [Presence] in Serum or Plasma,x*10000
+"Troponin all types, ng/mL",623367088,microgram per liter,nanogram per milliliter,Troponin T.cardiac [Presence] in Serum or Plasma,x
+"White blood cell count, x10E3/uL",138719030,thousand per milliliter,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood by Automated count,x*0.001
+"White blood cell count, x10E3/uL",138719030,thousand per liter,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood by Automated count,x*0.000001
+"White blood cell count, x10E3/uL",138719030,thousand per cubic millimeter,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood by Automated count,x
+"White blood cell count, x10E3/uL",138719030,million per microliter,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood by Automated count,x*1000
+"White blood cell count, x10E3/uL",138719030,kilounit per liter,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood by Automated count,None
+"White blood cell count, x10E3/uL",138719030,cells per microliter,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood by Automated count,x*0.001
+"White blood cell count, x10E3/uL",138719030,billion per liter,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood by Automated count,x
+"White blood cell count, x10E3/uL",138719030,billion cells per liter,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood by Automated count,x
+"White blood cell count, x10E3/uL",138719030,10*9/L,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood by Automated count,x
+"White blood cell count, x10E3/uL",138719030,thousand per milliliter,thousand per microliter,Leukocytes [#/volume] in Blood by Manual count,x*0.001
+"White blood cell count, x10E3/uL",138719030,thousand per liter,thousand per microliter,Leukocytes [#/volume] in Blood by Manual count,x*0.000001
+"White blood cell count, x10E3/uL",138719030,thousand per cubic millimeter,thousand per microliter,Leukocytes [#/volume] in Blood by Manual count,x
+"White blood cell count, x10E3/uL",138719030,million per microliter,thousand per microliter,Leukocytes [#/volume] in Blood by Manual count,x*1000
+"White blood cell count, x10E3/uL",138719030,kilounit per liter,thousand per microliter,Leukocytes [#/volume] in Blood by Manual count,None
+"White blood cell count, x10E3/uL",138719030,cells per microliter,thousand per microliter,Leukocytes [#/volume] in Blood by Manual count,x*0.001
+"White blood cell count, x10E3/uL",138719030,billion per liter,thousand per microliter,Leukocytes [#/volume] in Blood by Manual count,x
+"White blood cell count, x10E3/uL",138719030,billion cells per liter,thousand per microliter,Leukocytes [#/volume] in Blood by Manual count,x
+"White blood cell count, x10E3/uL",138719030,10*9/L,thousand per microliter,Leukocytes [#/volume] in Blood by Manual count,x
+"White blood cell count, x10E3/uL",138719030,thousand per milliliter,thousand per microliter,White blood cell count in blood,x*0.001
+"White blood cell count, x10E3/uL",138719030,thousand per liter,thousand per microliter,White blood cell count in blood,x*0.000001
+"White blood cell count, x10E3/uL",138719030,thousand per cubic millimeter,thousand per microliter,White blood cell count in blood,x
+"White blood cell count, x10E3/uL",138719030,million per microliter,thousand per microliter,White blood cell count in blood,x*1000
+"White blood cell count, x10E3/uL",138719030,kilounit per liter,thousand per microliter,White blood cell count in blood,None
+"White blood cell count, x10E3/uL",138719030,cells per microliter,thousand per microliter,White blood cell count in blood,x*0.001
+"White blood cell count, x10E3/uL",138719030,billion per liter,thousand per microliter,White blood cell count in blood,x
+"White blood cell count, x10E3/uL",138719030,billion cells per liter,thousand per microliter,White blood cell count in blood,x
+"White blood cell count, x10E3/uL",138719030,10*9/L,thousand per microliter,White blood cell count in blood,x
+"White blood cell count, x10E3/uL",138719030,thousand per milliliter,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood,x*0.001
+"White blood cell count, x10E3/uL",138719030,thousand per liter,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood,x*0.000001
+"White blood cell count, x10E3/uL",138719030,thousand per cubic millimeter,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood,x
+"White blood cell count, x10E3/uL",138719030,million per microliter,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood,x*1000
+"White blood cell count, x10E3/uL",138719030,kilounit per liter,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood,None
+"White blood cell count, x10E3/uL",138719030,cells per microliter,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood,x*0.001
+"White blood cell count, x10E3/uL",138719030,billion per liter,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood,x
+"White blood cell count, x10E3/uL",138719030,billion cells per liter,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood,x
+"White blood cell count, x10E3/uL",138719030,10*9/L,thousand per microliter,Leukocytes [#/volume] corrected for nucleated erythrocytes in Blood,x
+"White blood cell count, x10E3/uL",138719030,thousand per milliliter,thousand per microliter,White blood cell estimate,x*0.001
+"White blood cell count, x10E3/uL",138719030,thousand per liter,thousand per microliter,White blood cell estimate,x*0.000001
+"White blood cell count, x10E3/uL",138719030,thousand per cubic millimeter,thousand per microliter,White blood cell estimate,x
+"White blood cell count, x10E3/uL",138719030,million per microliter,thousand per microliter,White blood cell estimate,x*1000
+"White blood cell count, x10E3/uL",138719030,kilounit per liter,thousand per microliter,White blood cell estimate,None
+"White blood cell count, x10E3/uL",138719030,cells per microliter,thousand per microliter,White blood cell estimate,x*0.001
+"White blood cell count, x10E3/uL",138719030,billion per liter,thousand per microliter,White blood cell estimate,x
+"White blood cell count, x10E3/uL",138719030,billion cells per liter,thousand per microliter,White blood cell estimate,x
+"White blood cell count, x10E3/uL",138719030,10*9/L,thousand per microliter,White blood cell estimate,x
+"White blood cell count, x10E3/uL",138719030,thousand per milliliter,thousand per microliter,Leukocytes [#/volume] in Blood by Estimate,x*0.001
+"White blood cell count, x10E3/uL",138719030,thousand per liter,thousand per microliter,Leukocytes [#/volume] in Blood by Estimate,x*0.000001
+"White blood cell count, x10E3/uL",138719030,thousand per cubic millimeter,thousand per microliter,Leukocytes [#/volume] in Blood by Estimate,x
+"White blood cell count, x10E3/uL",138719030,million per microliter,thousand per microliter,Leukocytes [#/volume] in Blood by Estimate,x*1000
+"White blood cell count, x10E3/uL",138719030,kilounit per liter,thousand per microliter,Leukocytes [#/volume] in Blood by Estimate,None
+"White blood cell count, x10E3/uL",138719030,cells per microliter,thousand per microliter,Leukocytes [#/volume] in Blood by Estimate,x*0.001
+"White blood cell count, x10E3/uL",138719030,billion per liter,thousand per microliter,Leukocytes [#/volume] in Blood by Estimate,x
+"White blood cell count, x10E3/uL",138719030,billion cells per liter,thousand per microliter,Leukocytes [#/volume] in Blood by Estimate,x
+"White blood cell count, x10E3/uL",138719030,10*9/L,thousand per microliter,Leukocytes [#/volume] in Blood by Estimate,x
+"White blood cell count, x10E3/uL",138719030,thousand per milliliter,thousand per microliter,White blood cell count,x*0.001
+"White blood cell count, x10E3/uL",138719030,thousand per liter,thousand per microliter,White blood cell count,x*0.000001
+"White blood cell count, x10E3/uL",138719030,thousand per cubic millimeter,thousand per microliter,White blood cell count,x
+"White blood cell count, x10E3/uL",138719030,million per microliter,thousand per microliter,White blood cell count,x*1000
+"White blood cell count, x10E3/uL",138719030,kilounit per liter,thousand per microliter,White blood cell count,None
+"White blood cell count, x10E3/uL",138719030,cells per microliter,thousand per microliter,White blood cell count,x*0.001
+"White blood cell count, x10E3/uL",138719030,billion per liter,thousand per microliter,White blood cell count,x
+"White blood cell count, x10E3/uL",138719030,billion cells per liter,thousand per microliter,White blood cell count,x
+"White blood cell count, x10E3/uL",138719030,10*9/L,thousand per microliter,White blood cell count,x
+"White blood cell count, x10E3/uL",138719030,thousand per milliliter,thousand per microliter,Leukocytes [#/volume] in Blood,x*0.001
+"White blood cell count, x10E3/uL",138719030,thousand per liter,thousand per microliter,Leukocytes [#/volume] in Blood,x*0.000001
+"White blood cell count, x10E3/uL",138719030,thousand per cubic millimeter,thousand per microliter,Leukocytes [#/volume] in Blood,x
+"White blood cell count, x10E3/uL",138719030,million per microliter,thousand per microliter,Leukocytes [#/volume] in Blood,x*1000
+"White blood cell count, x10E3/uL",138719030,kilounit per liter,thousand per microliter,Leukocytes [#/volume] in Blood,None
+"White blood cell count, x10E3/uL",138719030,cells per microliter,thousand per microliter,Leukocytes [#/volume] in Blood,x*0.001
+"White blood cell count, x10E3/uL",138719030,billion per liter,thousand per microliter,Leukocytes [#/volume] in Blood,x
+"White blood cell count, x10E3/uL",138719030,billion cells per liter,thousand per microliter,Leukocytes [#/volume] in Blood,x
+"White blood cell count, x10E3/uL",138719030,10*9/L,thousand per microliter,Leukocytes [#/volume] in Blood,x
+"White blood cell count, x10E3/uL",138719030,thousand per milliliter,thousand per microliter,Leukocytes [#/volume] in Blood by Automated count,x*0.001
+"White blood cell count, x10E3/uL",138719030,thousand per liter,thousand per microliter,Leukocytes [#/volume] in Blood by Automated count,x*0.000001
+"White blood cell count, x10E3/uL",138719030,thousand per cubic millimeter,thousand per microliter,Leukocytes [#/volume] in Blood by Automated count,x
+"White blood cell count, x10E3/uL",138719030,million per microliter,thousand per microliter,Leukocytes [#/volume] in Blood by Automated count,x*1000
+"White blood cell count, x10E3/uL",138719030,kilounit per liter,thousand per microliter,Leukocytes [#/volume] in Blood by Automated count,None
+"White blood cell count, x10E3/uL",138719030,cells per microliter,thousand per microliter,Leukocytes [#/volume] in Blood by Automated count,x*0.001
+"White blood cell count, x10E3/uL",138719030,billion per liter,thousand per microliter,Leukocytes [#/volume] in Blood by Automated count,x
+"White blood cell count, x10E3/uL",138719030,billion cells per liter,thousand per microliter,Leukocytes [#/volume] in Blood by Automated count,x
+"White blood cell count, x10E3/uL",138719030,10*9/L,thousand per microliter,Leukocytes [#/volume] in Blood by Automated count,x
