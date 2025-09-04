@@ -1,0 +1,56 @@
+﻿measured_variable,codeset_id,omop_unit_concept_id,omop_unit_concept_name,max_acceptable_value,min_acceptable_value
+"Lymphocytes (relative), %",45416701,8554,percent,100,0
+Mean arterial pressure,709075479,8876,millimeter mercury column,300,20
+"Neutrophils (absolute), x10E3/uL",881397271,8848,thousand per microliter,5000,0
+"Neutrophils (relative), %",304813348,8554,percent,100,0
+"NT pro BNP, pg/mL",561166072,8845,picogram per milliliter,1000000,0
+pH,845428728,8482,pH,8.5,5
+"Platelet count, x10E3/uL",167697906,8848,thousand per microliter,4000,0
+"Potassium, mmol/L",622316047,8753,millimole per liter,20,0
+"Procalcitonin, ng/mL",610397248,8842,nanogram per milliliter,5000,0
+Respiratory rate,286601963,8483,counts per minute,200,0
+"Sodium, mmol/L",887473517,8753,millimole per liter,250,50
+SpO2,780678652,8554,percent,100,0
+Systolic blood pressure,186465804,8876,millimeter mercury column,400,0
+Temperature,656562966,586323,degree Celsius,45,25
+"Troponin all types, ng/mL",623367088,8842,nanogram per milliliter,100,0
+"White blood cell count, x10E3/uL",138719030,8848,thousand per microliter,10000,0
+CD4 Cell Count (relative),254892302,8554,percent,100,0
+CD8 Cell Count (absolute),301181605,8784,cells per microliter,5000,0
+CD8 Cell Count (relative),225952304,8554,percent,100,0
+CD4/CD8 Ratio,410508887,8523,ratio,100,0
+"Chloride, mmol/L",733538531,8753,millimole per liter,200,50
+"Creatinine, mg/dL",615348047,8840,milligram per deciliter,30,0
+"D-Dimer, mg/L FEU",475972797,44783461,Milligram per liter fibrinogen equivalent unit,500,0
+Diastolic blood pressure,658772723,8876,millimeter mercury column,400,0
+Eosinophils (absolute),296867571,8848,thousand per microliter,200,0
+Eosinophils (relative),309381426,8554,percent,100,0
+"Erythrocyte Sed. Rate, mm/hr",905545362,8752,millimeter per hour,300,0
+"Ferritin, ng/mL",317388455,8842,nanogram per milliliter,100000,0
+"Fibrinogen, pg/mL",27035875,8840,milligram per deciliter,20000,0
+Albumin (g/dL),104464584,8713,gram per deciliter,10,0
+"ALT (SGPT), IU/L",538737057,8923,international unit per liter,50000,0
+"AST (SGOT), IU/L",248480621,8923,international unit per liter,50000,0
+"Bilirubin (total), mg/dL",586434833,8840,milligram per deciliter,100,0
+"Bilirubin (Conjugated/Direct), mg/dL",50252641,8840,milligram per deciliter,100,0
+"Bilirubin - (Unconjugated/Indirect), mg/dL",59108731,8840,milligram per deciliter,100,0
+BMI,65622096,9531,kilogram per square meter,100,1
+"BNP, pg/mL",703853936,8845,picogram per milliliter,30000,0
+Body weight,776390058,9529,kilogram,500,0.1
+"BUN, mg/dL",139231433,8840,milligram per deciliter,500,0
+BUN/Creatinine ratio,165765962,,,400,0
+"c-reactive protein CRP, mg/L",371622342,8751,milligram per liter,1000,0
+CD4 Cell Count (absolute),24299640,8784,cells per microliter,5000,0
+GCS Eye,481397778,,,4,1
+GCS Motor,706664851,,,6,1
+GCS Verbal,660016502,,,5,1
+"Glucose, mg/dL",59698832,8840,milligram per deciliter,1000,0
+Heart rate,596956209,8483,counts per minute,500,0
+Height,754731201,9546,meter,3,0
+"Hemoglobin A1c, %",381434987,8554,percent,25,2.0000001
+"Hemoglobin, g/dL",28177118,8713,gram per deciliter,30,1
+HIV Viral Load,776696816,8799,copies per milliliter,10000000000,0
+"IL-6, pg/mL",928163892,8845,picogram per milliliter,60000,0
+"Lactate, U/L",400660753,8753,millimole per liter,100,0
+"Lactate Dehydrogenase (LDH), units/L",10450810,8645,unit per liter,1000000,0
+"Lymphocytes (absolute), x10E3/uL",627523060,8848,thousand per microliter,5000,0
