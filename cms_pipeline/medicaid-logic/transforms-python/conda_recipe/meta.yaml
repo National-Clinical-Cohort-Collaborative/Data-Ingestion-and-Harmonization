@@ -1,0 +1,31 @@
+# If you need to modify the runtime requirements for your package,
+# update the 'requirements.run' section in this file.
+
+package:
+  name: "{{ PACKAGE_NAME }}"
+  version: "{{ PACKAGE_VERSION }}"
+
+source:
+  path: ../src
+
+requirements:
+  # Tools required to build the package. These packages are run on the build system and include
+  # things such as revision control systems (Git, SVN) make tools (GNU make, Autotool, CMake) and
+  # compilers (real cross, pseudo-cross, or native when not cross-compiling), and any source pre-processors.
+  # https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#build
+  build:
+    - python 3.10.*
+    - setuptools
+
+  # Packages required to run the package. These are the dependencies that are installed automatically
+  # whenever the package is installed.
+  # https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#run
+  run:
+    - python 3.10.*
+    - transforms {{ PYTHON_TRANSFORMS_VERSION }}
+    - transforms-expectations
+    - transforms-verbs
+    - source-cdm-common-utils=1.11.0
+
+build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt

@@ -1,0 +1,14 @@
+[BASIC]
+good-names = _, i, j, k, df
+
+[MASTER]
+ignore=lib
+
+[MESSAGES CONTROL]
+disable =
+    missing-module-docstring,
+    missing-function-docstring
+
+[TYPECHECK]
+ignored-modules = pyspark.sql.functions
+

@@ -1,0 +1,5 @@
+# Define UDFs here as in the example below
+
+#my_udf:
+#  className: "com.palantir.udf.TimesTwoPlus"
+#  methodName: "timesTwoPlus"
