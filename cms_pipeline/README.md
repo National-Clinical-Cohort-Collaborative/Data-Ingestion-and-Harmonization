@@ -1,4 +1,5 @@
-CMS pipeline - transformation of CMS claim datasets to OMOP CDM v5.3.1
+# Centers for Medicare & Medicaid Services (CMS) claims data linked with the National COVID Cohort Collaborative (N3C) electronic health record (EHR) dataset.
+## CMS pipeline - transformation of CMS claim datasets to OMOP CDM v5.3.1
 
 This work was given a distinction under the **Best Community Contribution Honoree**
 
