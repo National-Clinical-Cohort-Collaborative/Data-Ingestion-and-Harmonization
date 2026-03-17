@@ -31,3 +31,4 @@ The following concept sets support harmonization and analysis of Social Determin
 - **Data Engineering Use:** Concept sets used for ETL pipelines, survey harmonization, and mapping workflows.
 - **Data Analysis Use:** Concept sets used for cohort definition, analytic queries, and identification of social needs.
 - **JSON DOI:** Persistent DOI linking to the machine-readable concept set artifact hosted on Zenodo.
+- **License:** CC-BY 4.0
