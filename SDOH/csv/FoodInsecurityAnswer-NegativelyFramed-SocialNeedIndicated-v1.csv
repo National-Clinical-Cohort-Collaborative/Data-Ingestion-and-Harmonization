@@ -1,0 +1,2 @@
+concept_set_name,concept_set_version,vocabulary_version,source_file,concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,concept_code,standard_concept,invalid_reason,valid_start_date,valid_end_date,is_excluded,include_descendants,include_mapped
+FoodInsecurityAnswer-NegativelyFramed-SocialNeedIndicated-v1,v1,v5.0 27-AUG-25,FoodInsecurityAnswer-NegativelyFramed-SocialNeedIndicated-v1.json,45878245,No,Meas Value,LOINC,Answer,LA32-8,S,,1969-12-31,2099-12-30,False,False,False
