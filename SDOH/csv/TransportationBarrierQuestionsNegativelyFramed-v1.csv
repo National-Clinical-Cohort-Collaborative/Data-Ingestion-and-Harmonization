@@ -1,0 +1,2 @@
+concept_set_name,concept_set_version,vocabulary_version,source_file,concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,concept_code,standard_concept,invalid_reason,valid_start_date,valid_end_date,is_excluded,include_descendants,include_mapped
+TransportationBarrierQuestionsNegativelyFramed,v1,v5.0 27-AUG-25,TransportationBarrierQuestionsNegativelyFramed-v1.json,37019601,Current level of confidence I can use public transportation [PROMIS],Observation,LOINC,Survey,92358-1,S,,2019-06-20,2099-12-30,False,True,False

@@ -1,0 +1,9 @@
+concept_set_name,concept_set_version,vocabulary_version,source_file,concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,concept_code,standard_concept,invalid_reason,valid_start_date,valid_end_date,is_excluded,include_descendants,include_mapped
+FlavorsOfNullResponses-v1,v1,v5.0 27-AUG-25,FlavorsOfNullResponses-v1.json,37079361,I choose not to answer this question,Meas Value,LOINC,Answer,LA30122-8,S,,1969-12-31,2099-12-30,False,False,False
+FlavorsOfNullResponses-v1,v1,v5.0 27-AUG-25,FlavorsOfNullResponses-v1.json,3968706,Resident declines to respond,Meas Value,LOINC,Answer,LA33608-3,S,,1969-12-31,2099-12-30,False,False,False
+FlavorsOfNullResponses-v1,v1,v5.0 27-AUG-25,FlavorsOfNullResponses-v1.json,3968839,Resident unable to respond,Meas Value,LOINC,Answer,LA30435-4,S,,1969-12-31,2099-12-30,False,False,False
+FlavorsOfNullResponses-v1,v1,v5.0 27-AUG-25,FlavorsOfNullResponses-v1.json,45877393,Other/Unknown/Refuse To Answer,Meas Value,LOINC,Answer,LA10613-0,S,,1969-12-31,2099-12-30,False,False,False
+FlavorsOfNullResponses-v1,v1,v5.0 27-AUG-25,FlavorsOfNullResponses-v1.json,36210418,Decline to answer,Meas Value,LOINC,Answer,LA27922-6,S,,1969-12-31,2099-12-30,False,False,False
+FlavorsOfNullResponses-v1,v1,v5.0 27-AUG-25,FlavorsOfNullResponses-v1.json,45880255,Incorrect or no answer,Meas Value,LOINC,Answer,LA9981-7,S,,1969-12-31,2099-12-30,False,False,False
+FlavorsOfNullResponses-v1,v1,v5.0 27-AUG-25,FlavorsOfNullResponses-v1.json,1094351,No answer,Meas Value,LOINC,Answer,LA34071-3,S,,1969-12-31,2099-12-30,False,False,False
+FlavorsOfNullResponses-v1,v1,v5.0 27-AUG-25,FlavorsOfNullResponses-v1.json,45880480,Unknown/No answer,Meas Value,LOINC,Answer,LA10607-2,S,,1969-12-31,2099-12-30,False,False,False

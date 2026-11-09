@@ -1,0 +1,2 @@
+concept_set_name,concept_set_version,vocabulary_version,source_file,concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,concept_code,standard_concept,invalid_reason,valid_start_date,valid_end_date,is_excluded,include_descendants,include_mapped
+FoodInsecurityQuestionsNegativelyFramed-v1,v1,v5.0 27-AUG-25,FoodInsecurityQuestionsNegativelyFramed-v1.json,1617275,Always has enough food for family Caregiver,Observation,LOINC,Survey,96434-6,S,,2021-08-22,2099-12-30,False,False,False
