@@ -5,7 +5,7 @@ The following concept sets support harmonization and analysis of Social Determin
 |---|---|---|---|---|
 | **Food Insecurity** | All questions for food insecurity | ✓ |  | https://doi.org/10.5281/zenodo.18790811 |
 |  | All answers for food insecurity questions | ✓ |  | https://doi.org/10.5281/zenodo.18791269 |
-|  | Positively framed food insecurity questions | ✓ | ✓ | https://doi.org/10.5281/zenodo.17807444 |
+|  | Positively framed food insecurity questions | ✓ | ✓ | https://zenodo.org/records/17807444 |
 |  | Social need indicated answers for positively framed questions |  | ✓ | https://doi.org/10.5281/zenodo.18791953 |
 |  | Social need not-indicated answers for positively framed questions |  | ✓ | https://doi.org/10.5281/zenodo.18793312 |
 |  | Negatively framed food insecurity questions | ✓ | ✓ | https://doi.org/10.5281/zenodo.18793729 |
